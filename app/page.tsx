@@ -8,7 +8,7 @@ import LatestBlogs from "@/components/LatestBlogs";
 // import OurPartners from "@/components/OurPartners";
 // import PartnerInstitutions from "@/components/PartnerInstitutions";
 // import StudentVideoStories from "@/components/StudentVideoStories";
-import VisaSuccessStories from "@/components/VisaSuccessStories";
+// import VisaSuccessStories from "@/components/VisaSuccessStories";
 import WhyChose from "@/components/WhyChose";
 import ContactCta from "@/components/ContactCta";
 import HowWeHelp from "@/components/HowWeHelp";
@@ -26,7 +26,7 @@ export default function Home() {
       <DreamDestinations />
       <TheJourney />
       {/* <PartnerInstitutions /> */}
-      <VisaSuccessStories />
+      {/* <VisaSuccessStories /> */}
       <CtaBanner />
       {/* <StudentVideoStories />
       <OurPartners /> */}

@@ -3,7 +3,7 @@ import AdmissionVisaProcessHungary from "@/components/AdmissionVisaProcessHungar
 import ContactCta from "@/components/ContactCta";
 import EntryRequirements from "@/components/EntryRequirements";
 import HeroHungary from "@/components/HeroHungary";
-import VisaSuccessCarousel from "@/components/VisaSuccessCarousel";
+// import VisaSuccessCarousel from "@/components/VisaSuccessCarousel";
 import WhyHungary from "@/components/WhyHungary";
 
 export const metadata = pageMetadata({
@@ -19,7 +19,7 @@ export default function page() {
       <WhyHungary />
       <EntryRequirements />
       <AdmissionVisaProcessHungary />
-      <VisaSuccessCarousel />
+      {/* <VisaSuccessCarousel /> */}
       <ContactCta />
     </div>
   );

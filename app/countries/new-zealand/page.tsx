@@ -3,7 +3,7 @@ import AdmissionVisaProcessNewZealand from "@/components/AdmissionVisaProcessNew
 import ContactCta from "@/components/ContactCta";
 import EntryRequirements from "@/components/EntryRequirements";
 import HeroNewZealand from "@/components/HeroNewZealand";
-import VisaSuccessCarousel from "@/components/VisaSuccessCarousel";
+// import VisaSuccessCarousel from "@/components/VisaSuccessCarousel";
 import WhyNewZealand from "@/components/WhyNewZealand";
 
 export const metadata = pageMetadata({
@@ -19,7 +19,7 @@ export default function page() {
       <WhyNewZealand />
       <EntryRequirements />
       <AdmissionVisaProcessNewZealand />
-      <VisaSuccessCarousel />
+      {/* <VisaSuccessCarousel /> */}
       <ContactCta />
     </div>
   );

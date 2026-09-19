@@ -3,7 +3,7 @@ import AdmissionVisaProcessCyprus from "@/components/AdmissionVisaProcessCyprus"
 import ContactCta from "@/components/ContactCta";
 import EntryRequirements from "@/components/EntryRequirements";
 import HeroCyprus from "@/components/HeroCyprus";
-import VisaSuccessCarousel from "@/components/VisaSuccessCarousel";
+// import VisaSuccessCarousel from "@/components/VisaSuccessCarousel";
 import WhyCyprus from "@/components/WhyCyprus";
 
 export const metadata = pageMetadata({
@@ -19,7 +19,7 @@ export default function page() {
       <WhyCyprus />
       <EntryRequirements />
       <AdmissionVisaProcessCyprus />
-      <VisaSuccessCarousel />
+      {/* <VisaSuccessCarousel /> */}
       <ContactCta />
     </div>
   );

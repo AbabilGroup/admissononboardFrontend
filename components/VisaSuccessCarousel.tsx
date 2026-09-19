@@ -57,7 +57,7 @@ const stories: Story[] = [
     country: "Cyprus",
     image: "/success4.png",
     summary:
-      "Meet Robel Chowdhury. She's secured a place in the Bachelor of Architecture program at the University of Cyprus! Our counsellors guided her from application to visa approval without a hitch.",
+      "Meet Robel Chowdhury. He's secured a place in the Bachelor of Architecture program at the University of Cyprus! Our counsellors guided her from application to visa approval without a hitch.",
   },
   {
     name: "Rakibul Hasan Emon",
@@ -73,7 +73,7 @@ const stories: Story[] = [
     country: "Greece",
     image: "/success6.png",
     summary:
-      "Meet Mustakim. She's now enrolled in the Bachelor of Tourism Management program at Aristotle University of Thessaloniki, Greece! Our team handled her scholarship search and visa filing.",
+      "Meet Mustakim. He's now enrolled in the Bachelor of Tourism Management program at Aristotle University of Thessaloniki, Greece! Our team handled her scholarship search and visa filing.",
   },
   {
     name: "Nusrat Jahan",

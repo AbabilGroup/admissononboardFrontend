@@ -3,7 +3,7 @@ import AdmissionVisaProcessFinland from "@/components/AdmissionVisaProcessFinlan
 import ContactCta from "@/components/ContactCta";
 import EntryRequirements from "@/components/EntryRequirements";
 import HeroFinland from "@/components/HeroFinland";
-import VisaSuccessCarousel from "@/components/VisaSuccessCarousel";
+// import VisaSuccessCarousel from "@/components/VisaSuccessCarousel";
 import WhyFinland from "@/components/WhyFinland";
 
 export const metadata = pageMetadata({
@@ -19,7 +19,7 @@ export default function page() {
       <WhyFinland />
       <EntryRequirements />
       <AdmissionVisaProcessFinland />
-      <VisaSuccessCarousel />
+      {/* <VisaSuccessCarousel /> */}
       <ContactCta />
     </div>
   );

@@ -3,7 +3,7 @@ import AdmissionVisaProcessLithuania from "@/components/AdmissionVisaProcessLith
 import ContactCta from "@/components/ContactCta";
 import EntryRequirements from "@/components/EntryRequirements";
 import HeroLithuania from "@/components/HeroLithuania";
-import VisaSuccessCarousel from "@/components/VisaSuccessCarousel";
+// import VisaSuccessCarousel from "@/components/VisaSuccessCarousel";
 import WhyLithuania from "@/components/WhyLithuania";
 
 export const metadata = pageMetadata({
@@ -19,7 +19,7 @@ export default function page() {
       <WhyLithuania />
       <EntryRequirements />
       <AdmissionVisaProcessLithuania />
-      <VisaSuccessCarousel />
+      {/* <VisaSuccessCarousel /> */}
       <ContactCta />
     </div>
   );
