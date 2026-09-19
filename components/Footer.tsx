@@ -93,7 +93,7 @@ export default function Footer() {
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-[#5B5B5B]">
             Admission OnBoard connects students to top global universities.
             Headquartered in Dhaka, we specialise across fields like
-            engineering, business, and healthcare.
+            engineering, business, and healthcare
           </p>
         </div>
 
@@ -130,7 +130,11 @@ export default function Footer() {
             Get In Touch
           </h3>
           <div className="mt-4 flex flex-col gap-3 text-sm text-[#5B5B5B]">
-            <p> Peepalbot Lounge & Bar, Kalanki, Kathmandu , Nepal</p>
+            <p>
+              {" "}
+              New Naikap - 6, Orchid Colony; just infront to cold store
+              building, Kathmandu, Nepal
+            </p>
             <a
               href="mailto:ceo@admissiononboard.com"
               className="hover:text-[#E0483E]">
