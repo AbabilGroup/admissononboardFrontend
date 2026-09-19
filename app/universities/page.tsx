@@ -1,5 +1,12 @@
+import { pageMetadata } from "@/lib/seo";
 import ContactCta from "@/components/ContactCta";
 import UniversityExplorer from "@/components/UniversityExplorer";
+
+export const metadata = pageMetadata({
+  title: "Partner Universities",
+  description: "Browse partner universities across the UK, Australia, Europe and more, and get free admission guidance from Admission On Board.",
+  path: "/universities",
+});
 
 export default function page() {
   return (
