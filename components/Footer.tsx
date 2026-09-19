@@ -61,8 +61,7 @@ function BranchItem({ name, slug, active }: (typeof branches)[number]) {
     return (
       <Link
         href={`/countries/${slug}`}
-        className="text-[#5B5B5B] transition-colors hover:text-[#E0483E]"
-      >
+        className="text-[#5B5B5B] transition-colors hover:text-[#E0483E]">
         {name}
       </Link>
     );
@@ -118,8 +117,7 @@ export default function Footer() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-[#5B5B5B] transition-colors hover:text-[#E0483E]"
-              >
+                className="text-[#5B5B5B] transition-colors hover:text-[#E0483E]">
                 {link.label}
               </Link>
             ))}
@@ -132,13 +130,10 @@ export default function Footer() {
             Get In Touch
           </h3>
           <div className="mt-4 flex flex-col gap-3 text-sm text-[#5B5B5B]">
-            {/* <p>
-              Sonargaon Janapath Road Sector 12, Uttara Dhaka-1230, Bangladesh
-            </p> */}
+            <p> Peepalbot Lounge & Bar, Kalanki, Kathmandu , Nepal</p>
             <a
               href="mailto:ceo@admissiononboard.com"
-              className="hover:text-[#E0483E]"
-            >
+              className="hover:text-[#E0483E]">
               ceo@admissiononboard.com
             </a>
             <a href="tel:+8801906499741" className="hover:text-[#E0483E]">
@@ -203,14 +198,12 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.name}
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-[#1B1B1B] text-white transition-colors hover:bg-[#E0483E]"
-              >
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-[#1B1B1B] text-white transition-colors hover:bg-[#E0483E]">
                 <svg
                   width="14"
                   height="14"
                   viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
+                  fill="currentColor">
                   <path d={social.path} />
                 </svg>
               </a>
