@@ -1,5 +1,5 @@
 // import Accreditations from "@/components/Accreditations";
-import BranchLocations from "@/components/BranchLocations";
+// import BranchLocations from "@/components/BranchLocations";
 import CtaBanner from "@/components/CtaBanner";
 import DreamDestinations from "@/components/DreamDestinations";
 import FaqSection from "@/components/FaqSection";
@@ -31,7 +31,7 @@ export default function Home() {
       {/* <StudentVideoStories />
       <OurPartners /> */}
       <LatestBlogs />
-      <BranchLocations />
+      {/* <BranchLocations /> */}
       <FaqSection />
       <ContactCta />
     </div>

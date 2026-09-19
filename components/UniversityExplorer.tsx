@@ -7,88 +7,183 @@ type University = {
   slug: string;
   name: string;
   country: string;
-  courseCount: number;
   initials: string;
   color: string;
+  note?: string;
 };
 
 const destinations = [
   "All destinations",
   "United Kingdom",
-  "Australia",
-  "Finland",
-  "Romania",
-  "Malta",
   "Hungary",
   "Cyprus",
-  "Greece",
-  "Lithuania",
+  "Iceland",
 ];
 
 const universities: University[] = [
   {
-    slug: "abertay-university",
-    name: "Abertay University",
+    slug: "bpp-university",
+    name: "BPP University",
     country: "United Kingdom",
-    courseCount: 60,
-    initials: "AU",
+    initials: "BP",
+    color: "#2F5DA8",
+  },
+  {
+    slug: "university-of-hertfordshire",
+    name: "University of Hertfordshire",
+    country: "United Kingdom",
+    initials: "UH",
     color: "#D6281F",
+  },
+  {
+    slug: "university-of-law",
+    name: "University of Law",
+    country: "United Kingdom",
+    initials: "UL",
+    color: "#1B1B1B",
+    note: "Except Business Course",
+  },
+  {
+    slug: "university-of-chester",
+    name: "University of Chester",
+    country: "United Kingdom",
+    initials: "UC",
+    color: "#2F9E5C",
+    note: "Except Sylhet",
+  },
+  {
+    slug: "london-south-bank-university",
+    name: "London South Bank University",
+    country: "United Kingdom",
+    initials: "LS",
+    color: "#F58B0F",
+    note: "Except Sylhet, Except Business Course",
+  },
+  {
+    slug: "aston-university-london",
+    name: "Aston University, London",
+    country: "United Kingdom",
+    initials: "AL",
+    color: "#E0483E",
+    note: "Except Sylhet",
+  },
+  {
+    slug: "university-of-hull-london",
+    name: "University of Hull - London",
+    country: "United Kingdom",
+    initials: "HL",
+    color: "#2F5DA8",
+    note: "Except Sylhet",
+  },
+  {
+    slug: "regent-college-london",
+    name: "Regent College London",
+    country: "United Kingdom",
+    initials: "RC",
+    color: "#1B1B1B",
+    note: "Except UG",
+  },
+  {
+    slug: "university-of-bedfordshire",
+    name: "University of Bedfordshire",
+    country: "United Kingdom",
+    initials: "UB",
+    color: "#D6281F",
+    note: "Except Sylhet",
+  },
+  {
+    slug: "anglia-ruskin-university",
+    name: "Anglia Ruskin University",
+    country: "United Kingdom",
+    initials: "AR",
+    color: "#2F9E5C",
+    note: "UG Sylhet Restricted",
+  },
+  {
+    slug: "university-of-brighton",
+    name: "University of Brighton",
+    country: "United Kingdom",
+    initials: "BR",
+    color: "#F58B0F",
+  },
+  {
+    slug: "university-of-south-wales",
+    name: "University of South Wales",
+    country: "United Kingdom",
+    initials: "SW",
+    color: "#E0483E",
+  },
+  {
+    slug: "aston-university-birmingham",
+    name: "Aston University, Birmingham",
+    country: "United Kingdom",
+    initials: "AB",
+    color: "#2F5DA8",
+  },
+  {
+    slug: "cardiff-metropolitan-university",
+    name: "Cardiff Metropolitan University",
+    country: "United Kingdom",
+    initials: "CM",
+    color: "#1B1B1B",
+    note: "Full Deposit for Sylhet",
+  },
+  {
+    slug: "canterbury-christ-church-university",
+    name: "Canterbury Christ Church University",
+    country: "United Kingdom",
+    initials: "CC",
+    color: "#2F9E5C",
+    note: "Except UG",
+  },
+  {
+    slug: "uws-london-campus",
+    name: "UWS - London Campus",
+    country: "United Kingdom",
+    initials: "UW",
+    color: "#F58B0F",
   },
   {
     slug: "aberystwyth-university",
     name: "Aberystwyth University",
     country: "United Kingdom",
-    courseCount: 291,
-    initials: "AB",
-    color: "#2F5DA8",
-  },
-  {
-    slug: "university-of-melbourne",
-    name: "University of Melbourne",
-    country: "Australia",
-    courseCount: 214,
-    initials: "UM",
-    color: "#1B1B1B",
-  },
-  {
-    slug: "aalto-university",
-    name: "Aalto University",
-    country: "Finland",
-    courseCount: 58,
-    initials: "AA",
-    color: "#F58B0F",
-  },
-  {
-    slug: "university-of-bucharest",
-    name: "University of Bucharest",
-    country: "Romania",
-    courseCount: 42,
-    initials: "UB",
-    color: "#2F9E5C",
-  },
-  {
-    slug: "university-of-malta",
-    name: "University of Malta",
-    country: "Malta",
-    courseCount: 37,
-    initials: "UM",
+    initials: "AY",
     color: "#E0483E",
   },
   {
-    slug: "university-of-debrecen",
-    name: "University of Debrecen",
-    country: "Hungary",
-    courseCount: 65,
-    initials: "UD",
+    slug: "university-of-hartpury",
+    name: "University of Hartpury",
+    country: "United Kingdom",
+    initials: "HP",
+    color: "#2F5DA8",
+  },
+  {
+    slug: "atlantis-college",
+    name: "Atlantis College",
+    country: "Iceland",
+    initials: "AT",
     color: "#1B1B1B",
   },
   {
-    slug: "university-of-cyprus",
-    name: "University of Cyprus",
+    slug: "american-university-of-cyprus",
+    name: "American University of Cyprus",
     country: "Cyprus",
-    courseCount: 29,
-    initials: "UC",
-    color: "#2F5DA8",
+    initials: "AC",
+    color: "#2F9E5C",
+  },
+  {
+    slug: "john-von-neumann-university",
+    name: "John von Neumann University",
+    country: "Hungary",
+    initials: "JV",
+    color: "#F58B0F",
+  },
+  {
+    slug: "training-three-sixty",
+    name: "Training Three Sixty",
+    country: "United Kingdom",
+    initials: "T3",
+    color: "#E0483E",
   },
 ];
 
@@ -132,7 +227,7 @@ export default function UniversityExplorer() {
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="e.g. Oxford, Toronto"
+              placeholder="e.g. Chester, Aston"
               className="mt-1 w-full rounded-xl border border-[#E5E5E5] px-4 py-3 text-sm text-[#1B1B1B] outline-none placeholder:text-[#9A9A9A] focus:border-[#E0483E]"
             />
           </div>
@@ -182,9 +277,11 @@ export default function UniversityExplorer() {
                 {uni.country}
               </p>
 
-              <p className="mt-2 text-xs font-semibold text-[#E0483E] sm:text-sm">
-                {uni.courseCount} courses
-              </p>
+              {uni.note && (
+                <p className="mt-2 rounded-full bg-[#FDECEA] px-3 py-1 text-[11px] font-semibold text-[#E0483E]">
+                  {uni.note}
+                </p>
+              )}
             </Link>
           ))}
 

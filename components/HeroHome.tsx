@@ -45,7 +45,7 @@ export default function HeroHome() {
         {/* Right: image, basic */}
         <div className="w-full md:w-1/2">
           <Image
-            src="/heroadmission.png"
+            src="/hero.jpeg"
             alt="Graduate celebrating academic success"
             width={580}
             height={580}

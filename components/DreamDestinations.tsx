@@ -41,7 +41,7 @@ const destinations: Destination[] = [
     name: "Finland",
     slug: "finland",
     flagCode: "FI",
-    image: "/findland.png",
+    image: "/finland-hero.avif",
     description:
       "Tuition-friendly, innovation-led education in one of the world's happiest countries.",
   },
@@ -49,7 +49,7 @@ const destinations: Destination[] = [
     name: "Romania",
     slug: "romania",
     flagCode: "RO",
-    image: "/romania.png",
+    image: "/romania-hero.jpeg",
     description:
       "Affordable tuition and EU-recognized degrees across a wide range of disciplines.",
   },

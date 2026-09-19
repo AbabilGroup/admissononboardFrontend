@@ -16,7 +16,7 @@ export default function HeroCyprus() {
       <div className="relative">
         <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[2rem] sm:aspect-[21/9]">
           <Image
-            src="/cyprus-hero.avif"
+            src="/cyprus-hero.jpg"
             alt="Kyrenia harbour, Cyprus"
             fill
             sizes="100vw"

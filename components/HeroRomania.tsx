@@ -16,7 +16,7 @@ export default function HeroRomania() {
       <div className="relative">
         <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[2rem] sm:aspect-[21/9]">
           <Image
-            src="/romania-hero.avif"
+            src="/romania-hero.jpeg"
             alt="Palace of the Parliament, Bucharest, Romania"
             fill
             sizes="100vw"
