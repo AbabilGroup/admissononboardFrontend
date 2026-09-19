@@ -88,13 +88,14 @@ export default function Branches() {
           {/* Right: copy */}
           <div>
             <h2 className="text-2xl font-semibold leading-snug tracking-tight text-[#1B1B1B] sm:text-3xl">
-              Helping Students Worldwide Since 2026
+              Global Presence Since 2022
             </h2>
 
             <p className="mt-4 text-sm leading-relaxed text-[#6B6B6B] sm:text-base">
-              Since day one, Admission OnBoard has been focused on making
-              overseas admissions simple. Built from real experience, our
-              platform helps students navigate every step with confidence.
+              Since 2022, Admission OnBoard has operated branches worldwide,
+              helping students gain admission to international universities.
+              Founded on real-life experience, our platform simplifies every
+              step of the admission and transfer process.
             </p>
 
             <Link
