@@ -9,13 +9,13 @@ type Office = {
 const offices: Office[] = [
   { name: "United Kingdom", slug: "united-kingdom-address", active: true },
   { name: "Bangladesh", slug: "bangladesh", active: true },
-  { name: "Ghana", slug: "ghana", active: false },
+  { name: "Nepal", slug: "nepal", active: true },
+  { name: "Sri Lanka", slug: "sri-lanka", active: false },
   { name: "India", slug: "india", active: false },
   // { name: "Kenya", slug: "kenya", active: false },
-  { name: "Nepal", slug: "nepal", active: true },
   // { name: "Nigeria", slug: "nigeria", active: false },
   { name: "Pakistan", slug: "pakistan", active: false },
-  { name: "Sri Lanka", slug: "sri-lanka", active: false },
+  { name: "Ghana", slug: "ghana", active: false },
 ];
 
 function OfficeItem({ name, slug, active }: Office) {
