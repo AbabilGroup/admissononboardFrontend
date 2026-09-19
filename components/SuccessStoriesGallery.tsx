@@ -136,11 +136,11 @@ export default function SuccessStoriesGallery() {
       <div className="pointer-events-none absolute inset-x-0 top-6 flex justify-center px-4 sm:top-14 sm:px-6">
         <div className="pointer-events-auto max-w-xl rounded-2xl bg-[#FFFEFA]/90 px-5 py-6 text-center shadow-xl backdrop-blur-sm sm:rounded-3xl sm:px-8 sm:py-10">
           <h2 className="text-2xl font-semibold tracking-tight text-[#1B1B1B] sm:text-4xl">
-            Success Stories
+            Recent Approvals
           </h2>
           <p className="mt-3 text-xs leading-relaxed text-[#6B6B6B] sm:mt-4 sm:text-base">
-            A glimpse into real student life abroad, straight from international
-            students sharing their experiences, challenges, and wins.
+            A showcase of real visa approvals secured for our students embarking
+            on their global education journey.
           </p>
         </div>
       </div>

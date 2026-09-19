@@ -7,21 +7,27 @@ type Office = {
   slug: string;
   name: string;
   address: string;
+  phone: string;
 };
 
-const offices: Office[] = [
+type CountryOfficesPageProps = {
+  country?: string;
+  offices?: Office[];
+};
+
+const defaultOffices: Office[] = [
   {
-    slug: "london",
-    name: "London Office",
-    address:
-      "Kirkdale House, 7 Kirkdale Road, London, England, E11 1HP, United Kingdom",
-    // address: "Suite 4, Fenchurch Street, London, EC3M, United Kingdom",
+    slug: "nepal",
+    name: "Nepal Office",
+    address: "New Naikap - 6, Orchid Colony; just infront to cold store building, Kathmandu, Nepal",
+    phone: "+9779717111631",
   },
-  // {
-  //   slug: "manchester",
-  //   name: "Manchester Office",
-  //   address: "2nd Floor, Deansgate, Manchester, M3, United Kingdom",
-  // },
+//   {
+//     slug: "sylhet-center-point",
+//     name: "Sylhet Office (Jail Road)",
+//     address: "3rd floor of Ananda Tower, Jail Road, Sylhet",
+//     phone: "+88 01906 499741",
+//   },
 ];
 
 function PinBadgeIcon() {
@@ -51,11 +57,15 @@ function mapEmbedSrc(address: string) {
   return `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
 }
 
+// Builds a normal Google Maps link (for "Open in Google Maps").
 function mapLinkHref(address: string) {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
 }
 
-export default function UkOffice() {
+export default function NepalOffice({
+  country = "Nepal",
+  offices = defaultOffices,
+}: CountryOfficesPageProps) {
   const [activeOffice, setActiveOffice] = useState<Office | null>(null);
 
   return (
@@ -71,7 +81,7 @@ export default function UkOffice() {
           </span>
 
           <h1 className="mx-auto mt-5 max-w-2xl text-3xl font-semibold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
-            Study Abroad Guidance in United Kingdom
+            Study Abroad Guidance in {country}
           </h1>
 
           <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/85 sm:text-base">
@@ -85,7 +95,7 @@ export default function UkOffice() {
       <section className="px-6 py-16">
         <div className="mx-auto container">
           <h2 className="text-2xl font-semibold tracking-tight text-[#1B1B1B] sm:text-3xl">
-            Our Offices in United Kingdom
+            Our Offices in {country}
           </h2>
 
           <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -99,7 +109,7 @@ export default function UkOffice() {
                 </div>
 
                 <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-[#E0483E]">
-                  Admission OnBoard (United Kingdom)
+                  Admission OnBoard ({country})
                 </p>
                 <h3 className="mt-1 text-base font-semibold text-[#1B1B1B] sm:text-lg">
                   {office.name}
@@ -107,6 +117,11 @@ export default function UkOffice() {
                 <p className="mt-2 text-sm leading-relaxed text-[#6B6B6B]">
                   {office.address}
                 </p>
+
+                <div className="mt-3 flex items-center gap-2 text-sm text-[#4B4B4B]">
+                  <PhoneIcon />
+                  {office.phone}
+                </div>
 
                 <button
                   type="button"
@@ -196,6 +211,10 @@ export default function UkOffice() {
               <p className="mt-2 text-sm leading-relaxed text-[#6B6B6B]">
                 {activeOffice.address}
               </p>
+              <div className="mt-3 flex items-center gap-2 text-sm text-[#4B4B4B]">
+                <PhoneIcon />
+                {activeOffice.phone}
+              </div>
 
               <a
                 href={mapLinkHref(activeOffice.address)}

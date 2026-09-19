@@ -5,13 +5,6 @@ import { useState } from "react";
 const testimonials = [
   {
     quote:
-      "My Canadian study permit came through in just under six weeks for the Business Management program at Centennial College, and I still can't believe how smooth it felt. Admission OnBoard walked me through every document, every deadline, and every interview question in advance. I finished my A-Levels only last year, and honestly I didn't expect the process to feel this organized. A special thank you to Farhan Bhai from the Dhaka office for staying up late to review my file the night before submission...",
-    name: "Tanzila Rahman Mim",
-    school: "Centennial College, Canada",
-    initials: "TR",
-  },
-  {
-    quote:
       "I landed my UK student visa on 3rd March for a Master's in Data Analytics at the University of Leicester, and Admission OnBoard made what looked like a mountain of paperwork feel manageable. From choosing the right course to preparing my financial documents, their team was with me at every stage. I'd completed my undergraduate degree just eight months earlier, so having experts double-check everything gave me real peace of mind. Big thanks to Sadia Apu for her patience...",
     name: "Rafid Hasan Chowdhury",
     school: "University of Leicester, United Kingdom",
@@ -23,6 +16,20 @@ const testimonials = [
     name: "Nusrat Jahan Priya",
     school: "Otago Polytechnic, New Zealand",
     initials: "NJ",
+  },
+  {
+    quote:
+      "My Malta student visa was approved for the Bachelor of Science in Information Technology at the University of Malta, and Admission OnBoard guided me through the whole process without a single missed deadline. From the university application to the financial documents and the visa interview preparation, their team explained every step clearly whenever I felt confused. I had only just finished my HSC and knew almost nothing about European study visas, so having people I could ask at any hour meant a lot. Thank you to the entire team for...",
+    name: "Mahmud Jubare",
+    school: "University of Malta, Malta",
+    initials: "MJ",
+  },
+  {
+    quote:
+      "Receiving my Hungary study visa for the Bachelor's in Computer Science Engineering at the University of Debrecen felt like a dream come true, and Admission OnBoard was beside me from the first application to the final appointment. They helped me organise my documents, prepare for the embassy interview, and understand what student life in Hungary would really look like. I was nervous about applying abroad for the first time, but their patient, step-by-step support made everything feel achievable. I'm truly grateful to the whole team for...",
+    name: "Hossen Akram",
+    school: "University of Debrecen, Hungary",
+    initials: "HA",
   },
 ];
 

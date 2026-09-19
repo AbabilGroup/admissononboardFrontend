@@ -36,20 +36,20 @@ const stories: Story[] = [
       "Meet Rohit Kumar. He's secured a place in the Bachelor of Computer Science program at the University of Bucharest, Romania! He received end-to-end guidance from our Kalabagan branch.",
   },
   {
-    name: "Rakib Uddin",
+    name: "Mahmud Jubare",
     university: "University of Malta",
     country: "Malta",
     image: "/success2.png",
     summary:
-      "Meet Rakib Uddin. She's been admitted into the Master of Business Administration program at the University of Malta! Our Banani team supported her through every step of the visa process.",
+      "Meet RMahmud Jubare. He's been admitted into the Master of Business Administration program at the University of Malta! Our team supported her through every step of the visa process.",
   },
   {
-    name: "Shakib Al Rafi",
+    name: "Hossen Akram",
     university: "University of Debrecen",
     country: "Hungary",
     image: "/success3.png",
     summary:
-      "Meet Shakib Al Rafi. He's now enrolled in the Doctor of Medicine program at the University of Debrecen, Hungary! He worked closely with our Mirpur branch throughout his application.",
+      "Meet Shakib Al Rafi. He's now enrolled in the Bachelor's in Computer Science Engineering at the University of Debrecen, Hungary! He worked closely with our Uttara branch throughout his application.",
   },
   {
     name: "Robel Chowdhury",

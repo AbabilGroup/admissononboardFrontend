@@ -9,14 +9,6 @@ type Testimonial = {
 const testimonials: Testimonial[] = [
   {
     quote:
-      "My Canadian study permit came through in just six weeks for the Business Management program at Centennial College. Admission OnBoard walked me through every document and deadline in advance. A special thanks to Farhan Bhai from the Dhaka office for reviewing my file the night before submission.",
-    name: "Tanzila Rahman Mim",
-    school: "Centennial College",
-    country: "Canada",
-    initials: "TR",
-  },
-  {
-    quote:
       "I'm grateful I got to fly to Perth for my Bachelor's at the University of Western Australia. My visa was granted within two weeks of applying, even after an earlier attempt with another agency fell through. The team at Admission OnBoard stayed with me until the very end.",
     name: "Ahmed Jashim",
     school: "University of Western Australia",
@@ -54,6 +46,14 @@ const testimonials: Testimonial[] = [
     school: "Charles Darwin University",
     country: "Australia",
     initials: "MI",
+  },
+  {
+    quote:
+      "My Malta student visa was approved for the Bachelor of Science in Information Technology at the University of Malta, and Admission OnBoard guided me through the whole process without a single missed deadline. From the university application to the financial documents and the visa interview preparation, their team explained every step clearly whenever I felt confused. I had only just finished my HSC and knew almost nothing about European study visas, so having people I could ask at any hour meant a lot. Thank you to the entire team for to full fill my dream.",
+    name: "Mahmud Jubare",
+    school: "University of Malta, Malta",
+    country: "Malta",
+    initials: "MJ",
   },
 ];
 

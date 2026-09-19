@@ -6,7 +6,7 @@ const branches = [
   { name: "United Kingdom", slug: "united-kingdom-address", active: true },
   { name: "Bangladesh", slug: "bangladesh", active: true },
   { name: "India", slug: "india", active: false },
-  { name: "Nepal", slug: "nepal", active: false },
+  { name: "Nepal", slug: "nepal", active: true },
   { name: "Pakistan", slug: "pakistan", active: false },
   { name: "Sri Lanka", slug: "sri-lanka", active: false },
   { name: "Ghana", slug: "ghana", active: false },
@@ -130,11 +130,11 @@ export default function Footer() {
             Get In Touch
           </h3>
           <div className="mt-4 flex flex-col gap-3 text-sm text-[#5B5B5B]">
-            <p>
+            {/* <p>
               {" "}
               New Naikap - 6, Orchid Colony; just infront to cold store
               building, Kathmandu, Nepal
-            </p>
+            </p> */}
             <a
               href="mailto:ceo@admissiononboard.com"
               className="hover:text-[#E0483E]">

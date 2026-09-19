@@ -35,7 +35,7 @@ const videos = [
   {
     id: "hFZFjoX2cGg",
     name: "Tanzila Mim",
-    thumbnail: "/nusrat.jpg",
+    thumbnail: "/nusrat.png",
   },
   {
     id: "5qap5aO4i9A",

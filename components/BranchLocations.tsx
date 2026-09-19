@@ -12,7 +12,7 @@ const offices: Office[] = [
   { name: "Ghana", slug: "ghana", active: false },
   { name: "India", slug: "india", active: false },
   // { name: "Kenya", slug: "kenya", active: false },
-  { name: "Nepal", slug: "nepal", active: false },
+  { name: "Nepal", slug: "nepal", active: true },
   // { name: "Nigeria", slug: "nigeria", active: false },
   { name: "Pakistan", slug: "pakistan", active: false },
   { name: "Sri Lanka", slug: "sri-lanka", active: false },
