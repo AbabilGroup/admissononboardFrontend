@@ -93,7 +93,7 @@ export default function Footer() {
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-[#5B5B5B]">
             Admission OnBoard connects students to top global universities.
             Headquartered in Dhaka, we specialise across fields like
-            engineering, business, and healthcare
+            engineering, business, and healthcare.
           </p>
         </div>
 
