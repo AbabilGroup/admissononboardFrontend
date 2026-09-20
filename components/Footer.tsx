@@ -2,30 +2,28 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const branches = [
-  { name: "United Kingdom", slug: "united-kingdom-address", active: true },
-  { name: "Bangladesh", slug: "bangladesh", active: true },
-  { name: "India", slug: "india", active: false },
-  { name: "Nepal", slug: "nepal", active: true },
-  { name: "Pakistan", slug: "pakistan", active: false },
-  { name: "Sri Lanka", slug: "sri-lanka", active: false },
-  { name: "Ghana", slug: "ghana", active: false },
+const explore = [
+  { name: "Courses", slug: "courses", active: true },
+  { name: "Universities", slug: "universities", active: true },
+  { name: "Study Destination", slug: "countries", active: true },
 ];
 
 const companyLinks = [
   { label: "About Us", href: "/our-story" },
   { label: "Our Services", href: "/services" },
-  { label: "Universities", href: "/universities" },
-  { label: "Courses", href: "/courses" },
-  { label: "Blog", href: "/our-blogs" },
+  { label: "Careers", href: "/careers" },
+  { label: "Success Stories", href: "/success-stories" },
   { label: "Contact Us", href: "/contact" },
 ];
 
+const resource = [
+  { label: "Blog", href: "/our-blogs" },
+  { label: "Frequently Asked Questions", href: "/frequently-asked-questions" },
+];
 const legalLinks = [
   { label: "Privacy", href: "/privacy" },
   { label: "Terms of Use", href: "/terms" },
   { label: "Cookies", href: "/cookies" },
-  { label: "Career", href: "/careers" },
 ];
 
 const socials = [
@@ -56,12 +54,13 @@ const socials = [
   },
 ];
 
-function BranchItem({ name, slug, active }: (typeof branches)[number]) {
+function BranchItem({ name, slug, active }: (typeof explore)[number]) {
   if (active) {
     return (
       <Link
-        href={`/countries/${slug}`}
-        className="text-[#5B5B5B] transition-colors hover:text-[#E0483E]">
+        href={`/${slug}`}
+        className="text-[#5B5B5B] transition-colors hover:text-[#E0483E]"
+      >
         {name}
       </Link>
     );
@@ -99,10 +98,10 @@ export default function Footer() {
 
         <div>
           <h3 className="text-xs font-bold uppercase tracking-wide text-[#1B1B1B]">
-            Global Branches
+            Explore
           </h3>
-          <div className="mt-4 grid grid-cols-2 gap-x-2 gap-y-3 text-sm">
-            {branches.map((branch) => (
+          <div className="mt-4 grid grid-cols-1 gap-x-2 gap-y-3 text-sm">
+            {explore.map((branch) => (
               <BranchItem key={branch.slug} {...branch} />
             ))}
           </div>
@@ -110,14 +109,32 @@ export default function Footer() {
 
         <div>
           <h3 className="text-xs font-bold uppercase tracking-wide text-[#1B1B1B]">
-            Company
+            About
           </h3>
           <div className="mt-4 flex flex-col gap-3 text-sm">
             {companyLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-[#5B5B5B] transition-colors hover:text-[#E0483E]">
+                className="text-[#5B5B5B] transition-colors hover:text-[#E0483E]"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+        {/* Resource */}
+        <div>
+          <h3 className="text-xs font-bold uppercase tracking-wide text-[#1B1B1B]">
+            Resource
+          </h3>
+          <div className="mt-4 flex flex-col gap-3 text-sm">
+            {resource.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-[#5B5B5B] transition-colors hover:text-[#E0483E]"
+              >
                 {link.label}
               </Link>
             ))}
@@ -137,40 +154,14 @@ export default function Footer() {
             </p> */}
             <a
               href="mailto:ceo@admissiononboard.com"
-              className="hover:text-[#E0483E]">
+              className="hover:text-[#E0483E]"
+            >
               ceo@admissiononboard.com
             </a>
             <a href="tel:+8801906499741" className="hover:text-[#E0483E]">
               +8801906499741
             </a>
           </div>
-        </div>
-
-        {/* Accreditation */}
-        <div>
-          <h3 className="text-xs font-bold uppercase tracking-wide text-[#1B1B1B]">
-            Accreditation
-          </h3>
-          {/* <div className="mt-4 flex items-center gap-3">
-            <div className="relative h-16 w-16 shrink-0">
-              <Image
-                src="/icef-badge.png"
-                alt="ICEF Accredited Agency"
-                fill
-                sizes="64px"
-                className="object-contain"
-              />
-            </div>
-            <div className="relative h-16 w-16 shrink-0">
-              <Image
-                src="/airc-badge.png"
-                alt="AIRC Certified Recruitment Council"
-                fill
-                sizes="64px"
-                className="object-contain"
-              />
-            </div>
-          </div> */}
         </div>
       </div>
 
@@ -202,12 +193,14 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.name}
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-[#1B1B1B] text-white transition-colors hover:bg-[#E0483E]">
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-[#1B1B1B] text-white transition-colors hover:bg-[#E0483E]"
+              >
                 <svg
                   width="14"
                   height="14"
                   viewBox="0 0 24 24"
-                  fill="currentColor">
+                  fill="currentColor"
+                >
                   <path d={social.path} />
                 </svg>
               </a>
