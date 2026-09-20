@@ -53,7 +53,7 @@ export default function WhyChose() {
           <div className="relative">
             <div className="overflow-hidden rounded-3xl">
               <Image
-                src="/partner.jfif"
+                src="/partner-home.png"
                 alt="Admission OnBoard consultant guiding students"
                 width={680}
                 height={780}

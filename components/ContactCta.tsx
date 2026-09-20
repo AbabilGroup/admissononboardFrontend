@@ -71,7 +71,7 @@ export default function GlobalEducationCta() {
 
                 <Link
                   href="/start-journey"
-                  className="mt-8 inline-flex items-center justify-center rounded-lg bg-[#4A9B6E] px-7 py-3.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#3D825B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4A9B6E]"
+                  className="mt-8 inline-flex items-center justify-center rounded-full bg-black px-14 py-3.5 text-base font-semibold text-white shadow-sm transition-colors hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4A9B6E]"
                 >
                   Start Your Journey
                 </Link>

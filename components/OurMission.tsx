@@ -54,7 +54,7 @@ export default function OurMission() {
           {/* Right: image */}
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl">
             <Image
-              src="/mission-students.jfif"
+              src="/mission.png"
               alt="Diverse group of students on campus"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"

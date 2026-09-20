@@ -21,7 +21,7 @@ export default function HeroContact() {
 
             <Link
               href="/contact"
-              className="mt-6 inline-flex items-center justify-center rounded-lg bg-[#DC202B]/90 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#DC202B]"
+              className="mt-6 inline-flex items-center justify-center rounded-full bg-black px-12 py-3 text-base font-semibold text-white shadow-sm transition-colors hover:bg-[#DC202B]"
             >
               Contact With Us
             </Link>
