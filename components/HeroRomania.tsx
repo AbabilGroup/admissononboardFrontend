@@ -25,14 +25,15 @@ export default function HeroRomania() {
           />
 
           {/* Gradient overlay fading from left */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#e62d3f] via-[#e62d3f]/50 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#e62d3f] via-[#e62d3f]/5 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#e62d3f] via-[#e62d3f]/5 to-transparent" />
 
           <div className="relative z-10 flex h-full flex-col justify-center px-6 pb-16 sm:px-10 md:px-16">
             <h1 className="text-5xl font-semibold tracking-tight text-white sm:text-6xl md:text-7xl">
               Romania
             </h1>
 
-            <p className="mt-4 max-w-md text-sm font-semibold leading-relaxed text-white/90 sm:text-base">
+            <p className="mt-4 max-w-lg text-sm font-semibold leading-relaxed text-white/90 sm:text-base">
               Study in Romania with Admission OnBoard. Get expert guidance on
               admissions, scholarships, and visa support for a smooth study
               abroad journey.

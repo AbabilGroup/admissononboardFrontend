@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 
 type University = {
@@ -10,6 +11,7 @@ type University = {
   initials: string;
   color: string;
   note?: string;
+  logo: string;
 };
 
 const destinations = [
@@ -27,6 +29,7 @@ const universities: University[] = [
     country: "United Kingdom",
     initials: "BP",
     color: "#2F5DA8",
+    logo: "/univercity-logo/bpp.jpg",
   },
   {
     slug: "university-of-hertfordshire",
@@ -34,6 +37,7 @@ const universities: University[] = [
     country: "United Kingdom",
     initials: "UH",
     color: "#D6281F",
+    logo: "/univercity-logo/uh.jpg",
   },
   {
     slug: "university-of-law",
@@ -42,6 +46,7 @@ const universities: University[] = [
     initials: "UL",
     color: "#1B1B1B",
     note: "Except Business Course",
+    logo: "/univercity-logo/low.png",
   },
   {
     slug: "university-of-chester",
@@ -50,6 +55,7 @@ const universities: University[] = [
     initials: "UC",
     color: "#2F9E5C",
     note: "Except Sylhet",
+    logo: "/univercity-logo/uoc.png",
   },
   {
     slug: "london-south-bank-university",
@@ -58,6 +64,7 @@ const universities: University[] = [
     initials: "LS",
     color: "#F58B0F",
     note: "Except Sylhet, Except Business Course",
+    logo: "/univercity-logo/lsbu.jpg",
   },
   {
     slug: "aston-university-london",
@@ -66,6 +73,7 @@ const universities: University[] = [
     initials: "AL",
     color: "#E0483E",
     note: "Except Sylhet",
+    logo: "/univercity-logo/aul.png",
   },
   {
     slug: "university-of-hull-london",
@@ -74,6 +82,7 @@ const universities: University[] = [
     initials: "HL",
     color: "#2F5DA8",
     note: "Except Sylhet",
+    logo: "/univercity-logo/uoh.png",
   },
   {
     slug: "regent-college-london",
@@ -82,6 +91,7 @@ const universities: University[] = [
     initials: "RC",
     color: "#1B1B1B",
     note: "Except UG",
+    logo: "/univercity-logo/rcl.png",
   },
   {
     slug: "university-of-bedfordshire",
@@ -90,6 +100,7 @@ const universities: University[] = [
     initials: "UB",
     color: "#D6281F",
     note: "Except Sylhet",
+    logo: "/univercity-logo/uob.png",
   },
   {
     slug: "anglia-ruskin-university",
@@ -98,6 +109,7 @@ const universities: University[] = [
     initials: "AR",
     color: "#2F9E5C",
     note: "UG Sylhet Restricted",
+    logo: "/univercity-logo/aru.jpg",
   },
   {
     slug: "university-of-brighton",
@@ -105,6 +117,7 @@ const universities: University[] = [
     country: "United Kingdom",
     initials: "BR",
     color: "#F58B0F",
+    logo: "/univercity-logo/uobb.jpg",
   },
   {
     slug: "university-of-south-wales",
@@ -112,6 +125,7 @@ const universities: University[] = [
     country: "United Kingdom",
     initials: "SW",
     color: "#E0483E",
+    logo: "/univercity-logo/uosw.png",
   },
   {
     slug: "aston-university-birmingham",
@@ -119,6 +133,7 @@ const universities: University[] = [
     country: "United Kingdom",
     initials: "AB",
     color: "#2F5DA8",
+    logo: "/univercity-logo/aub.jpg",
   },
   {
     slug: "cardiff-metropolitan-university",
@@ -127,6 +142,7 @@ const universities: University[] = [
     initials: "CM",
     color: "#1B1B1B",
     note: "Full Deposit for Sylhet",
+    logo: "/univercity-logo/cfu.jpg",
   },
   {
     slug: "canterbury-christ-church-university",
@@ -135,6 +151,7 @@ const universities: University[] = [
     initials: "CC",
     color: "#2F9E5C",
     note: "Except UG",
+    logo: "/univercity-logo/cccu.png",
   },
   {
     slug: "uws-london-campus",
@@ -142,6 +159,7 @@ const universities: University[] = [
     country: "United Kingdom",
     initials: "UW",
     color: "#F58B0F",
+    logo: "/univercity-logo/uws.jpg",
   },
   {
     slug: "aberystwyth-university",
@@ -149,6 +167,7 @@ const universities: University[] = [
     country: "United Kingdom",
     initials: "AY",
     color: "#E0483E",
+    logo: "/univercity-logo/au.jpg",
   },
   {
     slug: "university-of-hartpury",
@@ -156,6 +175,7 @@ const universities: University[] = [
     country: "United Kingdom",
     initials: "HP",
     color: "#2F5DA8",
+    logo: "/univercity-logo/uoh.png",
   },
   {
     slug: "atlantis-college",
@@ -163,6 +183,7 @@ const universities: University[] = [
     country: "Iceland",
     initials: "AT",
     color: "#1B1B1B",
+    logo: "/univercity-logo/aui.png",
   },
   {
     slug: "american-university-of-cyprus",
@@ -170,6 +191,7 @@ const universities: University[] = [
     country: "Cyprus",
     initials: "AC",
     color: "#2F9E5C",
+    logo: "/univercity-logo/auc.png",
   },
   {
     slug: "john-von-neumann-university",
@@ -177,6 +199,7 @@ const universities: University[] = [
     country: "Hungary",
     initials: "JV",
     color: "#F58B0F",
+    logo: "/univercity-logo/jvnu.png",
   },
   {
     slug: "training-three-sixty",
@@ -184,8 +207,36 @@ const universities: University[] = [
     country: "United Kingdom",
     initials: "T3",
     color: "#E0483E",
+    logo: "/univercity-logo/tts.png",
   },
 ];
+
+function UniversityLogo({ uni }: { uni: University }) {
+  const [failed, setFailed] = useState(false);
+
+  if (failed) {
+    // Graceful fallback if a logo file is missing/broken
+    return (
+      <div
+        className="flex h-full w-full items-center justify-center rounded-xl text-sm font-bold text-white"
+        style={{ backgroundColor: uni.color }}
+      >
+        {uni.initials}
+      </div>
+    );
+  }
+
+  return (
+    <Image
+      src={uni.logo}
+      alt={`${uni.name} logo`}
+      height={80}
+      width={160}
+      className="object-contain p-1"
+      onError={() => setFailed(true)}
+    />
+  );
+}
 
 export default function UniversityExplorer() {
   const [query, setQuery] = useState("");
@@ -260,13 +311,10 @@ export default function UniversityExplorer() {
             <Link
               key={uni.slug}
               href={`/universities`}
-              className="flex flex-col items-center rounded-2xl border border-[#ECECEC] bg-white p-6 text-center shadow-sm transition-shadow hover:shadow-md"
+              className="group flex flex-col items-center rounded-2xl border border-[#ECECEC] bg-white p-6 text-center shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
             >
-              <div
-                className="flex h-14 w-14 items-center justify-center rounded-xl text-sm font-bold text-white"
-                style={{ backgroundColor: uni.color }}
-              >
-                {uni.initials}
+              <div className="relative flex h-20 w-36 items-center justify-center overflow-hidden rounded-2xl border border-[#ECECEC] bg-white shadow-sm ring-1 ring-black/[0.02] transition-transform group-hover:scale-105">
+                <UniversityLogo uni={uni} />
               </div>
 
               <h3 className="mt-4 text-sm font-semibold leading-snug text-[#1B1B1B] sm:text-base">

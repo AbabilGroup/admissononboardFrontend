@@ -2,7 +2,7 @@
 
 import React, { useMemo, useState } from "react";
 
-type Level = "Foundation" | "Undergraduate" | "Masters" | "PhD";
+type Level = "Foundation" | "Undergraduate" | "Postgraduate" | "Professional";
 
 type Programme = {
   university: string;
@@ -15,123 +15,366 @@ type Programme = {
 const destinations = [
   "All destinations",
   "United Kingdom",
-  "Australia",
-  "Finland",
-  "Romania",
-  "Malta",
-  "Hungary",
   "Cyprus",
-  "Greece",
-  "Lithuania",
+  "Hungary",
 ];
 
 const levels: Array<"All levels" | Level> = [
   "All levels",
   "Foundation",
   "Undergraduate",
-  "Masters",
-  "PhD",
+  "Postgraduate",
+  "Professional",
 ];
+
+const levelStyles: Record<Level, string> = {
+  Foundation: "bg-[#FDF2E9] text-[#F58B0F]",
+  Undergraduate: "bg-[#EAF1FB] text-[#2F5DA8]",
+  Postgraduate: "bg-[#FDECEA] text-[#E0483E]",
+  Professional: "bg-[#EAF6EE] text-[#2F9E5C]",
+};
 
 const programmes: Programme[] = [
   {
-    university: "University of Southampton",
+    university: "BPP University",
     country: "United Kingdom",
-    title: "MEng Mechanical Engineering / Manufacturing",
-    level: "Undergraduate",
-    duration: "4 years",
-  },
-  {
-    university: "University of Southampton",
-    country: "United Kingdom",
-    title: "MEng Mechanical Engineering / Biomedical Engineering",
-    level: "Undergraduate",
-    duration: "4 years",
-  },
-  {
-    university: "University of Southampton",
-    country: "United Kingdom",
-    title:
-      "MEng Mechanical Engineering / Manufacturing with Industrial Placement Year",
-    level: "Undergraduate",
-    duration: "5 years",
-  },
-  {
-    university: "University of Southampton",
-    country: "United Kingdom",
-    title:
-      "MEng Mechanical Engineering with Foundation Year and Industrial Placement Year",
-    level: "Undergraduate",
-    duration: "6 years",
-  },
-  {
-    university: "University of Southampton",
-    country: "United Kingdom",
-    title: "MEng Mechanical Engineering with Industrial Placement Year",
-    level: "Undergraduate",
-    duration: "5 years",
-  },
-  {
-    university: "University of Southampton",
-    country: "United Kingdom",
-    title:
-      "MEng Mechanical Engineering / Automotive with Industrial Placement Year",
-    level: "Undergraduate",
-    duration: "5 years",
-  },
-  {
-    university: "University of Melbourne",
-    country: "Australia",
-    title: "Master of Data Science",
-    level: "Masters",
-    duration: "2 years",
-  },
-  {
-    university: "Aalto University",
-    country: "Finland",
-    title: "MSc in Computer, Communication and Information Sciences",
-    level: "Masters",
-    duration: "2 years",
-  },
-  {
-    university: "University of Bucharest",
-    country: "Romania",
-    title: "Foundation Year in Business and Economics",
-    level: "Foundation",
-    duration: "1 year",
-  },
-  {
-    university: "University of Malta",
-    country: "Malta",
-    title: "BSc Architecture and Sustainable Environments",
+    title: "LLB (Hons) Law",
     level: "Undergraduate",
     duration: "3 years",
   },
   {
-    university: "University of Debrecen",
-    country: "Hungary",
-    title: "PhD in Molecular Cell and Immune Biology",
-    level: "PhD",
-    duration: "4 years",
+    university: "BPP University",
+    country: "United Kingdom",
+    title: "MSc Management",
+    level: "Postgraduate",
+    duration: "12 months",
   },
   {
-    university: "University of Cyprus",
+    university: "BPP University",
+    country: "United Kingdom",
+    title: "LLM Legal Practice (SQE1 & SQE2)",
+    level: "Professional",
+    duration: "12–18 months",
+  },
+  {
+    university: "University of Hertfordshire",
+    country: "United Kingdom",
+    title: "BSc (Hons) Computer Science",
+    level: "Undergraduate",
+    duration: "3 years",
+  },
+  {
+    university: "University of Hertfordshire",
+    country: "United Kingdom",
+    title: "International Tourism, Hospitality and Event Management",
+    level: "Undergraduate",
+    duration: "3 years",
+  },
+  {
+    university: "University of Hertfordshire",
+    country: "United Kingdom",
+    title: "MSc International Business",
+    level: "Postgraduate",
+    duration: "1 year",
+  },
+  {
+    university: "University of Law",
+    country: "United Kingdom",
+    title: "LLB (Hons) Law with International Business",
+    level: "Undergraduate",
+    duration: "3 years",
+  },
+  {
+    university: "University of Law",
+    country: "United Kingdom",
+    title: "LLM Legal Practice (SQE1 & SQE2)",
+    level: "Professional",
+    duration: "12 months",
+  },
+  {
+    university: "University of Law",
+    country: "United Kingdom",
+    title: "Postgraduate Diploma in Law (PGDL)",
+    level: "Postgraduate",
+    duration: "1 year",
+  },
+  {
+    university: "University of Chester",
+    country: "United Kingdom",
+    title: "BA (Hons) Business Management",
+    level: "Undergraduate",
+    duration: "3 years",
+  },
+  {
+    university: "University of Chester",
+    country: "United Kingdom",
+    title: "MSc Computer Science",
+    level: "Postgraduate",
+    duration: "1 year",
+  },
+  {
+    university: "London South Bank University",
+    country: "United Kingdom",
+    title: "BSc (Hons) Computer Science",
+    level: "Undergraduate",
+    duration: "3 years",
+  },
+  {
+    university: "London South Bank University",
+    country: "United Kingdom",
+    title: "MSc Data Science",
+    level: "Postgraduate",
+    duration: "1 year",
+  },
+  {
+    university: "London South Bank University",
+    country: "United Kingdom",
+    title: "BSc (Hons) Biomedical Science",
+    level: "Undergraduate",
+    duration: "3 years",
+  },
+  {
+    university: "Aston University, London",
+    country: "United Kingdom",
+    title: "BSc (Hons) Business and Management",
+    level: "Undergraduate",
+    duration: "3 years",
+  },
+  {
+    university: "Aston University, London",
+    country: "United Kingdom",
+    title: "MSc International Business",
+    level: "Postgraduate",
+    duration: "1 year",
+  },
+  {
+    university: "University of Hull - London",
+    country: "United Kingdom",
+    title: "BA (Hons) Business Management",
+    level: "Undergraduate",
+    duration: "3 years",
+  },
+  {
+    university: "University of Hull - London",
+    country: "United Kingdom",
+    title: "MSc Finance and Investment",
+    level: "Postgraduate",
+    duration: "1 year",
+  },
+  {
+    university: "Regent College London",
+    country: "United Kingdom",
+    title: "MBA (Master of Business Administration)",
+    level: "Postgraduate",
+    duration: "1 year",
+  },
+  {
+    university: "Regent College London",
+    country: "United Kingdom",
+    title: "MA Marketing and Digital Media",
+    level: "Postgraduate",
+    duration: "1 year",
+  },
+  {
+    university: "University of Bedfordshire",
+    country: "United Kingdom",
+    title: "BSc (Hons) Computer Science",
+    level: "Undergraduate",
+    duration: "3 years",
+  },
+  {
+    university: "University of Bedfordshire",
+    country: "United Kingdom",
+    title: "MSc International Business Management",
+    level: "Postgraduate",
+    duration: "1 year",
+  },
+  {
+    university: "Anglia Ruskin University",
+    country: "United Kingdom",
+    title: "BSc (Hons) Artificial Intelligence with Cyber Security",
+    level: "Undergraduate",
+    duration: "3 years",
+  },
+  {
+    university: "Anglia Ruskin University",
+    country: "United Kingdom",
+    title: "MSc International Business Management",
+    level: "Postgraduate",
+    duration: "1 year",
+  },
+  {
+    university: "Anglia Ruskin University",
+    country: "United Kingdom",
+    title: "MBA (Master of Business Administration)",
+    level: "Postgraduate",
+    duration: "1 year",
+  },
+  {
+    university: "University of Brighton",
+    country: "United Kingdom",
+    title: "BA (Hons) Business Management",
+    level: "Undergraduate",
+    duration: "3 years",
+  },
+  {
+    university: "University of Brighton",
+    country: "United Kingdom",
+    title: "MSc Data Science",
+    level: "Postgraduate",
+    duration: "1 year",
+  },
+  {
+    university: "University of South Wales",
+    country: "United Kingdom",
+    title: "BSc (Hons) Computer Science",
+    level: "Undergraduate",
+    duration: "3 years",
+  },
+  {
+    university: "University of South Wales",
+    country: "United Kingdom",
+    title: "MSc Cyber Security",
+    level: "Postgraduate",
+    duration: "1 year",
+  },
+  {
+    university: "Aston University, Birmingham",
+    country: "United Kingdom",
+    title: "BSc (Hons) International Business",
+    level: "Undergraduate",
+    duration: "3 years",
+  },
+  {
+    university: "Aston University, Birmingham",
+    country: "United Kingdom",
+    title: "MSc Data Science and Analytics",
+    level: "Postgraduate",
+    duration: "1 year",
+  },
+  {
+    university: "Cardiff Metropolitan University",
+    country: "United Kingdom",
+    title: "BA (Hons) Business Management",
+    level: "Undergraduate",
+    duration: "3 years",
+  },
+  {
+    university: "Cardiff Metropolitan University",
+    country: "United Kingdom",
+    title: "MSc International Hospitality Management",
+    level: "Postgraduate",
+    duration: "1 year",
+  },
+  {
+    university: "Canterbury Christ Church University",
+    country: "United Kingdom",
+    title: "MSc Business Management",
+    level: "Postgraduate",
+    duration: "1 year",
+  },
+  {
+    university: "Canterbury Christ Church University",
+    country: "United Kingdom",
+    title: "MA Design",
+    level: "Postgraduate",
+    duration: "1 year",
+  },
+  {
+    university: "UWS - London Campus",
+    country: "United Kingdom",
+    title: "BA (Hons) Business Management",
+    level: "Undergraduate",
+    duration: "3 years",
+  },
+  {
+    university: "UWS - London Campus",
+    country: "United Kingdom",
+    title: "MBA (Master of Business Administration)",
+    level: "Postgraduate",
+    duration: "1 year",
+  },
+  {
+    university: "Aberystwyth University",
+    country: "United Kingdom",
+    title: "BSc (Hons) Computer Science",
+    level: "Undergraduate",
+    duration: "3 years",
+  },
+  {
+    university: "Aberystwyth University",
+    country: "United Kingdom",
+    title: "MSc International Business Management",
+    level: "Postgraduate",
+    duration: "1 year",
+  },
+  {
+    university: "University of Hartpury",
+    country: "United Kingdom",
+    title: "BSc (Hons) Animal Science",
+    level: "Undergraduate",
+    duration: "3 years",
+  },
+  {
+    university: "University of Hartpury",
+    country: "United Kingdom",
+    title: "BSc (Hons) Sport and Exercise Science",
+    level: "Undergraduate",
+    duration: "3 years",
+  },
+  {
+    university: "Atlantis College",
     country: "Cyprus",
-    title: "MSc in Computer Science",
-    level: "Masters",
-    duration: "1.5 years",
+    title: "Diploma in Hospitality and Tourism Management",
+    level: "Foundation",
+    duration: "2 years",
   },
   {
-    university: "Aristotle University of Thessaloniki",
-    country: "Greece",
-    title: "BA in Tourism Management",
+    university: "Atlantis College",
+    country: "Cyprus",
+    title: "Diploma in Business Administration",
+    level: "Foundation",
+    duration: "2 years",
+  },
+  {
+    university: "American University of Cyprus",
+    country: "Cyprus",
+    title: "BA Business Administration",
     level: "Undergraduate",
     duration: "4 years",
   },
   {
-    university: "Vilnius University",
-    country: "Lithuania",
-    title: "Foundation Programme in Medicine",
+    university: "American University of Cyprus",
+    country: "Cyprus",
+    title: "BSc Computer Science",
+    level: "Undergraduate",
+    duration: "4 years",
+  },
+  {
+    university: "John von Neumann University",
+    country: "Hungary",
+    title: "BSc Computer Science Engineering",
+    level: "Undergraduate",
+    duration: "4 years",
+  },
+  {
+    university: "John von Neumann University",
+    country: "Hungary",
+    title: "BSc Business Administration and Management",
+    level: "Undergraduate",
+    duration: "3.5 years",
+  },
+  {
+    university: "Training Three Sixty",
+    country: "United Kingdom",
+    title: "Level 3 Diploma in Business Administration",
+    level: "Foundation",
+    duration: "1 year",
+  },
+  {
+    university: "Training Three Sixty",
+    country: "United Kingdom",
+    title: "Level 4 Diploma in Health and Social Care",
     level: "Foundation",
     duration: "1 year",
   },
@@ -165,11 +408,10 @@ export default function ProgrammeFinder() {
           Find The Right Programme For You.
         </h2>
         <p className="mt-3 max-w-2xl text-sm text-[#6B6B6B] sm:text-base">
-          Search programmes by destination and study level, delivered through
-          our official pathway partners.
+          Search real programmes offered by our official pathway partners across
+          the UK, Cyprus, and Hungary.
         </p>
 
-        {/* Search bar */}
         <div className="mt-8 grid grid-cols-1 gap-4 rounded-2xl border border-[#ECECEC] bg-white p-4 shadow-sm sm:grid-cols-[1fr_200px_180px] sm:items-end">
           <div>
             <label className="text-xs font-semibold text-[#6B6B6B]">
@@ -179,11 +421,10 @@ export default function ProgrammeFinder() {
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="e.g. Data Science, MBA, Oxford"
+              placeholder="e.g. Computer Science, MBA, Law"
               className="mt-1 w-full rounded-xl border border-[#E5E5E5] px-4 py-3 text-sm text-[#1B1B1B] outline-none placeholder:text-[#9A9A9A] focus:border-[#E0483E]"
             />
           </div>
-
           <div>
             <label className="text-xs font-semibold text-[#6B6B6B]">
               Destination
@@ -200,7 +441,6 @@ export default function ProgrammeFinder() {
               ))}
             </select>
           </div>
-
           <div>
             <label className="text-xs font-semibold text-[#6B6B6B]">
               Level
@@ -223,7 +463,6 @@ export default function ProgrammeFinder() {
           Showing {filtered.length} of {programmes.length} programmes
         </p>
 
-        {/* Results grid */}
         <div className="mt-4 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((programme) => (
             <div
@@ -235,7 +474,7 @@ export default function ProgrammeFinder() {
                   <span className="text-xs font-semibold uppercase tracking-wide text-[#2F5DA8]">
                     {programme.university}
                   </span>
-                  <span className="shrink-0 rounded-full bg-[#E0483E]/10 px-3 py-1 text-[11px] font-semibold text-[#E0483E]">
+                  <span className="shrink-0 rounded-full bg-[#F5F5F0] px-3 py-1 text-[11px] font-semibold text-[#6B6B6B]">
                     {programme.country}
                   </span>
                 </div>
@@ -244,9 +483,16 @@ export default function ProgrammeFinder() {
                   {programme.title}
                 </h3>
 
-                <p className="mt-2 text-xs font-medium text-[#9A9A9A] sm:text-sm">
-                  {programme.level} &middot; {programme.duration}
-                </p>
+                <div className="mt-3 flex flex-wrap items-center gap-2">
+                  <span
+                    className={`rounded-full px-3 py-1 text-[11px] font-semibold ${levelStyles[programme.level]}`}
+                  >
+                    {programme.level}
+                  </span>
+                  <span className="text-xs font-medium text-[#9A9A9A]">
+                    {programme.duration}
+                  </span>
+                </div>
               </div>
 
               <button

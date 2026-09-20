@@ -14,7 +14,7 @@ export default function HeroCyprus() {
   return (
     <section className="relative container mx-auto py-10">
       <div className="relative">
-        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[2rem] sm:aspect-[21/9]">
+        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[4rem] sm:aspect-[21/9]">
           <Image
             src="/cyprus-hero.jpg"
             alt="Kyrenia harbour, Cyprus"
@@ -25,14 +25,15 @@ export default function HeroCyprus() {
           />
 
           {/* Gradient overlay fading from left */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#e62d3f] via-[#e62d3f]/50 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#e62d3f] via-[#e62d3f]/5 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#e62d3f] via-[#e62d3f]/5 to-transparent" />
 
-          <div className="relative z-10 flex h-full flex-col justify-center px-6 pb-16 sm:px-10 md:px-16">
+          <div className="relative z-10 flex h-full flex-col justify-center space-y-3 px-6 pb-16 sm:px-10 md:px-16">
             <h1 className="text-5xl font-semibold tracking-tight text-white sm:text-6xl md:text-7xl">
               Cyprus
             </h1>
 
-            <p className="mt-4 max-w-md text-sm font-semibold leading-relaxed text-white/90 sm:text-base">
+            <p className="mt-4 max-w-lg text-sm leading-relaxed text-white/90 sm:text-lg">
               Study in Cyprus with Admission OnBoard. Get expert guidance on
               admissions, scholarships, and visa support for a smooth study
               abroad journey.
@@ -40,7 +41,7 @@ export default function HeroCyprus() {
 
             <Link
               href="/contact"
-              className="mt-7 inline-flex w-fit items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#1B1B1B] shadow-md transition-transform hover:scale-105"
+              className="mt-7 inline-flex w-fit items-center gap-2 rounded-full bg-white px-6 py-3 text-base font-semibold text-[#1B1B1B] shadow-md transition-transform hover:scale-105"
             >
               Free Expert Consultation
               <svg
