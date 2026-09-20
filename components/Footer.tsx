@@ -17,7 +17,7 @@ const companyLinks = [
 ];
 
 const resource = [
-  { label: "Blog", href: "/our-blogs" },
+  { label: "Our Blogs", href: "/our-blogs" },
   { label: "Frequently Asked Questions", href: "/frequently-asked-questions" },
 ];
 const legalLinks = [

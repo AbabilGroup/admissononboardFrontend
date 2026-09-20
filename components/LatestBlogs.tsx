@@ -3,68 +3,17 @@
 import React, { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { blogs as allBlogs, type BlogCategory } from "@/lib/blogs";
 
-// Place your blog cover images at, e.g.:
-// /public/blogs/university-location.jpg
-// /public/blogs/renewable-energy-engineering.jpg
-// /public/blogs/reading-course-descriptions.jpg
-// /public/blogs/english-taught-degrees.jpg
-
-type Category = "Academic Writing" | "Destinations";
-
-type Blog = {
-  slug: string;
-  category: Category;
-  title: string;
-  excerpt: string;
-  image: string;
-  date: string;
-};
+type Category = BlogCategory;
 
 const categoryStyles: Record<Category, string> = {
   "Academic Writing": "bg-[#2F5DA8]/10 text-[#2F5DA8]",
   Destinations: "bg-[#E0483E]/10 text-[#E0483E]",
+  "Visas & Applications": "bg-[#F58B0F]/10 text-[#F58B0F]",
 };
 
-const blogs: Blog[] = [
-  {
-    slug: "what-to-look-for-in-a-university-location",
-    category: "Academic Writing",
-    title:
-      "What International Students Should Look For In A University Location",
-    excerpt:
-      "Picking a university is about more than the course itself. Safety, cost of living, and campus surroundings matter just as much as the ranking...",
-    image: "/university-location.png",
-    date: "11 Sept 2026",
-  },
-  {
-    slug: "best-countries-renewable-energy-engineering",
-    category: "Destinations",
-    title: "Best Countries To Study Renewable Energy Engineering",
-    excerpt:
-      "As the world shifts toward cleaner power, demand is rising for engineers who can design and scale sustainable energy systems...",
-    image: "/renewable-energy-engineering.png",
-    date: "11 Sept 2026",
-  },
-  {
-    slug: "how-to-read-a-course-description",
-    category: "Academic Writing",
-    title: "How To Read A University Course Description Before Applying",
-    excerpt:
-      "Choosing a course is one of the biggest decisions in your study abroad journey. Here's how to actually understand what a listing is telling you...",
-    image: "/reading-course-descriptions.png",
-    date: "11 Sept 2026",
-  },
-  {
-    slug: "best-european-countries-english-taught-degrees",
-    category: "Destinations",
-    title: "Best European Countries For English-Taught Degrees",
-    excerpt:
-      "You don't need to learn a new language to study in Europe. These destinations offer strong English-taught programs at a fraction of UK or US tuition...",
-    image: "/english-taught-degrees.png",
-    date: "11 Sept 2026",
-  },
-];
+const blogs = allBlogs.slice(0, 4);
 
 function CalendarIcon() {
   return (
@@ -119,7 +68,7 @@ export default function LatestBlogs() {
             {blogs.map((blog) => (
               <Link
                 key={blog.slug}
-                href={`/our-blogs`}
+                href={`/our-blogs/${blog.slug}`}
                 className="group flex w-[280px] shrink-0 snap-start flex-col sm:w-[300px]"
               >
                 <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">

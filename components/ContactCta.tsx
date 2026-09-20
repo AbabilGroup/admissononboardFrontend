@@ -29,75 +29,77 @@ const socials = [
   },
 ];
 
-export default function ContactCta() {
+export default function GlobalEducationCta() {
   return (
-    <section className="w-full bg-[#FFFEFA] px-6 py-16">
-      <div className="mx-auto container">
-        <div className="relative flex items-center justify-between gap-6 overflow-hidden rounded-3xl bg-[#161616] pl-8 sm:pl-12">
-          {/* Left: text + CTA */}
-          <div className="max-w-md py-12">
-            <h2 className="text-2xl font-semibold leading-snug text-white sm:text-4xl">
-              Not sure what your next step should be?
-            </h2>
-            <p className="mt-3 text-sm text-white/65 sm:text-base">
-              Drop us a message and our expert counselors will guide you from
-              there.
-            </p>
+    <section className="w-full bg-[#FAFAFA] px-4 py-16 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl">
+        {/* Main Card Container */}
+        <div className="relative isolate overflow-hidden rounded-[2rem] bg-[#012b4e] shadow-xl">
+          {/* Decorative Background Shapes */}
+          <div className="absolute inset-0 -z-10">
+            {/* Left Circle Shape */}
+            <div className="absolute -left-16 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full bg-[#E0483E] opacity-90 sm:-left-12 sm:h-80 sm:w-80 md:h-[28rem] md:w-[28rem]" />
 
-            <Link
-              href="/contact"
-              className="mt-7 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#1B1B1B] transition-transform hover:scale-105"
-            >
-              Schedule A Free Consultation
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                className="shrink-0"
-              >
-                <path
-                  d="M5 12h14M13 6l6 6-6 6"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </Link>
+            {/* Right Shape */}
+            <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[#E0483E] opacity-90 sm:-right-12 sm:h-72 sm:w-72" />
           </div>
 
-          <div className="relative flex h-full shrink-0 items-end gap-4 self-end sm:gap-6">
-            <div className="relative h-40 w-32 sm:h-56 sm:w-44 md:h-64 md:w-52">
+          <div className="flex flex-col items-center justify-between md:flex-row">
+            {/* Left Side: Student Image */}
+            {/* Responsive sizing: grows smoothly from mobile to desktop */}
+            <div className="relative mt-10 h-64 w-48 shrink-0 sm:h-80 sm:w-60 md:mt-0 md:h-[22rem] md:w-[17rem] lg:h-[26rem] lg:w-[20rem]">
               <Image
                 src="/counselor.png"
-                alt="Support counselor ready to help"
+                alt="Student holding a phone"
                 fill
-                sizes="220px"
-                className="object-cover object-top"
+                priority
+                sizes="(max-width: 640px) 192px, (max-width: 768px) 240px, (max-width: 1024px) 272px, 320px"
+                className="object-cover object-bottom"
               />
             </div>
 
-            <div className="flex flex-col gap-3 py-6 pr-6 sm:pr-10">
-              {socials.map((social) => (
-                <a
-                  key={social.name}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.name}
-                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white hover:text-[#161616] sm:h-10 sm:w-10"
+            {/* Right Side Wrapper: Contains Text, CTA, and Socials */}
+            <div className="flex w-full flex-col items-center justify-between md:flex-row md:items-end">
+              {/* Text & CTA */}
+              <div className="flex w-full flex-col items-center px-6 pb-10 pt-8 text-center md:items-start md:px-10 md:pb-14 md:pt-14 md:text-left lg:px-14 lg:pr-10">
+                <h2 className="max-w-3xl text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-[2.5rem]">
+                  Start Your Global Education Journey
+                </h2>
+                <p className="mt-4 max-w-sm text-sm font-medium text-white/80 sm:text-base">
+                  Find your course, choose your country, start your journey.
+                </p>
+
+                <Link
+                  href="/start-journey"
+                  className="mt-8 inline-flex items-center justify-center rounded-lg bg-[#4A9B6E] px-7 py-3.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#3D825B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4A9B6E]"
                 >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
+                  Start Your Journey
+                </Link>
+              </div>
+
+              {/* Social Icons Column */}
+              {/* Mobile: Horizontal row centered. Desktop: Vertical stack on the right edge */}
+              <div className="flex flex-row gap-3 pb-8 md:flex-col md:pb-14 md:pr-8 lg:pb-16 lg:pr-12">
+                {socials.map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.name}
+                    className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white hover:text-[#012b4e] sm:h-11 sm:w-11"
                   >
-                    <path d={social.path} />
-                  </svg>
-                </a>
-              ))}
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path d={social.path} />
+                    </svg>
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>

@@ -2,9 +2,11 @@
 
 import { useMemo, useState } from "react";
 
+type Country = "uk" | "bangladesh";
+
 type Office = {
-  key: "uk" | "bangladesh";
-  label: string;
+  id: string;
+  country: Country;
   flag: string;
   name: string;
   addressLines: string[];
@@ -15,39 +17,60 @@ type Office = {
 
 const offices: Office[] = [
   {
-    key: "uk",
-    label: "UK",
+    id: "uk-london",
+    country: "uk",
     flag: "🇬🇧",
     name: "UK Office",
-    addressLines: ["Kirkdale House, 7 Kirkdale Road, London, England, E11 1HP, United Kingdom"],
+    addressLines: [
+      "Kirkdale House, 7 Kirkdale Road, London, England, E11 1HP, United Kingdom",
+    ],
     phone: "+44 7465 268767",
     email: "info@admissiononboard.com",
     accent: "#2F5DA8",
   },
   {
-    key: "bangladesh",
-    label: "Bangladesh",
+    id: "bd-dhaka",
+    country: "bangladesh",
     flag: "🇧🇩",
     name: "Dhaka Office",
-    addressLines: ["Sector 12, Uttara Dhaka-1230, Bangladesh", "3rd floor of Ananda Tower, Jail Road, Sylhet"],
+    addressLines: ["Sector 12, Uttara Dhaka-1230, Bangladesh"],
     phone: "+8801906499741",
     email: "dhaka@admissiononboard.com",
     accent: "#E0483E",
   },
+  {
+    id: "bd-sylhet",
+    country: "bangladesh",
+    flag: "🇧🇩",
+    name: "Sylhet Office",
+    addressLines: ["3rd floor of Ananda Tower, Jail Road, Sylhet"],
+    phone: "+8801906499742",
+    email: "sylhet@admissiononboard.com",
+    accent: "#59B226",
+  },
 ];
 
-const filters: { key: "all" | Office["key"]; label: string; icon: string }[] = [
+const filters: { key: "all" | Country; label: string; icon: string }[] = [
   { key: "all", label: "All", icon: "🌐" },
   { key: "uk", label: "UK", icon: "🇬🇧" },
   { key: "bangladesh", label: "Bangladesh", icon: "🇧🇩" },
 ];
 
 export default function OurOffices() {
-  const [active, setActive] = useState<"all" | Office["key"]>("all");
+  const [active, setActive] = useState<"all" | Country>("all");
 
   const filtered = useMemo(() => {
-    if (active === "all") return offices;
-    return offices.filter((o) => o.key === active);
+    const base =
+      active === "all" ? offices : offices.filter((o) => o.country === active);
+
+    // Defensive dedupe: guarantees no two rendered cards can ever share an id,
+    // even if bad data (duplicate ids) is accidentally added later.
+    const seen = new Set<string>();
+    return base.filter((o) => {
+      if (seen.has(o.id)) return false;
+      seen.add(o.id);
+      return true;
+    });
   }, [active]);
 
   return (
@@ -88,7 +111,7 @@ export default function OurOffices() {
       <div className="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-6 sm:grid-cols-2">
         {filtered.map((office) => (
           <div
-            key={office.key}
+            key={office.id}
             className="group relative overflow-hidden rounded-2xl border border-[#ECECEC] bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
           >
             {/* Left accent bar */}
@@ -154,7 +177,7 @@ export default function OurOffices() {
                 {office.phone}
               </a>
 
-              <a
+            <a  
                 href={`mailto:${office.email}`}
                 className="flex items-center gap-2.5 font-medium text-[#2F5DA8] transition-colors hover:text-[#E0483E]"
               >

@@ -3,89 +3,15 @@
 import React, { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { blogs, type BlogCategory } from "@/lib/blogs";
 
-// Place your blog cover images at, e.g.:
-// /public/blogs/university-location.jpg
-// /public/blogs/renewable-energy-engineering.jpg
-// /public/blogs/reading-course-descriptions.jpg
-// /public/blogs/english-taught-degrees.jpg
-// /public/blogs/scholarship-essays.jpg
-// /public/blogs/visa-interview-tips.jpg
-
-type Category = "Academic Writing" | "Destinations" | "Visas & Applications";
-
-type Blog = {
-  slug: string;
-  category: Category;
-  title: string;
-  excerpt: string;
-  image: string;
-  date: string;
-};
+type Category = BlogCategory;
 
 const categoryStyles: Record<Category, string> = {
   "Academic Writing": "bg-[#2F5DA8]/10 text-[#2F5DA8]",
   Destinations: "bg-[#E0483E]/10 text-[#E0483E]",
   "Visas & Applications": "bg-[#F58B0F]/10 text-[#F58B0F]",
 };
-
-const blogs: Blog[] = [
-  {
-    slug: "what-to-look-for-in-a-university-location",
-    category: "Academic Writing",
-    title:
-      "What International Students Should Look For In A University Location",
-    excerpt:
-      "Picking a university is about more than the course itself. Safety, cost of living, and campus surroundings matter just as much as the ranking.",
-    image: "/university-location.png",
-    date: "11 Sept 2026",
-  },
-  {
-    slug: "best-countries-renewable-energy-engineering",
-    category: "Destinations",
-    title: "Best Countries To Study Renewable Energy Engineering",
-    excerpt:
-      "As the world shifts toward cleaner power, demand is rising for engineers who can design and scale sustainable energy systems.",
-    image: "/renewable-energy-engineering.png",
-    date: "11 Sept 2026",
-  },
-  {
-    slug: "how-to-read-a-course-description",
-    category: "Academic Writing",
-    title: "How To Read A University Course Description Before Applying",
-    excerpt:
-      "Choosing a course is one of the biggest decisions in your study abroad journey. Here's how to actually understand what a listing is telling you.",
-    image: "/reading-course-descriptions.png",
-    date: "11 Sept 2026",
-  },
-  {
-    slug: "best-european-countries-english-taught-degrees",
-    category: "Destinations",
-    title: "Best European Countries For English-Taught Degrees",
-    excerpt:
-      "You don't need to learn a new language to study in Europe. These destinations offer strong English-taught programs at lower tuition.",
-    image: "/english-taught-degrees.png",
-    date: "11 Sept 2026",
-  },
-  {
-    slug: "writing-a-scholarship-essay-that-stands-out",
-    category: "Academic Writing",
-    title: "Writing A Scholarship Essay That Actually Stands Out",
-    excerpt:
-      "Scholarship committees read hundreds of essays a season. Here's how to write one that doesn't sound like everyone else's.",
-    image: "/scholarship-essays.png",
-    date: "8 Sept 2026",
-  },
-  {
-    slug: "visa-interview-questions-and-how-to-answer-them",
-    category: "Visas & Applications",
-    title: "Common Visa Interview Questions And How To Answer Them",
-    excerpt:
-      "A visa interview isn't a test of memorized answers, it's a check for genuine intent. Here's how to prepare without sounding rehearsed.",
-    image: "/visa-interview-tips.png",
-    date: "5 Sept 2026",
-  },
-];
 
 const categories: Array<"All" | Category> = [
   "All",
@@ -161,7 +87,7 @@ export default function OurBlogs() {
           {filtered.map((blog) => (
             <Link
               key={blog.slug}
-              href={`/our-blogs`}
+              href={`/our-blogs/${blog.slug}`}
               className="group flex flex-col"
             >
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">

@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/seo";
+import { blogs } from "@/lib/blogs";
 
 const routes: { path: string; priority: number }[] = [
   { path: "", priority: 1 },
@@ -23,6 +24,7 @@ const routes: { path: string; priority: number }[] = [
   { path: "/our-story", priority: 0.7 },
   { path: "/success-stories", priority: 0.7 },
   { path: "/our-blogs", priority: 0.7 },
+  ...blogs.map((blog) => ({ path: `/our-blogs/${blog.slug}`, priority: 0.6 })),
   { path: "/seminar-and-events", priority: 0.6 },
   { path: "/contact", priority: 0.7 },
   { path: "/careers", priority: 0.5 },
