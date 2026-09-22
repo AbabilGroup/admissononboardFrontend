@@ -20,6 +20,7 @@ const destinations = [
   "Hungary",
   "Cyprus",
   "Iceland",
+  "Malta",
 ];
 
 const universities: University[] = [
@@ -204,7 +205,7 @@ const universities: University[] = [
   {
     slug: "training-three-sixty",
     name: "Training Three Sixty",
-    country: "United Kingdom",
+    country: "Malta",
     initials: "T3",
     color: "#E0483E",
     logo: "/univercity-logo/tts.png",
