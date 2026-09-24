@@ -58,7 +58,7 @@ const programs: Program[] = [
     title: "Master's Qualifying Program (MQP)",
     description:
       "For students who don't meet direct master's entry requirements. Bridges the gap before progressing into the main program.",
-    image: "/masters.png",
+    image: "/masters-quality.png",
     icon: (
       <path d="M7 2h10l1 5-1 1v2a5 5 0 0 1-10 0V8L6 7l1-5Zm5 12a3 3 0 0 0 3-3V8H9v3a3 3 0 0 0 3 3Zm-3 5h6v2H9v-2Z" />
     ),

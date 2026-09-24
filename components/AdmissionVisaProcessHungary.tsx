@@ -74,7 +74,7 @@ export default function AdmissionVisaProcessHungary() {
           <div className="sticky top-24 hidden md:block">
             <div className="relative aspect-square w-full overflow-hidden rounded-2xl">
               <Image
-                src="/admission-visa.png"
+                src="/studyhun.png"
                 alt="Passport, visa stamps, and travel compass"
                 fill
                 sizes="(max-width: 768px) 100vw, 45vw"
@@ -85,7 +85,7 @@ export default function AdmissionVisaProcessHungary() {
 
           <div className="relative aspect-square w-full overflow-hidden rounded-[2.5rem] md:hidden">
             <Image
-              src="/admission-visa.png"
+              src="/studyhun.png"
               alt="Passport, visa stamps, and travel compass"
               fill
               sizes="100vw"

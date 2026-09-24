@@ -16,7 +16,7 @@ export default function HeroFinland() {
       <div className="relative">
         <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[2rem] sm:aspect-[21/9]">
           <Image
-            src="/finland-hero.avif"
+            src="/findland-hero.png"
             alt="Helsinki Cathedral, Finland"
             fill
             sizes="100vw"

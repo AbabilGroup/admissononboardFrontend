@@ -41,7 +41,18 @@ const reasons = [
   },
 ];
 
-const backupCountries = ["Australia", "United Kingdom", "Canada", "Malaysia"];
+const backupCountries = [
+  "United Kingdom",
+  "Australia",
+  "New Zealand",
+  "Finland",
+  "Greece",
+  "Lithuania",
+  "Hungary",
+  "Romania",
+  "Malta",
+  "Cyprus",
+];
 const studyLevels = ["Diploma", "Bachelor's Degree", "Master's Degree", "PhD"];
 const applyWindows = [
   "Within 1 month",

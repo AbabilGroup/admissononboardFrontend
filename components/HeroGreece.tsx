@@ -16,7 +16,7 @@ export default function HeroGreece() {
       <div className="relative">
         <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[2rem] sm:aspect-[21/9]">
           <Image
-            src="/hero-greece.avif"
+            src="/greece-hero.png"
             alt="Acropolis of Athens, Greece"
             fill
             sizes="100vw"

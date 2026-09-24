@@ -16,11 +16,11 @@ export default function HeroLithuania() {
       <div className="relative">
         <div className="relative aspect-[9/9] w-full overflow-hidden rounded-[2rem] sm:aspect-[21/9]">
           <Image
-            src="/hero-lithuania.avif"
+            src="/lithuania-hero.png"
             alt="Vilnius Old Town, Lithuania"
             fill
             sizes="100vw"
-            className="object-center"
+            className="object-cover"
             priority
           />
 

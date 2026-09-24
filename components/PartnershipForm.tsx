@@ -52,11 +52,11 @@ export default function PartnershipForm() {
             </div>
 
             <div>
-              <label htmlFor="university" className={labelClass}>
-                University
+              <label htmlFor="institute" className={labelClass}>
+                Institute
               </label>
               <input
-                id="university"
+                id="institute"
                 type="text"
                 required
                 className={`mt-2 ${inputClass}`}

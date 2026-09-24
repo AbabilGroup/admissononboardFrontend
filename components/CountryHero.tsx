@@ -29,7 +29,6 @@ export default function CountryHero() {
     <section className="relative min-h-screen overflow-hidden bg-[#FFFEFA] px-5 py-10 text-[#1B1B1B] md:px-14">
       <div className="container relative z-10 mx-auto flex min-h-[calc(100vh-120px)] items-center">
         <div className="relative w-full">
-          {/* Right-side image panel (desktop) */}
           <div
             className={`absolute right-0 top-1/2 hidden h-[72vh] w-[67%] -translate-y-1/2 overflow-hidden rounded-[2rem] shadow-xl transition-all duration-[1200ms] ease-out lg:block ${
               mounted
@@ -39,7 +38,7 @@ export default function CountryHero() {
           >
             <div className="relative h-full w-full">
               <Image
-                src="/destination.jfif"
+                src="/desination.png"
                 alt="Students exploring study abroad opportunities"
                 fill
                 sizes="67vw"
@@ -48,11 +47,11 @@ export default function CountryHero() {
               />
             </div>
 
-            <div className="absolute bottom-8 right-8 max-w-sm rounded-[2rem] border border-white/20 bg-[#1B1B1B]/70 p-6 backdrop-blur-xl">
-              <h3 className="mt-3 text-3xl font-semibold uppercase leading-none tracking-[-0.05em] text-white">
+            {/* <div className="absolute bottom-0 right-0 max-w-sm rounded-[2rem] border border-white/20 bg-white/40 p-6 backdrop-blur-xl">
+              <h3 className="mt-3 text-3xl font-semibold uppercase leading-none tracking-[-0.05em] text-[#E0483E]">
                 students first, guidance smarter
               </h3>
-            </div>
+            </div> */}
 
             <Link
               href="/contact"
@@ -81,7 +80,7 @@ export default function CountryHero() {
             </div>
 
             <p
-              className={`mt-8 max-w-xl text-base leading-8 text-[#000000] transition-all duration-700 ease-out md:text-lg ${
+              className={`mt-8 max-w-xl text-base leading-8 text-[#000000] bg-white/50 transition-all duration-700 ease-out md:text-lg ${
                 mounted
                   ? "translate-y-0 opacity-100"
                   : "translate-y-6 opacity-0"
@@ -143,7 +142,7 @@ export default function CountryHero() {
           {/* Mobile image (shown below content on small screens) */}
           <div className="relative z-20 h-[340px] overflow-hidden rounded-2xl shadow-xl lg:hidden">
             <Image
-              src="/destination.jfif"
+              src="/desination.png"
               alt="Students exploring study abroad opportunities"
               fill
               sizes="100vw"

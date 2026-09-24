@@ -16,11 +16,11 @@ export default function HeroNewZealand() {
       <div className="relative">
         <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[2rem] sm:aspect-[21/9]">
           <Image
-            src="/newzeland-hero.avif"
+            src="/newzeland.png"
             alt="Auckland Sky Tower, New Zealand"
             fill
             sizes="100vw"
-            className="object-center"
+            className="object-cover"
             priority
           />
 

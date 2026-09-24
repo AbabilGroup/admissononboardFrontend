@@ -25,7 +25,7 @@ const destinations: Destination[] = [
     name: "United Kingdom",
     slug: "united-kingdom",
     flagCode: "GB",
-    image: "/united-kingdom.png",
+    image: "/uk.png",
     description:
       "World-renowned universities, one-year master's degrees, and generous post-study work options.",
   },
@@ -33,7 +33,7 @@ const destinations: Destination[] = [
     name: "Australia",
     slug: "australia",
     flagCode: "AU",
-    image: "/australia-hero.avif",
+    image: "/Australia.png",
     description:
       "Globally ranked universities paired with some of the most generous post-study work rights around.",
   },
@@ -41,7 +41,7 @@ const destinations: Destination[] = [
     name: "Finland",
     slug: "finland",
     flagCode: "FI",
-    image: "/finland-hero.avif",
+    image: "/findland-hero.png",
     description:
       "Tuition-friendly, innovation-led education in one of the world's happiest countries.",
   },
@@ -49,7 +49,7 @@ const destinations: Destination[] = [
     name: "Romania",
     slug: "romania",
     flagCode: "RO",
-    image: "/romania-hero.jpeg",
+    image: "/romania-hero.png",
     description:
       "Affordable tuition and EU-recognized degrees across a wide range of disciplines.",
   },
@@ -57,7 +57,7 @@ const destinations: Destination[] = [
     name: "Malta",
     slug: "malta",
     flagCode: "MT",
-    image: "/malta.png",
+    image: "/malta-hero.png",
     description:
       "English-taught programs on a safe, English-speaking island right inside the EU.",
   },
@@ -65,7 +65,7 @@ const destinations: Destination[] = [
     name: "Hungary",
     slug: "hungary",
     flagCode: "HU",
-    image: "/hungary.png",
+    image: "/hungary-hero.png",
     description:
       "Renowned medical and engineering programs paired with a low cost of living.",
   },
@@ -73,7 +73,7 @@ const destinations: Destination[] = [
     name: "Cyprus",
     slug: "cyprus",
     flagCode: "CY",
-    image: "/cyprus.png",
+    image: "/cyprus-hero.png",
     description:
       "A fast-growing hub for business and tech degrees with a Mediterranean lifestyle.",
   },
@@ -81,7 +81,7 @@ const destinations: Destination[] = [
     name: "Greece",
     slug: "greece",
     flagCode: "GR",
-    image: "/greece.png",
+    image: "/greece-hero.png",
     description:
       "Rich academic history paired with modern, budget-friendly degree options.",
   },
@@ -89,7 +89,7 @@ const destinations: Destination[] = [
     name: "Lithuania",
     slug: "lithuania",
     flagCode: "LT",
-    image: "/lithuania.png",
+    image: "/lithuania-hero.png",
     description:
       "Budget-friendly EU degrees with a fast-growing international student community.",
   },

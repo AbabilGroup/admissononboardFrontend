@@ -54,7 +54,7 @@ const blocks: ContactBlock[] = [
   },
   {
     audience: "For University Partners",
-    imageSrc: "/university-partner.png",
+    imageSrc: "/bothpartner.png",
     imageAlt: "Partnerships advisor available for university collaborations",
     bgColor: "#48AEF8",
     details: [

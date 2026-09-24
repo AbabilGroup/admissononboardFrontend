@@ -15,11 +15,11 @@ export default function HeroUK() {
       <div className="relative">
         <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[4rem] sm:aspect-[21/9]">
           <Image
-            src="/uk-hero.avif"
+            src="/uk.png"
             alt="Tower Bridge, United Kingdom"
             fill
             sizes="100vw"
-            className="object-fill"
+            className="object-cover"
             priority
           />
 

@@ -16,11 +16,11 @@ export default function HeroHungary() {
       <div className="relative">
         <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[2rem] sm:aspect-[21/9]">
           <Image
-            src="/hero-hungary.avif"
+            src="/hungary-hero.png"
             alt="Hungarian Parliament Building, Budapest, Hungary"
             fill
             sizes="100vw"
-            className="object-center"
+            className="object-cover"
             priority
           />
 
