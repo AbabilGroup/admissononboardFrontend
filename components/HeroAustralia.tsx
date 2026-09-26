@@ -16,7 +16,7 @@ export default function HeroAustralia() {
       <div className="relative">
         <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[2rem] sm:aspect-[21/9]">
           <Image
-            src="/Australia.png"
+            src="/australia.png"
             alt="Sydney Opera House, Australia"
             fill
             sizes="100vw"

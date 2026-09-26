@@ -33,7 +33,7 @@ const destinations: Destination[] = [
     name: "Australia",
     slug: "australia",
     flagCode: "AU",
-    image: "/Australia.png",
+    image: "/australia.png",
     description:
       "Globally ranked universities paired with some of the most generous post-study work rights around.",
   },
