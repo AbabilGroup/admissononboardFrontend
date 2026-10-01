@@ -11,12 +11,12 @@ const steps = [
   {
     title: "Confirm Your Admission",
     description:
-      "Apply to your preferred institution in Lithuania and receive your official Letter of Acceptance.",
+      "Apply to your preferred institution in Lithuania and receive your admission/acceptance letter from the institution.",
   },
   {
     title: "Submit Updated Documents",
     description:
-      "Provide your latest academic and financial records, along with proof of health insurance and accommodation.",
+      "Prepare the required financial, accommodation, insurance and other supporting documents.",
   },
   {
     title: "Pay Tuition & Confirm Your Place",
@@ -26,7 +26,7 @@ const steps = [
   {
     title: "Apply For Your Student Visa & Prepare To Fly",
     description:
-      "We help you lodge your Lithuanian national (D) visa or temporary residence permit application, then it's time to prepare for departure to your new campus.",
+      "We support you with the required Lithuanian residence permit and visa procedures based on your nationality, study programme, and applicable immigration requirements.",
   },
 ];
 

@@ -2,9 +2,9 @@ import React from "react";
 
 const reasons = [
   {
-    title: "One Of The Most Affordable EU Degrees",
+    title: "Affordable tuition compared with many European study destinations",
     description:
-      "Lithuania offers fully EU-recognized degrees at some of the lowest tuition fees anywhere in Europe.",
+      "Lithuania offers EU-recognized degrees with competitive tuition fees compared with many European study destinations.",
     icon: (
       <path d="M12 3 2 8l10 5 8-4v6h2V8L12 3Zm0 8L4 8l8-4 8 4-8 4Zm-6 2v4c0 1.66 2.69 3 6 3s6-1.34 6-3v-4l-6 3-6-3Z" />
     ),
@@ -20,13 +20,13 @@ const reasons = [
   {
     title: "Low Cost Of Living",
     description:
-      "Rent, food, and daily expenses cost a fraction of Western Europe, so your budget stretches much further as a student.",
+      "“Average living costs are approximately €500–€800 per month, depending on lifestyle and city.",
     icon: (
       <path d="M12 2C7.86 2 4.5 5.36 4.5 9.5c0 5.25 6.19 11.44 6.46 11.7a1.5 1.5 0 0 0 2.08 0c.27-.26 6.46-6.45 6.46-11.7C19.5 5.36 16.14 2 12 2Zm0 10.5A3 3 0 1 1 12 6.5a3 3 0 0 1 0 6Z" />
     ),
   },
   {
-    title: "Central Location, Easy EU Travel",
+    title: "Lithuania is part of the Schengen Area",
     description:
       "Sitting inside the Schengen Area, Vilnius puts weekend trips across Europe within easy, affordable reach.",
     icon: (
@@ -36,7 +36,7 @@ const reasons = [
   {
     title: "Flexible Education Pathways",
     description:
-      "Foundation, diploma-to-degree, and vocational routes designed for students from every academic background.",
+      "Foundation, diploma-to-degree, and vocational programmes available through selected partner institutions, subject to their individual entry requirements.",
     icon: (
       <path d="M12 2 3 7l9 5 7-3.89V16h2V7L12 2Zm-7 8.27V15c0 2.76 3.58 5 8 5s8-2.24 8-5v-4.73l-8 4.45-8-4.45Z" />
     ),

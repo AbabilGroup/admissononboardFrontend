@@ -1,10 +1,9 @@
 import { pageMetadata } from "@/lib/seo";
 import AdmissionVisaProcessLithuania from "@/components/AdmissionVisaProcessLithuania";
 import ContactCta from "@/components/ContactCta";
-import EntryRequirements from "@/components/EntryRequirements";
 import HeroLithuania from "@/components/HeroLithuania";
-// import VisaSuccessCarousel from "@/components/VisaSuccessCarousel";
 import WhyLithuania from "@/components/WhyLithuania";
+import EntryRequirementsLithuania from "@/components/EntryRequirementsLithunia";
 
 export const metadata = pageMetadata({
   title: "Study in Lithuania | Admissions, Visa & Scholarships",
@@ -17,9 +16,8 @@ export default function page() {
     <div>
       <HeroLithuania />
       <WhyLithuania />
-      <EntryRequirements />
+      <EntryRequirementsLithuania />
       <AdmissionVisaProcessLithuania />
-      {/* <VisaSuccessCarousel /> */}
       <ContactCta />
     </div>
   );

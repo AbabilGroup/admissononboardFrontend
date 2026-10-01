@@ -6,8 +6,14 @@ import Link from "next/link";
 
 const stats = [
   { value: "10+", label: "Universities" },
-  { value: "EUR 2K to 9K", label: "Annual Tuition Fees" },
-  { value: "9 months", label: "Post Study Work" },
+  {
+    value: "EUR 1.3K to 2.3K",
+    label: "Tuition fees vary by university and programme",
+  },
+  {
+    value: "Up to 15 Months to Stay After Graduation",
+    label: "Post-Graduation Stay",
+  },
 ];
 
 export default function HeroLithuania() {
@@ -25,7 +31,7 @@ export default function HeroLithuania() {
           />
 
           {/* Gradient overlay fading from left */}
-    <div className="absolute inset-0 bg-gradient-to-br from-[#e62d3f] via-[#e62d3f]/5 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#e62d3f] via-[#e62d3f]/5 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#e62d3f] via-[#e62d3f]/5 to-transparent" />
           <div className="relative z-10 flex h-full flex-col justify-center px-6 pb-16 sm:px-10 md:px-16">
             <h1 className="text-5xl font-semibold tracking-tight text-white sm:text-6xl md:text-7xl">
@@ -33,7 +39,7 @@ export default function HeroLithuania() {
             </h1>
 
             <p className="mt-4 max-w-lg text-sm font-semibold leading-relaxed text-white/90 sm:text-base">
-              Study in Lithuania with Admission OnBoard. Get expert guidance on
+              Study in Lithuania with Admission On Board. Get expert guidance on
               admissions, scholarships, and visa support for a smooth study
               abroad journey.
             </p>
@@ -70,10 +76,10 @@ export default function HeroLithuania() {
                 key={stat.label}
                 className="flex flex-col gap-1 py-3 first:pt-0 sm:px-6 sm:py-0 sm:first:pl-0"
               >
-                <span className="text-lg font-bold text-[#1B1B1B] sm:text-xl">
+                <span className="text-lg text-center font-bold text-[#1B1B1B] sm:text-xl">
                   {stat.value}
                 </span>
-                <span className="text-xs font-medium text-[#6B6B6B] sm:text-sm">
+                <span className="text-xs font-medium text-center text-[#6B6B6B] sm:text-sm">
                   {stat.label}
                 </span>
               </div>
