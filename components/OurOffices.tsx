@@ -33,7 +33,7 @@ const offices: Office[] = [
     country: "bangladesh",
     flag: "🇧🇩",
     name: "Dhaka Office",
-    addressLines: ["Sector 12, Uttara Dhaka-1230, Bangladesh"],
+    addressLines: ["Plot-34, H M Plaza, 4th Floor, Sector-03, Uttara, Dhaka-1229, Bangladesh"],
     phone: "+8801906499741",
     email: "dhaka@admissiononboard.com",
     accent: "#E0483E",
