@@ -19,7 +19,8 @@ const defaultOffices: Office[] = [
   {
     slug: "dhaka",
     name: "Dhaka Office",
-    address: "Sonargaon Janapath Road Sector 12, Uttara Dhaka-1230, Bangladesh",
+    address:
+      "Plot-34, H M Plaza, 4th Floor, Sector-03, Uttara, Dhaka-1229, Bangladesh",
     phone: "+88 01906 499741",
   },
   {
