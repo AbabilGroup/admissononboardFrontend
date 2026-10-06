@@ -36,7 +36,7 @@ const stats: Stat[] = [
     ),
   },
   {
-    value: "PR benefits",
+    value: "PR Benefits",
     label: "After 5 years of legal residence",
     icon: (
       <path
