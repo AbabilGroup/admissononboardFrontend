@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useMemo, useState } from "react";
+import { useEffect, useId, useMemo, useState, type ReactNode } from "react";
 
 type Country = "uk" | "bangladesh" | "nepal";
 
@@ -41,7 +41,7 @@ const offices: Office[] = [
     country: "bangladesh",
     countryLabel: "Bangladesh",
     flag: "🇧🇩",
-    name: "Dhaka Office",
+    name: "Dhaka Office, Sector 3",
     city: "Dhaka",
     timeZone: "Asia/Dhaka",
     addressLines: [
@@ -52,6 +52,23 @@ const offices: Office[] = [
     phone: "+8801906499741",
     email: "dhaka@admissiononboard.com",
     accent: "#E0483E",
+  },
+  {
+    id: "bd-dhaka-sector10",
+    country: "bangladesh",
+    countryLabel: "Bangladesh",
+    flag: "🇧🇩",
+    name: "Dhaka Office, Sector 10",
+    city: "Dhaka",
+    timeZone: "Asia/Dhaka",
+    addressLines: [
+      "Admission OnBoard, Road 13",
+      "Sector 10, Uttara, Dhaka-1230",
+      "Bangladesh",
+    ],
+    phone: "+8801602065622",
+    email: "dhaka@admissiononboard.com",
+    accent: "#7A4FBF",
   },
   {
     id: "bd-sylhet",
@@ -96,12 +113,12 @@ const filters: { key: "all" | Country; label: string; icon: string }[] = [
   { key: "nepal", label: "Nepal", icon: "🇳🇵" },
 ];
 
-
+/** Re-renders every 30s so each card can show the office's local time. */
 function useNow() {
   const [now, setNow] = useState<Date | null>(null);
   useEffect(() => {
     const tick = () => setNow(new Date());
-    const frame = requestAnimationFrame(tick);
+    const frame = requestAnimationFrame(tick); // first update, in a callback
     const t = setInterval(tick, 30_000);
     return () => {
       cancelAnimationFrame(frame);
@@ -140,6 +157,7 @@ export default function OurOffices() {
     const base =
       active === "all" ? offices : offices.filter((o) => o.country === active);
 
+    // Defensive dedupe: no two rendered cards can share an id.
     const seen = new Set<string>();
     return base.filter((o) => {
       if (seen.has(o.id)) return false;
@@ -155,10 +173,12 @@ export default function OurOffices() {
           Our Offices
         </h2>
         <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-[#6B6B6B] sm:text-base">
-          Four offices across three countries. Visit, call or email the
-          Admission On Board team nearest to you.
+          {offices.length} offices across{" "}
+          {new Set(offices.map((o) => o.country)).size} countries. Visit, call
+          or email the Admission OnBoard team nearest to you.
         </p>
 
+        {/* Filter pills */}
         <div
           role="group"
           aria-label="Filter offices by country"
@@ -221,6 +241,7 @@ export default function OurOffices() {
                 />
                 <div className="flex items-start justify-between gap-4">
                   <div>
+                    {/* Country badge: flag + name */}
                     <span className="inline-flex items-center gap-2 rounded-full bg-white py-1 pl-1.5 pr-3 shadow-sm ring-1 ring-[#ECECEC]">
                       <Flag country={office.country} className="h-4 w-6" />
                       <span className="text-xs font-semibold text-[#1B1B1B]">
@@ -233,6 +254,7 @@ export default function OurOffices() {
                     <p className="text-sm text-[#6B6B6B]">{office.name}</p>
                   </div>
 
+                  {/* Large flag */}
                   <span
                     className="flex h-16 w-20 shrink-0 items-center justify-center rounded-2xl bg-white p-2.5 shadow-sm ring-1"
                     style={{
@@ -265,6 +287,7 @@ export default function OurOffices() {
                 )}
               </header>
 
+              {/* Details */}
               <div className="flex flex-1 flex-col gap-4 px-6 py-6 text-sm">
                 <div className="flex items-start gap-3">
                   <IconTile accent={office.accent}>
@@ -318,6 +341,7 @@ export default function OurOffices() {
                 </a>
               </div>
 
+              {/* Footer actions */}
               <footer className="grid grid-cols-2 border-t border-[#F0F0F0]">
                 <a
                   href={mapsUrl(office)}
@@ -376,7 +400,7 @@ function IconTile({
   children,
 }: {
   accent: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return (
     <span
@@ -397,7 +421,10 @@ function IconTile({
   );
 }
 
-
+/**
+ * Inline SVG flags. Emoji flags don't render on Windows (they show as "GB",
+ * "BD", "NP"), so we draw them ourselves for consistent display everywhere.
+ */
 function Flag({
   country,
   className = "",
@@ -456,6 +483,7 @@ function Flag({
     );
   }
 
+  // Nepal: the world's only non-rectangular national flag
   return (
     <svg
       viewBox="0 0 100 122"
@@ -470,9 +498,11 @@ function Flag({
         strokeWidth="5"
         strokeLinejoin="miter"
       />
+      {/* Moon */}
       <circle cx="27" cy="44" r="12" fill="#fff" />
       <circle cx="27" cy="38" r="12" fill="#DC143C" />
       <circle cx="27" cy="47" r="5" fill="#fff" />
+      {/* Sun */}
       <g fill="#fff" transform="translate(27 94)">
         <rect x="-9" y="-9" width="18" height="18" />
         <rect x="-9" y="-9" width="18" height="18" transform="rotate(30)" />

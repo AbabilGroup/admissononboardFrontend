@@ -62,7 +62,7 @@ const blocks: ContactBlock[] = [
         label: "Email",
         value: (
           <a
-            href="mailto:partners@admissiononboard.com"
+            href="mailto:info@admissiononboard.com"
             className="text-[#E0483E] underline underline-offset-2"
           >
             info@admissiononboard.com

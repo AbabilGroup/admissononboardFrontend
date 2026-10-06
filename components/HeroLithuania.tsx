@@ -11,8 +11,8 @@ type Stat = {
 
 const stats: Stat[] = [
   {
-    value: "15+",
-    label: "Universities, 500+ English-taught programmes",
+    value: "15+ Universities",
+    label: "500+ English-taught programmes",
     icon: (
       <path
         strokeLinecap="round"
@@ -23,8 +23,8 @@ const stats: Stat[] = [
   },
   {
     value: "€1,300 – €6,500",
-    suffix: "/ year",
-    label: "Tuition fee",
+    suffix: "/",
+    label: "Tuition Fee Per Year",
     icon: (
       <>
         <circle cx="12" cy="12" r="8.5" />
@@ -36,7 +36,7 @@ const stats: Stat[] = [
     ),
   },
   {
-    value: "Post-study work",
+    value: "Post-Study Work",
     label: "12-month work permit after graduation",
     icon: (
       <>
@@ -49,7 +49,7 @@ const stats: Stat[] = [
     ),
   },
   {
-    value: "Permanent residency",
+    value: "Permanent Residency",
     label: "Eligible after 5 years of legal residence",
     icon: (
       <path

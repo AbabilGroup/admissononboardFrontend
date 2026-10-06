@@ -1,19 +1,62 @@
+import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-// Place your background image at: /public/uk-hero.avif
+type Stat = {
+  value: string;
+  suffix?: string;
+  label: string;
+  icon: ReactNode;
+};
 
-const stats = [
-  { value: "150+", label: "Universities" },
-  { value: "GBP 12K to 25K", label: "Annual Tuition Fees" },
-  { value: "2 years", label: "Post Study Work" },
+const stats: Stat[] = [
+  {
+    value: "150+",
+    label: "Universities",
+    icon: (
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M3 9.5 12 5l9 4.5-9 4.5-9-4.5Zm3 1.5v4.5c0 1.4 2.7 3 6 3s6-1.6 6-3V11"
+      />
+    ),
+  },
+  {
+    value: "£12,000 to £25,000",
+    suffix: "/ ",
+    label: "Tuition fee per year",
+    icon: (
+      <>
+        <circle cx="12" cy="12" r="8.5" />
+        <path
+          strokeLinecap="round"
+          d="M14.5 8.5a2.5 2.5 0 0 0-4.5 1.5V15m-1.5-3h4M8.5 15.5h7"
+        />
+      </>
+    ),
+  },
+  {
+    // Graduate Route: 18 months for Bachelor's/Master's applications made from 1 Jan 2027
+    value: "18 months",
+    label: "Post-study work (3 years for PhD)",
+    icon: (
+      <>
+        <rect x="3.5" y="7.5" width="17" height="12" rx="2" />
+        <path
+          strokeLinecap="round"
+          d="M9 7.5V6a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 6v1.5M3.5 12.5h17"
+        />
+      </>
+    ),
+  },
 ];
 
 export default function HeroUK() {
   return (
-    <section className="relative container mx-auto py-10">
+    <section className="container mx-auto px-4 py-10 lg:pb-24">
       <div className="relative">
-        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[4rem] sm:aspect-[21/9]">
+        {/* Image + copy */}
+        <div className="relative min-h-[520px] w-full overflow-hidden rounded-[2rem] sm:min-h-0 sm:aspect-[16/9] lg:aspect-[21/9] lg:rounded-[3rem]">
           <Image
             src="/uk.png"
             alt="Tower Bridge, United Kingdom"
@@ -23,12 +66,12 @@ export default function HeroUK() {
             priority
           />
 
-          {/* Gradient overlay fading from left */}
+          {/* Red gradient fading in from the left */}
           <div className="absolute inset-0 bg-gradient-to-br from-[#e62d3f] via-[#e62d3f]/5 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#e62d3f] via-[#e62d3f]/5 to-transparent" />
 
-          <div className="relative z-10 flex h-full flex-col justify-center px-6 pb-16 sm:px-10 md:px-16">
-            <h1 className="text-5xl font-semibold tracking-tight text-white sm:text-6xl md:text-7xl">
+          <div className="relative z-10 flex h-full min-h-[520px] flex-col justify-center px-6 pb-20 pt-10 sm:min-h-0 sm:px-10 sm:pb-16 md:px-16 lg:pb-24">
+            <h1 className="text-4xl font-semibold leading-tight tracking-tight text-white sm:text-6xl md:text-7xl">
               United Kingdom
             </h1>
 
@@ -40,7 +83,7 @@ export default function HeroUK() {
 
             <Link
               href="/contact"
-              className="mt-7 inline-flex w-fit items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#1B1B1B] shadow-md transition-transform hover:scale-105"
+              className="group mt-7 inline-flex w-fit items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#1B1B1B] shadow-md transition-transform hover:scale-105"
             >
               Free Expert Consultation
               <svg
@@ -48,7 +91,7 @@ export default function HeroUK() {
                 height="16"
                 viewBox="0 0 24 24"
                 fill="none"
-                className="shrink-0"
+                className="shrink-0 transition-transform group-hover:translate-x-1"
               >
                 <path
                   d="M5 12h14M13 6l6 6-6 6"
@@ -62,20 +105,45 @@ export default function HeroUK() {
           </div>
         </div>
 
-        {/* Stat bar overlapping the bottom edge of the image, hanging outside it */}
-        <div className="absolute inset-x-4 bottom-0 z-10 translate-y-1/2 rounded-2xl bg-white/70 px-6 py-5 shadow-lg backdrop-blur-md sm:inset-x-10">
-          <div className="grid grid-cols-1 divide-y divide-[#1B1B1B]/10 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+        {/*
+          Stat cards
+          - Mobile: stacked rows (icon on the left)
+          - Tablet: 3 in a row, pulled up over the image's bottom edge
+          - Desktop: 3 in a row, hanging half outside the image
+        */}
+        <div className="relative z-20 mx-3 -mt-12 sm:mx-8 lg:absolute lg:inset-x-10 lg:bottom-0 lg:mx-0 lg:mt-0 lg:translate-y-1/2">
+          <div className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl bg-[#1B1B1B]/10 shadow-xl ring-1 ring-black/5 sm:grid-cols-3">
             {stats.map((stat) => (
               <div
-                key={stat.label}
-                className="flex flex-col gap-1 py-3 first:pt-0 sm:px-6 sm:py-0 sm:first:pl-0"
+                key={stat.value}
+                className="flex items-center gap-4 bg-white/95 px-5 py-4 backdrop-blur-md sm:flex-col sm:gap-2 sm:px-4 sm:py-5 sm:text-center lg:py-6"
               >
-                <span className="text-lg font-bold text-[#1B1B1B] sm:text-xl">
-                  {stat.value}
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#e62d3f]/10">
+                  <svg
+                    className="h-5 w-5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#e62d3f"
+                    strokeWidth={1.8}
+                    aria-hidden
+                  >
+                    {stat.icon}
+                  </svg>
                 </span>
-                <span className="text-xs font-medium text-[#6B6B6B] sm:text-sm">
-                  {stat.label}
-                </span>
+
+                <div>
+                  <p className="text-base font-bold leading-tight text-[#1B1B1B] sm:text-lg xl:text-xl">
+                    {stat.value}
+                    {stat.suffix && (
+                      <span className="ml-1 text-xs font-semibold text-[#6B6B6B] sm:text-sm">
+                        {stat.suffix}
+                      </span>
+                    )}
+                  </p>
+                  <p className="mt-0.5 text-xs leading-snug text-[#6B6B6B] sm:mt-1 sm:text-sm">
+                    {stat.label}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
