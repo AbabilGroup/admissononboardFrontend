@@ -1,16 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-
-// Place your images at, e.g.:
-// /public/destinations/romania.png
-// /public/destinations/malta.png
-// /public/destinations/hungary.png
-// /public/destinations/cyprus.png
-// /public/destinations/united-kingdom.png
-// /public/destinations/greece.png
-// /public/destinations/australia.png
-// /public/destinations/finland.png
-// /public/destinations/lithuania.png
+import ReactCountryFlag from "react-country-flag";
 
 type Destination = {
   name: string;
@@ -36,6 +26,14 @@ const destinations: Destination[] = [
     image: "/australia.png",
     description:
       "Globally ranked universities paired with some of the most generous post-study work rights around.",
+  },
+  {
+    name: "New Zealand",
+    slug: "new-zealand",
+    flagCode: "NZ",
+    image: "/newzeland.png",
+    description:
+      "Practical, globally respected degrees, post-study work visas, and a safe, welcoming lifestyle.",
   },
   {
     name: "Finland",
@@ -135,9 +133,20 @@ export default function DreamDestinations() {
                   className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-                <span className="absolute bottom-3 left-4 flex items-center gap-2 text-sm font-semibold text-white sm:text-base">
-                  <span className="rounded bg-white/20 px-1.5 py-0.5 text-[10px] font-bold tracking-wide backdrop-blur-sm">
-                    {destination.flagCode}
+                <span className="absolute bottom-3 left-4 flex items-center gap-2.5 text-sm font-semibold text-white sm:text-base">
+                  <span className="flex overflow-hidden rounded-[4px] shadow-md ring-2 ring-white/80">
+                    <ReactCountryFlag
+                      countryCode={destination.flagCode}
+                      svg
+                      title={destination.name}
+                      aria-label={`Flag of ${destination.name}`}
+                      style={{
+                        width: "1.75em",
+                        height: "1.3em",
+                        display: "block",
+                        objectFit: "cover",
+                      }}
+                    />
                   </span>
                   {destination.name}
                 </span>

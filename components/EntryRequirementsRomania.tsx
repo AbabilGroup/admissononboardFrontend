@@ -12,23 +12,27 @@ type Program = {
 
 const programs: Program[] = [
   {
-    title: "Diploma / Pathway",
+    title: "Preparatory Year",
     description: [
-      "Eligibility: High School Certificate (50%+ CGPA)",
-      "Duration: 1–2 Years",
-      "English: IELTS 5.0 / Duolingo 85+ (B1–B2)",
+      "Academic: High School Diploma or equivalent",
+      "Purpose: Romanian language preparation for Romanian-taught programmes",
+      "Documents: Transcripts, legalized/recognized certificates",
+      "Approval: Romanian Ministry of Education Acceptance Letter",
+      "Visa: Tuition payment, financial proof, PCC & health insurance",
     ],
-    image: "/diploma.avif",
+    image: "/preparatoryyear.jpg",
     icon: (
-      <path d="M9 2h6a2 2 0 0 1 2 2v2h4a1 1 0 0 1 1 1v11a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a1 1 0 0 1 1-1h4V4a2 2 0 0 1 2-2Zm0 4h6V4H9v2Z" />
+      <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v16H6.5a.5.5 0 0 0 0 1H20v3H6.5A2.5 2.5 0 0 1 4 19.5v-15Z" />
     ),
   },
   {
     title: "Bachelor's Degree",
     description: [
-      "Eligibility: High School Diploma (SKVC recognized / 60%+ CGPA)",
-      "Duration: 3–4 Years (180–240 ECTS)",
-      "English: IELTS 5.5+ / Duolingo 95+ (B2)",
+      "Academic: High School Diploma / equivalent",
+      "Documents: Academic transcripts & legalized/recognized certificates",
+      "Language: English or Romanian proficiency as required",
+      "Admission: Entrance exam may apply to some programmes",
+      "Approval: Ministry of Education Acceptance Letter",
     ],
     image: "/bachelors.png",
     icon: (
@@ -38,9 +42,11 @@ const programs: Program[] = [
   {
     title: "Master's Degree",
     description: [
-      "Eligibility: Relevant Bachelor's Degree (SKVC recognized)",
-      "Duration: 1.5–2 Years (90–120 ECTS)",
-      "English: IELTS 6.0+ / Duolingo 105+ (B2–C1)",
+      "Academic: Recognized Bachelor's Degree",
+      "Documents: Degree certificate & transcripts",
+      "Additional: CV, Motivation Letter and programme-specific documents",
+      "Language: English or Romanian proficiency as required",
+      "Approval: Ministry of Education Acceptance Letter",
     ],
     image: "/masters.png",
     icon: (
@@ -48,22 +54,24 @@ const programs: Program[] = [
     ),
   },
   {
-    title: "Master's Qualifying (MQP)",
+    title: "PhD / Doctorate",
     description: [
-      "Eligibility: Higher Diploma or Bachelor's (Bridging)",
-      "Duration: 1 Semester – 1 Year",
-      "Progression: Direct entry to Master's",
+      "Academic: Recognized Master's Degree",
+      "Documents: Academic certificates & transcripts",
+      "Additional: Research Proposal and supervisor/doctoral school approval",
+      "Assessment: Interview or admission evaluation may apply",
+      "Approval: Ministry of Education Acceptance Letter",
     ],
-    image: "/masters-quality.png",
+    image: "/phd.jpg",
     icon: (
       <path d="M7 2h10l1 5-1 1v2a5 5 0 0 1-10 0V8L6 7l1-5Zm5 12a3 3 0 0 0 3-3V8H9v3a3 3 0 0 0 3 3Zm-3 5h6v2H9v-2Z" />
     ),
   },
 ];
 
-const AUTO_ADVANCE_MS = 4000;
+const AUTO_ADVANCE_MS = 4500;
 
-/** Splits "Eligibility: High School..." into a bold label and its value */
+/** Splits "Academic: High School..." into a bold label and its value */
 function splitItem(item: string) {
   const i = item.indexOf(":");
   return i === -1
@@ -71,7 +79,7 @@ function splitItem(item: string) {
     : { label: item.slice(0, i), value: item.slice(i + 1).trim() };
 }
 
-export default function EntryRequirementsLithuania() {
+export default function EntryRequirementsRomania() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -85,10 +93,15 @@ export default function EntryRequirementsLithuania() {
   return (
     <section className="w-full bg-[#FFFEFA] px-6 py-20">
       <div className="mx-auto container">
-        <h2 className="text-center text-3xl font-semibold tracking-tight sm:text-4xl">
-          <span className="text-[#E0483E]">Entry</span>{" "}
-          <span className="text-[#1B1B1B]">Requirements</span>
-        </h2>
+        <div className="text-center">
+          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+            <span className="text-[#E0483E]">Entry</span>{" "}
+            <span className="text-[#1B1B1B]">Requirements</span>
+          </h2>
+          <p className="mx-auto mt-3 max-w-xl text-sm font-semibold text-gray-700 sm:text-base">
+            Study in Romania: what you need for each level of study.
+          </p>
+        </div>
 
         <div className="mt-14 grid grid-cols-1 divide-y divide-[#ECECEC] sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4 lg:divide-x">
           {programs.map((program, index) => {
@@ -118,6 +131,9 @@ export default function EntryRequirementsLithuania() {
                     isActive ? "text-[#1B1B1B]" : "text-[#B5B5B5]"
                   }`}
                 >
+                  <span className={isActive ? "text-[#E0483E]" : ""}>
+                    {index + 1}.
+                  </span>{" "}
                   {program.title}
                 </span>
 

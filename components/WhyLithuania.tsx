@@ -1,47 +1,76 @@
-import React from "react";
+import type { ReactNode } from "react";
 
-const reasons = [
+type Reason = {
+  title: string;
+  description: string;
+  icon: ReactNode;
+  /** Highlighted intro card, shown without a number */
+  featured?: boolean;
+};
+
+const reasons: Reason[] = [
   {
-    title: "Affordable tuition compared with many European study destinations",
+    featured: true,
+    title: "Explore 28 Universities & Colleges",
     description:
-      "Lithuania offers EU-recognized degrees with competitive tuition fees compared with many European study destinations.",
+      "International students can choose from 15 universities and 13 colleges, with a wide range of English-taught programmes across Business, IT, Engineering, Health Sciences, and more.",
+    icon: (
+      <path d="M12 2 2 7v2h20V7L12 2ZM4 11v7H3v2h18v-2h-1v-7h-2v7h-3v-7h-2v7h-2v-7H9v7H6v-7H4Z" />
+    ),
+  },
+  {
+    title: "Affordable, High-Quality EU Education",
+    description:
+      "Lithuania offers fully European Union-accredited degrees with tuition fees significantly lower than in Western Europe. Annual tuition starts from €1,300–€4,000 for Bachelor’s degrees and €2,300–€6,500 for Master’s degrees (specialised fields like Medicine and Dentistry run higher).",
     icon: (
       <path d="M12 3 2 8l10 5 8-4v6h2V8L12 3Zm0 8L4 8l8-4 8 4-8 4Zm-6 2v4c0 1.66 2.69 3 6 3s6-1.34 6-3v-4l-6 3-6-3Z" />
     ),
   },
   {
-    title: "Growing English-Taught Program Offerings",
+    title: "Expanding English-Taught Programmes",
     description:
-      "A rapidly expanding range of English-taught bachelor's and master's programs, especially in business, IT, and life sciences.",
+      "Higher education institutions across Lithuania offer over 500 fully English-taught Bachelor’s, Master’s, and Doctorate programmes, with specialised strengths in Information Technology, Business Administration, Engineering, and Life Sciences.",
     icon: (
-      <path d="M9 2h6a2 2 0 0 1 2 2v2h4a1 1 0 0 1 1 1v11a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a1 1 0 0 1 1-1h4V4a2 2 0 0 1 2-2Zm0 4h6V4H9v2Z" />
+      <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v16H6.5a.5.5 0 0 0 0 1H20v3H6.5A2.5 2.5 0 0 1 4 19.5v-15Z" />
     ),
   },
   {
-    title: "Low Cost Of Living",
+    title: "Accessible Cost of Living",
     description:
-      "“Average living costs are approximately €500–€800 per month, depending on lifestyle and city.",
+      "Student life remains highly affordable compared to most Western EU countries. On average, international students spend between €500 and €800 per month, which covers dormitory or apartment accommodation, groceries, local transport, and utilities.",
+    icon: <path d="M12 3 2 11h3v9h5v-6h4v6h5v-9h3L12 3Z" />,
+  },
+  {
+    title: "Strategic Schengen Area Location",
+    description:
+      "As part of the Schengen Area, holding a Lithuanian Temporary Residence Permit (TRP) or National Visa gives international students visa-free travel across 29 European member states during academic breaks and weekends.",
     icon: (
-      <path d="M12 2C7.86 2 4.5 5.36 4.5 9.5c0 5.25 6.19 11.44 6.46 11.7a1.5 1.5 0 0 0 2.08 0c.27-.26 6.46-6.45 6.46-11.7C19.5 5.36 16.14 2 12 2Zm0 10.5A3 3 0 1 1 12 6.5a3 3 0 0 1 0 6Z" />
+      <path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5Z" />
     ),
   },
   {
-    title: "Lithuania is part of the Schengen Area",
+    title: "Flexible Academic Pathways",
     description:
-      "Sitting inside the Schengen Area, Vilnius puts weekend trips across Europe within easy, affordable reach.",
-    icon: (
-      <path d="M9 2v2H7v2H5v2H3v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8h-2V6h-2V4h-2V2H9Zm3 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z" />
-    ),
-  },
-  {
-    title: "Flexible Education Pathways",
-    description:
-      "Foundation, diploma-to-degree, and vocational programmes available through selected partner institutions, subject to their individual entry requirements.",
+      "Selected higher education institutions offer varied entry options, including foundation years, pathway diplomas, and preparatory courses, providing structured entry into full degree programmes for students who need academic or language bridging.",
     icon: (
       <path d="M12 2 3 7l9 5 7-3.89V16h2V7L12 2Zm-7 8.27V15c0 2.76 3.58 5 8 5s8-2.24 8-5v-4.73l-8 4.45-8-4.45Z" />
     ),
   },
+  {
+    title: "Post-Study Work Permit",
+    description:
+      "International graduates from non-EU countries are legally eligible to extend their temporary residence permit for up to 12 months after graduation to seek employment or launch a business in Lithuania.",
+    icon: (
+      <path d="M9 2h6a2 2 0 0 1 2 2v2h4a1 1 0 0 1 1 1v11a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a1 1 0 0 1 1-1h4V4a2 2 0 0 1 2-2Zm0 4h6V4H9v2Z" />
+    ),
+  },
 ];
+
+// Number every card except the featured one (1, 2, 3 ...)
+const numberedReasons = reasons.map((reason, i) => ({
+  ...reason,
+  number: reasons.slice(0, i + 1).filter((r) => !r.featured).length,
+}));
 
 const backupCountries = [
   "United Kingdom",
@@ -75,45 +104,60 @@ export default function WhyLithuania() {
           {/* Left: reasons timeline */}
           <div>
             <h2 className="text-3xl font-semibold tracking-tight text-[#1B1B1B] sm:text-4xl">
-              Why <span className="text-[#E0483E]">Lithuania</span>?
+              Why Study in <span className="text-[#E0483E]">Lithuania</span>?
             </h2>
 
             <div className="relative mt-10">
-              <div className="absolute left-6 top-2 bottom-2 w-px bg-[#ECECEC]" />
+              <div className="absolute bottom-2 left-6 top-2 w-px bg-[#ECECEC]" />
 
               <div className="flex flex-col gap-6">
-                {reasons.map((reason, i) => (
-                  <div key={reason.title} className="relative flex gap-5">
-                    <div className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#1B1B1B] shadow-md">
-                      <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="white"
+                {numberedReasons.map((reason) => {
+                  return (
+                    <div key={reason.title} className="relative flex gap-5">
+                      <div
+                        className={`relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full shadow-md ${
+                          reason.featured ? "bg-[#E0483E]" : "bg-[#1B1B1B]"
+                        }`}
                       >
-                        {reason.icon}
-                      </svg>
-                      <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#E0483E] text-[10px] font-bold text-white">
-                        {i + 1}
-                      </span>
-                    </div>
+                        <svg
+                          width="20"
+                          height="20"
+                          viewBox="0 0 24 24"
+                          fill="white"
+                          aria-hidden
+                        >
+                          {reason.icon}
+                        </svg>
+                        {!reason.featured && (
+                          <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#E0483E] text-[10px] font-bold text-white ring-2 ring-[#FFFEFA]">
+                            {reason.number}
+                          </span>
+                        )}
+                      </div>
 
-                    <div className="flex-1 rounded-2xl border border-[#ECECEC] bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md">
-                      <h3 className="text-base font-semibold text-[#1B1B1B] sm:text-lg">
-                        {reason.title}
-                      </h3>
-                      <p className="mt-1 text-sm leading-relaxed text-[#6B6B6B]">
-                        {reason.description}
-                      </p>
+                      <div
+                        className={`flex-1 rounded-2xl border p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md ${
+                          reason.featured
+                            ? "border-[#E0483E]/25 bg-[#E0483E]/5"
+                            : "border-[#ECECEC] bg-white"
+                        }`}
+                      >
+                        <h3 className="text-base font-semibold text-[#1B1B1B] sm:text-lg">
+                          {reason.title}
+                        </h3>
+                        <p className="mt-1 text-sm leading-relaxed text-[#6B6B6B]">
+                          {reason.description}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>
 
           {/* Right: consultation form */}
-          <div className="h-fit rounded-3xl border border-[#ECECEC] bg-white p-6 shadow-sm sm:p-8">
+          <div className="h-fit rounded-3xl border border-[#ECECEC] bg-white p-6 shadow-sm sm:p-8 md:sticky md:top-28">
             <div className="flex items-start gap-3">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#E0483E]/10">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="#E0483E">

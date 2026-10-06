@@ -19,12 +19,12 @@ export default function HeroContact() {
               for your international education plans.
             </p>
 
-            <Link
+            {/* <Link
               href="/contact"
               className="mt-6 inline-flex items-center justify-center rounded-full bg-black px-12 py-3 text-base font-semibold text-white shadow-sm transition-colors hover:bg-[#DC202B]"
             >
               Contact With Us
-            </Link>
+            </Link> */}
           </div>
 
           {/* Right: image fading into the background */}

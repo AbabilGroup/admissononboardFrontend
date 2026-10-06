@@ -1,13 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 
-// Place your image at: /public/services-consultant.png
-
 export default function HeroServices() {
   return (
     <section className="w-full bg-[#FFFEFA]">
       <div className="mx-auto container flex flex-col items-center gap-12 px-6 py-20 md:flex-row md:gap-10 md:py-24">
-        {/* Left: copy */}
         <div className="w-full md:w-1/2">
           <h1 className="text-4xl font-semibold leading-tight tracking-tight text-[#1B1B1B] sm:text-5xl lg:text-6xl">
             Discover <span className="text-[#E0483E]">what we offer</span>, how
@@ -20,7 +17,7 @@ export default function HeroServices() {
           </p>
 
           <Link
-            href="/consultation"
+            href="/contact"
             className="mt-9 inline-flex items-center gap-2 rounded-full border border-[#1B1B1B] bg-white px-6 py-3 text-sm font-semibold text-[#1B1B1B] transition-colors hover:bg-[#1B1B1B] hover:text-white"
           >
             Schedule A Free Consultation

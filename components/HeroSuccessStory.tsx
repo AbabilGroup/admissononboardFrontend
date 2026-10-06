@@ -21,7 +21,7 @@ export default function HeroSuccessStory() {
           </h1>
 
           <Link
-            href="/consultation"
+            href="/contact"
             className="mt-9 inline-flex items-center gap-2 rounded-full border border-[#1B1B1B] bg-white px-6 py-3 text-sm font-semibold text-[#1B1B1B] transition-colors hover:bg-[#1B1B1B] hover:text-white"
           >
             Schedule A Free Consultation

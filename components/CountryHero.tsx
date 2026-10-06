@@ -4,151 +4,208 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-// Place your image at: /public/destination.jfif
+// Image lives at /public/desination.png (rename both here and in /public if you fix the spelling)
+const HERO_IMAGE = "/desination.png";
+
+const titleLines = [
+  "Discover your ideal",
+  "study destination,",
+  "built around you.",
+];
+
+const stats = [
+  { value: "15+", label: "Years of experience" },
+  { value: "5,000+", label: "Students placed" },
+  { value: "100+", label: "University partners" },
+];
+
+const destinations = [
+  "United Kingdom",
+  "Australia",
+  "New Zealand",
+  "Finland",
+  "Greece",
+  "Lithuania",
+  "Hungary",
+  "Romania",
+  "Malta",
+  "Cyprus",
+];
 
 export default function CountryHero() {
   const [mounted, setMounted] = useState(false);
-
   useEffect(() => {
-    setMounted(true);
+    // Wait one frame so the hidden state paints first, then animate in.
+    const frame = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
-  const title = [
-    "Discover Your Ideal.",
-    "Study Destination.",
-    "Built Around You.",
-  ];
-
-  const stats = [
-    { value: "15+", label: "Years of Experience" },
-    { value: "5,000+", label: "Students Placed" },
-    { value: "100+", label: "University Partners" },
-  ];
+  // Shared reveal classes (respects reduced-motion settings)
+  const reveal = (extra = "") =>
+    `transition-all duration-700 ease-out motion-reduce:transition-none ${
+      mounted ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+    } ${extra}`;
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#FFFEFA] px-5 py-10 text-[#1B1B1B] md:px-14">
-      <div className="container relative z-10 mx-auto flex min-h-[calc(100vh-120px)] items-center">
-        <div className="relative w-full">
-          <div
-            className={`absolute right-0 top-1/2 hidden h-[72vh] w-[67%] -translate-y-1/2 overflow-hidden rounded-[2rem] shadow-xl transition-all duration-[1200ms] ease-out lg:block ${
-              mounted
-                ? "translate-x-0 scale-100 opacity-100"
-                : "translate-x-24 scale-95 opacity-0"
-            }`}
-          >
-            <div className="relative h-full w-full">
-              <Image
-                src="/desination.png"
-                alt="Students exploring study abroad opportunities"
-                fill
-                sizes="67vw"
-                className="object-cover"
-                priority
-              />
-            </div>
+    <section className="relative overflow-hidden bg-[#FFFEFA] px-5 py-14 text-[#1B1B1B] md:px-10 lg:py-20">
+      {/* Soft background shapes */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -left-32 -top-32 h-96 w-96 rounded-full bg-[#E0483E]/10 blur-3xl"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -bottom-40 right-0 h-[28rem] w-[28rem] rounded-full bg-[#2F5DA8]/10 blur-3xl"
+      />
 
-            {/* <div className="absolute bottom-0 right-0 max-w-sm rounded-[2rem] border border-white/20 bg-white/40 p-6 backdrop-blur-xl">
-              <h3 className="mt-3 text-3xl font-semibold uppercase leading-none tracking-[-0.05em] text-[#E0483E]">
-                students first, guidance smarter
-              </h3>
-            </div> */}
+      <div className="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-14">
+        {/* ── Left: content ─────────────────────────── */}
+        <div className="relative z-10">
+          <h1 className="text-4xl font-semibold leading-[1.05] tracking-[-0.02em] sm:text-5xl lg:text-6xl">
+            {titleLines.map((line, i) => (
+              <span key={line} className="block overflow-hidden pb-1">
+                <span
+                  className={`block transition-all duration-700 ease-out motion-reduce:transition-none ${
+                    i === 1 ? "text-[#E0483E]" : ""
+                  } ${mounted ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"}`}
+                  style={{ transitionDelay: `${i * 120}ms` }}
+                >
+                  {line}
+                </span>
+              </span>
+            ))}
+          </h1>
+
+          <p
+            className={reveal(
+              "mt-6 max-w-lg text-base leading-relaxed text-[#4A4A4A] md:text-lg",
+            )}
+            style={{ transitionDelay: "420ms" }}
+          >
+            We connect ambitious students with leading universities abroad,
+            guiding you from your first enquiry to the day you land on campus,
+            wherever in the world that may be.
+          </p>
+
+          {/* CTAs */}
+          <div
+            className={reveal("mt-9 flex flex-wrap items-center gap-4")}
+            style={{ transitionDelay: "540ms" }}
+          >
+            <Link
+              href="/courses"
+              className="inline-flex items-center gap-2 rounded-full bg-[#E0483E] px-7 py-4 text-sm font-semibold text-white shadow-lg shadow-[#E0483E]/25 transition-all hover:-translate-y-0.5 hover:bg-[#C93C33] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E0483E] focus-visible:ring-offset-2"
+            >
+              Visit Our Program
+            </Link>
 
             <Link
-              href="/contact"
-              aria-label="Schedule a free consultation"
-              className="absolute right-8 top-8 grid h-16 w-16 place-items-center rounded-full border border-white/70 bg-[#1B1B1B]/60 text-3xl text-white backdrop-blur-xl transition-colors hover:bg-[#E0483E] hover:border-[#E0483E]"
+              href="/our-story"
+              className="group inline-flex items-center gap-3 rounded-full py-2 pr-4 text-sm font-semibold text-[#1B1B1B] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E0483E]"
             >
-              ↗
+              <span className="grid h-12 w-12 place-items-center rounded-full border border-[#E0483E] text-xl text-[#E0483E] transition-all duration-300 group-hover:rotate-45 group-hover:bg-[#E0483E] group-hover:text-white">
+                ↗
+              </span>
+              <span>
+                <span className="block">Read our story</span>
+                <span className="block text-xs font-normal text-[#8A8A8A]">
+                  Built on trust, students and progress
+                </span>
+              </span>
             </Link>
           </div>
 
-          {/* Left content */}
-          <div className="relative z-20 max-w-5xl">
-            <div className="space-y-1">
-              {title.map((line, index) => (
-                <div key={line} className="overflow-hidden pb-1">
-                  <h1
-                    className={`text-3xl font-semibold leading-[1] tracking-[-0.01em] transition-all duration-700 ease-out md:text-5xl ${
-                      index === 1 ? "text-[#E0483E]" : "text-[#1B1B1B]"
-                    } ${mounted ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
-                    style={{ transitionDelay: `${index * 120}ms` }}
-                  >
-                    {line}
-                  </h1>
-                </div>
-              ))}
-            </div>
+          {/* Stats */}
+          <dl className="mt-12 grid max-w-xl grid-cols-3 divide-x divide-[#ECECEC] rounded-2xl border border-[#ECECEC] bg-white/80 shadow-sm backdrop-blur">
+            {stats.map((item, i) => (
+              <div
+                key={item.label}
+                className={reveal("px-4 py-5 text-center sm:px-6 sm:text-left")}
+                style={{ transitionDelay: `${660 + i * 120}ms` }}
+              >
+                <dd className="text-2xl font-bold tracking-tight text-[#E0483E] sm:text-3xl">
+                  {item.value}
+                </dd>
+                <dt className="mt-1 text-xs font-medium text-[#6B6B6B] sm:text-sm">
+                  {item.label}
+                </dt>
+              </div>
+            ))}
+          </dl>
+        </div>
 
-            <p
-              className={`mt-8 max-w-xl text-base leading-8 text-[#000000] bg-white/50 transition-all duration-700 ease-out md:text-lg ${
-                mounted
-                  ? "translate-y-0 opacity-100"
-                  : "translate-y-6 opacity-0"
-              }`}
-              style={{ transitionDelay: "420ms" }}
-            >
-              We connect ambitious students with leading universities abroad,
-              guiding you from your first enquiry through to the day you land on
-              campus, wherever in the world that may be.
-            </p>
-
+        {/* ── Right: full image ─────────────────────── */}
+        <div
+          className={`relative transition-all duration-[1200ms] ease-out motion-reduce:transition-none ${
+            mounted
+              ? "translate-x-0 scale-100 opacity-100"
+              : "translate-x-16 scale-95 opacity-0"
+          }`}
+        >
+          <div className="relative">
+            {/* Offset frame behind image (follows the image's real size) */}
             <div
-              className={`mt-10 flex items-center gap-5 transition-all duration-700 ease-out ${
-                mounted
-                  ? "translate-y-0 opacity-100"
-                  : "translate-y-6 opacity-0"
-              }`}
-              style={{ transitionDelay: "540ms" }}
-            >
+              aria-hidden
+              className="absolute -bottom-4 -right-4 hidden h-full w-full rounded-[2rem] border-2 border-[#E0483E]/30 sm:block"
+            />
+
+            {/* White mat around the photo, like a printed frame */}
+            <div className="relative rounded-[2rem] bg-white p-3 shadow-2xl ring-1 ring-[#ECECEC] sm:p-4">
+              {/* width/height 0 + auto height = whole image, natural aspect ratio, no cropping */}
+              <Image
+                src={HERO_IMAGE}
+                alt="Students exploring study abroad opportunities"
+                width={0}
+                height={0}
+                sizes="(min-width: 1024px) 55vw, 100vw"
+                className="h-auto w-full rounded-[1.4rem]"
+                priority
+              />
+
+              {/* Corner CTA */}
               <Link
-                href="/our-story"
-                className="grid h-16 w-16 place-items-center rounded-full border border-[#E0483E] text-3xl text-[#E0483E] transition-all duration-500 hover:scale-110 hover:bg-[#E0483E] hover:text-white md:h-20 md:w-20 md:text-4xl"
+                href="/contact"
+                aria-label="Book a free consultation"
+                className="absolute right-7 top-7 grid h-12 w-12 place-items-center rounded-full border border-white/70 bg-[#1B1B1B]/40 text-xl text-white backdrop-blur-xl transition-all hover:rotate-45 hover:border-[#E0483E] hover:bg-[#E0483E] sm:right-8 sm:top-8 sm:h-14 sm:w-14 sm:text-2xl"
               >
                 ↗
               </Link>
-
-              <div>
-                <h4 className="text-base font-semibold uppercase tracking-wide text-[#1B1B1B] md:text-lg">
-                  Read our story
-                </h4>
-                <p className="mt-1 text-sm text-[#9A9A9A]">
-                  Built on trust, students, and progress
-                </p>
-              </div>
             </div>
 
-            <div className="mt-10 grid max-w-2xl gap-4 sm:grid-cols-3">
-              {stats.map((item, index) => (
-                <div
-                  key={item.label}
-                  className={`rounded-[1.4rem] border border-[#ECECEC] bg-white p-5 shadow-sm transition-all duration-700 ease-out hover:-translate-y-2 hover:border-[#E0483E]/40 hover:shadow-md ${
-                    mounted
-                      ? "translate-y-0 opacity-100"
-                      : "translate-y-6 opacity-0"
-                  }`}
-                  style={{ transitionDelay: `${660 + index * 120}ms` }}
-                >
-                  <h3 className="text-2xl font-black text-[#E0483E]">
-                    {item.value}
-                  </h3>
-                  <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.18em] text-[#9A9A9A]">
-                    {item.label}
-                  </p>
-                </div>
-              ))}
+            {/* Floating badge */}
+            <div className="absolute -left-4 top-10 hidden items-center gap-3 rounded-2xl border border-[#ECECEC] bg-white px-4 py-3 shadow-xl sm:flex lg:-left-10">
+              <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#59B226]/15 text-lg">
+                🎓
+              </span>
+              <span>
+                <span className="block text-sm font-bold text-[#1B1B1B]">
+                  Free expert guidance
+                </span>
+                <span className="block text-xs text-[#6B6B6B]">
+                  From enquiry to campus
+                </span>
+              </span>
             </div>
           </div>
 
-          {/* Mobile image (shown below content on small screens) */}
-          <div className="relative z-20 h-[340px] overflow-hidden rounded-2xl shadow-xl lg:hidden">
-            <Image
-              src="/desination.png"
-              alt="Students exploring study abroad opportunities"
-              fill
-              sizes="100vw"
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+          {/* Destinations, moved below so nothing covers the photo */}
+          <div
+            className={reveal(
+              "mt-8 flex flex-wrap items-center gap-2 sm:gap-3",
+            )}
+            style={{ transitionDelay: "900ms" }}
+          >
+            <span className="mr-1 text-sm font-semibold text-[#1B1B1B]">
+              Popular destinations
+            </span>
+            {destinations.map((d) => (
+              <span
+                key={d}
+                className="rounded-full border border-[#ECECEC] bg-white px-3.5 py-1.5 text-xs font-semibold text-[#3A3A3A] shadow-sm transition-colors hover:border-[#E0483E]/50 hover:text-[#E0483E]"
+              >
+                {d}
+              </span>
+            ))}
           </div>
         </div>
       </div>

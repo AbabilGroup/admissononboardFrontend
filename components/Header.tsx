@@ -1,21 +1,27 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import ReactCountryFlag from "react-country-flag";
 
 const countries = [
-  "United Kingdom",
-  "Australia",
-  "New Zealand",
-  "Finland",
-  "Greece",
-  "Lithuania",
-  "Hungary",
-  "Romania",
-  "Malta",
-  "Cyprus",
+  { name: "United Kingdom", code: "GB" },
+  { name: "Australia", code: "AU" },
+  { name: "New Zealand", code: "NZ" },
+  { name: "Finland", code: "FI" },
+  { name: "Greece", code: "GR" },
+  { name: "Lithuania", code: "LT" },
+  { name: "Hungary", code: "HU" },
+  { name: "Romania", code: "RO" },
+  { name: "Malta", code: "MT" },
+  { name: "Cyprus", code: "CY" },
 ];
+
+// Quick lookup: country name -> ISO code (used by the mobile menu)
+const countryCodes: Record<string, string> = Object.fromEntries(
+  countries.map((c) => [c.name, c.code]),
+);
 
 const navLinks = [
   { href: "/services", label: "Services" },
@@ -36,6 +42,24 @@ const partner = ["Recruitment Partner", "Institution Partner"];
 
 function toSlug(label: string) {
   return label.toLowerCase().replace(/\s+/g, "-");
+}
+
+function Flag({ code, name }: { code: string; name: string }) {
+  return (
+    <span className="flex shrink-0 overflow-hidden rounded-[3px] shadow-sm ring-1 ring-black/10">
+      <ReactCountryFlag
+        countryCode={code}
+        svg
+        aria-label={`Flag of ${name}`}
+        style={{
+          width: "1.5em",
+          height: "1.1em",
+          display: "block",
+          objectFit: "cover",
+        }}
+      />
+    </span>
+  );
 }
 
 function ChevronIcon({ open }: { open: boolean }) {
@@ -63,10 +87,14 @@ function MobileGroup({
   label,
   items,
   basePath,
+  flags,
+  onNavigate,
 }: {
   label: string;
   items: string[];
   basePath?: string;
+  flags?: Record<string, string>;
+  onNavigate?: () => void;
 }) {
   const [open, setOpen] = useState(false);
   return (
@@ -74,6 +102,7 @@ function MobileGroup({
       <button
         type="button"
         onClick={() => setOpen((prev) => !prev)}
+        aria-expanded={open}
         className="flex w-full items-center justify-between py-2 text-base font-medium text-zinc-900"
       >
         {label}
@@ -85,8 +114,10 @@ function MobileGroup({
             <Link
               key={item}
               href={`${basePath ?? ""}/${toSlug(item)}`}
-              className="rounded-lg px-3 py-2 text-sm font-medium text-zinc-600 transition-colors hover:bg-[#E0483E]/8 hover:text-black"
+              onClick={onNavigate}
+              className="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-zinc-600 transition-colors hover:bg-[#E0483E]/8 hover:text-black"
             >
+              {flags?.[item] && <Flag code={flags[item]} name={item} />}
               {item}
             </Link>
           ))}
@@ -96,8 +127,83 @@ function MobileGroup({
   );
 }
 
+const dropdownLinkClass =
+  "rounded-lg px-3 py-2 text-base font-medium text-zinc-600 transition-colors duration-150 hover:bg-[#0D7CE1]/8 hover:text-black";
+
+/**
+ * Desktop dropdown controlled by state (not pure CSS hover), so it can
+ * close itself as soon as a link inside it is clicked.
+ */
+function DesktopDropdown({
+  label,
+  href,
+  width,
+  children,
+}: {
+  label: string;
+  href?: string;
+  width: string;
+  children: (close: () => void) => ReactNode;
+}) {
+  const [open, setOpen] = useState(false);
+  const close = () => setOpen(false);
+
+  const triggerContent = (
+    <>
+      {label}
+      <ChevronIcon open={open} />
+      <span
+        className={`absolute inset-x-0 -bottom-0.5 h-[2px] origin-left rounded-full bg-black transition-transform duration-300 ${
+          open ? "scale-x-100" : "scale-x-0"
+        }`}
+      />
+    </>
+  );
+  const triggerClass =
+    "relative flex cursor-pointer items-center gap-1.5 py-2 transition-colors duration-200 hover:text-black";
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={close}
+      onFocus={() => setOpen(true)}
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget as Node)) close();
+      }}
+      onKeyDown={(e) => e.key === "Escape" && close()}
+    >
+      {href ? (
+        <Link
+          href={href}
+          onClick={close}
+          aria-expanded={open}
+          className={triggerClass}
+        >
+          {triggerContent}
+        </Link>
+      ) : (
+        <button type="button" aria-expanded={open} className={triggerClass}>
+          {triggerContent}
+        </button>
+      )}
+
+      <div
+        className={`absolute left-1/2 top-full z-50 ${width} -translate-x-1/2 pt-3 transition-all duration-200 ${
+          open ? "visible opacity-100" : "invisible opacity-0"
+        }`}
+      >
+        <div className="rounded-2xl border border-black/5 bg-white p-4 shadow-xl backdrop-blur-xl">
+          <div className="grid grid-cols-1 gap-1">{children(close)}</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const closeMobile = () => setMobileOpen(false);
 
   return (
     <div className="sticky top-0 z-50 w-full px-4 pt-4">
@@ -109,7 +215,7 @@ export default function Header() {
           >
             <Image
               src={"/logo.png"}
-              alt="admition on board"
+              alt="Admission OnBoard"
               width={180}
               height={22}
             />
@@ -117,84 +223,45 @@ export default function Header() {
 
           {/* Desktop nav */}
           <nav className="hidden items-center gap-8 text-base font-light text-zinc-900 lg:flex">
-            <div className="group relative">
-              <button className="flex cursor-pointer items-center gap-1.5 py-2 transition-colors duration-200 group-hover:text-black">
-                About
-                <svg
-                  width="11"
-                  height="11"
-                  viewBox="0 0 12 12"
-                  fill="none"
-                  className="mt-0.5 transition-transform duration-300 group-hover:rotate-180"
-                >
-                  <path
-                    d="M2.5 4.5L6 8L9.5 4.5"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                <span className="absolute inset-x-0 -bottom-0.5 h-[2px] origin-left scale-x-0 rounded-full bg-black transition-transform duration-300 group-hover:scale-x-100" />
-              </button>
+            <DesktopDropdown label="About" width="w-50">
+              {(close) =>
+                about.map((item) => (
+                  <Link
+                    key={item}
+                    href={`/${toSlug(item)}`}
+                    onClick={close}
+                    className={dropdownLinkClass}
+                  >
+                    {item}
+                  </Link>
+                ))
+              }
+            </DesktopDropdown>
 
-              <div className="invisible absolute left-1/2 top-full z-50 w-50 -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
-                <div className="rounded-2xl border border-black/5 bg-white p-4 shadow-xl backdrop-blur-xl">
-                  <div className="grid grid-cols-1 gap-1">
-                    {about.map((item) => (
-                      <Link
-                        key={item}
-                        href={`/${toSlug(item)}`}
-                        className="rounded-lg px-3 py-2 text-base font-medium text-zinc-600 transition-colors duration-150 hover:bg-[#0D7CE1]/8 hover:text-black"
-                      >
-                        {item}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="group relative">
-              <Link
-                href={"/countries"}
-                className="flex cursor-pointer items-center gap-1.5 py-2 transition-colors duration-200 group-hover:text-black"
-              >
-                Countries
-                <svg
-                  width="11"
-                  height="11"
-                  viewBox="0 0 12 12"
-                  fill="none"
-                  className="mt-0.5 transition-transform duration-300 group-hover:rotate-180"
-                >
-                  <path
-                    d="M2.5 4.5L6 8L9.5 4.5"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                <span className="absolute inset-x-0 -bottom-0.5 h-[2px] origin-left scale-x-0 rounded-full bg-black transition-transform duration-300 group-hover:scale-x-100" />
-              </Link>
-
-              <div className="invisible absolute left-1/2 top-full z-50 w-50 -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
-                <div className="rounded-2xl border border-black/5 bg-white p-4 shadow-xl backdrop-blur-xl">
-                  <div className="grid grid-cols-1 gap-1">
-                    {countries.map((country) => (
-                      <Link
-                        key={country}
-                        href={`/countries/${toSlug(country)}`}
-                        className="rounded-lg px-3 py-2 text-base font-medium text-zinc-600 transition-colors duration-150 hover:bg-[#0D7CE1]/8 hover:text-black"
-                      >
-                        {country}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
+            <DesktopDropdown label="Countries" href="/countries" width="w-60">
+              {(close) => (
+                <>
+                  {countries.map((country) => (
+                    <Link
+                      key={country.code}
+                      href={`/countries/${toSlug(country.name)}`}
+                      onClick={close}
+                      className={`flex items-center gap-3 ${dropdownLinkClass}`}
+                    >
+                      <Flag code={country.code} name={country.name} />
+                      {country.name}
+                    </Link>
+                  ))}
+                  <Link
+                    href="/countries"
+                    onClick={close}
+                    className="mt-2 flex items-center justify-center border-t border-black/5 pt-3 text-sm font-semibold text-[#E0483E] transition-colors hover:text-black"
+                  >
+                    View all destinations
+                  </Link>
+                </>
+              )}
+            </DesktopDropdown>
 
             {navLinks.map((link) => (
               <Link
@@ -207,43 +274,20 @@ export default function Header() {
               </Link>
             ))}
 
-            <div className="group relative">
-              <button className="flex cursor-pointer items-center gap-1.5 py-2 transition-colors duration-200 group-hover:text-black">
-                Partners
-                <svg
-                  width="11"
-                  height="11"
-                  viewBox="0 0 12 12"
-                  fill="none"
-                  className="mt-0.5 transition-transform duration-300 group-hover:rotate-180"
-                >
-                  <path
-                    d="M2.5 4.5L6 8L9.5 4.5"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                <span className="absolute inset-x-0 -bottom-0.5 h-[2px] origin-left scale-x-0 rounded-full bg-black transition-transform duration-300 group-hover:scale-x-100" />
-              </button>
-
-              <div className="invisible absolute left-1/2 top-full z-50 w-70 -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
-                <div className="rounded-2xl border border-black/5 bg-white p-4 shadow-xl backdrop-blur-xl">
-                  <div className="grid grid-cols-1 gap-1">
-                    {partner.map((item) => (
-                      <Link
-                        key={item}
-                        href={`/${toSlug(item)}`}
-                        className="rounded-lg px-3 py-2 text-base font-medium text-zinc-600 transition-colors duration-150 hover:bg-[#0D7CE1]/8 hover:text-black"
-                      >
-                        {item}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
+            <DesktopDropdown label="Partners" width="w-70">
+              {(close) =>
+                partner.map((item) => (
+                  <Link
+                    key={item}
+                    href={`/${toSlug(item)}`}
+                    onClick={close}
+                    className={dropdownLinkClass}
+                  >
+                    {item}
+                  </Link>
+                ))
+              }
+            </DesktopDropdown>
           </nav>
 
           {/* Desktop auth buttons */}
@@ -306,13 +350,19 @@ export default function Header() {
 
         {/* Mobile menu panel */}
         {mobileOpen && (
-          <div className="border-t border-black/5 px-6 pb-6 pt-2 lg:hidden">
+          <div className="max-h-[calc(100vh-7rem)] overflow-y-auto border-t border-black/5 px-6 pb-6 pt-2 lg:hidden">
             <nav className="flex flex-col">
-              <MobileGroup label="About" items={about} />
+              <MobileGroup
+                label="About"
+                items={about}
+                onNavigate={closeMobile}
+              />
               <MobileGroup
                 label="Countries"
-                items={countries}
+                items={countries.map((c) => c.name)}
                 basePath="/countries"
+                flags={countryCodes}
+                onNavigate={closeMobile}
               />
 
               <div className="flex flex-col border-b border-black/5 py-2">
@@ -320,7 +370,7 @@ export default function Header() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    onClick={() => setMobileOpen(false)}
+                    onClick={closeMobile}
                     className="py-2 text-base font-medium text-zinc-900"
                   >
                     {link.label}
@@ -328,20 +378,24 @@ export default function Header() {
                 ))}
               </div>
 
-              <MobileGroup label="Partners" items={partner} />
+              <MobileGroup
+                label="Partners"
+                items={partner}
+                onNavigate={closeMobile}
+              />
             </nav>
 
             <div className="mt-4 flex flex-col gap-3">
               <Link
                 href="/auth/login"
-                onClick={() => setMobileOpen(false)}
+                onClick={closeMobile}
                 className="flex h-11 items-center justify-center rounded-full border border-black text-[15px] font-semibold tracking-wide text-black transition-colors duration-200 hover:border-[#E0483E] hover:text-[#E0483E]"
               >
                 Login
               </Link>
               <Link
                 href="/auth/register"
-                onClick={() => setMobileOpen(false)}
+                onClick={closeMobile}
                 className="flex h-11 items-center justify-center rounded-full bg-black text-[15px] font-semibold tracking-wide text-white transition-colors duration-200 hover:bg-gray-950"
               >
                 Register as a Student

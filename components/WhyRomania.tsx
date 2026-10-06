@@ -1,45 +1,55 @@
-import React from "react";
-
 const reasons = [
   {
-    title: "Among The Most Affordable EU Degrees",
+    title: "Explore 50+ Universities & Colleges",
     description:
-      "Romania offers fully EU-recognized degrees at some of the lowest tuition fees anywhere in Europe.",
+      "Non-EU students can choose from 50+ Romanian universities and higher-education institutions offering Bachelor’s, Master’s and PhD programmes.",
+    icon: (
+      <path d="M12 2 2 7v2h20V7L12 2ZM4 11v7H3v2h18v-2h-1v-7h-2v7h-3v-7h-2v7h-2v-7H9v7H6v-7H4Z" />
+    ),
+  },
+  {
+    title: "Affordable Tuition and Low Cost of Living",
+    description:
+      "Compared to Western Europe or North America, Romania offers significantly lower academic and living costs. Tuition fees for international students generally range from €2,000 to €7,000 per year (depending on the programme), and monthly living expenses, including housing, food, and transit, typically run between €300 and €700.",
     icon: (
       <path d="M12 3 2 8l10 5 8-4v6h2V8L12 3Zm0 8L4 8l8-4 8 4-8 4Zm-6 2v4c0 1.66 2.69 3 6 3s6-1.34 6-3v-4l-6 3-6-3Z" />
     ),
   },
   {
-    title: "Strong in Medicine & Engineering",
+    title: "EU-Recognized Qualifications",
     description:
-      "Long-established medical and engineering faculties, many teaching entirely in English, with a track record recognized across the EU.",
+      "As an EU member country adhering to the Bologna Process, degrees awarded by accredited Romanian universities are automatically recognized across the European Union, EEA, and beyond. This makes it easier for graduates to pursue further education or seek employment anywhere in Europe.",
     icon: (
-      <path d="M9 2h6a2 2 0 0 1 2 2v2h4a1 1 0 0 1 1 1v11a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a1 1 0 0 1 1-1h4V4a2 2 0 0 1 2-2Zm0 4h6V4H9v2Z" />
+      <path d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5l-8-3Zm-1.5 14-4-4 1.4-1.4 2.6 2.6 5.6-5.6L17.5 9l-7 7Z" />
     ),
   },
   {
-    title: "Low Cost of Living",
+    title: "Multilingual Programmes (No Language Barrier)",
     description:
-      "Rent, food, and daily expenses cost a fraction of Western Europe, so your budget stretches much further as a student.",
+      "You don't need to speak fluent Romanian to study there. Universities offer a wide array of Bachelor's and Master's programmes taught entirely in English, French, and German, particularly in sought-after fields like medicine, dentistry, engineering, and IT.",
     icon: (
-      <path d="M12 2C7.86 2 4.5 5.36 4.5 9.5c0 5.25 6.19 11.44 6.46 11.7a1.5 1.5 0 0 0 2.08 0c.27-.26 6.46-6.45 6.46-11.7C19.5 5.36 16.14 2 12 2Zm0 10.5A3 3 0 1 1 12 6.5a3 3 0 0 1 0 6Z" />
+      <path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04ZM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12Zm-2.62 7 1.62-4.33L19.12 17h-3.24Z" />
     ),
   },
   {
-    title: "Central Location, Easy EU Travel",
+    title: "Strong Focus on Medicine, Tech, and STEM",
     description:
-      "Sitting at the heart of Europe, Romania makes weekend trips across the EU affordable and quick.",
+      "Romania is well known for its rigorous medical and pharmaceutical programmes. Cities like Bucharest, Cluj-Napoca, and Iași have also become major European tech hubs, offering engineering and computer science students modern research environments and access to growing tech industries.",
+    icon: <path d="M10 3h4v7h7v4h-7v7h-4v-7H3v-4h7V3Z" />,
+  },
+  {
+    title: "Work and Mobility Opportunities in Europe",
+    description:
+      "International student visas allow part-time work (up to 20 hours per week during the semester) to help cover living expenses. Romania’s inclusion in the Schengen Area also lets students with a valid residence permit travel freely across Schengen member states during holidays and breaks.",
     icon: (
-      <path d="M9 2v2H7v2H5v2H3v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8h-2V6h-2V4h-2V2H9Zm3 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z" />
+      <path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5Z" />
     ),
   },
   {
-    title: "Flexible Education Pathways",
+    title: "Permanent Residence (PR) Pathway",
     description:
-      "Foundation, diploma-to-degree, and vocational routes designed for students from every academic background.",
-    icon: (
-      <path d="M12 2 3 7l9 5 7-3.89V16h2V7L12 2Zm-7 8.27V15c0 2.76 3.58 5 8 5s8-2.24 8-5v-4.73l-8 4.45-8-4.45Z" />
-    ),
+      "Non-EU students can apply for long-term residence after generally 5 years of legal residence in Romania, with study periods counted at 50% toward this period. Applicants must also meet requirements for income, accommodation, health insurance, Romanian language, and legal status. Applications are submitted to the General Inspectorate for Immigration (IGI).",
+    icon: <path d="M12 3 2 11h3v9h5v-6h4v6h5v-9h3L12 3Z" />,
   },
 ];
 
@@ -79,21 +89,22 @@ export default function WhyRomania() {
             </h2>
 
             <div className="relative mt-10">
-              <div className="absolute left-6 top-2 bottom-2 w-px bg-[#ECECEC]" />
+              <div className="absolute bottom-2 left-6 top-2 w-px bg-[#ECECEC]" />
 
-              <div className="flex flex-col gap-6">
+              <ol className="flex flex-col gap-6">
                 {reasons.map((reason, i) => (
-                  <div key={reason.title} className="relative flex gap-5">
+                  <li key={reason.title} className="relative flex gap-5">
                     <div className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#1B1B1B] shadow-md">
                       <svg
                         width="20"
                         height="20"
                         viewBox="0 0 24 24"
                         fill="white"
+                        aria-hidden
                       >
                         {reason.icon}
                       </svg>
-                      <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#E0483E] text-[10px] font-bold text-white">
+                      <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#E0483E] text-[10px] font-bold text-white ring-2 ring-[#FFFEFA]">
                         {i + 1}
                       </span>
                     </div>
@@ -106,17 +117,23 @@ export default function WhyRomania() {
                         {reason.description}
                       </p>
                     </div>
-                  </div>
+                  </li>
                 ))}
-              </div>
+              </ol>
             </div>
           </div>
 
-          {/* Right: consultation form */}
-          <div className="h-fit rounded-3xl border border-[#ECECEC] bg-white p-6 shadow-sm sm:p-8">
+          {/* Right: consultation form (stays in view while scrolling on desktop) */}
+          <div className="h-fit rounded-3xl border border-[#ECECEC] bg-white p-6 shadow-sm sm:p-8 md:sticky md:top-28">
             <div className="flex items-start gap-3">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#E0483E]/10">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="#E0483E">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="#E0483E"
+                  aria-hidden
+                >
                   <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm1 15h-2v-2h2v2Zm2.07-7.75-.9.92C13.45 10.9 13 11.5 13 13h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41a2 2 0 0 0-2-2 2 2 0 0 0-2 2H8a4 4 0 0 1 4-4 4 4 0 0 1 4 4c0 .8-.32 1.53-.93 2.09Z" />
                 </svg>
               </div>

@@ -1,32 +1,32 @@
 import Image from "next/image";
 
-// Place your image at: /public/admission-visa.png
+// Place your image at: /public/studyrom.png
 
 const steps = [
   {
-    title: "One-on-One Free Counselling",
+    title: "Choose University & Program",
     description:
-      "Sit down with expert counsellors to explore your options, shortlist universities in Romania, and understand what's required.",
+      "Select an accredited Romanian university and suitable Bachelor’s, Master’s, PhD, or Preparatory Year program.",
   },
   {
-    title: "Confirm Your Admission",
+    title: "Prepare & Submit Documents",
     description:
-      "Apply to your preferred institution in Romania and receive your official Letter of Acceptance.",
+      "Prepare passport, academic certificates/transcripts, birth certificate, language proof, medical certificate and other required documents. Translate and legalize/apostille documents where required, then submit the application to the university.",
   },
   {
-    title: "Submit Updated Documents",
+    title: "Receive Letter of Acceptance",
     description:
-      "Provide your latest academic and financial records, along with proof of health insurance and accommodation.",
+      "The university submits the eligible file to Romania’s Ministry of Education. After approval, the Letter of Acceptance is issued. Processing can take up to 30 working days.",
   },
   {
-    title: "Pay Tuition & Confirm Your Place",
+    title: "Apply for Student Visa",
     description:
-      "Pay your tuition fees and secure your enrolment, then gather the documents your visa application will need.",
+      "After receiving the Letter of Acceptance, pay the required tuition fee and prepare financial proof, accommodation, health insurance, criminal record/PCC and other visa documents. Submit the application.",
   },
   {
-    title: "Apply For Your Student Visa & Prepare To Fly",
+    title: "Travel → Enrol → Residence Permit",
     description:
-      "We help you lodge your Romanian long-stay (D/SD) student visa application, then it's time to prepare for departure to your new campus.",
+      "After visa approval, travel to Romania, complete university enrolment and apply for a Student Residence Permit through the Romanian Immigration Inspectorate (IGI).",
   },
 ];
 
@@ -47,9 +47,9 @@ export default function AdmissionVisaProcessRomania() {
 
         <div className="mt-14 grid grid-cols-1 items-start gap-10 md:grid-cols-[1.1fr_1fr] md:gap-16">
           {/* Left: steps */}
-          <div className="flex flex-col gap-4">
+          <ol className="flex flex-col gap-4">
             {steps.map((step, index) => (
-              <div
+              <li
                 key={step.title}
                 className="rounded-2xl border border-[#ECECEC] bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
               >
@@ -66,9 +66,9 @@ export default function AdmissionVisaProcessRomania() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </li>
             ))}
-          </div>
+          </ol>
 
           {/* Right: image */}
           <div className="sticky top-24 hidden md:block">
@@ -78,7 +78,7 @@ export default function AdmissionVisaProcessRomania() {
                 alt="Passport, visa stamps, and travel compass"
                 fill
                 sizes="(max-width: 768px) 100vw, 45vw"
-                className="object-contain rounded-2xl"
+                className="rounded-2xl object-contain"
               />
             </div>
           </div>
