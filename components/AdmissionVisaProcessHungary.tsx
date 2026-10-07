@@ -1,32 +1,32 @@
 import Image from "next/image";
 
-// Place your image at: /public/admission-visa.png
+// Place your image at: /public/studyhun.png
 
 const steps = [
   {
-    title: "One-on-One Free Counselling",
+    title: "University Admission",
     description:
-      "Sit down with expert counsellors to explore your options, shortlist universities in Hungary, and understand what's required.",
+      "Choose an eligible Hungarian university and programme, and receive your admission letter.",
   },
   {
-    title: "Confirm Your Admission",
+    title: "Student Residence Permit",
     description:
-      "Apply to your preferred institution in Hungary and receive your official Letter of Acceptance.",
+      "Apply for a Hungarian Residence Permit for the Purpose of Studies and travel to Hungary. The permit can generally be issued for up to 3 years and extended.",
   },
   {
-    title: "Submit Updated Documents",
+    title: "Study & Graduate",
     description:
-      "Provide your latest academic and financial records, along with proof of health insurance and accommodation.",
+      "Complete your Bachelor’s, Master’s or other eligible higher-education programme. During your studies, you can work within the applicable limits.",
   },
   {
-    title: "Pay Tuition & Confirm Your Place",
+    title: "Post-Study Job Search",
     description:
-      "Pay your tuition fees and secure your enrolment, then gather the documents your visa application will need.",
+      "After successfully completing your studies, you can apply in Hungary for a Residence Permit for Seeking a Job or Starting a Business, helping you move into employment or self-employment.",
   },
   {
-    title: "Apply For Your Student Visa & Prepare To Fly",
+    title: "Employment → Long-Term Residence",
     description:
-      "We help you lodge your Hungarian long-term (D) national visa application, then it's time to prepare for departure to your new campus.",
+      "After moving into a suitable residence status and meeting the legal requirements, you may become eligible for a National Residence Card (long-term residence). The standard route requires at least 3 years of legal, continuous residence in Hungary. Time spent on a study permit does not qualify directly, so your exact pathway depends on the residence status you hold after graduation.",
   },
 ];
 
@@ -47,9 +47,9 @@ export default function AdmissionVisaProcessHungary() {
 
         <div className="mt-14 grid grid-cols-1 items-start gap-10 md:grid-cols-[1.1fr_1fr] md:gap-16">
           {/* Left: steps */}
-          <div className="flex flex-col gap-4">
+          <ol className="flex flex-col gap-4">
             {steps.map((step, index) => (
-              <div
+              <li
                 key={step.title}
                 className="rounded-2xl border border-[#ECECEC] bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
               >
@@ -66,9 +66,9 @@ export default function AdmissionVisaProcessHungary() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </li>
             ))}
-          </div>
+          </ol>
 
           {/* Right: image */}
           <div className="sticky top-24 hidden md:block">
@@ -78,7 +78,7 @@ export default function AdmissionVisaProcessHungary() {
                 alt="Passport, visa stamps, and travel compass"
                 fill
                 sizes="(max-width: 768px) 100vw, 45vw"
-                className="object-contain rounded-2xl"
+                className="rounded-2xl object-contain"
               />
             </div>
           </div>

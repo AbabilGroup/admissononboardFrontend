@@ -8,43 +8,43 @@ const DESTINATION = "Hungary";
 
 const reasons = [
   {
-    title: "World-Renowned Medical Programs",
+    title: "Globally Recognized European Degrees",
     description:
-      "Hungary is one of Europe's top destinations for Medicine, Dentistry, and Veterinary Science, taught in English with EU recognition.",
+      "Non-EU students earn internationally accredited Bachelor's, Master's and PhD qualifications that follow the European Bologna framework. Hundreds of English-taught programmes are available in high-demand fields like Medicine, Engineering, IT and Business.",
+    icon: (
+      <path d="M12 2 4 5v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V5l-8-3Zm-1.2 13.4-3.2-3.2 1.4-1.4 1.8 1.8 4.6-4.6 1.4 1.4-6 6Z" />
+    ),
+  },
+  {
+    title: "Generous Scholarships & Low Costs",
+    description:
+      "Hungary offers the fully funded Stipendium Hungaricum government scholarship, which covers 100% of tuition, a monthly stipend, a housing allowance and health insurance. For self-funded students, it remains one of the most budget-friendly options in Europe.",
     icon: (
       <path d="M12 3 2 8l10 5 8-4v6h2V8L12 3Zm0 8L4 8l8-4 8 4-8 4Zm-6 2v4c0 1.66 2.69 3 6 3s6-1.34 6-3v-4l-6 3-6-3Z" />
     ),
   },
   {
-    title: "Affordable EU Degrees",
+    title: "Legal Part-Time Work Rights",
     description:
-      "Fully EU-accredited degrees at tuition fees a fraction of what you'd pay in the UK, Australia, or the US.",
+      "Non-EU students with a valid study residence permit can legally work up to 30 hours per week during term time, under the rules of Hungary's immigration authority (OIF), and full-time during official academic holidays.",
     icon: (
       <path d="M9 2h6a2 2 0 0 1 2 2v2h4a1 1 0 0 1 1 1v11a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a1 1 0 0 1 1-1h4V4a2 2 0 0 1 2-2Zm0 4h6V4H9v2Z" />
     ),
   },
   {
-    title: "Low Cost of Living",
+    title: "Post-Study Career & Residency Pathways",
     description:
-      "Rent, food, and daily expenses cost significantly less than Western Europe, so your budget stretches much further.",
+      "Graduates can apply for a post-study residence permit to look for work or start a business in Hungary, giving them a structured path to build a long-term international career within the EU.",
     icon: (
-      <path d="M12 2C7.86 2 4.5 5.36 4.5 9.5c0 5.25 6.19 11.44 6.46 11.7a1.5 1.5 0 0 0 2.08 0c.27-.26 6.46-6.45 6.46-11.7C19.5 5.36 16.14 2 12 2Zm0 10.5A3 3 0 1 1 12 6.5a3 3 0 0 1 0 6Z" />
+      <path d="M3 17 9 11l4 4 8-8v4h2V5h-6v2h4l-6.6 6.6-4-4L1.6 15.6 3 17Z" />
     ),
   },
   {
-    title: "Central Location, Easy EU Travel",
+    title: "Central Location & Schengen Travel",
     description:
-      "Sitting at the heart of Europe, Budapest puts weekend trips across the continent within easy, affordable reach.",
+      "Located in the heart of Europe, Hungary lets students with a residence permit travel visa-free across the Schengen Area, while living in safe, vibrant, multicultural student cities like Budapest, Debrecen, Szeged and Pécs.",
     icon: (
-      <path d="M9 2v2H7v2H5v2H3v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8h-2V6h-2V4h-2V2H9Zm3 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z" />
-    ),
-  },
-  {
-    title: "Flexible Education Pathways",
-    description:
-      "Foundation, diploma-to-degree, and pre-medical preparatory routes designed for students from every academic background.",
-    icon: (
-      <path d="M12 2 3 7l9 5 7-3.89V16h2V7L12 2Zm-7 8.27V15c0 2.76 3.58 5 8 5s8-2.24 8-5v-4.73l-8 4.45-8-4.45Z" />
+      <path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5Z" />
     ),
   },
 ];
@@ -153,10 +153,14 @@ export default function WhyHungary() {
           {/* Left: reasons timeline */}
           <div>
             <h2 className="text-3xl font-semibold tracking-tight text-[#1B1B1B] sm:text-4xl">
-              Why <span className="text-[#E0483E]"> Study in Hungary</span>?
+              Why Study in <span className="text-[#E0483E]">Hungary</span>?
             </h2>
+            <p className="mt-3 max-w-xl text-sm text-[#6B6B6B] sm:text-base">
+              Here are the five strongest reasons for non-EU students to study
+              in Hungary.
+            </p>
 
-            <div className="relative mt-10">
+            <div className="relative mt-8">
               <div className="absolute bottom-2 left-6 top-2 w-px bg-[#ECECEC]" />
 
               <ol className="flex flex-col gap-6">

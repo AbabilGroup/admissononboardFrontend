@@ -12,27 +12,12 @@ type Program = {
 
 const programs: Program[] = [
   {
-    title: "Preparatory Year",
+    title: "Bachelor's Degree (BA/BSc)",
     description: [
-      "Academic: High School Diploma or equivalent",
-      "Purpose: Romanian language preparation for Romanian-taught programmes",
-      "Documents: Transcripts, legalized/recognized certificates",
-      "Approval: Romanian Ministry of Education Acceptance Letter",
-      "Visa: Tuition payment, financial proof, PCC & health insurance",
-    ],
-    image: "/preparatory.png",
-    icon: (
-      <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v16H6.5a.5.5 0 0 0 0 1H20v3H6.5A2.5 2.5 0 0 1 4 19.5v-15Z" />
-    ),
-  },
-  {
-    title: "Bachelor's Degree",
-    description: [
-      "Academic: High School Diploma / equivalent",
-      "Documents: Academic transcripts & legalized/recognized certificates",
-      "Language: English or Romanian proficiency as required",
-      "Admission: Entrance exam may apply to some programmes",
-      "Approval: Ministry of Education Acceptance Letter",
+      "Academic: High School / 12th Grade or equivalent",
+      "Grades: Usually 60%+",
+      "English: IELTS 5.5–6.0 or equivalent",
+      "Selection: Interview or subject test",
     ],
     image: "/bachelors.png",
     icon: (
@@ -40,13 +25,12 @@ const programs: Program[] = [
     ),
   },
   {
-    title: "Master's Degree",
+    title: "Master's Degree (MA/MSc)",
     description: [
-      "Academic: Recognized Bachelor's Degree",
-      "Documents: Degree certificate & transcripts",
-      "Additional: CV, Motivation Letter and programme-specific documents",
-      "Language: English or Romanian proficiency as required",
-      "Approval: Ministry of Education Acceptance Letter",
+      "Academic: Relevant Bachelor's degree",
+      "English: IELTS 6.0–6.5 or equivalent",
+      "Documents: Diploma + transcripts",
+      "Selection: Interview / portfolio",
     ],
     image: "/masters.png",
     icon: (
@@ -54,17 +38,39 @@ const programs: Program[] = [
     ),
   },
   {
-    title: "PhD / Doctorate",
+    title: "Integrated Master's (Medicine/Dentistry/Pharmacy)",
     description: [
-      "Academic: Recognized Master's Degree",
-      "Documents: Academic certificates & transcripts",
-      "Additional: Research Proposal and supervisor/doctoral school approval",
-      "Assessment: Interview or admission evaluation may apply",
-      "Approval: Ministry of Education Acceptance Letter",
+      "Academic: High School with strong Biology & Chemistry",
+      "English: IELTS or university assessment",
+      "Selection: Entrance exam + interview",
+      "Alternative: Foundation / Pre-Medical course",
+    ],
+    image: "/master_intergrate.png",
+    icon: <path d="M10 3h4v7h7v4h-7v7h-4v-7H3v-4h7V3Z" />,
+  },
+  {
+    title: "Doctoral Degree (PhD/DLA)",
+    description: [
+      "Academic: Relevant Master's degree",
+      "English: IELTS 6.5–7.0 or equivalent",
+      "Documents: Research proposal + academic records",
+      "Selection: Supervisor approval + interview",
     ],
     image: "/phd.jpg",
     icon: (
       <path d="M7 2h10l1 5-1 1v2a5 5 0 0 1-10 0V8L6 7l1-5Zm5 12a3 3 0 0 0 3-3V8H9v3a3 3 0 0 0 3 3Zm-3 5h6v2H9v-2Z" />
+    ),
+  },
+  {
+    title: "Foundation / Preparatory Course",
+    description: [
+      "Academic: High School / 12th Grade",
+      "English: IELTS, or options without IELTS",
+      "Selection: Document review + placement test",
+    ],
+    image: "/diploma.avif",
+    icon: (
+      <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v16H6.5a.5.5 0 0 0 0 1H20v3H6.5A2.5 2.5 0 0 1 4 19.5v-15Z" />
     ),
   },
 ];
@@ -79,7 +85,7 @@ function splitItem(item: string) {
     : { label: item.slice(0, i), value: item.slice(i + 1).trim() };
 }
 
-export default function EntryRequirementsRomania() {
+export default function EntryRequirementsHungary() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -99,11 +105,11 @@ export default function EntryRequirementsRomania() {
             <span className="text-[#1B1B1B]">Requirements</span>
           </h2>
           {/* <p className="mx-auto mt-3 max-w-xl text-sm font-semibold text-gray-700 sm:text-base">
-            Study in Romania – Entry Requirements
+            Study in Hungary – Entry Requirements
           </p> */}
         </div>
 
-        <div className="mt-14 grid grid-cols-1 divide-y divide-[#ECECEC] sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4 lg:divide-x">
+        <div className="mt-14 grid grid-cols-1 divide-y divide-[#ECECEC] sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-3 xl:grid-cols-5 xl:divide-x">
           {programs.map((program, index) => {
             const isActive = index === activeIndex;
 

@@ -11,8 +11,8 @@ type Stat = {
 
 const stats: Stat[] = [
   {
-    value: "15+ Universities",
-    label: "500+ English-taught programmes",
+    value: "15+ Universities & 500+ English-Taught Programmes",
+    label: "open for international student admissions.",
     icon: (
       <path
         strokeLinecap="round"

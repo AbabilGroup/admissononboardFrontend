@@ -53,12 +53,10 @@ function PhoneIcon() {
   );
 }
 
-// Builds a Google Maps embed URL from a plain address, no API key required.
 function mapEmbedSrc(address: string) {
   return `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
 }
 
-// Builds a normal Google Maps link (for "Open in Google Maps").
 function mapLinkHref(address: string) {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
 }
@@ -71,7 +69,6 @@ export default function CountryOfficesPage({
 
   return (
     <div className="w-full bg-[#FFFEFA]">
-      {/* Hero */}
       <section className="relative overflow-hidden bg-gradient-to-br from-[#D6281F] via-[#B4272C] to-[#7A1E3A] px-6 py-16 text-center sm:py-20">
         <div className="mx-auto container">
           <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-xs font-semibold text-white backdrop-blur-sm">
@@ -92,7 +89,6 @@ export default function CountryOfficesPage({
         </div>
       </section>
 
-      {/* Offices */}
       <section className="px-6 py-16">
         <div className="mx-auto container">
           <h2 className="text-2xl font-semibold tracking-tight text-[#1B1B1B] sm:text-3xl">
@@ -149,7 +145,6 @@ export default function CountryOfficesPage({
               </div>
             ))}
 
-            {/* CTA card fills the last grid slot */}
             <div className="flex flex-col justify-between rounded-2xl bg-[#1B1B1B] p-6 text-white shadow-sm">
               <div>
                 <h3 className="text-lg font-semibold">Ready to start?</h3>
@@ -169,7 +164,6 @@ export default function CountryOfficesPage({
         </div>
       </section>
 
-      {/* Map modal */}
       {activeOffice && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4"

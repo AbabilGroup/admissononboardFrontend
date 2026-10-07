@@ -11,8 +11,8 @@ type Stat = {
 
 const stats: Stat[] = [
   {
-    value: "20+",
-    label: "Universities",
+    value: "64+ Institutions",
+    label: "open for international student admissions.",
     icon: (
       <path
         strokeLinecap="round"
@@ -22,9 +22,9 @@ const stats: Stat[] = [
     ),
   },
   {
-    value: "€4,000 to €15,000",
-    suffix: "/",
-    label: "Tuition fee per year",
+    value: "700+ Programmes",
+    // suffix: "/",
+    label: "open to international students in multiple languages",
     icon: (
       <>
         <circle cx="12" cy="12" r="8.5" />
@@ -36,7 +36,7 @@ const stats: Stat[] = [
     ),
   },
   {
-    value: "9 months",
+    value: "9 Months",
     label: "Post-study work",
     icon: (
       <>
