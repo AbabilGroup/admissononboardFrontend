@@ -17,6 +17,7 @@ const destinations = [
   "United Kingdom",
   "Cyprus",
   "Hungary",
+  "Malta",
 ];
 
 const levels: Array<"All levels" | Level> = [
@@ -366,14 +367,14 @@ const programmes: Programme[] = [
   },
   {
     university: "Training Three Sixty",
-    country: "United Kingdom",
+    country: "Malta",
     title: "Level 3 Diploma in Business Administration",
     level: "Foundation",
     duration: "1 year",
   },
   {
     university: "Training Three Sixty",
-    country: "United Kingdom",
+    country: "Malta",
     title: "Level 4 Diploma in Health and Social Care",
     level: "Foundation",
     duration: "1 year",

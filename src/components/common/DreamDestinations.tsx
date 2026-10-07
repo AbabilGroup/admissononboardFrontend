@@ -1,16 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-
-// Place your images at, e.g.:
-// /public/destinations/romania.png
-// /public/destinations/malta.png
-// /public/destinations/hungary.png
-// /public/destinations/cyprus.png
-// /public/destinations/united-kingdom.png
-// /public/destinations/greece.png
-// /public/destinations/australia.png
-// /public/destinations/finland.png
-// /public/destinations/lithuania.png
+import ReactCountryFlag from "react-country-flag";
 
 type Destination = {
   name: string;
@@ -25,7 +15,7 @@ const destinations: Destination[] = [
     name: "United Kingdom",
     slug: "united-kingdom",
     flagCode: "GB",
-    image: "/united-kingdom.png",
+    image: "/uk.png",
     description:
       "World-renowned universities, one-year master's degrees, and generous post-study work options.",
   },
@@ -33,15 +23,23 @@ const destinations: Destination[] = [
     name: "Australia",
     slug: "australia",
     flagCode: "AU",
-    image: "/australia-hero.avif",
+    image: "/australia.png",
     description:
       "Globally ranked universities paired with some of the most generous post-study work rights around.",
+  },
+  {
+    name: "New Zealand",
+    slug: "new-zealand",
+    flagCode: "NZ",
+    image: "/newzeland.png",
+    description:
+      "Practical, globally respected degrees, post-study work visas, and a safe, welcoming lifestyle.",
   },
   {
     name: "Finland",
     slug: "finland",
     flagCode: "FI",
-    image: "/finland-hero.avif",
+    image: "/findland-hero.png",
     description:
       "Tuition-friendly, innovation-led education in one of the world's happiest countries.",
   },
@@ -49,7 +47,7 @@ const destinations: Destination[] = [
     name: "Romania",
     slug: "romania",
     flagCode: "RO",
-    image: "/romania-hero.jpeg",
+    image: "/romania-hero.png",
     description:
       "Affordable tuition and EU-recognized degrees across a wide range of disciplines.",
   },
@@ -57,7 +55,7 @@ const destinations: Destination[] = [
     name: "Malta",
     slug: "malta",
     flagCode: "MT",
-    image: "/malta.png",
+    image: "/malta-hero.png",
     description:
       "English-taught programs on a safe, English-speaking island right inside the EU.",
   },
@@ -65,7 +63,7 @@ const destinations: Destination[] = [
     name: "Hungary",
     slug: "hungary",
     flagCode: "HU",
-    image: "/hungary.png",
+    image: "/hungary-hero.png",
     description:
       "Renowned medical and engineering programs paired with a low cost of living.",
   },
@@ -73,7 +71,7 @@ const destinations: Destination[] = [
     name: "Cyprus",
     slug: "cyprus",
     flagCode: "CY",
-    image: "/cyprus.png",
+    image: "/cyprus-hero.png",
     description:
       "A fast-growing hub for business and tech degrees with a Mediterranean lifestyle.",
   },
@@ -81,7 +79,7 @@ const destinations: Destination[] = [
     name: "Greece",
     slug: "greece",
     flagCode: "GR",
-    image: "/greece.png",
+    image: "/greece-hero.png",
     description:
       "Rich academic history paired with modern, budget-friendly degree options.",
   },
@@ -89,7 +87,7 @@ const destinations: Destination[] = [
     name: "Lithuania",
     slug: "lithuania",
     flagCode: "LT",
-    image: "/lithuania.png",
+    image: "/lithuania-hero.png",
     description:
       "Budget-friendly EU degrees with a fast-growing international student community.",
   },
@@ -135,9 +133,20 @@ export default function DreamDestinations() {
                   className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-                <span className="absolute bottom-3 left-4 flex items-center gap-2 text-sm font-semibold text-white sm:text-base">
-                  <span className="rounded bg-white/20 px-1.5 py-0.5 text-[10px] font-bold tracking-wide backdrop-blur-sm">
-                    {destination.flagCode}
+                <span className="absolute bottom-3 left-4 flex items-center gap-2.5 text-sm font-semibold text-white sm:text-base">
+                  <span className="flex overflow-hidden rounded-[4px] shadow-md ring-2 ring-white/80">
+                    <ReactCountryFlag
+                      countryCode={destination.flagCode}
+                      svg
+                      title={destination.name}
+                      aria-label={`Flag of ${destination.name}`}
+                      style={{
+                        width: "1.75em",
+                        height: "1.3em",
+                        display: "block",
+                        objectFit: "cover",
+                      }}
+                    />
                   </span>
                   {destination.name}
                 </span>

@@ -70,7 +70,7 @@ export default function GlobalEducationCta() {
                 </p>
 
                 <Link
-                  href="/start-journey"
+                  href="/contact"
                   className="mt-8 inline-flex items-center justify-center rounded-full bg-black px-14 py-3.5 text-base font-semibold text-white shadow-sm transition-colors hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4A9B6E]"
                 >
                   Start Your Journey

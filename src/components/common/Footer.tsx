@@ -153,13 +153,13 @@ export default function Footer() {
               building, Kathmandu, Nepal
             </p> */}
             <a
-              href="mailto:ceo@admissiononboard.com"
+              href="mailto:info@admissiononboard.com"
               className="hover:text-[#E0483E]"
             >
-              ceo@admissiononboard.com
+              info@admissiononboard.com
             </a>
-            <a href="tel:+8801906499741" className="hover:text-[#E0483E]">
-              +8801906499741
+            <a href="tel:+447465268767" className="hover:text-[#E0483E]">
+              +44 7465 268767
             </a>
           </div>
         </div>

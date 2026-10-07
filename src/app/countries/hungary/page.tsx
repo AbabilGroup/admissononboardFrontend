@@ -1,14 +1,14 @@
 import { pageMetadata } from "@/lib/seo";
 import AdmissionVisaProcessHungary from "@/views/countries/hungary/AdmissionVisaProcessHungary";
 import ContactCta from "@/components/common/ContactCta";
-import EntryRequirements from "@/components/common/EntryRequirements";
 import HeroHungary from "@/views/countries/hungary/HeroHungary";
-// import VisaSuccessCarousel from "@/views/success-stories/VisaSuccessCarousel";
 import WhyHungary from "@/views/countries/hungary/WhyHungary";
+import EntryRequirementsHungary from "@/views/countries/hungary/EntryRequirementsHungary";
 
 export const metadata = pageMetadata({
   title: "Study in Hungary | Admissions, Visa & Scholarships",
-  description: "Study in Hungary with expert guidance from Admission On Board: university admissions, entry requirements, student visa support and scholarships.",
+  description:
+    "Study in Hungary with expert guidance from Admission On Board: university admissions, entry requirements, student visa support and scholarships.",
   path: "/countries/hungary",
 });
 
@@ -17,7 +17,7 @@ export default function page() {
     <div>
       <HeroHungary />
       <WhyHungary />
-      <EntryRequirements />
+      <EntryRequirementsHungary />
       <AdmissionVisaProcessHungary />
       {/* <VisaSuccessCarousel /> */}
       <ContactCta />

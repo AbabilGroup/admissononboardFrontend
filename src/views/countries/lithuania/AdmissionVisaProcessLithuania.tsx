@@ -1,32 +1,32 @@
 import Image from "next/image";
 
-// Place your image at: /public/admission-visa.png
+// Place your image at: /public/lithuania-des.png
 
 const steps = [
   {
-    title: "One-on-One Free Counselling",
+    title: "Choose Your University & Course",
     description:
-      "Sit down with expert counsellors to explore your options, shortlist universities in Lithuania, and understand what's required.",
+      "Select your preferred Bachelor’s, Master’s, or other eligible programme and check the entry requirements.",
   },
   {
-    title: "Confirm Your Admission",
+    title: "Apply for Admission",
     description:
-      "Apply to your preferred institution in Lithuania and receive your official Letter of Acceptance.",
+      "Submit your academic documents, passport, English proficiency proof, CV and other required documents to the university. Receive your Offer/Admission Letter.",
   },
   {
-    title: "Submit Updated Documents",
+    title: "Prepare Documents & Complete MIGRIS",
     description:
-      "Provide your latest academic and financial records, along with proof of health insurance and accommodation.",
+      "Complete the required PCC collection & legalization/attestation, financial and other documents, then submit your application through MIGRIS for the required residence procedure.",
   },
   {
-    title: "Pay Tuition & Confirm Your Place",
+    title: "Biometrics → Decision → TRP",
     description:
-      "Pay your tuition fees and secure your enrolment, then gather the documents your visa application will need.",
+      "Attend the required biometrics/document verification appointment. After Migration Department assessment and a positive decision, obtain your Temporary Residence Permit (TRP).",
   },
   {
-    title: "Apply For Your Student Visa & Prepare To Fly",
+    title: "Travel to Lithuania & Join Classes ✈️",
     description:
-      "We help you lodge your Lithuanian national (D) visa or temporary residence permit application, then it's time to prepare for departure to your new campus.",
+      "After receiving the required travel/residence authorization, book your flight, arrange accommodation, travel to Lithuania, complete university registration, and start your classes.",
   },
 ];
 
@@ -47,9 +47,9 @@ export default function AdmissionVisaProcessLithuania() {
 
         <div className="mt-14 grid grid-cols-1 items-start gap-10 md:grid-cols-[1.1fr_1fr] md:gap-16">
           {/* Left: steps */}
-          <div className="flex flex-col gap-4">
+          <ol className="flex flex-col gap-4">
             {steps.map((step, index) => (
-              <div
+              <li
                 key={step.title}
                 className="rounded-2xl border border-[#ECECEC] bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
               >
@@ -66,26 +66,26 @@ export default function AdmissionVisaProcessLithuania() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </li>
             ))}
-          </div>
+          </ol>
 
           {/* Right: image */}
           <div className="sticky top-24 hidden md:block">
             <div className="relative aspect-square w-full overflow-hidden rounded-2xl">
               <Image
-                src="/admission-visa-lithuania.png"
+                src="/lithuania-des.png"
                 alt="Passport, visa stamps, and travel compass"
                 fill
                 sizes="(max-width: 768px) 100vw, 45vw"
-                className="object-contain rounded-2xl"
+                className="rounded-2xl object-contain"
               />
             </div>
           </div>
 
           <div className="relative aspect-square w-full overflow-hidden rounded-[2.5rem] md:hidden">
             <Image
-              src="/admission-visa-lithuania.png"
+              src="/lithuania-des.png"
               alt="Passport, visa stamps, and travel compass"
               fill
               sizes="100vw"

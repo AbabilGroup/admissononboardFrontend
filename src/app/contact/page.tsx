@@ -1,9 +1,8 @@
 import { pageMetadata } from "@/lib/seo";
-// import BranchLocations from "@/views/home/BranchLocations";
-import ContactCta from "@/components/common/ContactCta";
 import HeroContact from "@/views/contact/HeroContact";
 import ContactAudiences from "@/views/contact/ContactAudiences";
 import OurOffices from "@/views/contact/OurOffices";
+import ContactBanner from "@/views/contact/ContactBanner";
 
 export const metadata = pageMetadata({
   title: "Contact Us",
@@ -18,8 +17,7 @@ export default function page() {
       <HeroContact />
       <ContactAudiences />
       <OurOffices />
-      {/* <BranchLocations /> */}
-      <ContactCta />
+      <ContactBanner />
     </div>
   );
 }

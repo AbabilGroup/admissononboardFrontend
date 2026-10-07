@@ -1,8 +1,5 @@
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-
-// Place your image at: /public/partner.jfif
 
 const reasons = [
   {

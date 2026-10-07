@@ -19,7 +19,7 @@ const destinations = [
   "United Kingdom",
   "Hungary",
   "Cyprus",
-  "Iceland",
+  "Malta",
 ];
 
 const universities: University[] = [
@@ -180,7 +180,7 @@ const universities: University[] = [
   {
     slug: "atlantis-college",
     name: "Atlantis College",
-    country: "Iceland",
+    country: "Cyprus",
     initials: "AT",
     color: "#1B1B1B",
     logo: "/univercity-logo/aui.png",
@@ -204,7 +204,7 @@ const universities: University[] = [
   {
     slug: "training-three-sixty",
     name: "Training Three Sixty",
-    country: "United Kingdom",
+    country: "Malta",
     initials: "T3",
     color: "#E0483E",
     logo: "/univercity-logo/tts.png",

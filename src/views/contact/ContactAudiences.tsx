@@ -26,10 +26,10 @@ const blocks: ContactBlock[] = [
         label: "Email",
         value: (
           <a
-            href="mailto:info@admissiononboard.com"
+            href="mailto:apply@admissiononboard.com"
             className="text-[#2F5DA8] underline underline-offset-2"
           >
-            info@admissiononboard.com
+            apply@admissiononboard.com
           </a>
         ),
       },
@@ -54,7 +54,7 @@ const blocks: ContactBlock[] = [
   },
   {
     audience: "For University Partners",
-    imageSrc: "/university-partner.png",
+    imageSrc: "/bothpartner.png",
     imageAlt: "Partnerships advisor available for university collaborations",
     bgColor: "#48AEF8",
     details: [
@@ -62,7 +62,7 @@ const blocks: ContactBlock[] = [
         label: "Email",
         value: (
           <a
-            href="mailto:partners@admissiononboard.com"
+            href="mailto:info@admissiononboard.com"
             className="text-[#E0483E] underline underline-offset-2"
           >
             info@admissiononboard.com
@@ -84,10 +84,10 @@ const blocks: ContactBlock[] = [
         label: "Email",
         value: (
           <a
-            href="mailto:info@admissiononboard.com"
+            href="mailto:agent@admissiononboard.com"
             className="text-[#E0483E] underline underline-offset-2"
           >
-            info@admissiononboard.com
+            agent@admissiononboard.com
           </a>
         ),
       },
