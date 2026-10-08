@@ -11,8 +11,8 @@ type Stat = {
 
 const stats: Stat[] = [
   {
-    value: "10+ Universities",
-    label: "600+ English-taught programmes open to international students",
+    value: "22+ Universities",
+    label: "350+ English-taught programmes open to international students",
     icon: (
       <path
         strokeLinecap="round"
@@ -22,9 +22,9 @@ const stats: Stat[] = [
     ),
   },
   {
-    value: "€4,000 – €15,000",
-    suffix: "/ ",
-    label: "Year Tuition fee",
+    value: "€8,500 – €25,500",
+    suffix: "/ year",
+    label: "Tuition fee (about NOK 100,000 – 300,000+)",
     icon: (
       <>
         <circle cx="12" cy="12" r="8.5" />
@@ -37,7 +37,7 @@ const stats: Stat[] = [
   },
   {
     value: "Post-Study Work",
-    label: "9-month work permit after graduation",
+    label: "12-month work permit after graduation",
     icon: (
       <>
         <rect x="3.5" y="7.5" width="17" height="12" rx="2" />
@@ -50,15 +50,14 @@ const stats: Stat[] = [
   },
 ];
 
-export default function HeroMalta() {
+export default function HeroNorway() {
   return (
     <section className="container mx-auto px-4 py-10 lg:pb-24">
       <div className="relative">
-        {/* Image + copy */}
         <div className="relative min-h-[520px] w-full overflow-hidden rounded-[2rem] sm:min-h-0 sm:aspect-[16/9] lg:aspect-[21/9] lg:rounded-[3rem]">
           <Image
-            src="/malta-hero.png"
-            alt="Valletta harbour, Malta"
+            src="/norway.png"
+            alt="Fjord and mountains in Norway"
             fill
             sizes="100vw"
             className="object-cover"
@@ -71,11 +70,11 @@ export default function HeroMalta() {
 
           <div className="relative z-10 flex h-full min-h-[520px] flex-col justify-center px-6 pb-20 pt-10 sm:min-h-0 sm:px-10 sm:pb-16 md:px-16 lg:pb-24">
             <h1 className="text-5xl font-semibold leading-tight tracking-tight text-white sm:text-6xl md:text-7xl">
-              Malta
+              Norway
             </h1>
 
             <p className="mt-4 max-w-lg text-sm font-semibold leading-relaxed text-white/90 sm:text-base">
-              Study in Malta with Admission OnBoard. Get expert guidance on
+              Study in Norway with Admission OnBoard. Get expert guidance on
               admissions, scholarships, and visa support for a smooth study
               abroad journey.
             </p>
@@ -104,12 +103,6 @@ export default function HeroMalta() {
           </div>
         </div>
 
-        {/*
-          Stat cards
-          - Mobile: stacked rows (icon on the left)
-          - Tablet: 3 in a row, pulled up over the image's bottom edge
-          - Desktop: 3 in a row, hanging half outside the image
-        */}
         <div className="relative z-20 mx-3 -mt-12 sm:mx-8 lg:absolute lg:inset-x-10 lg:bottom-0 lg:mx-0 lg:mt-0 lg:translate-y-1/2">
           <div className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl bg-[#1B1B1B]/10 shadow-xl ring-1 ring-black/5 sm:grid-cols-3">
             {stats.map((stat) => (

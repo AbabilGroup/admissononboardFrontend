@@ -4,37 +4,13 @@ import { useState, type FormEvent } from "react";
 
 // FormSubmit AJAX endpoint: consultation requests are emailed here
 const FORMSUBMIT_URL = "https://formsubmit.co/ajax/apply@admissiononboard.com";
-const DESTINATION = "Greece";
+const DESTINATION = "Italy";
 
 const reasons = [
   {
-    title: "Degrees Recognised Across Europe",
+    title: "Low Tuition & Scholarships",
     description:
-      "Greece has 24 public universities. Undergraduate programmes use the ECTS credit system, so your credits are easy to transfer and have recognised elsewhere in Europe.",
-    icon: (
-      <path d="M12 3 2 8l10 5 8-4v6h2V8L12 3Zm0 8L4 8l8-4 8 4-8 4Zm-6 2v4c0 1.66 2.69 3 6 3s6-1.34 6-3v-4l-6 3-6-3Z" />
-    ),
-  },
-  {
-    title: "200+ Programmes Taught in English",
-    description:
-      "Choose from Bachelor's, Master's, joint and dual degrees. You don't need to speak Greek to study here.",
-    icon: (
-      <path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04ZM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12Zm-2.62 7 1.62-4.33L19.12 17h-3.24Z" />
-    ),
-  },
-  {
-    title: "Wide Choice of Subjects",
-    description:
-      "English-taught options include Medicine, Pharmacy, Law, Artificial Intelligence & Data Science, Engineering, Business, Humanities and more.",
-    icon: (
-      <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 4a6 6 0 1 1 0 12 6 6 0 0 1 0-12Zm0 3a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z" />
-    ),
-  },
-  {
-    title: "Affordable Compared to Many European Countries",
-    description:
-      "Non-EU students typically pay about €5,000–€15,000 a year for a Bachelor's and €3,000–€7,000 a year for a Master's. Fees vary by programme and university, so check the official programme finder for exact costs.",
+      "Public university fees for non-EU students are roughly €900–€4,000 a year. Regional DSU scholarships are need-based, and qualifying students can get a tuition waiver, subsidised housing, meals and a cash allowance.",
     icon: (
       <path
         fillRule="evenodd"
@@ -43,19 +19,41 @@ const reasons = [
     ),
   },
   {
-    title: "Work While You Study, and Plan Your Next Step",
+    title: "800+ English-Taught Programmes",
     description:
-      "Non-EU students with a study permit can work part-time under Greek rules. Eligible graduates may also be able to stay and look for a job after finishing their degree, subject to immigration conditions.",
+      "Choose from STEM, Business, Data Science, Architecture, Medicine and more at historic universities like Bologna, Sapienza, Politecnico di Milano and Padua. You don't need Italian to study.",
+    icon: (
+      <path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04ZM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12Zm-2.62 7 1.62-4.33L19.12 17h-3.24Z" />
+    ),
+  },
+  {
+    title: "Work While You Study",
+    description:
+      "Non-EU students can work part-time for up to 20 hours a week (1,040 hours a year).",
     icon: (
       <path d="M9 2h6a2 2 0 0 1 2 2v2h4a1 1 0 0 1 1 1v11a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a1 1 0 0 1 1-1h4V4a2 2 0 0 1 2-2Zm0 4h6V4H9v2Z" />
     ),
   },
   {
-    title: "Study Where It All Began",
+    title: "Career After Graduation",
     description:
-      "Live in the country that gave the world philosophy, democracy and science, with historic cities, islands, beaches and a sunny Mediterranean climate.",
+      "Graduates can apply for a post-study job-search permit, or convert their student permit to a work permit without waiting for the yearly quota. Northern Italy's industry, fashion, engineering and tech hubs offer many openings.",
     icon: (
-      <path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10ZM11 1h2v3h-2V1Zm0 19h2v3h-2v-3ZM1 11h3v2H1v-2Zm19 0h3v2h-3v-2ZM4.22 5.64l1.42-1.42 2.12 2.12-1.42 1.42-2.12-2.12Zm12.02 12.02 1.42-1.42 2.12 2.12-1.42 1.42-2.12-2.12ZM18.36 4.22l1.42 1.42-2.12 2.12-1.42-1.42 2.12-2.12ZM6.34 16.24l1.42 1.42-2.12 2.12-1.42-1.42 2.12-2.12Z" />
+      <path d="M3 17 9 11l4 4 8-8v4h2V5h-6v2h4l-6.6 6.6-4-4L1.6 15.6 3 17Z" />
+    ),
+  },
+  {
+    title: "Path to Permanent Residence",
+    description:
+      "After 5 years of legal residence, you can apply for the EU Long-Term Residence Permit. Study years count, but you must first convert your student permit to a work permit, because the long-term permit can't be issued directly from a study permit. After 10 years, you can apply for citizenship.",
+    icon: <path d="M12 3 2 11h3v9h5v-6h4v6h5v-9h3L12 3Z" />,
+  },
+  {
+    title: "Travel Freely in Europe",
+    description:
+      "Your student permit lets you travel visa-free across the Schengen Area for up to 90 days in any 180-day period.",
+    icon: (
+      <path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5Z" />
     ),
   },
 ];
@@ -71,7 +69,9 @@ const backupCountries = [
   "Romania",
   "Malta",
   "Cyprus",
-].filter((c) => c !== DESTINATION);
+  "Italy",
+  "Norway",
+].filter((c) => c !== DESTINATION); // don't offer the same country as a backup
 
 const studyLevels = ["Diploma", "Bachelor's Degree", "Master's Degree", "PhD"];
 const applyWindows = [
@@ -87,7 +87,7 @@ const inputClass =
 
 type Status = "idle" | "submitting" | "success" | "error";
 
-export default function WhyGreece() {
+export default function WhyItaly() {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -164,7 +164,7 @@ export default function WhyGreece() {
           {/* Left: reasons timeline */}
           <div>
             <h2 className="text-3xl font-semibold tracking-tight text-[#1B1B1B] sm:text-4xl">
-              Why Study in <span className="text-[#E0483E]">Greece</span>?
+              Why Study in <span className="text-[#E0483E]">Italy</span>?
             </h2>
 
             <div className="relative mt-10">
@@ -251,7 +251,7 @@ export default function WhyGreece() {
                     Thank you{firstName ? `, ${firstName}` : ""}!
                   </h3>
                   <p className="mx-auto mt-2 max-w-xs text-sm leading-relaxed text-[#6B6B6B]">
-                    Your free consultation request for studying in Greece has
+                    Your free consultation request for studying in Italy has
                     been received. One of our counsellors will contact you
                     shortly.
                   </p>
@@ -314,7 +314,7 @@ export default function WhyGreece() {
                     </h3>
                     <p className="mt-1 text-xs text-[#6B6B6B] sm:text-sm">
                       Book a free session with our expert counsellors and get
-                      clarity on studying in Greece.
+                      clarity on studying in Italy.
                     </p>
                   </div>
                 </div>

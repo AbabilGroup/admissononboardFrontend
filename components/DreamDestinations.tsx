@@ -91,6 +91,22 @@ const destinations: Destination[] = [
     description:
       "Budget-friendly EU degrees with a fast-growing international student community.",
   },
+  {
+    name: "Italy",
+    slug: "italy",
+    flagCode: "IT",
+    image: "/italy.png",
+    description:
+      "Historic universities, 800+ English-taught programmes and low public tuition with regional scholarships.",
+  },
+  {
+    name: "Norway",
+    slug: "norway",
+    flagCode: "NO",
+    image: "/norway.png",
+    description:
+      "High-quality, research-led Master's programmes in one of the world's safest and best-paid economies.",
+  },
 ];
 
 export default function DreamDestinations() {

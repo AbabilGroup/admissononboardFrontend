@@ -1,32 +1,63 @@
 import Image from "next/image";
 
-// Place your image at: /public/admission-visa.png
+// Place your image at: /public/studycy.png
 
-const steps = [
+type Step = {
+  title: string;
+  description?: string;
+  /** Optional lead-in shown above the checklist, e.g. "Gather:" */
+  listIntro?: string;
+  list?: string[];
+  /** Optional highlighted tip shown at the bottom of the card */
+  tip?: string;
+  /** Optional closing text shown after the checklist */
+  after?: string;
+};
+
+const steps: Step[] = [
   {
-    title: "One-on-One Free Counselling",
+    title: "Choose Your University & Apply",
     description:
-      "Sit down with expert counsellors to explore your options, shortlist universities in Cyprus, and understand what's required.",
+      "Pick a university and programme recognised by the Republic of Cyprus. Compare fees, English requirements, scholarships and intake dates. Then send your application with your transcripts, passport copy and English proof. After acceptance, pay the required deposit and receive your acceptance letter.",
   },
   {
-    title: "Confirm Your Admission",
-    description:
-      "Apply to your preferred institution in Cyprus and receive your official Letter of Acceptance.",
+    title: "Prepare Your Documents",
+    listIntro: "Gather:",
+    list: [
+      "Academic certificates and transcripts",
+      "Valid passport",
+      "Bank statement showing you can cover your costs",
+      "Medical test results (chest X-ray, hepatitis B and C, syphilis, HIV)",
+      "Apostille or legalisation on required documents",
+    ],
+    tip: "Medical results are valid for about 4 months, so time your tests carefully.",
   },
   {
-    title: "Submit Updated Documents",
+    title: "Entry Permit, Travel & Join Classes ✈️",
     description:
-      "Provide your latest academic and financial records, along with proof of health insurance and accommodation.",
+      "Your university submits your file to the Civil Registry and Migration Department (CRMD). Wait in your home country while it is processed. If approved, you receive your Entry Permit (blue slip) by email.",
+    after:
+      "Travel to Cyprus and apply for your student Temporary Residence Permit soon after arrival, following your university's deadline. Prepare health insurance, a medical certificate and proof of funds. Renew your permit every year while you study.",
   },
   {
-    title: "Pay Tuition & Confirm Your Place",
+    title: "Graduate, Find a Job & Get a Work Permit 💼",
     description:
-      "Pay your tuition fees and secure your enrolment, then gather the documents your entry visa will need.",
+      "Master's and PhD graduates (EQF level 7 or higher) can apply for a residence permit of up to 12 months to find a job or start a business in their field. Bachelor's graduates do not qualify for this permit, so they usually need a job offer and employer sponsorship.",
+    after:
+      "When you get a job offer, your employer applies for your work and residence permit. Renew it as required, work legally, and pay your taxes and social insurance.",
   },
   {
-    title: "Apply For Your Student Visa & Prepare To Fly",
+    title: "Apply for Long-Term Residence (PR) 🏡",
     description:
-      "We help you lodge your Cyprus entry visa and temporary residence permit application, then it's time to prepare for departure to your new campus.",
+      "After 5 years of continuous legal residence, you can apply for EU Long-Term Resident status.",
+    listIntro: "Main requirements:",
+    list: [
+      "Stable income without relying on social assistance",
+      "Housing (rental agreement or property title)",
+      "Health insurance",
+      "Clean criminal record",
+      "Basic language knowledge (a Greek test may be requested)",
+    ],
   },
 ];
 
@@ -47,9 +78,9 @@ export default function AdmissionVisaProcessCyprus() {
 
         <div className="mt-14 grid grid-cols-1 items-start gap-10 md:grid-cols-[1.1fr_1fr] md:gap-16">
           {/* Left: steps */}
-          <div className="flex flex-col gap-4">
+          <ol className="flex flex-col gap-4">
             {steps.map((step, index) => (
-              <div
+              <li
                 key={step.title}
                 className="rounded-2xl border border-[#ECECEC] bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
               >
@@ -57,18 +88,68 @@ export default function AdmissionVisaProcessCyprus() {
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#1B1B1B] text-xs font-semibold text-white">
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <h3 className="text-sm font-semibold text-[#1B1B1B] sm:text-base">
                       {step.title}
                     </h3>
-                    <p className="mt-1 text-xs leading-relaxed text-[#6B6B6B] sm:text-sm">
-                      {step.description}
-                    </p>
+
+                    {step.description && (
+                      <p className="mt-1 text-xs leading-relaxed text-[#6B6B6B] sm:text-sm">
+                        {step.description}
+                      </p>
+                    )}
+
+                    {step.list && (
+                      <div className="mt-3">
+                        {step.listIntro && (
+                          <p className="text-xs font-semibold text-[#1B1B1B] sm:text-sm">
+                            {step.listIntro}
+                          </p>
+                        )}
+                        <ul className="mt-2 space-y-1.5">
+                          {step.list.map((item) => (
+                            <li
+                              key={item}
+                              className="flex items-start gap-2 text-xs leading-relaxed text-[#6B6B6B] sm:text-sm"
+                            >
+                              <svg
+                                className="mt-[3px] h-3.5 w-3.5 shrink-0 text-[#E0483E] sm:mt-1"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth={3}
+                                aria-hidden
+                              >
+                                <path
+                                  d="M5 12.5l4.5 4.5L19 7.5"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                />
+                              </svg>
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {step.after && (
+                      <p className="mt-2 text-xs leading-relaxed text-[#6B6B6B] sm:text-sm">
+                        {step.after}
+                      </p>
+                    )}
+
+                    {step.tip && (
+                      <p className="mt-3 flex items-start gap-2 rounded-xl bg-[#FFF6E8] px-3 py-2.5 text-xs leading-relaxed text-[#7A5310] sm:text-sm">
+                        <span aria-hidden>💡</span>
+                        {step.tip}
+                      </p>
+                    )}
                   </div>
                 </div>
-              </div>
+              </li>
             ))}
-          </div>
+          </ol>
 
           {/* Right: image */}
           <div className="sticky top-24 hidden md:block">
@@ -78,7 +159,7 @@ export default function AdmissionVisaProcessCyprus() {
                 alt="Passport, visa stamps, and travel compass"
                 fill
                 sizes="(max-width: 768px) 100vw, 45vw"
-                className="object-contain rounded-2xl"
+                className="rounded-2xl object-contain"
               />
             </div>
           </div>

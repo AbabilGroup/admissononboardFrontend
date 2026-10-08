@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-// Place your image at: /public/studygre.png
+// Place your image at: /public/studyita.png
 
 type Step = {
   title: string;
@@ -16,44 +16,42 @@ type Step = {
 
 const steps: Step[] = [
   {
-    title: "Get Admitted 🎓",
-    description: "Apply to a recognised Greek university.",
+    title: "Apply & Pre-Enrol 🎓",
+    description:
+      "Choose a programme on Universitaly (universitaly.it) and apply to the university. You need your diploma or degree, a CIMEA statement or Declaration of Value, and English proof. Some programmes also require an entry test.",
+    tip: "Non-EU students living abroad must pre-enrol on Universitaly to start the study visa process.",
+  },
+  {
+    title: "Apply for Scholarships 💶",
     list: [
-      "Pick a university and programme recognised by Greece. Compare fees, English requirements, scholarships and intake dates.",
-      "Send your application with your transcripts, passport copy and English proof.",
-      "Receive your acceptance letter.",
+      "MAECI (Italian Government): €1,200 a month for 9 months (€10,800 in total), for Master's, PhD, AFAM and research only, not Bachelor's. Apply at studyinitaly.esteri.it. The 2026–27 deadline was 26 March 2026, and the next call is expected in early 2027.",
+      "DSU (regional, need-based): A tuition waiver plus, depending on the region, cash, housing and meals. Amounts vary, so check your regional agency's official call. Apply after admission, usually in summer.",
+      "University awards: Check each university's website.",
     ],
   },
   {
-    title: "Get Your Student Visa 🛂",
+    title: "Visa & Residence Permit 🛂",
     description:
-      "Apply for the National Type D visa at the Greek embassy in your country.",
-    list: [
-      "Documents: acceptance letter, passport, proof of funds and health insurance",
-    ],
-    tip: "Rules vary by embassy, so confirm the requirements with your local embassy.",
-  },
-  {
-    title: "Get Your Residence Permit 🏠",
-    description:
-      "After arriving, apply for a student residence permit at the local migration office. It can take a few months.",
+      "Apply for the study visa at the Italian embassy in your country.",
+    tip: "After arriving, apply for your residence permit at the Questura within 8 working days.",
   },
   {
     title: "Study & Work Part-Time 💼",
     description:
-      "Part-time work is allowed with authorisation, usually up to 20 hours a week during term, so check the conditions on your permit. Keep your permit valid and your studies on track.",
+      "You can work up to 20 hours a week (1,040 hours a year). Renew your permit on time.",
   },
   {
-    title: "Stay After Graduation 🚀",
+    title: "Stay & Settle 🚀",
     list: [
-      "Job-search permit: 12 months to find a job or start a business. Apply at least 30 days before your student permit expires.",
-      "Work permit: Switch to this once you have a job offer.",
-      "Long-term residence (M1): After 5 years of continuous legal residence, with study years counting as half. You need stable income, health insurance and basic Greek, and you can't be absent for more than 6 months at a time or 10 months in total.",
+      "Job-search permit: 12 months after your Bachelor's or Master's. Apply before your student permit expires.",
+      "Work permit: Switch once you have a job offer. Conversion runs through the annual Decreto Flussi, so confirm quota details with the Questura.",
+      "Long-term residence: The EU Long-Term Residence Permit after 5 years. Study years count, but you can't apply directly from a student permit, so convert to a work permit first. You need income at least equal to the assegno sociale, suitable housing and A2 Italian, and absences can't exceed 6 months at a time or 10 months in total.",
+      "Citizenship: You can usually apply after 10 years of legal residence.",
     ],
   },
 ];
 
-export default function AdmissionVisaProcessGreece() {
+export default function AdmissionVisaProcessItaly() {
   return (
     <section className="w-full bg-[#FFFEFA] px-6 py-20">
       <div className="mx-auto container">
@@ -64,7 +62,7 @@ export default function AdmissionVisaProcessGreece() {
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-sm font-semibold text-gray-700 sm:text-base">
             Follow our straightforward 5-step process to secure admission at
-            your dream university in Greece.
+            your dream university in Italy.
           </p>
         </div>
 
@@ -158,7 +156,7 @@ export default function AdmissionVisaProcessGreece() {
           <div className="sticky top-24 hidden md:block">
             <div className="relative aspect-square w-full overflow-hidden rounded-2xl">
               <Image
-                src="/studygre.png"
+                src="/studyita.png"
                 alt="Passport, visa stamps, and travel compass"
                 fill
                 sizes="(max-width: 768px) 100vw, 45vw"
@@ -169,7 +167,7 @@ export default function AdmissionVisaProcessGreece() {
 
           <div className="relative aspect-square w-full overflow-hidden rounded-[2.5rem] md:hidden">
             <Image
-              src="/studygre.png"
+              src="/studyita.png"
               alt="Passport, visa stamps, and travel compass"
               fill
               sizes="100vw"

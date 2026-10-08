@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-// Place your image at: /public/studygre.png
+// Place your image at: /public/studynor.png
 
 type Step = {
   title: string;
@@ -16,44 +16,58 @@ type Step = {
 
 const steps: Step[] = [
   {
-    title: "Get Admitted 🎓",
-    description: "Apply to a recognised Greek university.",
+    title: "University Application & Offer Letter 🎓",
     list: [
-      "Pick a university and programme recognised by Greece. Compare fees, English requirements, scholarships and intake dates.",
-      "Send your application with your transcripts, passport copy and English proof.",
-      "Receive your acceptance letter.",
+      "Choose a programme: Apply directly to an accredited public or private university in Norway, usually through its online portal between October and December for the August intake.",
+      "Meet entry criteria: A recognised Bachelor's degree (for Master's applicants), or high school credentials plus 1–2 years of higher education (for Bachelor's applicants, under the GSU list), along with English proof (IELTS 6.5+ / TOEFL 90+).",
+      "Get admitted: Receive your official Letter of Admission.",
     ],
   },
   {
-    title: "Get Your Student Visa 🛂",
-    description:
-      "Apply for the National Type D visa at the Greek embassy in your country.",
+    title: "Student Visa & Travel 🛂",
     list: [
-      "Documents: acceptance letter, passport, proof of funds and health insurance",
+      "Deposit funds: Transfer the required living allowance (about NOK 150,000–170,000 per academic year) into the university's deposit account.",
+      "Apply for a UDI study permit: Submit your application online through the Norwegian Directorate of Immigration (UDI), pay the fee (about NOK 5,300) and register your biometrics at the embassy or VFS.",
+      "Fly & settle in: Once approved, book your flight, collect your keys at student housing (SiO, Sammen, Sit), and attend your police appointment to receive your residence card.",
     ],
-    tip: "Rules vary by embassy, so confirm the requirements with your local embassy.",
   },
   {
-    title: "Get Your Residence Permit 🏠",
-    description:
-      "After arriving, apply for a student residence permit at the local migration office. It can take a few months.",
-  },
-  {
-    title: "Study & Work Part-Time 💼",
-    description:
-      "Part-time work is allowed with authorisation, usually up to 20 hours a week during term, so check the conditions on your permit. Keep your permit valid and your studies on track.",
-  },
-  {
-    title: "Stay After Graduation 🚀",
+    title: "Study & Part-Time Work 💼",
     list: [
-      "Job-search permit: 12 months to find a job or start a business. Apply at least 30 days before your student permit expires.",
-      "Work permit: Switch to this once you have a job offer.",
-      "Long-term residence (M1): After 5 years of continuous legal residence, with study years counting as half. You need stable income, health insurance and basic Greek, and you can't be absent for more than 6 months at a time or 10 months in total.",
+      "Complete your degree: Keep up good academic progress in your 2-year Master's or 3-year Bachelor's programme.",
+      "Part-time work: Work up to 20 hours a week during term, and full-time (40 hours a week) during official semester breaks.",
+    ],
+  },
+  {
+    title: "Graduation & Job-Seeker Permit 🔍",
+    description: "Earn your degree.",
+    list: [
+      "Job-seeker permit: Before your student permit expires, apply to UDI for a 12-month job-seeker permit to stay in Norway and look for qualified work.",
+    ],
+  },
+  {
+    title: "Get a Skilled Job & Switch Permits 🏢",
+    list: [
+      "Secure employment: Get a full-time job offer relevant to your degree that meets UDI's minimum salary threshold (about NOK 450,000–530,000+ a year, depending on the position).",
+      "Skilled worker permit: Switch from the job-seeker permit to a skilled worker residence permit sponsored by your employer.",
+    ],
+  },
+  {
+    title: "Work 3 Years & Secure Permanent Residence (PR) 🏡",
+    description:
+      "Work continuously on a skilled worker permit for 3 full years.",
+    tip: "Years spent on a student permit do not count toward permanent residence.",
+    listIntro: "You must also:",
+    list: [
+      "Language test: Pass the oral Norwegian test (minimum A2 or B1 level).",
+      "Social studies test: Pass the Samfunnskunnskap test.",
+      "Finances: Show you are self-sufficient, with no social welfare support in the previous 12 months.",
+      "PR granted: Receive your permanent residence permit, giving you the right to live and work in Norway indefinitely.",
     ],
   },
 ];
 
-export default function AdmissionVisaProcessGreece() {
+export default function AdmissionVisaProcessNorway() {
   return (
     <section className="w-full bg-[#FFFEFA] px-6 py-20">
       <div className="mx-auto container">
@@ -63,8 +77,8 @@ export default function AdmissionVisaProcessGreece() {
             <span className="text-[#1B1B1B]">&amp; Visa Process</span>
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-sm font-semibold text-gray-700 sm:text-base">
-            Follow our straightforward 5-step process to secure admission at
-            your dream university in Greece.
+            Follow our straightforward 6-step process to secure admission at
+            your dream university in Norway.
           </p>
         </div>
 
@@ -158,7 +172,7 @@ export default function AdmissionVisaProcessGreece() {
           <div className="sticky top-24 hidden md:block">
             <div className="relative aspect-square w-full overflow-hidden rounded-2xl">
               <Image
-                src="/studygre.png"
+                src="/studynor.png"
                 alt="Passport, visa stamps, and travel compass"
                 fill
                 sizes="(max-width: 768px) 100vw, 45vw"
@@ -169,7 +183,7 @@ export default function AdmissionVisaProcessGreece() {
 
           <div className="relative aspect-square w-full overflow-hidden rounded-[2.5rem] md:hidden">
             <Image
-              src="/studygre.png"
+              src="/studynor.png"
               alt="Passport, visa stamps, and travel compass"
               fill
               sizes="100vw"
