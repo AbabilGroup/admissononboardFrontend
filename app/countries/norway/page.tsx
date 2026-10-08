@@ -19,7 +19,6 @@ export default function page() {
       <WhyNorway />
       <EntryRequirementsNorway />
       <AdmissionVisaProcessNorway />
-      {/* <VisaSuccessCarousel /> */}
       <ContactCta />
     </div>
   );
