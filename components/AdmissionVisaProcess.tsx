@@ -1,16 +1,12 @@
 import Image from "next/image";
 
-// Place your image at: /public/studyaus.png
 
 type Step = {
   title: string;
   description?: string;
-  /** Optional lead-in shown above the checklist, e.g. "Gather:" */
   listIntro?: string;
   list?: string[];
-  /** Optional highlighted tip shown at the bottom of the card */
   tip?: string;
-  /** Optional closing text shown after the checklist */
   after?: string;
 };
 

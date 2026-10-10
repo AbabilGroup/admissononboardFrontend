@@ -4,11 +4,6 @@ import { useState } from "react";
 import Image from "next/image";
 import ReactCountryFlag from "react-country-flag";
 
-// Portraits: 4:5, about 800×1000 px, same background and light for everyone.
-// Put them in /public/team/ (e.g. /public/team/rahim.jpg).
-// No photo yet? Leave `photo` out and the card shows the person's initials.
-//
-// ⚠️ These are SAMPLE names for layout only. Replace the placeholder members below with your real team.
 
 type OfficeId = "uk" | "dhaka-3" | "dhaka-10" | "sylhet" | "nepal";
 
@@ -16,7 +11,7 @@ type Member = {
   name: string;
   role: string;
   office: OfficeId;
-  countries: string[]; // destination specialisms, ISO codes e.g. ["LT", "HU"]
+  countries: string[];
   languages: string[];
   photo?: string;
   linkedin?: string;

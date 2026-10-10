@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 
-// No image in this section: centred text and contact cards on the cream background.
 
 const PHONE = "+8801602065622";
 const WHATSAPP_URL = `https://wa.me/8801602065622?text=${encodeURIComponent(

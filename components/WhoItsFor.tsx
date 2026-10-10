@@ -1,12 +1,6 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
 
-// Place your photos (4:3, about 1200×900 px) in /public:
-//   who-embassy.jpg   – office or embassy-style entrance (no real emblems)
-//   who-medical.jpg   – modern hospital corridor or consultation
-//   who-business.jpg  – business meeting or handshake
-//   who-transit.jpg   – mountains or a road (Nepal / Bhutan travel)
-//   who-family.jpg    – family travelling together with luggage
 
 type Audience = {
   title: string;

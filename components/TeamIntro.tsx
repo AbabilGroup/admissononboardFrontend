@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 
-// No image in this section: clean text and icons on the cream background.
 
 type Point = {
   title: string;

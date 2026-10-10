@@ -12,8 +12,6 @@ export default function PartnerCta() {
           className="relative overflow-hidden rounded-3xl"
           style={{ backgroundColor: NAVY }}
         >
-          {/* ── Decorative circles ── */}
-          {/* Big circle behind the person (left) */}
           <div
             aria-hidden
             className="pointer-events-none absolute -left-24 top-1/2 hidden aspect-square w-[46%] -translate-y-1/2 rounded-full md:block lg:w-[40%]"
