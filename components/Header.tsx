@@ -39,7 +39,7 @@ const navLinks = [
 const about = [
   "Our Story",
   "Success Stories",
-  // "Our Gallery",
+  "Our Team",
   "Careers",
   "Contact",
   "Our Blogs",

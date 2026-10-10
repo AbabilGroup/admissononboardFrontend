@@ -11,8 +11,8 @@ type Stat = {
 
 const stats: Stat[] = [
   {
-    value: "8+",
-    label: "Universities",
+    value: "22+ Universities",
+    label: "3,500+ programmes in New Zealand",
     icon: (
       <path
         strokeLinecap="round"
@@ -22,23 +22,29 @@ const stats: Stat[] = [
     ),
   },
   {
-    value: "$22,000 to $35,000",
-    suffix: "/ NZ ",
-    label: "Tuition fee per year",
+    value: "$12,000 to $68,000+",
+    suffix: "NZD / year",
+    label: "Tuition fees",
     icon: (
       <>
         <circle cx="12" cy="12" r="8.5" />
-        <path strokeLinecap="round" d="M12 6.5v11M14.5 9.5c0-1.1-1.1-2-2.5-2s-2.5.9-2.5 2 1.1 1.7 2.5 2 2.5.9 2.5 2-1.1 2-2.5 2-2.5-.9-2.5-2" />
+        <path
+          strokeLinecap="round"
+          d="M12 6.5v11M14.5 9.5c0-1.1-1.1-2-2.5-2s-2.5.9-2.5 2 1.1 1.7 2.5 2 2.5.9 2.5 2-1.1 2-2.5 2-2.5-.9-2.5-2"
+        />
       </>
     ),
   },
   {
-    value: "2 to 3 years",
-    label: "Post-study work",
+    value: "3 years",
+    label: "Post-study work permit after graduation",
     icon: (
       <>
         <rect x="3.5" y="7.5" width="17" height="12" rx="2" />
-        <path strokeLinecap="round" d="M9 7.5V6a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 6v1.5M3.5 12.5h17" />
+        <path
+          strokeLinecap="round"
+          d="M9 7.5V6a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 6v1.5M3.5 12.5h17"
+        />
       </>
     ),
   },

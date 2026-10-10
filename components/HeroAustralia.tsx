@@ -11,8 +11,8 @@ type Stat = {
 
 const stats: Stat[] = [
   {
-    value: "40+",
-    label: "Universities",
+    value: "42+ Universities",
+    label: "2,200+ programmes in Australia",
     icon: (
       <path
         strokeLinecap="round"
@@ -22,9 +22,9 @@ const stats: Stat[] = [
     ),
   },
   {
-    value: "$22,000 to $50,000",
-    suffix: "/ AU",
-    label: "Tuition fee per year",
+    value: "$20,000 to $50,000",
+    suffix: "AUD / year",
+    label: "Tuition fees",
     icon: (
       <>
         <circle cx="12" cy="12" r="8.5" />
@@ -36,8 +36,8 @@ const stats: Stat[] = [
     ),
   },
   {
-    value: "2 to 3 years",
-    label: "Post-study work (up to 5 with regional study)",
+    value: "2 years",
+    label: "Post-study work permit after graduation",
     icon: (
       <>
         <rect x="3.5" y="7.5" width="17" height="12" rx="2" />
@@ -101,7 +101,6 @@ export default function HeroAustralia() {
             </Link>
           </div>
         </div>
-
 
         <div className="relative z-20 mx-3 -mt-12 sm:mx-8 lg:absolute lg:inset-x-10 lg:bottom-0 lg:mx-0 lg:mt-0 lg:translate-y-1/2">
           <div className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl bg-[#1B1B1B]/10 shadow-xl ring-1 ring-black/5 sm:grid-cols-3">

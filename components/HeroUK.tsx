@@ -11,8 +11,8 @@ type Stat = {
 
 const stats: Stat[] = [
   {
-    value: "150+",
-    label: "Universities",
+    value: "164+",
+    label: "Universities & 70,000+ programmes",
     icon: (
       <path
         strokeLinecap="round"
@@ -22,9 +22,9 @@ const stats: Stat[] = [
     ),
   },
   {
-    value: "£12,000 to £25,000",
-    suffix: "/ ",
-    label: "Tuition fee per year",
+    value: "£9,000 to £25,000",
+    suffix: "/ year",
+    label: "Tuition fees",
     icon: (
       <>
         <circle cx="12" cy="12" r="8.5" />
