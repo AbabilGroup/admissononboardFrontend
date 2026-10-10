@@ -11,8 +11,8 @@ type Stat = {
 
 const stats: Stat[] = [
   {
-    value: "164+",
-    label: "Universities & 70,000+ programmes",
+    value: "164+ Universities",
+    label: "70,000+ programmes in Uk",
     icon: (
       <path
         strokeLinecap="round"
@@ -37,7 +37,7 @@ const stats: Stat[] = [
   },
   {
     // Graduate Route: 18 months for Bachelor's/Master's applications made from 1 Jan 2027
-    value: "18 months",
+    value: "18 Months",
     label: "Post-study work (3 years for PhD)",
     icon: (
       <>

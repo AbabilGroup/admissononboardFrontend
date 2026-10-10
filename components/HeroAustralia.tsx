@@ -36,7 +36,7 @@ const stats: Stat[] = [
     ),
   },
   {
-    value: "2 years",
+    value: "2 Years",
     label: "Post-study work permit after graduation",
     icon: (
       <>
