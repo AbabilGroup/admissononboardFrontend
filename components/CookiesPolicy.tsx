@@ -196,10 +196,10 @@ export default function CookiesPolicy() {
                   33 St James&apos;s Square, London SW1Y 4JS, United Kingdom
                 </p>
                 <a
-                  href="mailto:info@admissiononboard.com"
+                  href="mailto:aob@admissiononboard.com"
                   className="hover:text-[#E0483E]"
                 >
-                  info@admissiononboard.com
+                  aob@admissiononboard.com
                 </a>
               </div>
             </div>

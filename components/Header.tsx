@@ -93,7 +93,6 @@ function ChevronIcon({ open }: { open: boolean }) {
   );
 }
 
-// Collapsible group used inside the mobile menu (About / Countries / Partners)
 function MobileGroup({
   label,
   items,
