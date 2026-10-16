@@ -3,13 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
-// Place your thumbnail images at, e.g.:
-// /public/students/nusrat.jpg
-// /public/students/rafid.jpg
-// /public/students/priya.jpg
-// /public/students/imran.jpg
-// /public/students/tanzila.jpg
-// /public/students/sadia.jpg
 
 const videos = [
   {

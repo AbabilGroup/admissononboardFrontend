@@ -5,14 +5,6 @@ import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// npm install gsap
-// Place your images at, e.g.:
-// /public/offers/counselling.png
-// /public/offers/test-prep.png
-// /public/offers/scholarship.png
-// /public/offers/visa.png
-// /public/offers/travel.png
-// /public/offers/post-admission.png
 
 gsap.registerPlugin(ScrollTrigger);
 

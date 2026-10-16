@@ -11,8 +11,9 @@ type Stat = {
 
 const stats: Stat[] = [
   {
-    value: "20+",
-    label: "Universities",
+    value: "22+ Universities",
+    label:
+      "200+ English-taught programmes, admissions open to international students",
     icon: (
       <path
         strokeLinecap="round"
@@ -22,9 +23,9 @@ const stats: Stat[] = [
     ),
   },
   {
-    value: "€4,000 to €10,000",
+    value: "€5,000 – €15,000",
     suffix: "/ ",
-    label: "Tuition fee per year",
+    label: "Year Tuition fee",
     icon: (
       <>
         <circle cx="12" cy="12" r="8.5" />
@@ -36,8 +37,8 @@ const stats: Stat[] = [
     ),
   },
   {
-    value: "1 year",
-    label: "Post-study work",
+    value: "Post-Study Work",
+    label: "12-month work permit after graduation",
     icon: (
       <>
         <rect x="3.5" y="7.5" width="17" height="12" rx="2" />
@@ -48,12 +49,24 @@ const stats: Stat[] = [
       </>
     ),
   },
+  {
+    value: "Permanent Residency",
+    label: "Eligible after 7 years of legal residence (conditions apply)",
+    icon: (
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M4 10.5 12 4l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5h-5v5H5a1 1 0 0 1-1-1v-8.5Z"
+      />
+    ),
+  },
 ];
 
 export default function HeroGreece() {
   return (
-    <section className="container mx-auto px-4 py-10 lg:pb-24">
+    <section className="container mx-auto px-4 py-10 lg:pb-28">
       <div className="relative">
+        {/* Image + copy */}
         <div className="relative min-h-[520px] w-full overflow-hidden rounded-[2rem] sm:min-h-0 sm:aspect-[16/9] lg:aspect-[21/9] lg:rounded-[3rem]">
           <Image
             src="/greece-hero.png"
@@ -103,12 +116,17 @@ export default function HeroGreece() {
           </div>
         </div>
 
+        {/*
+          Stat cards
+          - Mobile & tablet: 2×2 grid, pulled up over the image's bottom edge
+          - Desktop: 4 in a row, hanging half outside the image
+        */}
         <div className="relative z-20 mx-3 -mt-12 sm:mx-8 lg:absolute lg:inset-x-10 lg:bottom-0 lg:mx-0 lg:mt-0 lg:translate-y-1/2">
-          <div className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl bg-[#1B1B1B]/10 shadow-xl ring-1 ring-black/5 sm:grid-cols-3">
+          <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-[#1B1B1B]/10 shadow-xl ring-1 ring-black/5 lg:grid-cols-4">
             {stats.map((stat) => (
               <div
                 key={stat.value}
-                className="flex items-center gap-4 bg-white/95 px-5 py-4 backdrop-blur-md sm:flex-col sm:gap-2 sm:px-4 sm:py-5 sm:text-center lg:py-6"
+                className="flex flex-col items-center gap-2 bg-white/95 px-3 py-5 text-center backdrop-blur-md sm:px-5 lg:py-6"
               >
                 <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#e62d3f]/10">
                   <svg
@@ -124,7 +142,7 @@ export default function HeroGreece() {
                 </span>
 
                 <div>
-                  <p className="text-base font-bold leading-tight text-[#1B1B1B] sm:text-lg xl:text-xl">
+                  <p className="text-sm font-bold leading-tight text-[#1B1B1B] sm:text-lg xl:text-xl">
                     {stat.value}
                     {stat.suffix && (
                       <span className="ml-1 text-xs font-semibold text-[#6B6B6B] sm:text-sm">

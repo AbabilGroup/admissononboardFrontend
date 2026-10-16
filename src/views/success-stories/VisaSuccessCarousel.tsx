@@ -1,12 +1,8 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import Image from "next/image";
 
-// Place your student photos at, e.g.:
-// /public/visa-stories/andrei.png
-// /public/visa-stories/maria.png
-// ...
 
 type Story = {
   name: string;

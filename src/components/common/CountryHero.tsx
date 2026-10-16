@@ -30,17 +30,17 @@ const destinations = [
   "Romania",
   "Malta",
   "Cyprus",
+  "Italy",
+  "Norway",
 ];
 
 export default function CountryHero() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
-    // Wait one frame so the hidden state paints first, then animate in.
     const frame = requestAnimationFrame(() => setMounted(true));
     return () => cancelAnimationFrame(frame);
   }, []);
 
-  // Shared reveal classes (respects reduced-motion settings)
   const reveal = (extra = "") =>
     `transition-all duration-700 ease-out motion-reduce:transition-none ${
       mounted ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
@@ -48,7 +48,6 @@ export default function CountryHero() {
 
   return (
     <section className="relative overflow-hidden bg-[#FFFEFA] px-5 py-14 text-[#1B1B1B] md:px-10 lg:py-20">
-      {/* Soft background shapes */}
       <div
         aria-hidden
         className="pointer-events-none absolute -left-32 -top-32 h-96 w-96 rounded-full bg-[#E0483E]/10 blur-3xl"
@@ -59,7 +58,6 @@ export default function CountryHero() {
       />
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-14">
-        {/* ── Left: content ─────────────────────────── */}
         <div className="relative z-10">
           <h1 className="text-4xl font-semibold leading-[1.05] tracking-[-0.02em] sm:text-5xl lg:text-6xl">
             {titleLines.map((line, i) => (
@@ -87,7 +85,6 @@ export default function CountryHero() {
             wherever in the world that may be.
           </p>
 
-          {/* CTAs */}
           <div
             className={reveal("mt-9 flex flex-wrap items-center gap-4")}
             style={{ transitionDelay: "540ms" }}
@@ -115,7 +112,6 @@ export default function CountryHero() {
             </Link>
           </div>
 
-          {/* Stats */}
           <dl className="mt-12 grid max-w-xl grid-cols-3 divide-x divide-[#ECECEC] rounded-2xl border border-[#ECECEC] bg-white/80 shadow-sm backdrop-blur">
             {stats.map((item, i) => (
               <div
@@ -134,7 +130,6 @@ export default function CountryHero() {
           </dl>
         </div>
 
-        {/* ── Right: full image ─────────────────────── */}
         <div
           className={`relative transition-all duration-[1200ms] ease-out motion-reduce:transition-none ${
             mounted
@@ -143,15 +138,12 @@ export default function CountryHero() {
           }`}
         >
           <div className="relative">
-            {/* Offset frame behind image (follows the image's real size) */}
             <div
               aria-hidden
               className="absolute -bottom-4 -right-4 hidden h-full w-full rounded-[2rem] border-2 border-[#E0483E]/30 sm:block"
             />
 
-            {/* White mat around the photo, like a printed frame */}
             <div className="relative rounded-[2rem] bg-white p-3 shadow-2xl ring-1 ring-[#ECECEC] sm:p-4">
-              {/* width/height 0 + auto height = whole image, natural aspect ratio, no cropping */}
               <Image
                 src={HERO_IMAGE}
                 alt="Students exploring study abroad opportunities"
@@ -162,7 +154,6 @@ export default function CountryHero() {
                 priority
               />
 
-              {/* Corner CTA */}
               <Link
                 href="/contact"
                 aria-label="Book a free consultation"
@@ -172,7 +163,6 @@ export default function CountryHero() {
               </Link>
             </div>
 
-            {/* Floating badge */}
             <div className="absolute -left-4 top-10 hidden items-center gap-3 rounded-2xl border border-[#ECECEC] bg-white px-4 py-3 shadow-xl sm:flex lg:-left-10">
               <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#59B226]/15 text-lg">
                 🎓
@@ -188,7 +178,6 @@ export default function CountryHero() {
             </div>
           </div>
 
-          {/* Destinations, moved below so nothing covers the photo */}
           <div
             className={reveal(
               "mt-8 flex flex-wrap items-center gap-2 sm:gap-3",

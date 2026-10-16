@@ -16,6 +16,8 @@ const countries = [
   { name: "Romania", code: "RO" },
   { name: "Malta", code: "MT" },
   { name: "Cyprus", code: "CY" },
+  { name: "Italy", code: "IT" },
+  { name: "Norway", code: "NO" },
 ];
 
 // Quick lookup: country name -> ISO code (used by the mobile menu)
@@ -23,8 +25,13 @@ const countryCodes: Record<string, string> = Object.fromEntries(
   countries.map((c) => [c.name, c.code]),
 );
 
+const servicesList = [
+  "Admission Support",
+  "Document Legalization - Lithuania",
+  "Double-Entry Visa - India",
+];
+
 const navLinks = [
-  { href: "/services", label: "Services" },
   { href: "/universities", label: "Universities" },
   { href: "/courses", label: "Courses" },
 ];
@@ -32,7 +39,7 @@ const navLinks = [
 const about = [
   "Our Story",
   "Success Stories",
-  // "Our Gallery",
+  // "Our Team",
   "Careers",
   "Contact",
   "Our Blogs",
@@ -40,8 +47,12 @@ const about = [
 
 const partner = ["Recruitment Partner", "Institution Partner"];
 
+// "Document Legalization - Lithuania" -> "document-legalization-lithuania"
 function toSlug(label: string) {
-  return label.toLowerCase().replace(/\s+/g, "-");
+  return label
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
 }
 
 function Flag({ code, name }: { code: string; name: string }) {
@@ -138,11 +149,14 @@ function DesktopDropdown({
   label,
   href,
   width,
+  columns = 1,
   children,
 }: {
   label: string;
   href?: string;
   width: string;
+  /** 1 = single list, 2 = two-column grid */
+  columns?: 1 | 2;
   children: (close: () => void) => ReactNode;
 }) {
   const [open, setOpen] = useState(false);
@@ -194,7 +208,13 @@ function DesktopDropdown({
         }`}
       >
         <div className="rounded-2xl border border-black/5 bg-white p-4 shadow-xl backdrop-blur-xl">
-          <div className="grid grid-cols-1 gap-1">{children(close)}</div>
+          <div
+            className={`grid gap-1 ${
+              columns === 2 ? "grid-cols-2 gap-x-2" : "grid-cols-1"
+            }`}
+          >
+            {children(close)}
+          </div>
         </div>
       </div>
     </div>
@@ -238,7 +258,12 @@ export default function Header() {
               }
             </DesktopDropdown>
 
-            <DesktopDropdown label="Countries" href="/countries" width="w-60">
+            <DesktopDropdown
+              label="Countries"
+              href="/countries"
+              width="w-[460px]"
+              columns={2}
+            >
               {(close) => (
                 <>
                   {countries.map((country) => (
@@ -255,9 +280,33 @@ export default function Header() {
                   <Link
                     href="/countries"
                     onClick={close}
-                    className="mt-2 flex items-center justify-center border-t border-black/5 pt-3 text-sm font-semibold text-[#E0483E] transition-colors hover:text-black"
+                    className="col-span-2 mt-2 flex items-center justify-center border-t border-black/5 pt-3 text-sm font-semibold text-[#E0483E] transition-colors hover:text-black"
                   >
                     View all destinations
+                  </Link>
+                </>
+              )}
+            </DesktopDropdown>
+
+            <DesktopDropdown label="Services" href="/services" width="w-80">
+              {(close) => (
+                <>
+                  {servicesList.map((item) => (
+                    <Link
+                      key={item}
+                      href={`/services/${toSlug(item)}`}
+                      onClick={close}
+                      className={dropdownLinkClass}
+                    >
+                      {item}
+                    </Link>
+                  ))}
+                  <Link
+                    href="/services"
+                    onClick={close}
+                    className="mt-2 flex items-center justify-center border-t border-black/5 pt-3 text-sm font-semibold text-[#E0483E] transition-colors hover:text-black"
+                  >
+                    View all services
                   </Link>
                 </>
               )}
@@ -362,6 +411,13 @@ export default function Header() {
                 items={countries.map((c) => c.name)}
                 basePath="/countries"
                 flags={countryCodes}
+                onNavigate={closeMobile}
+              />
+
+              <MobileGroup
+                label="Services"
+                items={servicesList}
+                basePath="/services"
                 onNavigate={closeMobile}
               />
 

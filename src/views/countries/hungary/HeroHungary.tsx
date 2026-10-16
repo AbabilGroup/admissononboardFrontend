@@ -12,7 +12,7 @@ type Stat = {
 const stats: Stat[] = [
   {
     value: "64+ Institutions",
-    label: "open for international student admissions.",
+    label: "Open for international student admissions.",
     icon: (
       <path
         strokeLinecap="round"
@@ -24,7 +24,7 @@ const stats: Stat[] = [
   {
     value: "700+ Programmes",
     // suffix: "/",
-    label: "open to international students in multiple languages",
+    label: "Open to international students in multiple languages",
     icon: (
       <>
         <circle cx="12" cy="12" r="8.5" />
