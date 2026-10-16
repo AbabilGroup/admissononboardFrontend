@@ -1,9 +1,9 @@
-import HeroLegalization from "@/components/HeroLegalization";
-import HowItWork from "@/components/HowItWork";
-import Intro from "@/components/Intro";
-import LegalizationCta from "@/components/LegalizationCta";
-import RouteCards from "@/components/RouteCards";
-import WhyServiceUs from "@/components/WhyServiceUs";
+import HeroLegalization from "@/views/services/document-legalization-lithuania/HeroLegalization";
+import HowItWork from "@/views/services/document-legalization-lithuania/HowItWork";
+import Intro from "@/views/services/document-legalization-lithuania/Intro";
+import LegalizationCta from "@/views/services/document-legalization-lithuania/LegalizationCta";
+import RouteCards from "@/views/services/document-legalization-lithuania/RouteCards";
+import WhyServiceUs from "@/views/services/document-legalization-lithuania/WhyServiceUs";
 
 export default function page() {
   return (

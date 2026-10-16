@@ -1,9 +1,9 @@
-import DoubleCta from "@/components/DoubleCta";
-import HeroDoubleEntry from "@/components/HeroDoubleEntry";
-import HowItWorksDoubleEntry from "@/components/HowItWorksDoubleEntry";
-import IntroDoubleEntry from "@/components/IntroDoubleEntry";
-import TimelineDoubleEntry from "@/components/TimelineDoubleEntry";
-import WhoItsFor from "@/components/WhoItsFor";
+import DoubleCta from "@/views/services/double-entry-visa-india/DoubleCta";
+import HeroDoubleEntry from "@/views/services/double-entry-visa-india/HeroDoubleEntry";
+import HowItWorksDoubleEntry from "@/views/services/double-entry-visa-india/HowItWorksDoubleEntry";
+import IntroDoubleEntry from "@/views/services/double-entry-visa-india/IntroDoubleEntry";
+import TimelineDoubleEntry from "@/views/services/double-entry-visa-india/TimelineDoubleEntry";
+import WhoItsFor from "@/views/services/double-entry-visa-india/WhoItsFor";
 
 export default function page() {
   return (

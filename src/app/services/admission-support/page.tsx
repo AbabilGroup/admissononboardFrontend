@@ -1,7 +1,7 @@
 import { pageMetadata } from "@/lib/seo";
-import ContactCta from "@/components/ContactCta";
-import HeroServices from "@/components/HeroServices";
-import WhatWeOffer from "@/components/WhatWeOffer";
+import ContactCta from "@/components/common/ContactCta";
+import HeroServices from "@/views/services/HeroServices";
+import WhatWeOffer from "@/views/services/WhatWeOffer";
 
 export const metadata = pageMetadata({
   title: "Our Services",
