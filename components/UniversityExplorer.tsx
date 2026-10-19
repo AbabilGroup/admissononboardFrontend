@@ -209,6 +209,14 @@ const universities: University[] = [
     color: "#E0483E",
     logo: "/univercity-logo/tts.png",
   },
+  {
+    slug: "thinktalent",
+    name: "ThinkTalent",
+    country: "Malta",
+    initials: "TT",
+    color: "#2F5DA8",
+    logo: "/univercity-logo/thinktalent.webp",
+  }
 ];
 
 function UniversityLogo({ uni }: { uni: University }) {
