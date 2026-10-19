@@ -8,6 +8,7 @@ import ReactCountryFlag from "react-country-flag";
 const countries = [
   { name: "United Kingdom", code: "GB" },
   { name: "Australia", code: "AU" },
+  { name: "Canada", code: "CA" },
   { name: "New Zealand", code: "NZ" },
   { name: "Finland", code: "FI" },
   { name: "Greece", code: "GR" },
