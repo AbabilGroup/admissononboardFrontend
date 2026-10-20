@@ -1,9 +1,24 @@
 "use client";
 
-import { Suspense, useMemo, useState } from "react";
+import {
+  Suspense,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import ReactCountryFlag from "react-country-flag";
 
-type Level = "Foundation" | "Undergraduate" | "Postgraduate" | "Professional";
+type Level =
+  | "Foundation"
+  | "Diploma"
+  | "Undergraduate"
+  | "Postgraduate"
+  | "Professional";
 
 type Programme = {
   university: string;
@@ -15,17 +30,26 @@ type Programme = {
   award?: string;
 };
 
-const destinations = [
-  "All destinations",
-  "United Kingdom",
-  "Cyprus",
-  "Hungary",
-  "Malta",
-];
+/** Flag codes for the destination filter */
+const countryCodes: Record<string, string> = {
+  "United Kingdom": "GB",
+  Cyprus: "CY",
+  Hungary: "HU",
+  Malta: "MT",
+  Australia: "AU",
+  Canada: "CA",
+  "New Zealand": "NZ",
+  Finland: "FI",
+  Greece: "GR",
+  Lithuania: "LT",
+  Romania: "RO",
+  Italy: "IT",
+  Norway: "NO",
+};
 
-const levels: Array<"All levels" | Level> = [
-  "All levels",
+const levelOrder: Level[] = [
   "Foundation",
+  "Diploma",
   "Undergraduate",
   "Postgraduate",
   "Professional",
@@ -33,9 +57,154 @@ const levels: Array<"All levels" | Level> = [
 
 const levelStyles: Record<Level, string> = {
   Foundation: "bg-[#FDF2E9] text-[#F58B0F]",
+  Diploma: "bg-[#F1ECFA] text-[#7A4FBF]",
   Undergraduate: "bg-[#EAF1FB] text-[#2F5DA8]",
   Postgraduate: "bg-[#FDECEA] text-[#E0483E]",
   Professional: "bg-[#EAF6EE] text-[#2F9E5C]",
+};
+
+const levelDots: Record<Level, string> = {
+  Foundation: "#F58B0F",
+  Diploma: "#7A4FBF",
+  Undergraduate: "#2F5DA8",
+  Postgraduate: "#E0483E",
+  Professional: "#2F9E5C",
+};
+
+/** Logos – same files as the /universities page */
+type UniInfo = { logo: string; initials: string; color: string; note?: string };
+
+const universityInfo: Record<string, UniInfo> = {
+  "BPP University": {
+    logo: "/univercity-logo/bpp.jpg",
+    initials: "BP",
+    color: "#2F5DA8",
+  },
+  "University of Hertfordshire": {
+    logo: "/univercity-logo/uh.jpg",
+    initials: "UH",
+    color: "#D6281F",
+  },
+  "University of Law": {
+    logo: "/univercity-logo/low.png",
+    initials: "UL",
+    color: "#1B1B1B",
+    note: "Except Business Course",
+  },
+  "University of Chester": {
+    logo: "/univercity-logo/uoc.png",
+    initials: "UC",
+    color: "#2F9E5C",
+    note: "Except Sylhet",
+  },
+  "London South Bank University": {
+    logo: "/univercity-logo/lsbu.jpg",
+    initials: "LS",
+    color: "#F58B0F",
+    note: "Except Sylhet, Except Business Course",
+  },
+  "Aston University, London": {
+    logo: "/univercity-logo/aul.png",
+    initials: "AL",
+    color: "#E0483E",
+    note: "Except Sylhet",
+  },
+  "University of Hull - London": {
+    logo: "/univercity-logo/uoh.png",
+    initials: "HL",
+    color: "#2F5DA8",
+    note: "Except Sylhet",
+  },
+  "Regent College London": {
+    logo: "/univercity-logo/rcl.png",
+    initials: "RC",
+    color: "#1B1B1B",
+    note: "Except UG",
+  },
+  "University of Bedfordshire": {
+    logo: "/univercity-logo/uob.png",
+    initials: "UB",
+    color: "#D6281F",
+    note: "Except Sylhet",
+  },
+  "Anglia Ruskin University": {
+    logo: "/univercity-logo/aru.jpg",
+    initials: "AR",
+    color: "#2F9E5C",
+    note: "UG Sylhet Restricted",
+  },
+  "University of Brighton": {
+    logo: "/univercity-logo/uobb.jpg",
+    initials: "BR",
+    color: "#F58B0F",
+  },
+  "University of South Wales": {
+    logo: "/univercity-logo/uosw.png",
+    initials: "SW",
+    color: "#E0483E",
+  },
+  "Aston University, Birmingham": {
+    logo: "/univercity-logo/aub.jpg",
+    initials: "AB",
+    color: "#2F5DA8",
+  },
+  "Cardiff Metropolitan University": {
+    logo: "/univercity-logo/cfu.jpg",
+    initials: "CM",
+    color: "#1B1B1B",
+    note: "Full Deposit for Sylhet",
+  },
+  "Canterbury Christ Church University": {
+    logo: "/univercity-logo/cccu.png",
+    initials: "CC",
+    color: "#2F9E5C",
+    note: "Except UG",
+  },
+  "UWS - London Campus": {
+    logo: "/univercity-logo/uws.jpg",
+    initials: "UW",
+    color: "#F58B0F",
+  },
+  "Aberystwyth University": {
+    logo: "/univercity-logo/au.jpg",
+    initials: "AY",
+    color: "#E0483E",
+  },
+  "University of Hartpury": {
+    logo: "/univercity-logo/uoh.png",
+    initials: "HP",
+    color: "#2F5DA8",
+  },
+  "Atlantis College": {
+    logo: "/univercity-logo/aui.png",
+    initials: "AT",
+    color: "#1B1B1B",
+  },
+  "American University of Cyprus": {
+    logo: "/univercity-logo/auc.png",
+    initials: "AC",
+    color: "#2F9E5C",
+  },
+  "John von Neumann University": {
+    logo: "/univercity-logo/jvnu.png",
+    initials: "JV",
+    color: "#F58B0F",
+  },
+  "Training Three Sixty": {
+    logo: "/univercity-logo/tts.png",
+    initials: "T3",
+    color: "#E0483E",
+  },
+  ThinkTalent: {
+    logo: "/univercity-logo/thinktalent.webp",
+    initials: "TT",
+    color: "#2F5DA8",
+  },
+  "LearnKey Institute": {
+    logo: "/univercity-logo/learnkeyinstutie.png",
+    initials: "LK",
+    color: "#F58B0F",
+  },
 };
 
 const programmes: Programme[] = [
@@ -330,14 +499,14 @@ const programmes: Programme[] = [
   //   university: "Atlantis College",
   //   country: "Cyprus",
   //   title: "Diploma in Hospitality and Tourism Management",
-  //   level: "Foundation",
+  //   level: "Diploma",
   //   duration: "2 years",
   // },
   // {
   //   university: "Atlantis College",
   //   country: "Cyprus",
   //   title: "Diploma in Business Administration",
-  //   level: "Foundation",
+  //   level: "Diploma",
   //   duration: "2 years",
   // },
   // {
@@ -379,14 +548,14 @@ const programmes: Programme[] = [
     university: "Training Three Sixty",
     country: "Malta",
     title: "Level 5 Diploma in Human Resources Management",
-    level: "Foundation",
+    level: "Diploma",
     duration: "1 year",
   },
   {
     university: "Training Three Sixty",
     country: "Malta",
     title: "Level 5 Diploma in Health and Social Care Management",
-    level: "Foundation",
+    level: "Diploma",
     duration: "1 year",
   },
   {
@@ -394,7 +563,7 @@ const programmes: Programme[] = [
     country: "Malta",
     title:
       "Bachelor/Undergraduate Diploma in Human Resource Management (MQF Level 5)",
-    level: "Foundation",
+    level: "Diploma",
     duration: "1 year",
   },
   {
@@ -402,7 +571,7 @@ const programmes: Programme[] = [
     country: "Malta",
     title:
       "Bachelor/Undergraduate Diploma in Health and Social Care Management (MQF Level 5)",
-    level: "Foundation",
+    level: "Diploma",
     duration: "1 year",
   },
   {
@@ -418,7 +587,7 @@ const programmes: Programme[] = [
     country: "Malta",
     title: "Undergraduate Diploma in Business Management",
     award: "Level 5 Diploma",
-    level: "Foundation",
+    level: "Diploma",
     duration: "12 months",
   },
   {
@@ -426,7 +595,7 @@ const programmes: Programme[] = [
     country: "Malta",
     title: "Undergraduate Diploma in Accounting",
     award: "Level 5 Diploma",
-    level: "Foundation",
+    level: "Diploma",
     duration: "12 months",
   },
   {
@@ -434,7 +603,7 @@ const programmes: Programme[] = [
     country: "Malta",
     title: "Undergraduate Diploma in Information Technology",
     award: "Level 5 Diploma",
-    level: "Foundation",
+    level: "Diploma",
     duration: "12 months",
   },
   {
@@ -442,7 +611,7 @@ const programmes: Programme[] = [
     country: "Malta",
     title: "Undergraduate Certificate in Nursing Studies",
     award: "Level 5 Diploma",
-    level: "Foundation",
+    level: "Diploma",
     duration: "12 months",
   },
   {
@@ -538,6 +707,11 @@ function toSlug(label: string) {
 const allUniversityNames = Array.from(
   new Set(programmes.map((p) => p.university)),
 );
+const allDestinations = Array.from(new Set(programmes.map((p) => p.country)));
+/** Only show levels that have at least one programme */
+const allLevels = levelOrder.filter((l) =>
+  programmes.some((p) => p.level === l),
+);
 
 /** Reads ?university=slug-one,slug-two and returns the matching university names */
 function namesFromParam(param: string | null) {
@@ -548,6 +722,221 @@ function namesFromParam(param: string | null) {
     .filter(Boolean);
   return allUniversityNames.filter((name) => slugs.includes(toSlug(name)));
 }
+
+/* ───────────────────────── Small pieces ───────────────────────── */
+
+function Flag({ country }: { country: string }) {
+  const code = countryCodes[country];
+  if (!code) return null;
+  return (
+    <span className="flex h-4 w-4 shrink-0 overflow-hidden rounded-full ring-1 ring-black/10">
+      <ReactCountryFlag
+        countryCode={code}
+        svg
+        aria-hidden
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "block",
+          objectFit: "cover",
+        }}
+      />
+    </span>
+  );
+}
+
+/** University logo with an initials fallback if the file is missing */
+function UniLogo({
+  name,
+  className = "",
+}: {
+  name: string;
+  className?: string;
+}) {
+  const info = universityInfo[name];
+  const [failed, setFailed] = useState(false);
+
+  return (
+    <span
+      className={`flex shrink-0 items-center justify-center overflow-hidden rounded-lg border border-[#ECECEC] bg-white ${className}`}
+    >
+      {info && !failed ? (
+        <Image
+          src={info.logo}
+          alt={`${name} logo`}
+          width={160}
+          height={80}
+          className="h-full w-full object-contain p-1"
+          onError={() => setFailed(true)}
+        />
+      ) : (
+        <span
+          className="grid h-full w-full place-items-center text-[10px] font-bold text-white"
+          style={{ backgroundColor: info?.color ?? "#1B1B1B" }}
+        >
+          {info?.initials ?? name.slice(0, 2).toUpperCase()}
+        </span>
+      )}
+    </span>
+  );
+}
+
+type Option = { value: string; label: string; icon?: ReactNode };
+
+/** Dropdown with tick boxes – pick several options */
+function MultiSelect({
+  id,
+  label,
+  allLabel,
+  options,
+  selected,
+  onChange,
+}: {
+  id: string;
+  label: string;
+  allLabel: string;
+  options: Option[];
+  selected: string[];
+  onChange: (values: string[]) => void;
+}) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  // Close when clicking outside or pressing Escape
+  useEffect(() => {
+    if (!open) return;
+    const onPointer = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node))
+        setOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("mousedown", onPointer);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onPointer);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
+  const toggle = (value: string) =>
+    onChange(
+      selected.includes(value)
+        ? selected.filter((v) => v !== value)
+        : [...selected, value],
+    );
+
+  const summary =
+    selected.length === 0
+      ? allLabel
+      : selected.length === 1
+        ? (options.find((o) => o.value === selected[0])?.label ?? selected[0])
+        : `${selected.length} selected`;
+
+  return (
+    <div ref={ref} className="relative">
+      <span id={`${id}-label`} className="text-xs font-semibold text-[#6B6B6B]">
+        {label}
+      </span>
+      <button
+        type="button"
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        aria-labelledby={`${id}-label`}
+        onClick={() => setOpen((v) => !v)}
+        className={`mt-1 flex w-full items-center justify-between gap-2 rounded-xl border bg-white px-4 py-3 text-left text-sm text-[#1B1B1B] outline-none transition-all ${
+          open
+            ? "border-[#E0483E] ring-4 ring-[#E0483E]/10"
+            : "border-[#E5E5E5] hover:border-[#E0483E]/50"
+        }`}
+      >
+        <span className="flex min-w-0 items-center gap-2">
+          {selected.length === 1 &&
+            options.find((o) => o.value === selected[0])?.icon}
+          <span className="truncate">{summary}</span>
+        </span>
+        <span className="flex shrink-0 items-center gap-1.5">
+          {selected.length > 1 && (
+            <span className="grid h-5 min-w-5 place-items-center rounded-full bg-[#E0483E] px-1.5 text-[11px] font-bold text-white">
+              {selected.length}
+            </span>
+          )}
+          <svg
+            className={`h-4 w-4 text-[#6B6B6B] transition-transform ${open ? "rotate-180" : ""}`}
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2.5}
+            aria-hidden
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="m6 9 6 6 6-6"
+            />
+          </svg>
+        </span>
+      </button>
+
+      {open && (
+        <div className="absolute left-0 right-0 z-30 mt-2 overflow-hidden rounded-xl border border-[#ECECEC] bg-white shadow-xl shadow-black/10">
+          <ul
+            role="listbox"
+            aria-multiselectable
+            aria-labelledby={`${id}-label`}
+            className="max-h-72 overflow-y-auto p-1.5"
+          >
+            {options.map((option) => {
+              const checked = selected.includes(option.value);
+              return (
+                <li key={option.value} role="option" aria-selected={checked}>
+                  <label className="flex cursor-pointer items-center gap-3 rounded-lg px-2.5 py-2 text-sm transition-colors hover:bg-[#FFFEFA]">
+                    <input
+                      type="checkbox"
+                      checked={checked}
+                      onChange={() => toggle(option.value)}
+                      className="h-4 w-4 shrink-0 cursor-pointer accent-[#E0483E]"
+                    />
+                    {option.icon}
+                    <span
+                      className={
+                        checked
+                          ? "font-semibold text-[#1B1B1B]"
+                          : "text-[#3A3A3A]"
+                      }
+                    >
+                      {option.label}
+                    </span>
+                  </label>
+                </li>
+              );
+            })}
+          </ul>
+          <div className="flex items-center justify-between border-t border-[#F0EBE3] px-3 py-2">
+            <button
+              type="button"
+              onClick={() => onChange([])}
+              disabled={selected.length === 0}
+              className="text-xs font-semibold text-[#E0483E] disabled:text-[#C9C9C9]"
+            >
+              Clear
+            </button>
+            <button
+              type="button"
+              onClick={() => setOpen(false)}
+              className="rounded-full bg-[#1B1B1B] px-3.5 py-1.5 text-xs font-semibold text-white hover:bg-[#E0483E]"
+            >
+              Done
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ───────────────────────── Main component ───────────────────────── */
 
 // useSearchParams needs a Suspense boundary in the Next.js App Router
 export default function ProgrammeFinder() {
@@ -564,8 +953,8 @@ function ProgrammeFinderInner() {
   const searchParams = useSearchParams();
 
   const [query, setQuery] = useState("");
-  const [destination, setDestination] = useState("All destinations");
-  const [level, setLevel] = useState<"All levels" | Level>("All levels");
+  const [destinations, setDestinations] = useState<string[]>([]); // empty = all
+  const [levels, setLevels] = useState<Level[]>([]); // empty = all
   // Pre-select the university passed from the /universities page
   const [selectedUnis, setSelectedUnis] = useState<string[]>(() =>
     namesFromParam(searchParams.get("university")),
@@ -573,7 +962,7 @@ function ProgrammeFinderInner() {
   const [uniSearch, setUniSearch] = useState("");
   const [showUniFilter, setShowUniFilter] = useState(false);
 
-  // Programmes matching search, destination and level (before the university filter)
+  // Programmes matching search, destinations and levels (before the university filter)
   const baseFiltered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return programmes.filter((p) => {
@@ -582,34 +971,40 @@ function ProgrammeFinderInner() {
         p.title.toLowerCase().includes(q) ||
         p.university.toLowerCase().includes(q);
       const matchesDestination =
-        destination === "All destinations" || p.country === destination;
-      const matchesLevel = level === "All levels" || p.level === level;
+        destinations.length === 0 || destinations.includes(p.country);
+      const matchesLevel = levels.length === 0 || levels.includes(p.level);
       return matchesQuery && matchesDestination && matchesLevel;
     });
-  }, [query, destination, level]);
+  }, [query, destinations, levels]);
 
   // Universities for the sidebar, with how many matching programmes each has
   const universities = useMemo(() => {
-    const pool = programmes.filter(
-      (p) => destination === "All destinations" || p.country === destination,
-    );
     const map = new Map<string, { country: string; count: number }>();
-    for (const p of pool) {
-      if (!map.has(p.university))
+    for (const p of programmes) {
+      if (
+        (destinations.length === 0 || destinations.includes(p.country)) &&
+        !map.has(p.university)
+      ) {
         map.set(p.university, { country: p.country, count: 0 });
+      }
     }
     for (const p of baseFiltered) {
       const entry = map.get(p.university);
       if (entry) entry.count += 1;
     }
-    return Array.from(map, ([name, info]) => ({ name, ...info })).sort((a, b) =>
-      a.name.localeCompare(b.name),
-    );
-  }, [destination, baseFiltered]);
+    return Array.from(map, ([name, info]) => ({ name, ...info }));
+  }, [destinations, baseFiltered]);
 
-  const visibleUnis = universities.filter((u) =>
-    u.name.toLowerCase().includes(uniSearch.trim().toLowerCase()),
-  );
+  // Selected universities first, then A–Z
+  const visibleUnis = universities
+    .filter((u) =>
+      u.name.toLowerCase().includes(uniSearch.trim().toLowerCase()),
+    )
+    .sort((a, b) => {
+      const sa = selectedUnis.includes(a.name) ? 0 : 1;
+      const sb = selectedUnis.includes(b.name) ? 0 : 1;
+      return sa - sb || a.name.localeCompare(b.name);
+    });
 
   const filtered =
     selectedUnis.length === 0
@@ -633,34 +1028,59 @@ function ProgrammeFinderInner() {
         : [...selectedUnis, name],
     );
 
-  const changeDestination = (value: string) => {
-    setDestination(value);
-    // keep only the selected universities that exist in the new destination
+  const changeDestinations = (values: string[]) => {
+    setDestinations(values);
+    // keep only the selected universities that exist in the chosen destinations
     updateUnis(
       selectedUnis.filter(
         (name) =>
-          value === "All destinations" ||
-          programmes.some((p) => p.university === name && p.country === value),
+          values.length === 0 ||
+          programmes.some(
+            (p) => p.university === name && values.includes(p.country),
+          ),
       ),
     );
   };
 
   const hasFilters =
     query !== "" ||
-    destination !== "All destinations" ||
-    level !== "All levels" ||
+    destinations.length > 0 ||
+    levels.length > 0 ||
     selectedUnis.length > 0;
 
   const clearAll = () => {
     setQuery("");
-    setDestination("All destinations");
-    setLevel("All levels");
+    setDestinations([]);
+    setLevels([]);
     updateUnis([]);
     setUniSearch("");
   };
 
-  const fieldClass =
-    "mt-1 w-full rounded-xl border border-[#E5E5E5] bg-white px-4 py-3 text-sm text-[#1B1B1B] outline-none placeholder:text-[#9A9A9A] transition-all focus:border-[#E0483E] focus:ring-4 focus:ring-[#E0483E]/10";
+  // Single university selected → show its banner
+  const focusUni = selectedUnis.length === 1 ? selectedUnis[0] : null;
+  const focusCountry = focusUni
+    ? (programmes.find((p) => p.university === focusUni)?.country ?? "")
+    : "";
+  const focusTotal = focusUni
+    ? programmes.filter((p) => p.university === focusUni).length
+    : 0;
+
+  const destinationOptions: Option[] = allDestinations.map((d) => ({
+    value: d,
+    label: d,
+    icon: <Flag country={d} />,
+  }));
+
+  const levelOptions: Option[] = allLevels.map((l) => ({
+    value: l,
+    label: l,
+    icon: (
+      <span
+        className="h-2.5 w-2.5 shrink-0 rounded-full"
+        style={{ backgroundColor: levelDots[l] }}
+      />
+    ),
+  }));
 
   return (
     <section className="w-full bg-[#FFFEFA] px-6 py-16">
@@ -677,8 +1097,8 @@ function ProgrammeFinderInner() {
         </p>
 
         {/* Top filters */}
-        <div className="mt-8 grid grid-cols-1 gap-4 rounded-2xl border border-[#ECECEC] bg-white p-4 shadow-sm sm:grid-cols-[1fr_200px_180px] sm:items-end">
-          <div>
+        <div className="relative z-20 mt-8 grid grid-cols-1 gap-4 rounded-2xl border border-[#ECECEC] bg-white p-4 shadow-sm sm:grid-cols-2 lg:grid-cols-[1fr_230px_210px] lg:items-end">
+          <div className="sm:col-span-2 lg:col-span-1">
             <label
               htmlFor="pf-search"
               className="text-xs font-semibold text-[#6B6B6B]"
@@ -691,54 +1111,72 @@ function ProgrammeFinderInner() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="e.g. Computer Science, MBA, Law"
-              className={fieldClass}
+              className="mt-1 w-full rounded-xl border border-[#E5E5E5] bg-white px-4 py-3 text-sm text-[#1B1B1B] outline-none transition-all placeholder:text-[#9A9A9A] focus:border-[#E0483E] focus:ring-4 focus:ring-[#E0483E]/10"
             />
           </div>
-          <div>
-            <label
-              htmlFor="pf-destination"
-              className="text-xs font-semibold text-[#6B6B6B]"
-            >
-              Destination
-            </label>
-            <select
-              id="pf-destination"
-              value={destination}
-              onChange={(e) => changeDestination(e.target.value)}
-              className={fieldClass}
-            >
-              {destinations.map((d) => (
-                <option key={d} value={d}>
-                  {d}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div>
-            <label
-              htmlFor="pf-level"
-              className="text-xs font-semibold text-[#6B6B6B]"
-            >
-              Level
-            </label>
-            <select
-              id="pf-level"
-              value={level}
-              onChange={(e) => setLevel(e.target.value as "All levels" | Level)}
-              className={fieldClass}
-            >
-              {levels.map((l) => (
-                <option key={l} value={l}>
-                  {l}
-                </option>
-              ))}
-            </select>
-          </div>
+          <MultiSelect
+            id="pf-destination"
+            label="Destination"
+            allLabel="All destinations"
+            options={destinationOptions}
+            selected={destinations}
+            onChange={changeDestinations}
+          />
+          <MultiSelect
+            id="pf-level"
+            label="Level"
+            allLabel="All levels"
+            options={levelOptions}
+            selected={levels}
+            onChange={(values) => setLevels(values as Level[])}
+          />
         </div>
 
         <div className="mt-8 grid grid-cols-1 items-start gap-8 lg:grid-cols-[minmax(0,1fr)_300px]">
           {/* Results */}
           <div className="order-2 lg:order-1">
+            {/* Selected university banner */}
+            {focusUni && (
+              <div className="mb-6 flex flex-col gap-4 rounded-2xl border border-[#E0483E]/25 bg-white p-5 shadow-sm sm:flex-row sm:items-center">
+                <UniLogo name={focusUni} className="h-16 w-32 rounded-xl" />
+                <div className="min-w-0 flex-1">
+                  <p className="text-[11px] font-semibold uppercase tracking-wider text-[#E0483E]">
+                    Showing courses from
+                  </p>
+                  <h3 className="mt-0.5 text-lg font-semibold text-[#1B1B1B]">
+                    {focusUni}
+                  </h3>
+                  <p className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-[#6B6B6B]">
+                    <span className="inline-flex items-center gap-1.5">
+                      <Flag country={focusCountry} />
+                      {focusCountry}
+                    </span>
+                    <span>{focusTotal} programmes</span>
+                    {universityInfo[focusUni]?.note && (
+                      <span className="rounded-full bg-[#FDECEA] px-2.5 py-0.5 font-semibold text-[#E0483E]">
+                        {universityInfo[focusUni]?.note}
+                      </span>
+                    )}
+                  </p>
+                </div>
+                <div className="flex shrink-0 gap-2">
+                  <Link
+                    href="/universities"
+                    className="rounded-full border border-[#E5E5E5] px-4 py-2 text-xs font-semibold text-[#1B1B1B] transition-colors hover:border-[#1B1B1B]"
+                  >
+                    All universities
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={() => updateUnis([])}
+                    className="rounded-full bg-[#1B1B1B] px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-[#E0483E]"
+                  >
+                    Show all courses
+                  </button>
+                </div>
+              </div>
+            )}
+
             <div className="flex flex-wrap items-center justify-between gap-3">
               <p className="text-sm text-[#6B6B6B]">
                 Showing{" "}
@@ -758,28 +1196,53 @@ function ProgrammeFinderInner() {
               )}
             </div>
 
-            {/* Selected university chips */}
-            {selectedUnis.length > 0 && (
+            {/* Active filter chips */}
+            {(selectedUnis.length > 1 ||
+              destinations.length > 0 ||
+              levels.length > 0) && (
               <div className="mt-3 flex flex-wrap gap-2">
-                {selectedUnis.map((name) => (
-                  <button
-                    key={name}
-                    type="button"
-                    onClick={() => toggleUni(name)}
-                    aria-label={`Remove ${name} filter`}
-                    className="inline-flex items-center gap-1.5 rounded-full bg-[#E0483E] py-1.5 pl-3 pr-2 text-xs font-semibold text-white transition-colors hover:bg-[#C93C33]"
-                  >
-                    {name}
-                    <svg
-                      className="h-3.5 w-3.5"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={3}
-                      aria-hidden
+                {selectedUnis.length > 1 &&
+                  selectedUnis.map((name) => (
+                    <button
+                      key={name}
+                      type="button"
+                      onClick={() => toggleUni(name)}
+                      aria-label={`Remove ${name} filter`}
+                      className="inline-flex items-center gap-1.5 rounded-full bg-[#E0483E] py-1 pl-1 pr-2 text-xs font-semibold text-white transition-colors hover:bg-[#C93C33]"
                     >
-                      <path strokeLinecap="round" d="M6 6l12 12M18 6 6 18" />
-                    </svg>
+                      <UniLogo
+                        name={name}
+                        className="h-6 w-6 rounded-full border-0"
+                      />
+                      {name}
+                      <CloseIcon />
+                    </button>
+                  ))}
+                {destinations.map((d) => (
+                  <button
+                    key={d}
+                    type="button"
+                    onClick={() =>
+                      changeDestinations(destinations.filter((x) => x !== d))
+                    }
+                    aria-label={`Remove ${d} filter`}
+                    className="inline-flex items-center gap-1.5 rounded-full border border-[#E5E5E5] bg-white py-1 pl-1.5 pr-2 text-xs font-semibold text-[#1B1B1B] transition-colors hover:border-[#E0483E]"
+                  >
+                    <Flag country={d} />
+                    {d}
+                    <CloseIcon />
+                  </button>
+                ))}
+                {levels.map((l) => (
+                  <button
+                    key={l}
+                    type="button"
+                    onClick={() => setLevels(levels.filter((x) => x !== l))}
+                    aria-label={`Remove ${l} filter`}
+                    className={`inline-flex items-center gap-1.5 rounded-full py-1 pl-3 pr-2 text-xs font-semibold ${levelStyles[l]}`}
+                  >
+                    {l}
+                    <CloseIcon />
                   </button>
                 ))}
               </div>
@@ -789,45 +1252,99 @@ function ProgrammeFinderInner() {
               {filtered.map((programme) => (
                 <div
                   key={`${programme.university}-${programme.title}`}
-                  className="flex flex-col justify-between rounded-2xl border border-[#ECECEC] bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
+                  className="group relative flex flex-col overflow-hidden rounded-2xl border border-[#ECECEC] bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#E0483E]/25 hover:shadow-xl hover:shadow-black/5"
                 >
-                  <div>
-                    <div className="flex items-start justify-between gap-3">
-                      <span className="text-xs font-semibold uppercase tracking-wide text-[#2F5DA8]">
-                        {programme.university}
-                      </span>
-                      <span className="shrink-0 rounded-full bg-[#F5F5F0] px-3 py-1 text-[11px] font-semibold text-[#6B6B6B]">
-                        {programme.country}
-                      </span>
-                    </div>
+                  {/* Red line that grows on hover */}
+                  <span
+                    aria-hidden
+                    className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-[#E0483E] transition-transform duration-500 group-hover:scale-x-100"
+                  />
 
-                    <h3 className="mt-2 text-sm font-semibold leading-snug text-[#1B1B1B] sm:text-base">
-                      {programme.title}
-                    </h3>
-
-                    <div className="mt-3 flex flex-wrap items-center gap-2">
-                      <span
-                        className={`rounded-full px-3 py-1 text-[11px] font-semibold ${levelStyles[programme.level]}`}
-                      >
-                        {programme.level}
-                      </span>
-                      <span className="text-xs font-medium text-[#9A9A9A]">
-                        {programme.duration}
-                      </span>
-                      {programme.award && (
-                        <span className="text-xs font-medium text-[#9A9A9A]">
-                          · {programme.award}
-                        </span>
-                      )}
-                    </div>
+                  {/* Top: university logo (left) + country flag (right) */}
+                  <div className="flex items-start justify-between gap-3">
+                    <UniLogo
+                      name={programme.university}
+                      className="h-14 w-28 rounded-xl shadow-sm transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <span
+                      title={programme.country}
+                      aria-label={programme.country}
+                      className="flex h-9 w-9 shrink-0 overflow-hidden rounded-full shadow-md ring-2 ring-white"
+                    >
+                      <ReactCountryFlag
+                        countryCode={countryCodes[programme.country] ?? ""}
+                        svg
+                        aria-hidden
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          display: "block",
+                          objectFit: "cover",
+                        }}
+                      />
+                    </span>
                   </div>
 
-                  <button
-                    type="button"
-                    className="mt-5 w-fit rounded-full border border-[#1B1B1B] px-5 py-2 text-xs font-semibold text-[#1B1B1B] transition-colors hover:bg-[#1B1B1B] hover:text-white sm:text-sm"
-                  >
-                    Enquire
-                  </button>
+                  <p className="mt-4 text-[11px] font-semibold uppercase tracking-wider text-[#2F5DA8]">
+                    {programme.university}
+                  </p>
+                  <h3 className="mt-1 text-base font-semibold leading-snug text-[#1B1B1B]">
+                    {programme.title}
+                  </h3>
+
+                  <div className="mt-3 flex flex-wrap items-center gap-2">
+                    <span
+                      className={`rounded-full px-3 py-1 text-[11px] font-semibold ${levelStyles[programme.level]}`}
+                    >
+                      {programme.level}
+                    </span>
+                    <span className="inline-flex items-center gap-1 rounded-full bg-[#F5F5F0] px-2.5 py-1 text-[11px] font-semibold text-[#6B6B6B]">
+                      <svg
+                        className="h-3 w-3"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={2.5}
+                        aria-hidden
+                      >
+                        <circle cx="12" cy="12" r="8.5" />
+                        <path strokeLinecap="round" d="M12 7.5V12l3 2" />
+                      </svg>
+                      {programme.duration}
+                    </span>
+                  </div>
+                  {programme.award && (
+                    <p className="mt-2 text-xs text-[#9A9A9A]">
+                      {programme.award}
+                    </p>
+                  )}
+
+                  <div className="min-h-5 flex-1" aria-hidden />
+                  <div className="flex items-center justify-between gap-3 border-t border-[#F0EBE3] pt-4">
+                    <span className="text-xs text-[#9A9A9A]">
+                      Free counselling
+                    </span>
+                    <button
+                      type="button"
+                      className="group/btn inline-flex items-center gap-1.5 rounded-full bg-[#1B1B1B] px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-[#E0483E] sm:text-sm"
+                    >
+                      Enquire
+                      <svg
+                        className="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-0.5"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={2.5}
+                        aria-hidden
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M5 12h14m0 0-6-6m6 6-6 6"
+                        />
+                      </svg>
+                    </button>
+                  </div>
                 </div>
               ))}
 
@@ -897,16 +1414,18 @@ function ProgrammeFinderInner() {
                 className="w-full rounded-xl border border-[#E5E5E5] px-3.5 py-2.5 text-sm text-[#1B1B1B] outline-none placeholder:text-[#9A9A9A] focus:border-[#E0483E]"
               />
 
-              <ul className="mt-3 max-h-[420px] space-y-0.5 overflow-y-auto pr-1">
+              <ul className="mt-3 max-h-[440px] space-y-1 overflow-y-auto pr-1">
                 {visibleUnis.map((uni) => {
                   const checked = selectedUnis.includes(uni.name);
                   const empty = uni.count === 0 && !checked;
                   return (
                     <li key={uni.name}>
                       <label
-                        className={`flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2 transition-colors hover:bg-[#FFFEFA] ${
-                          empty ? "opacity-45" : ""
-                        }`}
+                        className={`flex cursor-pointer items-center gap-3 rounded-xl border px-2 py-2 transition-colors ${
+                          checked
+                            ? "border-[#E0483E]/30 bg-[#FFF6F5]"
+                            : "border-transparent hover:bg-[#FFFEFA]"
+                        } ${empty ? "opacity-45" : ""}`}
                       >
                         <input
                           type="checkbox"
@@ -920,11 +1439,10 @@ function ProgrammeFinderInner() {
                           >
                             {uni.name}
                           </span>
-                          {destination === "All destinations" && (
-                            <span className="block text-[11px] text-[#9A9A9A]">
-                              {uni.country}
-                            </span>
-                          )}
+                          <span className="flex items-center gap-1 text-[11px] text-[#9A9A9A]">
+                            <Flag country={uni.country} />
+                            {uni.country}
+                          </span>
                         </span>
                         <span
                           className={`grid h-6 min-w-6 place-items-center rounded-full px-1.5 text-[11px] font-bold ${
@@ -961,5 +1479,20 @@ function ProgrammeFinderInner() {
         </div>
       </div>
     </section>
+  );
+}
+
+function CloseIcon() {
+  return (
+    <svg
+      className="h-3.5 w-3.5"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={3}
+      aria-hidden
+    >
+      <path strokeLinecap="round" d="M6 6l12 12M18 6 6 18" />
+    </svg>
   );
 }

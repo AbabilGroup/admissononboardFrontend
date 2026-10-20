@@ -1,6 +1,6 @@
 // import Accreditations from "@/components/Accreditations";
 // import BranchLocations from "@/components/BranchLocations";
-import CtaBanner from "@/components/CtaBanner";
+// import CtaBanner from "@/components/CtaBanner";
 import DreamDestinations from "@/components/DreamDestinations";
 import FaqSection from "@/components/FaqSection";
 import HeroHome from "@/components/HeroHome";
@@ -14,6 +14,7 @@ import ContactCta from "@/components/ContactCta";
 import HowWeHelp from "@/components/HowWeHelp";
 import TheJourney from "@/components/TheJourney";
 import SuccessStoriesGallery from "@/components/SuccessStoriesGallery";
+import UniversityPartner from "@/components/UniversityPartner";
 
 export default function Home() {
   return (
@@ -27,7 +28,8 @@ export default function Home() {
       <TheJourney />
       {/* <PartnerInstitutions /> */}
       {/* <VisaSuccessStories /> */}
-      <CtaBanner />
+      {/* <CtaBanner /> */}
+      <UniversityPartner country="United Kingdom" />
       {/* <StudentVideoStories />
       <OurPartners /> */}
       <LatestBlogs />
