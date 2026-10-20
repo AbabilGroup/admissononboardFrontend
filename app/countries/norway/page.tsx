@@ -4,6 +4,7 @@ import HeroNorway from "@/components/HeroNorway";
 import WhyNorway from "@/components/WhyNorway";
 import AdmissionVisaProcessNorway from "@/components/AdmissionVisaProcessNorway";
 import EntryRequirementsNorway from "@/components/EntryRequirementsNorway";
+import UniversityPartner from "@/components/UniversityPartner";
 
 export const metadata = pageMetadata({
   title: "Study in Norway | Admissions, Visa & Scholarships",
@@ -19,6 +20,7 @@ export default function page() {
       <WhyNorway />
       <EntryRequirementsNorway />
       <AdmissionVisaProcessNorway />
+      <UniversityPartner country="Norway" />
       <ContactCta />
     </div>
   );

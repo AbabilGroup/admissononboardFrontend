@@ -31,7 +31,7 @@ const socials = [
 
 export default function GlobalEducationCta() {
   return (
-    <section className="w-full bg-[#FAFAFA] px-4 py-16 sm:px-6 lg:px-8">
+    <section className="w-full px-4 py-16 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
         {/* Main Card Container */}
         <div className="relative isolate overflow-hidden rounded-[2rem] bg-[#012b4e] shadow-xl">

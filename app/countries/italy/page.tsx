@@ -5,6 +5,7 @@ import HeroItaly from "@/components/HeroItaly";
 import WhyItaly from "@/components/WhyItaly";
 import EntryRequirementsItaly from "@/components/EntryRequirementsItaly";
 import AdmissionVisaProcessItaly from "@/components/AdmissionVisaProcessItaly";
+import UniversityPartner from "@/components/UniversityPartner";
 
 export const metadata = pageMetadata({
   title: "Study in Italy | Admissions, Visa & Scholarships",
@@ -20,6 +21,7 @@ export default function page() {
       <WhyItaly />
       <EntryRequirementsItaly />
       <AdmissionVisaProcessItaly />
+      <UniversityPartner country="Italy" />
       <ContactCta />
     </div>
   );

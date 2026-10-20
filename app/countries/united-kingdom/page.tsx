@@ -4,6 +4,7 @@ import ContactCta from "@/components/ContactCta";
 import HeroUK from "@/components/HeroUK";
 import WhyUK from "@/components/WhyUK";
 import EntryRequirementsUK from "@/components/EntryRequirementsUK";
+import UniversityPartner from "@/components/UniversityPartner";
 
 export const metadata = pageMetadata({
   title: "Study in the UK | Admissions, Visa & Scholarships",
@@ -19,6 +20,7 @@ export default function page() {
       <WhyUK />
       <EntryRequirementsUK />
       <AdmissionVisaProcessUK />
+      <UniversityPartner country="United Kingdom" />
       <ContactCta />
     </div>
   );

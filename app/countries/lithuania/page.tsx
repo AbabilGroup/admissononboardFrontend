@@ -4,6 +4,7 @@ import ContactCta from "@/components/ContactCta";
 import HeroLithuania from "@/components/HeroLithuania";
 import WhyLithuania from "@/components/WhyLithuania";
 import EntryRequirementsLithuania from "@/components/EntryRequirementsLithunia";
+import UniversityPartner from "@/components/UniversityPartner";
 
 export const metadata = pageMetadata({
   title: "Study in Lithuania | Admissions, Visa & Scholarships",
@@ -18,6 +19,7 @@ export default function page() {
       <WhyLithuania />
       <EntryRequirementsLithuania />
       <AdmissionVisaProcessLithuania />
+      <UniversityPartner country="Lithuania" />
       <ContactCta />
     </div>
   );

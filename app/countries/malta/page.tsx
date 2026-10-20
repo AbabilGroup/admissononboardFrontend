@@ -4,6 +4,7 @@ import ContactCta from "@/components/ContactCta";
 import HeroMalta from "@/components/HeroMalta";
 import WhyMalta from "@/components/WhyMalta";
 import EntryRequirementsMalta from "@/components/EntryRequirementsMalta";
+import UniversityPartner from "@/components/UniversityPartner";
 
 export const metadata = pageMetadata({
   title: "Study in Malta | Admissions, Visa & Scholarships",
@@ -19,6 +20,7 @@ export default function page() {
       <WhyMalta />
       <EntryRequirementsMalta />
       <AdmissionVisaProcessMalta />
+      <UniversityPartner country="Malta" />
       <ContactCta />
     </div>
   );

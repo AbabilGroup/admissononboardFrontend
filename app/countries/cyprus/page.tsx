@@ -4,6 +4,7 @@ import ContactCta from "@/components/ContactCta";
 import HeroCyprus from "@/components/HeroCyprus";
 import WhyCyprus from "@/components/WhyCyprus";
 import EntryRequirementsCyprus from "@/components/EntryRequirementsCypus";
+import UniversityPartner from "@/components/UniversityPartner";
 
 export const metadata = pageMetadata({
   title: "Study in Cyprus | Admissions, Visa & Scholarships",
@@ -19,6 +20,7 @@ export default function page() {
       <WhyCyprus />
       <EntryRequirementsCyprus />
       <AdmissionVisaProcessCyprus />
+      <UniversityPartner country="Cyprus" />
       <ContactCta />
     </div>
   );

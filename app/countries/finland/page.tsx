@@ -5,6 +5,7 @@ import HeroFinland from "@/components/HeroFinland";
 
 import WhyFinland from "@/components/WhyFinland";
 import EntryRequirementsFinland from "@/components/EntryRequirementsFinland";
+import UniversityPartner from "@/components/UniversityPartner";
 
 export const metadata = pageMetadata({
   title: "Study in Finland | Admissions, Visa & Scholarships",
@@ -20,6 +21,7 @@ export default function page() {
       <WhyFinland />
       <EntryRequirementsFinland />
       <AdmissionVisaProcessFinland />
+      <UniversityPartner country="Finland" />
       <ContactCta />
     </div>
   );

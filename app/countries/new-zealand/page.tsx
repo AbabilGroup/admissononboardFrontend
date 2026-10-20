@@ -4,6 +4,7 @@ import ContactCta from "@/components/ContactCta";
 import HeroNewZealand from "@/components/HeroNewZealand";
 import WhyNewZealand from "@/components/WhyNewZealand";
 import EntryRequirementsNewZealand from "@/components/EntryRequirementsNewZealand";
+import UniversityPartner from "@/components/UniversityPartner";
 
 export const metadata = pageMetadata({
   title: "Study in New Zealand | Admissions, Visa & Scholarships",
@@ -19,6 +20,7 @@ export default function page() {
       <WhyNewZealand />
       <EntryRequirementsNewZealand />
       <AdmissionVisaProcessNewZealand />
+      <UniversityPartner country="New Zealand" />
       <ContactCta />
     </div>
   );

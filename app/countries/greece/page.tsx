@@ -4,6 +4,7 @@ import ContactCta from "@/components/ContactCta";
 import HeroGreece from "@/components/HeroGreece";
 import WhyGreece from "@/components/WhyGreece";
 import EntryRequirementsGreece from "@/components/EntryRequirementsGreece";
+import UniversityPartner from "@/components/UniversityPartner";
 
 export const metadata = pageMetadata({
   title: "Study in Greece | Admissions, Visa & Scholarships",
@@ -19,6 +20,7 @@ export default function page() {
       <WhyGreece />
       <EntryRequirementsGreece />
       <AdmissionVisaProcessGreece />
+      <UniversityPartner country="Greece" />
       <ContactCta />
     </div>
   );

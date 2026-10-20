@@ -4,6 +4,7 @@ import ContactCta from "@/components/ContactCta";
 import HeroRomania from "@/components/HeroRomania";
 import WhyRomania from "@/components/WhyRomania";
 import EntryRequirementsRomania from "@/components/EntryRequirementsRomania";
+import UniversityPartner from "@/components/UniversityPartner";
 
 export const metadata = pageMetadata({
   title: "Study in Romania | Admissions, Visa & Scholarships",
@@ -19,7 +20,7 @@ export default function page() {
       <WhyRomania />
       <EntryRequirementsRomania />
       <AdmissionVisaProcessRomania />
-      {/* <VisaSuccessCarousel /> */}
+      <UniversityPartner country="Romania" />
       <ContactCta />
     </div>
   );
