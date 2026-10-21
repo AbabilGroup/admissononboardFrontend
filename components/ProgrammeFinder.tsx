@@ -523,20 +523,20 @@ const programmes: Programme[] = [
   //   level: "Undergraduate",
   //   duration: "4 years",
   // },
-  {
-    university: "John von Neumann University",
-    country: "Hungary",
-    title: "BSc Computer Science Engineering",
-    level: "Undergraduate",
-    duration: "4 years",
-  },
-  {
-    university: "John von Neumann University",
-    country: "Hungary",
-    title: "BSc Business Administration and Management",
-    level: "Undergraduate",
-    duration: "3.5 years",
-  },
+  // {
+  //   university: "John von Neumann University",
+  //   country: "Hungary",
+  //   title: "BSc Computer Science Engineering",
+  //   level: "Undergraduate",
+  //   duration: "4 years",
+  // },
+  // {
+  //   university: "John von Neumann University",
+  //   country: "Hungary",
+  //   title: "BSc Business Administration and Management",
+  //   level: "Undergraduate",
+  //   duration: "3.5 years",
+  // },
   {
     university: "Training Three Sixty",
     country: "Malta",
@@ -563,7 +563,7 @@ const programmes: Programme[] = [
     country: "Malta",
     title:
       "Bachelor/Undergraduate Diploma in Human Resource Management (MQF Level 5)",
-    level: "Diploma",
+    level: "Undergraduate",
     duration: "1 year",
   },
   {
@@ -571,7 +571,7 @@ const programmes: Programme[] = [
     country: "Malta",
     title:
       "Bachelor/Undergraduate Diploma in Health and Social Care Management (MQF Level 5)",
-    level: "Diploma",
+    level: "Undergraduate",
     duration: "1 year",
   },
   {
@@ -611,7 +611,7 @@ const programmes: Programme[] = [
     country: "Malta",
     title: "Undergraduate Certificate in Nursing Studies",
     award: "Level 5 Diploma",
-    level: "Diploma",
+    level: "Undergraduate",
     duration: "12 months",
   },
   {

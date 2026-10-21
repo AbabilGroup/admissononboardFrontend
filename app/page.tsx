@@ -15,6 +15,7 @@ import HowWeHelp from "@/components/HowWeHelp";
 import TheJourney from "@/components/TheJourney";
 import SuccessStoriesGallery from "@/components/SuccessStoriesGallery";
 import UniversityPartner from "@/components/UniversityPartner";
+import ContactFooter from "@/components/ContactFooter";
 
 export default function Home() {
   return (
@@ -35,7 +36,8 @@ export default function Home() {
       <LatestBlogs />
       {/* <BranchLocations /> */}
       <FaqSection />
-      <ContactCta />
+      {/* <ContactCta /> */}
+      <ContactFooter />
     </div>
   );
 }

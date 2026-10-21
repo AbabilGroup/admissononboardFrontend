@@ -210,14 +210,14 @@ const universities: University[] = [
   //     color: "#2F9E5C",
   //     logo: "/univercity-logo/auc.png",
   //   },
-  {
-    slug: "john-von-neumann-university",
-    name: "John von Neumann University",
-    country: "Hungary",
-    initials: "JV",
-    color: "#F58B0F",
-    logo: "/univercity-logo/jvnu.png",
-  },
+  // {
+  //   slug: "john-von-neumann-university",
+  //   name: "John von Neumann University",
+  //   country: "Hungary",
+  //   initials: "JV",
+  //   color: "#F58B0F",
+  //   logo: "/univercity-logo/jvnu.png",
+  // },
   {
     slug: "training-three-sixty",
     name: "Training Three Sixty",
