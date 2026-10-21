@@ -185,11 +185,11 @@ const universityInfo: Record<string, UniInfo> = {
     initials: "AC",
     color: "#2F9E5C",
   },
-  "John von Neumann University": {
-    logo: "/univercity-logo/jvnu.png",
-    initials: "JV",
-    color: "#F58B0F",
-  },
+  // "John von Neumann University": {
+  //   logo: "/univercity-logo/jvnu.png",
+  //   initials: "JV",
+  //   color: "#F58B0F",
+  // },
   "Training Three Sixty": {
     logo: "/univercity-logo/tts.png",
     initials: "T3",
