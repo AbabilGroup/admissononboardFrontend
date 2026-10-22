@@ -37,7 +37,7 @@ const cards: Card[] = [
   {
     cta: "Join our network",
     href: "/recruitment-partner",
-    image: "/forpartner.png",
+    image: "/recruitmentpart.png",
     alt: "For Recruitment Partners – stronger partnerships and greater opportunities",
     accent: "#7A4FBF",
     button: "solid",

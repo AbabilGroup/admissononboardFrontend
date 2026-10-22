@@ -5,12 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import ReactCountryFlag from "react-country-flag";
 
-// ─────────────────────────────────────────────────────────────
-// Data – same universities, slugs and logos as the /universities page.
-// To add a partner, add one entry here (country must match a name below).
-// `image` is optional: a campus photo (16:9, about 800×450 px). Without it
-// the card shows the logo on a soft cream panel.
-// ─────────────────────────────────────────────────────────────
 
 type University = {
   slug: string;
