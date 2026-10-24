@@ -16,6 +16,7 @@ import TheJourney from "@/components/TheJourney";
 import SuccessStoriesGallery from "@/components/SuccessStoriesGallery";
 import UniversityPartner from "@/components/UniversityPartner";
 import ContactFooter from "@/components/ContactFooter";
+import OurOffices from "@/components/OurOffices";
 
 export default function Home() {
   return (
@@ -38,6 +39,7 @@ export default function Home() {
       <FaqSection />
       {/* <ContactCta /> */}
       <ContactFooter />
+      <OurOffices />
     </div>
   );
 }
