@@ -4,8 +4,8 @@ import { useState, type ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-// Left-side photo in
-const FAQ_IMAGE = "/faq.png";
+// Left-side photo in /public
+const FAQ_IMAGE = "/faqsw.png";
 
 type Faq = {
   question: string;
@@ -87,58 +87,6 @@ const faqs: Faq[] = [
   },
 ];
 
-const advisors = [
-  { initials: "SA", color: "#22A55B" },
-  { initials: "TH", color: "#2F6FE4" },
-  { initials: "NJ", color: "#F08A24" },
-  { initials: "AS", color: "#8B5CF6" },
-];
-
-function AdvisorCard() {
-  return (
-    <div className="w-full max-w-sm rounded-3xl border border-white/70 bg-white/85 p-6 shadow-xl shadow-[#2F6FE4]/10 backdrop-blur-xl">
-      <div className="flex -space-x-2">
-        {advisors.map((a) => (
-          <span
-            key={a.initials}
-            className="grid h-9 w-9 place-items-center rounded-full text-[11px] font-bold text-white ring-2 ring-white"
-            style={{ backgroundColor: a.color }}
-          >
-            {a.initials}
-          </span>
-        ))}
-      </div>
-      <h3 className="mt-4 text-lg font-bold text-[#1B1B1B]">
-        Still have questions?
-      </h3>
-      <p className="mt-1 text-sm leading-relaxed text-[#6B6B6B]">
-        Our education experts are here to help you at every step of your
-        journey.
-      </p>
-      <Link
-        href="/contact"
-        className="group mt-5 inline-flex items-center gap-2 rounded-full bg-[#E0483E] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-[#E0483E]/30 transition-all hover:-translate-y-0.5 hover:bg-[#C93C33]"
-      >
-        Speak to an advisor
-        <svg
-          className="h-4 w-4 transition-transform group-hover:translate-x-1"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth={2.5}
-          aria-hidden
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M5 12h14m0 0-6-6m6 6-6 6"
-          />
-        </svg>
-      </Link>
-    </div>
-  );
-}
-
 export default function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
@@ -162,9 +110,9 @@ export default function FaqSection() {
           </p>
         </div>
 
-        <div className="mt-10 grid grid-cols-1 items-stretch gap-8 lg:mt-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-12">
-          {/* Left: photo with floating bubble + advisor card */}
-          <div className="relative h-80 overflow-hidden rounded-[2rem] shadow-[#2F6FE4]/10 ring-1 ring-black/5 sm:h-[28rem] lg:h-auto lg:min-h-[600px]">
+        <div className="mt-10 grid grid-cols-1 items-start gap-8 lg:mt-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-12">
+          {/* Left: photo – fixed height, so opening a question never stretches it */}
+          <div className="relative h-96 overflow-hidden rounded-[2rem] shadow-[#2F6FE4]/10 ring-1 ring-black/5 sm:h-[28rem] lg:sticky lg:top-28 lg:h-[600px]">
             <Image
               src={FAQ_IMAGE}
               alt="Smiling student holding books, ready to study abroad"
@@ -179,9 +127,27 @@ export default function FaqSection() {
               questions<span className="text-[#E0483E]">?</span>
             </span> */}
 
-            {/* <div className="absolute inset-x-5 bottom-5 hidden lg:block">
-              <AdvisorCard />
-            </div> */}
+            {/* Button at the bottom of the image */}
+            <Link
+              href="/contact"
+              className="group absolute bottom-0 left-5 inline-flex items-center gap-2 rounded-full bg-[#1E6FE8] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-[#1E6FE8]/35 transition-all hover:-translate-y-0.5 hover:bg-[#1659C4] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1E6FE8] sm:bottom-2 sm:left-7"
+            >
+              Speak To An Advisor
+              <svg
+                className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2.5}
+                aria-hidden
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M5 12h14m0 0-6-6m6 6-6 6"
+                />
+              </svg>
+            </Link>
           </div>
 
           {/* Right: questions */}
@@ -265,11 +231,6 @@ export default function FaqSection() {
               );
             })}
           </ul>
-
-          {/* Advisor card (mobile & tablet) */}
-          <div className="lg:hidden">
-            <AdvisorCard />
-          </div>
         </div>
       </div>
     </section>
