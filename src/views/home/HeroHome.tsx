@@ -21,7 +21,7 @@ export default function HeroHome() {
         }
       `}</style>
 
-      <div className="relative flex flex-col lg:block lg:aspect-3/1 lg:w-full">
+      <div className="relative flex flex-col lg:block lg:aspect-3/1 lg:min-h-[560px] lg:w-full">
         {/* Background image (below text on mobile, full-bleed behind text on desktop) */}
         <div className="relative order-2 h-72 sm:h-96 lg:absolute lg:inset-0 lg:h-full">
           <Image
@@ -115,6 +115,28 @@ export default function HeroHome() {
                   />
                 </svg>
               </Link>
+            </div>
+
+            {/* Experience badge */}
+            <div
+              className="mt-6 inline-flex items-center gap-3 rounded-2xl border border-white/70 bg-white/70 px-4 py-3 shadow-md shadow-[#1366E0]/10 backdrop-blur-sm animate-[heroFadeUp_0.8s_ease-out_both] motion-reduce:animate-none lg:mt-[1.8vw]"
+              style={{ animationDelay: "750ms" }}
+            >
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#1366E0] text-white">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden>
+                  <circle cx="12" cy="9" r="6" stroke="currentColor" strokeWidth="2" />
+                  <path
+                    d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
+              <span className="leading-tight">
+                <span className="block text-2xl font-bold text-[#0F1B3D]">10+ Years</span>
+                <span className="block text-sm font-medium text-[#3B4660]">Experience</span>
+              </span>
             </div>
           </div>
         </div>
