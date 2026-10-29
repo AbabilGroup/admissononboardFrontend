@@ -63,7 +63,7 @@ const blocks: ContactBlock[] = [
         value: (
           <a
             href="mailto:aob@admissiononboard.com"
-            className="text-[#E0483E] underline underline-offset-2"
+            className="text-[#1366E0] underline underline-offset-2"
           >
             aob@admissiononboard.com
           </a>
@@ -85,7 +85,7 @@ const blocks: ContactBlock[] = [
         value: (
           <a
             href="mailto:agent@admissiononboard.com"
-            className="text-[#E0483E] underline underline-offset-2"
+            className="text-[#1366E0] underline underline-offset-2"
           >
             agent@admissiononboard.com
           </a>
@@ -163,7 +163,7 @@ export default function ContactAudiences() {
                 {block.cta && (
                   <Link
                     href={block.cta.href}
-                    className="mt-5 inline-flex items-center justify-center rounded-lg border border-[#E0483E] px-5 py-2.5 text-sm font-semibold text-[#E0483E] transition-colors hover:bg-[#E0483E] hover:text-white"
+                    className="mt-5 inline-flex items-center justify-center rounded-lg border border-[#1366E0] px-5 py-2.5 text-sm font-semibold text-[#1366E0] transition-colors hover:bg-[#1366E0] hover:text-white"
                   >
                     {block.cta.label}
                   </Link>

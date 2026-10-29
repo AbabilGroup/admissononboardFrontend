@@ -29,7 +29,7 @@ export default function Login() {
   const isStudent = tab === "student";
   const isAdmin = tab === "admin";
 
-  const accent = isStudent ? "#E0483E" : isAdmin ? "#1B1B1B" : "#F58B0F";
+  const accent = isStudent ? "#1366E0" : isAdmin ? "#1B1B1B" : "#F58B0F";
 
   const handleTabChange = (next: LoginTab) => {
     setTab(next);
@@ -155,7 +155,7 @@ export default function Login() {
             </span>
           </div>
 
-          <div className="card-fade rounded-3xl bg-white shadow-[0_20px_60px_-15px_rgba(224,72,62,0.18)] border border-[#1B1B1B]/5 overflow-hidden">
+          <div className="card-fade rounded-3xl bg-white shadow-[0_20px_60px_-15px_rgba(19,102,224,0.18)] border border-[#1B1B1B]/5 overflow-hidden">
             {!isAdmin && (
               <div className="relative flex">
                 <TabButton
@@ -197,7 +197,7 @@ export default function Login() {
               <p
                 className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[0.15em] ${
                   isStudent
-                    ? "bg-[#E0483E]/15 text-[#E0483E]"
+                    ? "bg-[#1366E0]/15 text-[#1366E0]"
                     : isAdmin
                       ? "bg-[#1B1B1B]/10 text-[#1B1B1B]"
                       : "bg-[#F58B0F]/15 text-[#F58B0F]"
@@ -286,7 +286,7 @@ export default function Login() {
                 <div className="flex justify-end">
                   <a
                     href={`/auth/forgot-password?tab=${tab}`}
-                    className="text-xs font-semibold text-[#1B1B1B]/50 transition-colors hover:text-[#E0483E]"
+                    className="text-xs font-semibold text-[#1B1B1B]/50 transition-colors hover:text-[#1366E0]"
                   >
                     Forgot Password?
                   </a>
@@ -314,7 +314,7 @@ export default function Login() {
                   Don&apos;t have an account?{" "}
                   <a
                     href={`/auth/register/?tab=${tab}`}
-                    className={`font-bold ${isStudent ? "text-[#E0483E]" : "text-[#F58B0F]"} hover:underline`}
+                    className={`font-bold ${isStudent ? "text-[#1366E0]" : "text-[#F58B0F]"} hover:underline`}
                   >
                     Register here
                   </a>
@@ -352,8 +352,8 @@ interface TabButtonProps {
 }
 
 function TabButton({ active, onClick, icon, label, accent }: TabButtonProps) {
-  const accentColor = accent === "red" ? "#E0483E" : "#F58B0F";
-  const accentBg = accent === "red" ? "bg-[#E0483E]/10" : "bg-[#F58B0F]/10";
+  const accentColor = accent === "red" ? "#1366E0" : "#F58B0F";
+  const accentBg = accent === "red" ? "bg-[#1366E0]/10" : "bg-[#F58B0F]/10";
   return (
     <button
       type="button"

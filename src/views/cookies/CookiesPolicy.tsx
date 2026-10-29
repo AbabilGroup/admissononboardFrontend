@@ -36,7 +36,7 @@ export default function CookiesPolicy() {
     <div className="w-full bg-[#FFFEFA]">
       <section className="border-b border-[#ECECEC] px-6 py-16 text-center sm:py-20">
         <div className="mx-auto container">
-          <p className="text-xs font-bold uppercase tracking-widest text-[#E0483E]">
+          <p className="text-xs font-bold uppercase tracking-widest text-[#1366E0]">
             Legal
           </p>
           <h1 className="mt-2 text-3xl font-semibold tracking-tight text-[#1B1B1B] sm:text-4xl md:text-5xl">
@@ -61,7 +61,7 @@ export default function CookiesPolicy() {
                   <li key={section.id}>
                     <a
                       href={`#${section.id}`}
-                      className="text-[#6B6B6B] transition-colors hover:text-[#E0483E]"
+                      className="text-[#6B6B6B] transition-colors hover:text-[#1366E0]"
                     >
                       {section.title}
                     </a>
@@ -197,7 +197,7 @@ export default function CookiesPolicy() {
                 </p>
                 <a
                   href="mailto:aob@admissiononboard.com"
-                  className="hover:text-[#E0483E]"
+                  className="hover:text-[#1366E0]"
                 >
                   aob@admissiononboard.com
                 </a>

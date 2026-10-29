@@ -54,11 +54,11 @@ export default function TeamIntro() {
         <div className="mx-auto max-w-3xl text-center">
           <span
             aria-hidden
-            className="mx-auto block h-1 w-12 rounded-full bg-[#E0483E]"
+            className="mx-auto block h-1 w-12 rounded-full bg-[#1366E0]"
           />
           <h2 className="mt-5 text-3xl font-semibold tracking-tight text-[#1B1B1B] sm:text-4xl lg:text-[2.75rem] lg:leading-tight">
             One team, one goal:{" "}
-            <span className="text-[#E0483E]">your future</span>
+            <span className="text-[#1366E0]">your future</span>
           </h2>
           <p className="mt-5 text-sm leading-relaxed text-[#6B6B6B] sm:text-base lg:text-lg">
             Every student who walks through our door gets a dedicated counsellor
@@ -75,7 +75,7 @@ export default function TeamIntro() {
               key={point.title}
               className="group flex flex-col items-center px-6 py-9 text-center md:py-10 lg:px-8"
             >
-              <span className="relative grid h-14 w-14 place-items-center rounded-full border-2 border-[#E0483E]/25 text-[#E0483E] transition-all duration-300 group-hover:-translate-y-1 group-hover:border-[#E0483E] group-hover:bg-[#E0483E] group-hover:text-white">
+              <span className="relative grid h-14 w-14 place-items-center rounded-full border-2 border-[#1366E0]/25 text-[#1366E0] transition-all duration-300 group-hover:-translate-y-1 group-hover:border-[#1366E0] group-hover:bg-[#1366E0] group-hover:text-white">
                 <svg
                   className="h-6 w-6"
                   viewBox="0 0 24 24"

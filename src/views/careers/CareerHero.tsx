@@ -31,7 +31,7 @@ export default function CareerHero() {
 
             <Link
               href="#careers-openings"
-              className="group mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#E0483E] px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#E0483E]/30 transition-all hover:scale-105 hover:bg-[#C93C33] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1B1B1B] sm:mt-7 sm:w-auto sm:py-3"
+              className="group mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#1366E0] px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#1366E0]/30 transition-all hover:scale-105 hover:bg-[#0F55BE] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1B1B1B] sm:mt-7 sm:w-auto sm:py-3"
             >
               Explore Careers
               <svg

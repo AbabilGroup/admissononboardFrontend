@@ -95,14 +95,14 @@ export default function FaqSection() {
       <div className="mx-auto container px-4 py-16 sm:px-6 lg:py-20">
         {/* Heading */}
         <div className="mx-auto max-w-2xl text-center">
-          <p className="flex items-center justify-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-[#E0483E]">
-            <span className="h-px w-10 bg-[#E0483E]/40" />
+          <p className="flex items-center justify-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-[#1366E0]">
+            <span className="h-px w-10 bg-[#1366E0]/40" />
             FAQ
-            <span className="h-px w-10 bg-[#E0483E]/40" />
+            <span className="h-px w-10 bg-[#1366E0]/40" />
           </p>
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#13213C] sm:text-4xl lg:text-5xl">
             Answers to your common{" "}
-            <span className="text-[#E0483E]">questions</span>
+            <span className="text-[#1366E0]">questions</span>
           </h2>
           <p className="mt-3 text-sm text-[#5A6478] sm:text-base">
             Have doubts? We&apos;ve got answers. Browse what students ask us
@@ -124,7 +124,7 @@ export default function FaqSection() {
             {/* <span className="absolute right-5 top-5 rotate-6 rounded-2xl bg-white px-4 py-2.5 text-sm font-extrabold leading-tight text-[#13213C] shadow-lg">
               Got
               <br />
-              questions<span className="text-[#E0483E]">?</span>
+              questions<span className="text-[#1366E0]">?</span>
             </span> */}
 
             {/* Button at the bottom of the image */}

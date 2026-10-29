@@ -113,7 +113,7 @@ export default function VisaSuccessCarousel() {
       <div className="mx-auto max-w-4xl">
         <div className="text-center">
           <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-            <span className="text-[#E0483E]">Visa Success</span>{" "}
+            <span className="text-[#1366E0]">Visa Success</span>{" "}
             <span className="text-[#1B1B1B]">Stories</span>
           </h2>
           <p className="mt-3 text-sm text-[#6B6B6B] sm:text-base">
@@ -161,7 +161,7 @@ export default function VisaSuccessCarousel() {
               </div>
 
               <div>
-                <h3 className="text-xl font-semibold text-[#E0483E] sm:text-2xl">
+                <h3 className="text-xl font-semibold text-[#1366E0] sm:text-2xl">
                   {currentStory.name}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-[#4B4B4B] sm:text-base">
@@ -206,7 +206,7 @@ export default function VisaSuccessCarousel() {
                 onClick={() => setActiveIndex(i)}
                 className={`h-2.5 rounded-full transition-all ${
                   activeIndex === i
-                    ? "w-6 bg-[#E0483E]"
+                    ? "w-6 bg-[#1366E0]"
                     : "w-2.5 bg-[#E5E5E5] hover:bg-[#D5D5D5]"
                 }`}
               />

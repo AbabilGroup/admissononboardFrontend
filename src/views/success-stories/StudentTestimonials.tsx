@@ -63,7 +63,7 @@ export default function StudentTestimonials() {
       <div className="mx-auto container">
         <div className="text-center">
           <h2 className="text-3xl font-semibold tracking-tight text-[#1B1B1B] sm:text-4xl">
-            What <span className="text-[#E0483E]">Students</span> Say About Us
+            What <span className="text-[#1366E0]">Students</span> Say About Us
           </h2>
           <p className="mt-3 text-sm text-[#6B6B6B] sm:text-base">
             Hear from our successful students who turned their study-abroad
@@ -77,7 +77,7 @@ export default function StudentTestimonials() {
               key={testimonial.name}
               className="relative mb-6 break-inside-avoid rounded-2xl border border-[#ECECEC] bg-white p-6 shadow-sm"
             >
-              <span className="pointer-events-none absolute -top-2 left-5 select-none font-serif text-6xl leading-none text-[#E0483E]/10">
+              <span className="pointer-events-none absolute -top-2 left-5 select-none font-serif text-6xl leading-none text-[#1366E0]/10">
                 &ldquo;
               </span>
 
@@ -86,14 +86,14 @@ export default function StudentTestimonials() {
               </p>
 
               <div className="mt-5 flex items-center gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#E0483E] text-xs font-semibold text-white">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#1366E0] text-xs font-semibold text-white">
                   {testimonial.initials}
                 </div>
                 <div>
                   <div className="text-sm font-semibold text-[#1B1B1B]">
                     {testimonial.name}
                   </div>
-                  <div className="text-xs font-semibold text-[#E0483E]">
+                  <div className="text-xs font-semibold text-[#1366E0]">
                     {testimonial.school}
                   </div>
                   <div className="text-xs text-[#9A9A9A]">

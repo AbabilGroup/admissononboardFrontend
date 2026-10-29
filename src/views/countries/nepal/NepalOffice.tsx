@@ -32,7 +32,7 @@ const defaultOffices: Office[] = [
 
 function PinBadgeIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="#E0483E">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="#1366E0">
       <path d="M12 2C7.86 2 4.5 5.36 4.5 9.5c0 5.25 6.19 11.44 6.46 11.7a1.5 1.5 0 0 0 2.08 0c.27-.26 6.46-6.45 6.46-11.7C19.5 5.36 16.14 2 12 2Zm0 10.5A3 3 0 1 1 12 6.5a3 3 0 0 1 0 6Z" />
     </svg>
   );
@@ -71,7 +71,7 @@ export default function NepalOffice({
   return (
     <div className="w-full bg-[#FFFEFA]">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#D6281F] via-[#B4272C] to-[#7A1E3A] px-6 py-16 text-center sm:py-20">
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#1366E0] via-[#0F4FB0] to-[#0B2A66] px-6 py-16 text-center sm:py-20">
         <div className="mx-auto container">
           <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-xs font-semibold text-white backdrop-blur-sm">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
@@ -104,11 +104,11 @@ export default function NepalOffice({
                 key={office.slug}
                 className="flex flex-col rounded-2xl border border-[#ECECEC] bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
               >
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#E0483E]/10">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#1366E0]/10">
                   <PinBadgeIcon />
                 </div>
 
-                <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-[#E0483E]">
+                <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-[#1366E0]">
                   Admission OnBoard ({country})
                 </p>
                 <h3 className="mt-1 text-base font-semibold text-[#1B1B1B] sm:text-lg">
@@ -126,7 +126,7 @@ export default function NepalOffice({
                 <button
                   type="button"
                   onClick={() => setActiveOffice(office)}
-                  className="mt-4 inline-flex w-fit items-center gap-1 text-sm font-semibold text-[#1B1B1B] transition-colors hover:text-[#E0483E]"
+                  className="mt-4 inline-flex w-fit items-center gap-1 text-sm font-semibold text-[#1B1B1B] transition-colors hover:text-[#1366E0]"
                 >
                   View Details &amp; Map
                   <svg

@@ -82,10 +82,10 @@ export default function WhoItsFor() {
           <div className="max-w-xl">
             <span
               aria-hidden
-              className="block h-1 w-12 rounded-full bg-[#E0483E]"
+              className="block h-1 w-12 rounded-full bg-[#1366E0]"
             />
             <h2 className="mt-5 text-3xl font-semibold tracking-tight text-[#1B1B1B] sm:text-4xl">
-              Who it&apos;s <span className="text-[#E0483E]">for</span>
+              Who it&apos;s <span className="text-[#1366E0]">for</span>
             </h2>
           </div>
           <p className="max-w-md text-sm leading-relaxed text-[#6B6B6B] sm:text-base">
@@ -119,7 +119,7 @@ export default function WhoItsFor() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent" />
 
                 <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
-                  <span className="grid h-11 w-11 place-items-center rounded-xl bg-[#E0483E] text-white shadow-lg shadow-[#E0483E]/30">
+                  <span className="grid h-11 w-11 place-items-center rounded-xl bg-[#1366E0] text-white shadow-lg shadow-[#1366E0]/30">
                     <svg
                       className="h-5 w-5"
                       viewBox="0 0 24 24"

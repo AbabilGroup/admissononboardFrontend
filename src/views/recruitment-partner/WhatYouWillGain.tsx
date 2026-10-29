@@ -159,7 +159,7 @@ export default function WhatYouWillGain() {
     <section ref={sectionRef} className="w-full bg-[#FFFEFA] px-6 py-20">
       <div className="mx-auto container max-w-3xl">
         <h2 className="text-center text-3xl font-semibold tracking-tight text-[#1B1B1B] sm:text-4xl">
-          What You Will <span className="text-[#E0483E]">Gain</span>
+          What You Will <span className="text-[#1366E0]">Gain</span>
         </h2>
 
         <div ref={wrapRef} className="relative mt-14">
@@ -184,21 +184,21 @@ export default function WhatYouWillGain() {
               strokeWidth="3"
               strokeLinecap="round"
               fill="none"
-              style={{ filter: "drop-shadow(0 0 6px rgba(224,72,62,0.4))" }}
+              style={{ filter: "drop-shadow(0 0 6px rgba(19,102,224,0.4))" }}
             />
             <defs>
               <linearGradient id="gainGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#E0483E" />
+                <stop offset="0%" stopColor="#1366E0" />
                 <stop offset="50%" stopColor="#F58B0F" />
-                <stop offset="100%" stopColor="#E0483E" />
+                <stop offset="100%" stopColor="#1366E0" />
               </linearGradient>
             </defs>
             <circle
               ref={dotRef}
               r="6"
-              fill="#E0483E"
+              fill="#1366E0"
               opacity="0"
-              style={{ filter: "drop-shadow(0 0 8px rgba(224,72,62,0.8))" }}
+              style={{ filter: "drop-shadow(0 0 8px rgba(19,102,224,0.8))" }}
             />
           </svg>
 
@@ -214,13 +214,13 @@ export default function WhatYouWillGain() {
               >
                 <div
                   data-icon
-                  className="absolute left-4 top-1/2 hidden h-16 w-16 -translate-y-1/2 items-center justify-center rounded-full bg-[#E0483E]/10 sm:flex"
+                  className="absolute left-4 top-1/2 hidden h-16 w-16 -translate-y-1/2 items-center justify-center rounded-full bg-[#1366E0]/10 sm:flex"
                 >
                   <svg
                     width="30"
                     height="30"
                     viewBox="0 0 24 24"
-                    fill="#E0483E"
+                    fill="#1366E0"
                   >
                     {benefit.icon}
                   </svg>
@@ -228,13 +228,13 @@ export default function WhatYouWillGain() {
 
                 <div
                   data-icon
-                  className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#E0483E]/10 sm:hidden"
+                  className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#1366E0]/10 sm:hidden"
                 >
                   <svg
                     width="26"
                     height="26"
                     viewBox="0 0 24 24"
-                    fill="#E0483E"
+                    fill="#1366E0"
                   >
                     {benefit.icon}
                   </svg>

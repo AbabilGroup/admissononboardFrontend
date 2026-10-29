@@ -35,9 +35,9 @@ export default function ContactBanner() {
       <div className="mx-auto max-w-6xl">
         <div className="relative isolate overflow-hidden rounded-[2rem] bg-[#012b4e] shadow-xl">
           <div className="absolute inset-0 -z-10">
-            <div className="absolute -left-16 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full bg-[#E0483E] opacity-90 sm:-left-12 sm:h-80 sm:w-80 md:h-[28rem] md:w-[28rem]" />
+            <div className="absolute -left-16 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full bg-[#1366E0] opacity-90 sm:-left-12 sm:h-80 sm:w-80 md:h-[28rem] md:w-[28rem]" />
 
-            <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[#E0483E] opacity-90 sm:-right-12 sm:h-72 sm:w-72" />
+            <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[#1366E0] opacity-90 sm:-right-12 sm:h-72 sm:w-72" />
           </div>
 
           <div className="flex flex-col items-center justify-between md:flex-row">

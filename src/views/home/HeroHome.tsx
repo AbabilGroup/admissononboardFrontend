@@ -1,109 +1,122 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const headline = ["Turn your overseas education", "vision into reality with"];
+const headline = ["Turn your overseas", "education vision into"];
 
 export default function HeroHome() {
   return (
-    <section className="w-full overflow-hidden bg-[#FFFEFA]">
+    <section className="relative w-full overflow-hidden bg-[#F2F8FE]">
       <style>{`
         @keyframes heroFadeUp {
           from { opacity: 0; transform: translateY(28px); }
           to   { opacity: 1; transform: translateY(0); }
         }
         @keyframes heroImageIn {
-          from { opacity: 0; transform: translateX(40px) scale(0.94); }
-          to   { opacity: 1; transform: translateX(0) scale(1); }
+          from { opacity: 0; transform: scale(1.04); }
+          to   { opacity: 1; transform: scale(1); }
         }
         @keyframes heroUnderline {
-          from { transform: scaleX(0); }
-          to   { transform: scaleX(1); }
-        }
-        @keyframes heroGlow {
-          from { opacity: 0; transform: scale(0.6); }
-          to   { opacity: 1; transform: scale(1); }
+          from { stroke-dashoffset: 220; }
+          to   { stroke-dashoffset: 0; }
         }
       `}</style>
 
-      <div className="mx-auto flex container flex-col items-center gap-12 px-6 py-20 md:flex-row md:gap-10 md:py-18">
-        <div className="w-full md:w-2/3">
-          <h1 className="text-4xl font-semibold leading-tight tracking-tight text-[#1B1B1B] sm:text-5xl">
-            {headline.map((line, i) => (
-              <span
-                key={line}
-                className="block animate-[heroFadeUp_0.8s_cubic-bezier(0.22,1,0.36,1)_both] motion-reduce:animate-none"
-                style={{ animationDelay: `${i * 120}ms` }}
-              >
-                {line}
-              </span>
-            ))}
-            <span
-              className="relative inline-block animate-[heroFadeUp_0.8s_cubic-bezier(0.22,1,0.36,1)_both] text-[#E0483E] motion-reduce:animate-none"
-              style={{ animationDelay: "240ms" }}
-            >
-              Admission OnBoard
-              {/* Underline that draws itself in */}
-              {/* <span
-                aria-hidden
-                className="absolute -bottom-1 left-0 h-[5px] w-full origin-left rounded-full bg-[#E0483E]/25 animate-[heroUnderline_0.9s_cubic-bezier(0.65,0,0.35,1)_both] motion-reduce:animate-none"
-                style={{ animationDelay: "900ms" }}
-              /> */}
-            </span>
-          </h1>
-
-          <p
-            className="mt-6 max-w-md text-base text-[#6B6B6B] animate-[heroFadeUp_0.8s_ease-out_both] motion-reduce:animate-none sm:text-lg"
-            style={{ animationDelay: "450ms" }}
-          >
-            Guided by specialists, connected to leading universities, and
-            supported at every step of the journey.
-          </p>
-
-          <div
-            className="animate-[heroFadeUp_0.8s_ease-out_both] motion-reduce:animate-none"
-            style={{ animationDelay: "600ms" }}
-          >
-            <Link
-              href="/contact"
-              className="group mt-9 inline-flex items-center gap-2 rounded-full border border-[#1B1B1B] bg-white px-6 py-3 text-sm font-semibold text-[#1B1B1B] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1B1B1B] hover:text-white hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E0483E] focus-visible:ring-offset-2"
-            >
-              Schedule A Free Consultation
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                className="shrink-0 transition-transform duration-300 group-hover:translate-x-1"
-              >
-                <path
-                  d="M5 12h14M13 6l6 6-6 6"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </Link>
-          </div>
+      <div className="relative flex flex-col lg:block lg:aspect-[2/1] lg:max-h-[760px] lg:w-full">
+        {/* Background image (below text on mobile, full-bleed behind text on desktop) */}
+        <div className="relative order-2 h-72 sm:h-96 lg:absolute lg:inset-0 lg:h-full">
+          <Image
+            src="/hero.png"
+            alt="Admission OnBoard counsellor guiding students about studying abroad"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-[75%_center] animate-[heroImageIn_1.2s_ease-out_both] motion-reduce:animate-none lg:object-center"
+          />
         </div>
 
-        {/* Right: image */}
-        <div className="relative w-full md:w-1/2">
-          {/* Soft glow behind the image */}
-          <div
-            aria-hidden
-            className="absolute inset-0 m-auto h-3/4 w-3/4 rounded-full bg-[#E0483E]/10 blur-3xl animate-[heroGlow_1.2s_ease-out_both] motion-reduce:animate-none"
-            style={{ animationDelay: "200ms" }}
-          />
-          <Image
-            src="/hero.jpeg"
-            alt="Graduate celebrating academic success"
-            width={580}
-            height={580}
-            className="relative mx-auto h-auto w-full max-w-[520px] object-contain animate-[heroImageIn_1s_cubic-bezier(0.22,1,0.36,1)_both] motion-reduce:animate-none"
-            style={{ animationDelay: "300ms" }}
-            priority
-          />
+        {/* Text */}
+        <div className="relative z-10 order-1 px-6 pt-14 pb-8 sm:px-10 lg:flex lg:h-full lg:w-[40%] lg:items-center lg:py-0 lg:pl-[5%] lg:pr-0">
+          <div>
+            <h1 className="text-[2rem] font-bold leading-[1.15] tracking-tight text-[#0F1B3D] sm:text-5xl lg:text-[2.6rem] xl:text-[3.25rem] 2xl:text-6xl">
+              {headline.map((line, i) => (
+                <span
+                  key={line}
+                  className="block animate-[heroFadeUp_0.8s_cubic-bezier(0.22,1,0.36,1)_both] motion-reduce:animate-none"
+                  style={{ animationDelay: `${i * 120}ms` }}
+                >
+                  {line}
+                </span>
+              ))}
+              <span
+                className="block animate-[heroFadeUp_0.8s_cubic-bezier(0.22,1,0.36,1)_both] motion-reduce:animate-none"
+                style={{ animationDelay: "240ms" }}
+              >
+                <span className="relative inline-block text-[#3DB94A]">
+                  reality
+                  {/* Hand-drawn underline that draws itself in */}
+                  <svg
+                    aria-hidden
+                    viewBox="0 0 200 20"
+                    preserveAspectRatio="none"
+                    className="absolute -bottom-2 left-0 h-3 w-[95%]"
+                  >
+                    <path
+                      d="M4 12 C 50 4, 120 4, 196 9 M30 16 C 80 10, 130 11, 170 14"
+                      fill="none"
+                      stroke="#3DB94A"
+                      strokeWidth="4"
+                      strokeLinecap="round"
+                      strokeDasharray="220"
+                      className="animate-[heroUnderline_0.9s_cubic-bezier(0.65,0,0.35,1)_both] motion-reduce:animate-none"
+                      style={{ animationDelay: "900ms" }}
+                    />
+                  </svg>
+                </span>{" "}
+                with
+              </span>
+              <span
+                className="mt-1 block animate-[heroFadeUp_0.8s_cubic-bezier(0.22,1,0.36,1)_both] text-[#1366E0] motion-reduce:animate-none"
+                style={{ animationDelay: "360ms" }}
+              >
+                Admission OnBoard
+              </span>
+            </h1>
+
+            <p
+              className="mt-5 max-w-md text-base text-[#3B4660] animate-[heroFadeUp_0.8s_ease-out_both] motion-reduce:animate-none sm:text-lg"
+              style={{ animationDelay: "450ms" }}
+            >
+              Guided by specialists, connected to leading universities, and
+              supported at every step of the journey.
+            </p>
+
+            <div
+              className="animate-[heroFadeUp_0.8s_ease-out_both] motion-reduce:animate-none"
+              style={{ animationDelay: "600ms" }}
+            >
+              <Link
+                href="/contact"
+                className="group mt-8 inline-flex items-center gap-2 rounded-full bg-[#1366E0] px-6 py-3 text-sm font-semibold text-white shadow-md shadow-[#1366E0]/25 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#0F55BE] hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1366E0] focus-visible:ring-offset-2"
+              >
+                Schedule A Free Consultation
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  className="shrink-0 transition-transform duration-300 group-hover:translate-x-1"
+                >
+                  <path
+                    d="M5 12h14M13 6l6 6-6 6"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </section>

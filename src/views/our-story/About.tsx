@@ -12,11 +12,11 @@ export default function About() {
         <div>
           <span
             aria-hidden
-            className="block h-1 w-12 rounded-full bg-[#E0483E]"
+            className="block h-1 w-12 rounded-full bg-[#1366E0]"
           />
 
           <h2 className="mt-5 text-3xl font-semibold tracking-tight text-[#1B1B1B] sm:text-4xl lg:text-5xl">
-            About <span className="text-[#E0483E]">us</span>
+            About <span className="text-[#1366E0]">us</span>
           </h2>
 
           <p className="mt-6 max-w-xl text-lg font-medium leading-snug text-[#1B1B1B] sm:text-xl">
@@ -38,7 +38,7 @@ export default function About() {
 
           <Link
             href="/careers"
-            className="group mt-8 inline-flex items-center gap-2 rounded-full bg-[#E0483E] px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#E0483E]/25 transition-all hover:-translate-y-0.5 hover:bg-[#1B1B1B] hover:shadow-black/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E0483E] focus-visible:ring-offset-2"
+            className="group mt-8 inline-flex items-center gap-2 rounded-full bg-[#1366E0] px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#1366E0]/25 transition-all hover:-translate-y-0.5 hover:bg-[#1B1B1B] hover:shadow-black/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1366E0] focus-visible:ring-offset-2"
           >
             Join our team
             <svg
@@ -65,12 +65,12 @@ export default function About() {
           {/* Soft pink glow (isolate keeps it visible above the section background) */}
           <div
             aria-hidden
-            className="pointer-events-none absolute -inset-6 -z-10 rounded-[3rem] bg-[#F4A5A5] opacity-40 blur-3xl"
+            className="pointer-events-none absolute -inset-6 -z-10 rounded-[3rem] bg-[#A5C8F4] opacity-40 blur-3xl"
           />
           {/* Offset accent shape */}
           <div
             aria-hidden
-            className="absolute inset-0 -z-10 translate-x-4 translate-y-4 rounded-bl-[3rem] rounded-br-lg rounded-tl-[3rem] rounded-tr-[3rem] border-2 border-[#E0483E]/30 transition-transform duration-500 group-hover:translate-x-5 group-hover:translate-y-5"
+            className="absolute inset-0 -z-10 translate-x-4 translate-y-4 rounded-bl-[3rem] rounded-br-lg rounded-tl-[3rem] rounded-tr-[3rem] border-2 border-[#1366E0]/30 transition-transform duration-500 group-hover:translate-x-5 group-hover:translate-y-5"
           />
 
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-bl-[3rem] rounded-br-lg rounded-tl-[3rem] rounded-tr-[3rem] shadow-xl shadow-black/5">

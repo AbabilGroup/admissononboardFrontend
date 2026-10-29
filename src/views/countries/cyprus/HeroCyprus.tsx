@@ -77,8 +77,8 @@ export default function HeroCyprus() {
           />
 
           {/* Red gradient fading in from the left */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#e62d3f] via-[#e62d3f]/5 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#e62d3f] via-[#e62d3f]/5 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#1366E0] via-[#1366E0]/5 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1366E0] via-[#1366E0]/5 to-transparent" />
 
           <div className="relative z-10 flex h-full min-h-[520px] flex-col justify-center px-6 pb-20 pt-10 sm:min-h-0 sm:px-10 sm:pb-16 md:px-16 lg:pb-24">
             <h1 className="text-5xl font-semibold leading-tight tracking-tight text-white sm:text-6xl md:text-7xl">
@@ -127,12 +127,12 @@ export default function HeroCyprus() {
                 key={stat.value}
                 className="flex flex-col items-center gap-2 bg-white/95 px-3 py-5 text-center backdrop-blur-md sm:px-5 lg:py-6"
               >
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#e62d3f]/10">
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#1366E0]/10">
                   <svg
                     className="h-5 w-5"
                     viewBox="0 0 24 24"
                     fill="none"
-                    stroke="#e62d3f"
+                    stroke="#1366E0"
                     strokeWidth={1.8}
                     aria-hidden
                   >

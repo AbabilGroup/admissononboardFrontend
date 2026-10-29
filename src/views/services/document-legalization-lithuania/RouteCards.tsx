@@ -43,7 +43,7 @@ function ConnectorX() {
       aria-hidden
       className="absolute left-full top-1/2 z-10 hidden h-10 w-14 -translate-y-1/2 items-center md:flex lg:w-20"
     >
-      <span className="mx-2 h-0 flex-1 border-t-2 border-dashed border-[#E0483E]/50" />
+      <span className="mx-2 h-0 flex-1 border-t-2 border-dashed border-[#1366E0]/50" />
       <span className="rt-fly-x absolute top-1/2 -translate-y-1/2">
         <PlaneIcon className="h-5 w-5 rotate-90" />
       </span>
@@ -58,7 +58,7 @@ function ConnectorY() {
       aria-hidden
       className="relative mx-auto my-4 flex h-14 w-10 justify-center md:hidden"
     >
-      <span className="h-full w-0 border-l-2 border-dashed border-[#E0483E]/50" />
+      <span className="h-full w-0 border-l-2 border-dashed border-[#1366E0]/50" />
       <span className="rt-fly-y absolute left-1/2 -translate-x-1/2">
         <PlaneIcon className="h-5 w-5 rotate-180" />
       </span>
@@ -69,7 +69,7 @@ function ConnectorY() {
 function PlaneIcon({ className = "" }: { className?: string }) {
   return (
     <svg
-      className={`text-[#E0483E] ${className}`}
+      className={`text-[#1366E0] ${className}`}
       viewBox="0 0 24 24"
       fill="currentColor"
     >
@@ -97,7 +97,7 @@ export default function RouteCards() {
         {/* Heading */}
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-semibold tracking-tight text-[#1B1B1B] sm:text-4xl">
-            Where your <span className="text-[#E0483E]">PCC</span> travels
+            Where your <span className="text-[#1366E0]">PCC</span> travels
           </h2>
           <p className="mt-4 text-sm text-[#6B6B6B] sm:text-base">
             Three stops, one team. We manage every handover, so your document is
@@ -122,7 +122,7 @@ export default function RouteCards() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
 
                   {/* Step number */}
-                  <span className="absolute left-4 top-4 grid h-9 w-9 place-items-center rounded-full bg-[#E0483E] text-sm font-bold text-white shadow-md">
+                  <span className="absolute left-4 top-4 grid h-9 w-9 place-items-center rounded-full bg-[#1366E0] text-sm font-bold text-white shadow-md">
                     {index + 1}
                   </span>
 
@@ -172,7 +172,7 @@ export default function RouteCards() {
 
         {/* Return option */}
         <p className="mx-auto mt-12 flex max-w-xl items-start justify-center gap-2.5 rounded-2xl border border-[#ECECEC] bg-white px-5 py-4 text-center text-sm text-[#5A5A5A] shadow-sm sm:items-center">
-          <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#E0483E]/10 text-[#E0483E]">
+          <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#1366E0]/10 text-[#1366E0]">
             <svg
               className="h-4 w-4"
               viewBox="0 0 24 24"

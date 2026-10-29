@@ -39,11 +39,11 @@ export default function IntroDoubleEntry() {
         <div>
           <span
             aria-hidden
-            className="block h-1 w-12 rounded-full bg-[#E0483E]"
+            className="block h-1 w-12 rounded-full bg-[#1366E0]"
           />
 
           <h2 className="mt-5 text-3xl font-semibold leading-tight tracking-tight text-[#1B1B1B] sm:text-4xl">
-            What is a <span className="text-[#E0483E]">double-entry</span> visa?
+            What is a <span className="text-[#1366E0]">double-entry</span> visa?
           </h2>
 
           <p className="mt-5 max-w-xl text-sm leading-relaxed text-[#5A5A5A] sm:text-base sm:leading-relaxed">
@@ -65,7 +65,7 @@ export default function IntroDoubleEntry() {
                 key={item.title}
                 className={`rounded-2xl border p-4 ${
                   item.highlight
-                    ? "border-[#E0483E]/40 bg-white shadow-md shadow-[#E0483E]/10"
+                    ? "border-[#1366E0]/40 bg-white shadow-md shadow-[#1366E0]/10"
                     : "border-[#ECECEC] bg-white/60"
                 }`}
               >
@@ -73,7 +73,7 @@ export default function IntroDoubleEntry() {
                   <span
                     className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl ${
                       item.highlight
-                        ? "bg-[#E0483E] text-white"
+                        ? "bg-[#1366E0] text-white"
                         : "bg-[#F1F1EE] text-[#9A9A9A]"
                     }`}
                   >
@@ -96,7 +96,7 @@ export default function IntroDoubleEntry() {
                     {item.title}
                   </span>
                   {item.highlight && (
-                    <span className="ml-auto rounded-full bg-[#E0483E]/10 px-2 py-0.5 text-[11px] font-semibold text-[#E0483E]">
+                    <span className="ml-auto rounded-full bg-[#1366E0]/10 px-2 py-0.5 text-[11px] font-semibold text-[#1366E0]">
                       We help with this
                     </span>
                   )}
@@ -118,7 +118,7 @@ export default function IntroDoubleEntry() {
           {/* Offset red frame behind the photo */}
           <div
             aria-hidden
-            className="absolute inset-0 translate-x-3 translate-y-3 rounded-[2rem] border-2 border-[#E0483E]/30 transition-transform duration-500 group-hover:translate-x-4 group-hover:translate-y-4"
+            className="absolute inset-0 translate-x-3 translate-y-3 rounded-[2rem] border-2 border-[#1366E0]/30 transition-transform duration-500 group-hover:translate-x-4 group-hover:translate-y-4"
           />
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem] shadow-xl shadow-black/5 ring-1 ring-black/5">
             <Image
@@ -132,7 +132,7 @@ export default function IntroDoubleEntry() {
 
           {/* Floating badge */}
           <div className="absolute -bottom-6 left-6 flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-lg ring-1 ring-black/5">
-            <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#E0483E] text-white">
+            <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#1366E0] text-white">
               <svg
                 className="h-5 w-5"
                 viewBox="0 0 24 24"

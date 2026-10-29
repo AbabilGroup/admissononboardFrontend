@@ -36,7 +36,7 @@ const universities: University[] = [
     name: "University of Hertfordshire",
     country: "United Kingdom",
     initials: "UH",
-    color: "#D6281F",
+    color: "#1366E0",
     logo: "/univercity-logo/uh.jpg",
   },
   {
@@ -71,7 +71,7 @@ const universities: University[] = [
     name: "Aston University, London",
     country: "United Kingdom",
     initials: "AL",
-    color: "#E0483E",
+    color: "#1366E0",
     note: "Except Sylhet",
     logo: "/univercity-logo/aul.png",
   },
@@ -98,7 +98,7 @@ const universities: University[] = [
     name: "University of Bedfordshire",
     country: "United Kingdom",
     initials: "UB",
-    color: "#D6281F",
+    color: "#1366E0",
     note: "Except Sylhet",
     logo: "/univercity-logo/uob.png",
   },
@@ -124,7 +124,7 @@ const universities: University[] = [
     name: "University of South Wales",
     country: "United Kingdom",
     initials: "SW",
-    color: "#E0483E",
+    color: "#1366E0",
     logo: "/univercity-logo/uosw.png",
   },
   {
@@ -166,7 +166,7 @@ const universities: University[] = [
     name: "Aberystwyth University",
     country: "United Kingdom",
     initials: "AY",
-    color: "#E0483E",
+    color: "#1366E0",
     logo: "/univercity-logo/au.jpg",
   },
   {
@@ -206,7 +206,7 @@ const universities: University[] = [
     name: "Training Three Sixty",
     country: "Malta",
     initials: "T3",
-    color: "#E0483E",
+    color: "#1366E0",
     logo: "/univercity-logo/tts.png",
   },
   {
@@ -272,7 +272,7 @@ export default function UniversityExplorer() {
   return (
     <section className="w-full bg-[#FFFEFA] px-6 py-16">
       <div className="mx-auto container">
-        <p className="text-xs font-bold uppercase tracking-widest text-[#E0483E]">
+        <p className="text-xs font-bold uppercase tracking-widest text-[#1366E0]">
           Universities
         </p>
         <h2 className="mt-2 text-3xl font-semibold leading-tight tracking-tight text-[#1B1B1B] sm:text-4xl">
@@ -294,7 +294,7 @@ export default function UniversityExplorer() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="e.g. Chester, Aston"
-              className="mt-1 w-full rounded-xl border border-[#E5E5E5] px-4 py-3 text-sm text-[#1B1B1B] outline-none placeholder:text-[#9A9A9A] focus:border-[#E0483E]"
+              className="mt-1 w-full rounded-xl border border-[#E5E5E5] px-4 py-3 text-sm text-[#1B1B1B] outline-none placeholder:text-[#9A9A9A] focus:border-[#1366E0]"
             />
           </div>
 
@@ -305,7 +305,7 @@ export default function UniversityExplorer() {
             <select
               value={destination}
               onChange={(e) => setDestination(e.target.value)}
-              className="mt-1 w-full rounded-xl border border-[#E5E5E5] px-4 py-3 text-sm text-[#1B1B1B] outline-none focus:border-[#E0483E]"
+              className="mt-1 w-full rounded-xl border border-[#E5E5E5] px-4 py-3 text-sm text-[#1B1B1B] outline-none focus:border-[#1366E0]"
             >
               {destinations.map((d) => (
                 <option key={d} value={d}>
@@ -342,12 +342,12 @@ export default function UniversityExplorer() {
               </p>
 
               {uni.note && (
-                <p className="mt-2 rounded-full bg-[#FDECEA] px-3 py-1 text-[11px] font-semibold text-[#E0483E]">
+                <p className="mt-2 rounded-full bg-[#E3EDFC] px-3 py-1 text-[11px] font-semibold text-[#1366E0]">
                   {uni.note}
                 </p>
               )}
 
-              <span className="mt-auto inline-flex items-center gap-1.5 pt-4 text-xs font-semibold text-[#1B1B1B] transition-colors group-hover:text-[#E0483E] sm:text-sm">
+              <span className="mt-auto inline-flex items-center gap-1.5 pt-4 text-xs font-semibold text-[#1B1B1B] transition-colors group-hover:text-[#1366E0] sm:text-sm">
                 View courses
                 <svg
                   className="h-4 w-4 transition-transform group-hover:translate-x-1"

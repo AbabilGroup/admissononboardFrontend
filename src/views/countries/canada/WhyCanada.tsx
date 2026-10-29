@@ -83,7 +83,7 @@ const applyWindows = [
 const consultationModes = ["In-person", "Online Video Call", "Phone Call"];
 
 const inputClass =
-  "w-full rounded-xl border border-[#E5E5E5] bg-white px-4 py-3 text-sm text-[#1B1B1B] placeholder:text-[#9A9A9A] outline-none transition-all focus:border-[#E0483E] focus:ring-4 focus:ring-[#E0483E]/10";
+  "w-full rounded-xl border border-[#E5E5E5] bg-white px-4 py-3 text-sm text-[#1B1B1B] placeholder:text-[#9A9A9A] outline-none transition-all focus:border-[#1366E0] focus:ring-4 focus:ring-[#1366E0]/10";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -164,7 +164,7 @@ export default function WhyCanada() {
           {/* Left: reasons timeline */}
           <div>
             <h2 className="text-3xl font-semibold tracking-tight text-[#1B1B1B] sm:text-4xl">
-              Why Study in <span className="text-[#E0483E]">Canada</span>?
+              Why Study in <span className="text-[#1366E0]">Canada</span>?
             </h2>
 
             <div className="relative mt-10">
@@ -184,7 +184,7 @@ export default function WhyCanada() {
                       >
                         {reason.icon}
                       </svg>
-                      <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#E0483E] text-[10px] font-bold text-white ring-2 ring-[#FFFEFA]">
+                      <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#1366E0] text-[10px] font-bold text-white ring-2 ring-[#FFFEFA]">
                         {i + 1}
                       </span>
                     </div>
@@ -204,7 +204,7 @@ export default function WhyCanada() {
                               className="flex items-start gap-2 text-sm leading-relaxed text-[#6B6B6B]"
                             >
                               <svg
-                                className="mt-1 h-3.5 w-3.5 shrink-0 text-[#E0483E]"
+                                className="mt-1 h-3.5 w-3.5 shrink-0 text-[#1366E0]"
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
@@ -231,7 +231,7 @@ export default function WhyCanada() {
 
           {/* Right: consultation form */}
           <div className="h-fit overflow-hidden rounded-3xl border border-[#ECECEC] bg-white shadow-sm md:sticky md:top-28">
-            <div className="h-1.5 w-full bg-gradient-to-r from-[#E0483E] via-[#F07A52] to-[#2F5DA8]" />
+            <div className="h-1.5 w-full bg-gradient-to-r from-[#1366E0] via-[#4A90F0] to-[#2F5DA8]" />
 
             {status === "success" ? (
               /* ───────── Success state ───────── */
@@ -283,8 +283,8 @@ export default function WhyCanada() {
                     shortly.
                   </p>
 
-                  <div className="mt-6 flex items-center gap-3 rounded-2xl bg-[#FFF6F5] p-4 text-left">
-                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white text-[#E0483E] shadow-sm">
+                  <div className="mt-6 flex items-center gap-3 rounded-2xl bg-[#F3F7FE] p-4 text-left">
+                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white text-[#1366E0] shadow-sm">
                       <svg
                         className="h-4 w-4"
                         viewBox="0 0 24 24"
@@ -305,7 +305,7 @@ export default function WhyCanada() {
                       Questions in the meantime? Email{" "}
                       <a
                         href="mailto:apply@admissiononboard.com"
-                        className="font-semibold text-[#E0483E] hover:underline"
+                        className="font-semibold text-[#1366E0] hover:underline"
                       >
                         apply@admissiononboard.com
                       </a>
@@ -324,12 +324,12 @@ export default function WhyCanada() {
             ) : (
               <div className="p-6 sm:p-8">
                 <div className="flex items-start gap-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#E0483E]/10">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#1366E0]/10">
                     <svg
                       width="18"
                       height="18"
                       viewBox="0 0 24 24"
-                      fill="#E0483E"
+                      fill="#1366E0"
                       aria-hidden
                     >
                       <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm1 15h-2v-2h2v2Zm2.07-7.75-.9.92C13.45 10.9 13 11.5 13 13h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41a2 2 0 0 0-2-2 2 2 0 0 0-2 2H8a4 4 0 0 1 4-4 4 4 0 0 1 4 4c0 .8-.32 1.53-.93 2.09Z" />
@@ -516,7 +516,7 @@ export default function WhyCanada() {
                   <button
                     type="submit"
                     disabled={status === "submitting"}
-                    className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#1B1B1B] py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#E0483E] disabled:cursor-not-allowed disabled:opacity-70"
+                    className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#1B1B1B] py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#1366E0] disabled:cursor-not-allowed disabled:opacity-70"
                   >
                     {status === "submitting" ? (
                       <>

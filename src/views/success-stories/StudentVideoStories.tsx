@@ -81,7 +81,7 @@ export default function StudentVideoStories() {
       <div className="mx-auto container">
         <div className="text-center">
           <h2 className="text-3xl font-semibold tracking-tight text-[#1B1B1B] sm:text-4xl">
-            Hear From <span className="text-[#E0483E]">Our Students</span>
+            Hear From <span className="text-[#1366E0]">Our Students</span>
           </h2>
           <p className="mt-3 text-sm font-semibold text-[#6B6B6B] sm:text-base">
             Real stories, straight from the students we&apos;ve guided abroad
@@ -168,7 +168,7 @@ export default function StudentVideoStories() {
                 aria-label={`Go to page ${i + 1}`}
                 onClick={() => scrollToPage(i)}
                 className={`h-2.5 rounded-full transition-all ${
-                  activePage === i ? "w-6 bg-[#E0483E]" : "w-2.5 bg-[#E5E5E5]"
+                  activePage === i ? "w-6 bg-[#1366E0]" : "w-2.5 bg-[#E5E5E5]"
                 }`}
               />
             ))}

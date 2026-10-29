@@ -57,7 +57,7 @@ const stops: Stop[] = [
 function PlaneIcon({ className = "" }: { className?: string }) {
   return (
     <svg
-      className={`text-[#E0483E] ${className}`}
+      className={`text-[#1366E0] ${className}`}
       viewBox="0 0 24 24"
       fill="currentColor"
       aria-hidden
@@ -74,7 +74,7 @@ function ConnectorX() {
       aria-hidden
       className="absolute left-full top-1/2 z-10 hidden h-10 w-8 -translate-y-1/2 items-center lg:flex xl:w-10"
     >
-      <span className="h-0 w-full border-t-2 border-dashed border-[#E0483E]/50" />
+      <span className="h-0 w-full border-t-2 border-dashed border-[#1366E0]/50" />
       <span className="tl-fly-x absolute top-1/2 -translate-y-1/2">
         <PlaneIcon className="h-4 w-4 rotate-90" />
       </span>
@@ -89,7 +89,7 @@ function ConnectorY() {
       aria-hidden
       className="relative mx-auto my-3 flex h-12 w-10 justify-center sm:hidden"
     >
-      <span className="h-full w-0 border-l-2 border-dashed border-[#E0483E]/50" />
+      <span className="h-full w-0 border-l-2 border-dashed border-[#1366E0]/50" />
       <span className="tl-fly-y absolute left-1/2 -translate-x-1/2">
         <PlaneIcon className="h-4 w-4 rotate-180" />
       </span>
@@ -115,7 +115,7 @@ export default function TimelineDoubleEntry() {
       <div className="mx-auto container max-w-6xl">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-semibold tracking-tight text-[#1B1B1B] sm:text-4xl">
-            Two trips, <span className="text-[#E0483E]">one visa</span>
+            Two trips, <span className="text-[#1366E0]">one visa</span>
           </h2>
           <p className="mt-4 text-sm text-[#6B6B6B] sm:text-base">
             Here&apos;s how a double-entry visa covers your whole travel plan.
@@ -131,7 +131,7 @@ export default function TimelineDoubleEntry() {
               <div className="relative">
                 <div
                   className={`relative aspect-square w-full overflow-hidden rounded-[1.75rem] shadow-lg shadow-black/5 ${
-                    stop.tag ? "ring-2 ring-[#E0483E]" : "ring-1 ring-black/5"
+                    stop.tag ? "ring-2 ring-[#1366E0]" : "ring-1 ring-black/5"
                   }`}
                 >
                   <Image
@@ -150,7 +150,7 @@ export default function TimelineDoubleEntry() {
 
                   {/* Entry tag on the India visits */}
                   {stop.tag && (
-                    <span className="absolute right-4 top-4 rounded-full bg-[#E0483E] px-3 py-1 text-[11px] font-bold tracking-wide text-white shadow-md">
+                    <span className="absolute right-4 top-4 rounded-full bg-[#1366E0] px-3 py-1 text-[11px] font-bold tracking-wide text-white shadow-md">
                       {stop.tag.toUpperCase()}
                     </span>
                   )}
@@ -199,7 +199,7 @@ export default function TimelineDoubleEntry() {
 
         {/* Note */}
         <p className="mx-auto mt-12 flex max-w-2xl items-start gap-3 rounded-2xl border border-[#ECECEC] bg-white px-5 py-4 text-sm text-[#5A5A5A] shadow-sm sm:items-center">
-          <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#E0483E]/10 text-[#E0483E]">
+          <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#1366E0]/10 text-[#1366E0]">
             <svg
               className="h-4 w-4"
               viewBox="0 0 24 24"

@@ -110,7 +110,7 @@ export default function CareerOpenings() {
     <section id="careers-openings" className="w-full bg-[#FFFEFA] px-6 py-20">
       <div className="mx-auto container">
         <div className="text-center">
-          <p className="text-xs font-bold uppercase tracking-widest text-[#E0483E]">
+          <p className="text-xs font-bold uppercase tracking-widest text-[#1366E0]">
             Careers
           </p>
           <h1 className="mt-2 text-3xl font-semibold tracking-tight text-[#1B1B1B] sm:text-4xl">
@@ -161,7 +161,7 @@ export default function CareerOpenings() {
 
               <button
                 // href={`/careers/${job.slug}`}
-                className="inline-flex w-fit shrink-0 items-center gap-2 rounded-full bg-[#1B1B1B] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#E0483E]"
+                className="inline-flex w-fit shrink-0 items-center gap-2 rounded-full bg-[#1B1B1B] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#1366E0]"
               >
                 Apply Now
                 <svg

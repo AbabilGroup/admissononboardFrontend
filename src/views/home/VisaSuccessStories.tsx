@@ -49,7 +49,7 @@ export default function VisaSuccessStories() {
           {/* Left: heading + controls */}
           <div className="flex flex-col justify-center">
             <h2 className="text-3xl font-semibold tracking-tight text-[#1B1B1B] sm:text-4xl">
-              Visa <span className="text-[#E0483E]">Success Stories</span>
+              Visa <span className="text-[#1366E0]">Success Stories</span>
             </h2>
             <p className="mt-3 text-sm font-semibold text-[#6B6B6B] sm:text-base">
               Real journeys, real approvals
@@ -93,7 +93,7 @@ export default function VisaSuccessStories() {
 
           {/* Right: testimonial card */}
           <div className="relative">
-            <span className="pointer-events-none absolute -top-10 -left-2 select-none font-serif text-[140px] leading-none text-[#E0483E]/10">
+            <span className="pointer-events-none absolute -top-10 -left-2 select-none font-serif text-[140px] leading-none text-[#1366E0]/10">
               &ldquo;
             </span>
 
@@ -102,14 +102,14 @@ export default function VisaSuccessStories() {
                 {current.quote}{" "}
                 <button
                   type="button"
-                  className="font-semibold text-[#E0483E] hover:underline"
+                  className="font-semibold text-[#1366E0] hover:underline"
                 >
                   View More
                 </button>
               </p>
 
               <div className="mt-8 flex items-center gap-3">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#E0483E] text-sm font-semibold text-white">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#1366E0] text-sm font-semibold text-white">
                   {current.initials}
                 </div>
                 <div>

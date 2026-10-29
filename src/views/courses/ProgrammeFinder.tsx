@@ -59,7 +59,7 @@ const levelStyles: Record<Level, string> = {
   Foundation: "bg-[#FDF2E9] text-[#F58B0F]",
   Diploma: "bg-[#F1ECFA] text-[#7A4FBF]",
   Undergraduate: "bg-[#EAF1FB] text-[#2F5DA8]",
-  Postgraduate: "bg-[#FDECEA] text-[#E0483E]",
+  Postgraduate: "bg-[#E3EDFC] text-[#1366E0]",
   Professional: "bg-[#EAF6EE] text-[#2F9E5C]",
 };
 
@@ -67,7 +67,7 @@ const levelDots: Record<Level, string> = {
   Foundation: "#F58B0F",
   Diploma: "#7A4FBF",
   Undergraduate: "#2F5DA8",
-  Postgraduate: "#E0483E",
+  Postgraduate: "#1366E0",
   Professional: "#2F9E5C",
 };
 
@@ -83,7 +83,7 @@ const universityInfo: Record<string, UniInfo> = {
   "University of Hertfordshire": {
     logo: "/univercity-logo/uh.jpg",
     initials: "UH",
-    color: "#D6281F",
+    color: "#1366E0",
   },
   "University of Law": {
     logo: "/univercity-logo/low.png",
@@ -106,7 +106,7 @@ const universityInfo: Record<string, UniInfo> = {
   "Aston University, London": {
     logo: "/univercity-logo/aul.png",
     initials: "AL",
-    color: "#E0483E",
+    color: "#1366E0",
     note: "Except Sylhet",
   },
   "University of Hull - London": {
@@ -124,7 +124,7 @@ const universityInfo: Record<string, UniInfo> = {
   "University of Bedfordshire": {
     logo: "/univercity-logo/uob.png",
     initials: "UB",
-    color: "#D6281F",
+    color: "#1366E0",
     note: "Except Sylhet",
   },
   "Anglia Ruskin University": {
@@ -141,7 +141,7 @@ const universityInfo: Record<string, UniInfo> = {
   "University of South Wales": {
     logo: "/univercity-logo/uosw.png",
     initials: "SW",
-    color: "#E0483E",
+    color: "#1366E0",
   },
   "Aston University, Birmingham": {
     logo: "/univercity-logo/aub.jpg",
@@ -168,7 +168,7 @@ const universityInfo: Record<string, UniInfo> = {
   "Aberystwyth University": {
     logo: "/univercity-logo/au.jpg",
     initials: "AY",
-    color: "#E0483E",
+    color: "#1366E0",
   },
   "University of Hartpury": {
     logo: "/univercity-logo/uoh.png",
@@ -193,7 +193,7 @@ const universityInfo: Record<string, UniInfo> = {
   "Training Three Sixty": {
     logo: "/univercity-logo/tts.png",
     initials: "T3",
-    color: "#E0483E",
+    color: "#1366E0",
   },
   ThinkTalent: {
     logo: "/univercity-logo/thinktalent.webp",
@@ -847,8 +847,8 @@ function MultiSelect({
         onClick={() => setOpen((v) => !v)}
         className={`mt-1 flex w-full items-center justify-between gap-2 rounded-xl border bg-white px-4 py-3 text-left text-sm text-[#1B1B1B] outline-none transition-all ${
           open
-            ? "border-[#E0483E] ring-4 ring-[#E0483E]/10"
-            : "border-[#E5E5E5] hover:border-[#E0483E]/50"
+            ? "border-[#1366E0] ring-4 ring-[#1366E0]/10"
+            : "border-[#E5E5E5] hover:border-[#1366E0]/50"
         }`}
       >
         <span className="flex min-w-0 items-center gap-2">
@@ -858,7 +858,7 @@ function MultiSelect({
         </span>
         <span className="flex shrink-0 items-center gap-1.5">
           {selected.length > 1 && (
-            <span className="grid h-5 min-w-5 place-items-center rounded-full bg-[#E0483E] px-1.5 text-[11px] font-bold text-white">
+            <span className="grid h-5 min-w-5 place-items-center rounded-full bg-[#1366E0] px-1.5 text-[11px] font-bold text-white">
               {selected.length}
             </span>
           )}
@@ -896,7 +896,7 @@ function MultiSelect({
                       type="checkbox"
                       checked={checked}
                       onChange={() => toggle(option.value)}
-                      className="h-4 w-4 shrink-0 cursor-pointer accent-[#E0483E]"
+                      className="h-4 w-4 shrink-0 cursor-pointer accent-[#1366E0]"
                     />
                     {option.icon}
                     <span
@@ -918,14 +918,14 @@ function MultiSelect({
               type="button"
               onClick={() => onChange([])}
               disabled={selected.length === 0}
-              className="text-xs font-semibold text-[#E0483E] disabled:text-[#C9C9C9]"
+              className="text-xs font-semibold text-[#1366E0] disabled:text-[#C9C9C9]"
             >
               Clear
             </button>
             <button
               type="button"
               onClick={() => setOpen(false)}
-              className="rounded-full bg-[#1B1B1B] px-3.5 py-1.5 text-xs font-semibold text-white hover:bg-[#E0483E]"
+              className="rounded-full bg-[#1B1B1B] px-3.5 py-1.5 text-xs font-semibold text-white hover:bg-[#1366E0]"
             >
               Done
             </button>
@@ -1085,7 +1085,7 @@ function ProgrammeFinderInner() {
   return (
     <section className="w-full bg-[#FFFEFA] px-6 py-16">
       <div className="mx-auto container">
-        <p className="text-xs font-bold uppercase tracking-widest text-[#E0483E]">
+        <p className="text-xs font-bold uppercase tracking-widest text-[#1366E0]">
           Courses
         </p>
         <h2 className="mt-2 text-3xl font-semibold leading-tight tracking-tight text-[#1B1B1B] sm:text-4xl">
@@ -1111,7 +1111,7 @@ function ProgrammeFinderInner() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="e.g. Computer Science, MBA, Law"
-              className="mt-1 w-full rounded-xl border border-[#E5E5E5] bg-white px-4 py-3 text-sm text-[#1B1B1B] outline-none transition-all placeholder:text-[#9A9A9A] focus:border-[#E0483E] focus:ring-4 focus:ring-[#E0483E]/10"
+              className="mt-1 w-full rounded-xl border border-[#E5E5E5] bg-white px-4 py-3 text-sm text-[#1B1B1B] outline-none transition-all placeholder:text-[#9A9A9A] focus:border-[#1366E0] focus:ring-4 focus:ring-[#1366E0]/10"
             />
           </div>
           <MultiSelect
@@ -1137,10 +1137,10 @@ function ProgrammeFinderInner() {
           <div className="order-2 lg:order-1">
             {/* Selected university banner */}
             {focusUni && (
-              <div className="mb-6 flex flex-col gap-4 rounded-2xl border border-[#E0483E]/25 bg-white p-5 shadow-sm sm:flex-row sm:items-center">
+              <div className="mb-6 flex flex-col gap-4 rounded-2xl border border-[#1366E0]/25 bg-white p-5 shadow-sm sm:flex-row sm:items-center">
                 <UniLogo name={focusUni} className="h-16 w-32 rounded-xl" />
                 <div className="min-w-0 flex-1">
-                  <p className="text-[11px] font-semibold uppercase tracking-wider text-[#E0483E]">
+                  <p className="text-[11px] font-semibold uppercase tracking-wider text-[#1366E0]">
                     Showing courses from
                   </p>
                   <h3 className="mt-0.5 text-lg font-semibold text-[#1B1B1B]">
@@ -1153,7 +1153,7 @@ function ProgrammeFinderInner() {
                     </span>
                     <span>{focusTotal} programmes</span>
                     {universityInfo[focusUni]?.note && (
-                      <span className="rounded-full bg-[#FDECEA] px-2.5 py-0.5 font-semibold text-[#E0483E]">
+                      <span className="rounded-full bg-[#E3EDFC] px-2.5 py-0.5 font-semibold text-[#1366E0]">
                         {universityInfo[focusUni]?.note}
                       </span>
                     )}
@@ -1169,7 +1169,7 @@ function ProgrammeFinderInner() {
                   <button
                     type="button"
                     onClick={() => updateUnis([])}
-                    className="rounded-full bg-[#1B1B1B] px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-[#E0483E]"
+                    className="rounded-full bg-[#1B1B1B] px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-[#1366E0]"
                   >
                     Show all courses
                   </button>
@@ -1189,7 +1189,7 @@ function ProgrammeFinderInner() {
                 <button
                   type="button"
                   onClick={clearAll}
-                  className="text-sm font-semibold text-[#E0483E] underline-offset-4 hover:underline"
+                  className="text-sm font-semibold text-[#1366E0] underline-offset-4 hover:underline"
                 >
                   Clear all filters
                 </button>
@@ -1208,7 +1208,7 @@ function ProgrammeFinderInner() {
                       type="button"
                       onClick={() => toggleUni(name)}
                       aria-label={`Remove ${name} filter`}
-                      className="inline-flex items-center gap-1.5 rounded-full bg-[#E0483E] py-1 pl-1 pr-2 text-xs font-semibold text-white transition-colors hover:bg-[#C93C33]"
+                      className="inline-flex items-center gap-1.5 rounded-full bg-[#1366E0] py-1 pl-1 pr-2 text-xs font-semibold text-white transition-colors hover:bg-[#0F55BE]"
                     >
                       <UniLogo
                         name={name}
@@ -1226,7 +1226,7 @@ function ProgrammeFinderInner() {
                       changeDestinations(destinations.filter((x) => x !== d))
                     }
                     aria-label={`Remove ${d} filter`}
-                    className="inline-flex items-center gap-1.5 rounded-full border border-[#E5E5E5] bg-white py-1 pl-1.5 pr-2 text-xs font-semibold text-[#1B1B1B] transition-colors hover:border-[#E0483E]"
+                    className="inline-flex items-center gap-1.5 rounded-full border border-[#E5E5E5] bg-white py-1 pl-1.5 pr-2 text-xs font-semibold text-[#1B1B1B] transition-colors hover:border-[#1366E0]"
                   >
                     <Flag country={d} />
                     {d}
@@ -1252,12 +1252,12 @@ function ProgrammeFinderInner() {
               {filtered.map((programme) => (
                 <div
                   key={`${programme.university}-${programme.title}`}
-                  className="group relative flex flex-col overflow-hidden rounded-2xl border border-[#ECECEC] bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#E0483E]/25 hover:shadow-xl hover:shadow-black/5"
+                  className="group relative flex flex-col overflow-hidden rounded-2xl border border-[#ECECEC] bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#1366E0]/25 hover:shadow-xl hover:shadow-black/5"
                 >
                   {/* Red line that grows on hover */}
                   <span
                     aria-hidden
-                    className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-[#E0483E] transition-transform duration-500 group-hover:scale-x-100"
+                    className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-[#1366E0] transition-transform duration-500 group-hover:scale-x-100"
                   />
 
                   {/* Top: university logo (left) + country flag (right) */}
@@ -1326,7 +1326,7 @@ function ProgrammeFinderInner() {
                     </span>
                     <button
                       type="button"
-                      className="group/btn inline-flex items-center gap-1.5 rounded-full bg-[#1B1B1B] px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-[#E0483E] sm:text-sm"
+                      className="group/btn inline-flex items-center gap-1.5 rounded-full bg-[#1B1B1B] px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-[#1366E0] sm:text-sm"
                     >
                       Enquire
                       <svg
@@ -1349,7 +1349,7 @@ function ProgrammeFinderInner() {
               ))}
 
               {filtered.length === 0 && (
-                <div className="col-span-full rounded-2xl border border-dashed border-[#E0483E]/30 bg-white px-6 py-12 text-center">
+                <div className="col-span-full rounded-2xl border border-dashed border-[#1366E0]/30 bg-white px-6 py-12 text-center">
                   <p className="text-sm font-semibold text-[#1B1B1B]">
                     No programmes match your search.
                   </p>
@@ -1411,7 +1411,7 @@ function ProgrammeFinderInner() {
                 onChange={(e) => setUniSearch(e.target.value)}
                 placeholder="Search universities"
                 aria-label="Search universities"
-                className="w-full rounded-xl border border-[#E5E5E5] px-3.5 py-2.5 text-sm text-[#1B1B1B] outline-none placeholder:text-[#9A9A9A] focus:border-[#E0483E]"
+                className="w-full rounded-xl border border-[#E5E5E5] px-3.5 py-2.5 text-sm text-[#1B1B1B] outline-none placeholder:text-[#9A9A9A] focus:border-[#1366E0]"
               />
 
               <ul className="mt-3 max-h-[440px] space-y-1 overflow-y-auto pr-1">
@@ -1423,7 +1423,7 @@ function ProgrammeFinderInner() {
                       <label
                         className={`flex cursor-pointer items-center gap-3 rounded-xl border px-2 py-2 transition-colors ${
                           checked
-                            ? "border-[#E0483E]/30 bg-[#FFF6F5]"
+                            ? "border-[#1366E0]/30 bg-[#F3F7FE]"
                             : "border-transparent hover:bg-[#FFFEFA]"
                         } ${empty ? "opacity-45" : ""}`}
                       >
@@ -1431,7 +1431,7 @@ function ProgrammeFinderInner() {
                           type="checkbox"
                           checked={checked}
                           onChange={() => toggleUni(uni.name)}
-                          className="h-4 w-4 shrink-0 cursor-pointer accent-[#E0483E]"
+                          className="h-4 w-4 shrink-0 cursor-pointer accent-[#1366E0]"
                         />
                         <span className="min-w-0 flex-1">
                           <span
@@ -1447,7 +1447,7 @@ function ProgrammeFinderInner() {
                         <span
                           className={`grid h-6 min-w-6 place-items-center rounded-full px-1.5 text-[11px] font-bold ${
                             checked
-                              ? "bg-[#E0483E] text-white"
+                              ? "bg-[#1366E0] text-white"
                               : "bg-[#F4EFE6] text-[#6B6B6B]"
                           }`}
                         >

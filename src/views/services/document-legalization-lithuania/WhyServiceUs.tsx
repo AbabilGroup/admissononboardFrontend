@@ -130,7 +130,7 @@ function IconTile({
   return (
     <span
       className={`grid h-12 w-12 shrink-0 place-items-center rounded-2xl ${
-        solid ? "bg-[#E0483E] text-white" : "bg-[#E0483E]/10 text-[#E0483E]"
+        solid ? "bg-[#1366E0] text-white" : "bg-[#1366E0]/10 text-[#1366E0]"
       }`}
     >
       <svg
@@ -155,7 +155,7 @@ export default function WhyServiceUs() {
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-semibold tracking-tight text-[#1B1B1B] sm:text-4xl">
             Our PCC{" "}
-            <span className="text-[#E0483E]">legalization services</span>
+            <span className="text-[#1366E0]">legalization services</span>
           </h2>
           <p className="mt-4 text-sm text-[#6B6B6B] sm:text-base">
             Choose the full journey or just the steps you need.
@@ -166,7 +166,7 @@ export default function WhyServiceUs() {
           {services.map((service) => (
             <li
               key={service.title}
-              className="flex gap-4 rounded-3xl border border-[#ECECEC] bg-white p-6 shadow-sm transition-colors hover:border-[#E0483E]/40"
+              className="flex gap-4 rounded-3xl border border-[#ECECEC] bg-white p-6 shadow-sm transition-colors hover:border-[#1366E0]/40"
             >
               <IconTile>{service.icon}</IconTile>
               <div>
@@ -185,7 +185,7 @@ export default function WhyServiceUs() {
         <div className="mt-20 rounded-[2rem] border border-[#ECECEC] bg-white p-6 shadow-sm sm:p-10">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <h2 className="text-2xl font-semibold tracking-tight text-[#1B1B1B] sm:text-3xl">
-              Why <span className="text-[#E0483E]">Admission OnBoard</span>?
+              Why <span className="text-[#1366E0]">Admission OnBoard</span>?
             </h2>
             <p className="text-sm text-[#6B6B6B]">
               Your documents, in safe hands from start to finish.

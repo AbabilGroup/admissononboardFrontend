@@ -62,7 +62,7 @@ export default function HowWeHelp() {
     <section className="w-full bg-[#FFFEFA] px-6 py-20">
       <div className="mx-auto container">
         <div className="text-center">
-          <p className="text-xs font-bold uppercase tracking-widest text-[#E0483E]">
+          <p className="text-xs font-bold uppercase tracking-widest text-[#1366E0]">
             How We Help
           </p>
           <h2 className="mt-2 text-3xl font-semibold leading-tight tracking-tight text-[#1B1B1B] sm:text-4xl">
@@ -79,12 +79,12 @@ export default function HowWeHelp() {
             <div key={card.title} className="spinning-border-wrap">
               <div className="spinning-border" />
               <div className="relative flex h-full flex-col gap-4 rounded-[1.4rem] bg-white p-6">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#E0483E]/10">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#1366E0]/10">
                   <svg
                     width="24"
                     height="24"
                     viewBox="0 0 24 24"
-                    fill="#E0483E"
+                    fill="#1366E0"
                   >
                     {card.icon}
                   </svg>
@@ -117,7 +117,7 @@ export default function HowWeHelp() {
           background: conic-gradient(
             from 0deg,
             transparent 0deg,
-            #E0483E 40deg,
+            #1366E0 40deg,
             #F58B0F 80deg,
             transparent 130deg,
             transparent 360deg

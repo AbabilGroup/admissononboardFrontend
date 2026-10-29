@@ -264,7 +264,7 @@ export default function FaqPage() {
       <div className="mx-auto container">
         {/* Header */}
         <div className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-bold uppercase tracking-widest text-[#E0483E]">
+          <p className="text-xs font-bold uppercase tracking-widest text-[#1366E0]">
             Support
           </p>
           <h1 className="mt-2 text-3xl font-bold tracking-tight text-[#1B1B1B] sm:text-4xl">
@@ -301,7 +301,7 @@ export default function FaqPage() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder={`Search ${activeCategory.toLowerCase()} questions...`}
-              className="w-full rounded-full border border-[#E5E5E5] bg-white py-3 pl-11 pr-4 text-sm text-[#1B1B1B] outline-none placeholder:text-[#9A9A9A] focus:border-[#E0483E]"
+              className="w-full rounded-full border border-[#E5E5E5] bg-white py-3 pl-11 pr-4 text-sm text-[#1B1B1B] outline-none placeholder:text-[#9A9A9A] focus:border-[#1366E0]"
             />
           </div>
         </div>
@@ -320,8 +320,8 @@ export default function FaqPage() {
                   onClick={() => handleCategoryClick(cat.key)}
                   className={`flex shrink-0 items-center justify-between gap-3 rounded-xl px-4 py-3.5 text-left text-sm font-semibold transition-colors lg:w-full ${
                     isActive
-                      ? "bg-[#E0483E] text-white shadow-sm"
-                      : "border border-[#ECECEC] bg-white text-[#3A3A3A] hover:border-[#E0483E]/30 hover:text-[#1B1B1B]"
+                      ? "bg-[#1366E0] text-white shadow-sm"
+                      : "border border-[#ECECEC] bg-white text-[#3A3A3A] hover:border-[#1366E0]/30 hover:text-[#1B1B1B]"
                   }`}
                 >
                   <span className="flex items-center gap-2 whitespace-nowrap">
@@ -356,7 +356,7 @@ export default function FaqPage() {
                     key={item.question}
                     className={`overflow-hidden rounded-2xl border bg-white transition-colors ${
                       isOpen
-                        ? "border-[#E0483E]/40 shadow-sm"
+                        ? "border-[#1366E0]/40 shadow-sm"
                         : "border-[#ECECEC]"
                     }`}
                   >
@@ -371,7 +371,7 @@ export default function FaqPage() {
                       <span
                         className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border transition-all ${
                           isOpen
-                            ? "rotate-45 border-[#E0483E] text-[#E0483E]"
+                            ? "rotate-45 border-[#1366E0] text-[#1366E0]"
                             : "border-[#ECECEC] text-[#9A9A9A]"
                         }`}
                       >

@@ -7,7 +7,7 @@ export default function CtaBanner() {
   return (
     <section className="w-full bg-[#FFFEFA] px-6 py-16">
       <div className="mx-auto container">
-        <div className="relative overflow-hidden rounded-3xl bg-[#D6281F]">
+        <div className="relative overflow-hidden rounded-3xl bg-[#1366E0]">
           <Image
             src="/uk_tower_bridge.webp"
             alt="City skyline backdrop"

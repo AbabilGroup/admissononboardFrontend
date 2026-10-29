@@ -36,7 +36,7 @@ export default function AdmissionVisaProcessLithuania() {
       <div className="mx-auto container">
         <div className="text-center">
           <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-            <span className="text-[#E0483E]">Admission</span>{" "}
+            <span className="text-[#1366E0]">Admission</span>{" "}
             <span className="text-[#1B1B1B]">&amp; Visa Process</span>
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-sm font-semibold text-gray-700 sm:text-base">

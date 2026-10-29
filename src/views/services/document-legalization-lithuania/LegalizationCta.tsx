@@ -18,7 +18,7 @@ const deliveryOptions = [
 ];
 
 const inputClass =
-  "w-full rounded-xl border border-[#E5E5E5] bg-white px-4 py-3 text-sm text-[#1B1B1B] placeholder:text-[#9A9A9A] outline-none transition-all focus:border-[#E0483E] focus:ring-4 focus:ring-[#E0483E]/10";
+  "w-full rounded-xl border border-[#E5E5E5] bg-white px-4 py-3 text-sm text-[#1B1B1B] placeholder:text-[#9A9A9A] outline-none transition-all focus:border-[#1366E0] focus:ring-4 focus:ring-[#1366E0]/10";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -96,7 +96,7 @@ export default function LegalizationCta() {
           <div className="text-white">
             <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
               Take the stress out of your{" "}
-              <span className="text-[#E0483E]">PCC legalization.</span>
+              <span className="text-[#1366E0]">PCC legalization.</span>
             </h2>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-white/80 sm:text-base">
               Message us on WhatsApp for a quick answer, or send your details
@@ -107,7 +107,7 @@ export default function LegalizationCta() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-7 inline-flex items-center gap-2.5 rounded-full bg-[#E0483E] px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#E0483E]/35 transition-all hover:-translate-y-0.5 hover:bg-[#C93C33] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#0E1116]"
+              className="mt-7 inline-flex items-center gap-2.5 rounded-full bg-[#1366E0] px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#1366E0]/35 transition-all hover:-translate-y-0.5 hover:bg-[#0F55BE] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#0E1116]"
             >
               <svg
                 className="h-5 w-5"
@@ -133,7 +133,7 @@ export default function LegalizationCta() {
 
           {/* Right: enquiry form */}
           <div className="overflow-hidden rounded-3xl bg-white shadow-2xl">
-            <div className="h-1.5 w-full bg-[#E0483E]" />
+            <div className="h-1.5 w-full bg-[#1366E0]" />
 
             {status === "success" ? (
               <div
@@ -258,7 +258,7 @@ export default function LegalizationCta() {
                 <button
                   type="submit"
                   disabled={status === "submitting"}
-                  className="mt-1 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#1B1B1B] py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#E0483E] disabled:cursor-not-allowed disabled:opacity-70"
+                  className="mt-1 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#1B1B1B] py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#1366E0] disabled:cursor-not-allowed disabled:opacity-70"
                 >
                   {status === "submitting" ? (
                     <>

@@ -115,7 +115,7 @@ export default function DreamDestinations() {
       <div className="mx-auto container">
         <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
           <div>
-            <p className="text-xs font-bold uppercase tracking-widest text-[#E0483E]">
+            <p className="text-xs font-bold uppercase tracking-widest text-[#1366E0]">
               Destinations
             </p>
             <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#1B1B1B] sm:text-4xl">
@@ -125,7 +125,7 @@ export default function DreamDestinations() {
 
           <Link
             href="/courses"
-            className="inline-flex shrink-0 items-center gap-2 rounded-full border border-[#E0483E] bg-white px-6 py-3 text-sm font-semibold text-[#E0483E] transition-colors hover:border-[#E0483E]/90"
+            className="inline-flex shrink-0 items-center gap-2 rounded-full border border-[#1366E0] bg-white px-6 py-3 text-sm font-semibold text-[#1366E0] transition-colors hover:border-[#1366E0]/90"
           >
             Browse All Programmes
           </Link>
@@ -175,7 +175,7 @@ export default function DreamDestinations() {
 
                 <Link
                   href={`/courses?destination=${destination.slug}`}
-                  className="mt-4 inline-flex w-fit items-center gap-1 text-sm font-semibold text-[#E0483E] transition-colors hover:text-[#1B1B1B]"
+                  className="mt-4 inline-flex w-fit items-center gap-1 text-sm font-semibold text-[#1366E0] transition-colors hover:text-[#1B1B1B]"
                 >
                   View Courses
                   <svg

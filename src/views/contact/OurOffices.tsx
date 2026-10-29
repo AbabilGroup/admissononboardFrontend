@@ -51,7 +51,7 @@ const offices: Office[] = [
     ],
     phone: "+8801906499741",
     email: "dhaka@admissiononboard.com",
-    accent: "#E0483E",
+    accent: "#1366E0",
   },
   {
     id: "bd-dhaka-sector10",
@@ -210,10 +210,10 @@ export default function OurOffices() {
                 type="button"
                 aria-pressed={isActive}
                 onClick={() => setActive(f.key)}
-                className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E0483E] focus-visible:ring-offset-2 ${
+                className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1366E0] focus-visible:ring-offset-2 ${
                   isActive
-                    ? "bg-[#E0483E] text-white shadow-md"
-                    : "text-[#6B6B6B] hover:bg-[#FFF3F2] hover:text-[#1B1B1B]"
+                    ? "bg-[#1366E0] text-white shadow-md"
+                    : "text-[#6B6B6B] hover:bg-[#EEF4FE] hover:text-[#1B1B1B]"
                 }`}
               >
                 {f.key === "all" ? (
@@ -327,7 +327,7 @@ export default function OurOffices() {
 
                 <a
                   href={`tel:${office.phone.replace(/[\s-]+/g, "")}`}
-                  className="group flex items-center gap-3 rounded-xl font-medium text-[#1B1B1B] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E0483E]"
+                  className="group flex items-center gap-3 rounded-xl font-medium text-[#1B1B1B] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1366E0]"
                 >
                   <IconTile accent={office.accent}>
                     <path
@@ -336,14 +336,14 @@ export default function OurOffices() {
                       d="M3.5 5.5c0-1 .8-1.8 1.8-1.8H8l1.5 4-2 1.5a12 12 0 0 0 5.5 5.5l1.5-2 4 1.5v2.7c0 1-.8 1.8-1.8 1.8C10.5 18.7 5.3 13.5 3.5 7.3V5.5Z"
                     />
                   </IconTile>
-                  <span className="transition-colors group-hover:text-[#E0483E]">
+                  <span className="transition-colors group-hover:text-[#1366E0]">
                     {office.phone}
                   </span>
                 </a>
 
                 <a
                   href={`mailto:${office.email}`}
-                  className="group flex items-center gap-3 rounded-xl font-medium text-[#2F5DA8] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E0483E]"
+                  className="group flex items-center gap-3 rounded-xl font-medium text-[#2F5DA8] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1366E0]"
                 >
                   <IconTile accent={office.accent}>
                     <rect x="3" y="5" width="18" height="14" rx="2" />
@@ -353,7 +353,7 @@ export default function OurOffices() {
                       d="m4 7 8 6 8-6"
                     />
                   </IconTile>
-                  <span className="break-all transition-colors group-hover:text-[#E0483E]">
+                  <span className="break-all transition-colors group-hover:text-[#1366E0]">
                     {office.email}
                   </span>
                 </a>

@@ -36,7 +36,7 @@ export default function TheJourney() {
     <section className="w-full bg-[#FDF1EF] px-6 py-20">
       <div className="mx-auto container">
         <div className="text-center">
-          <p className="text-xs font-bold uppercase tracking-widest text-[#E0483E]">
+          <p className="text-xs font-bold uppercase tracking-widest text-[#1366E0]">
             The Journey
           </p>
           <h2 className="mx-auto mt-2 max-w-2xl text-3xl font-semibold leading-tight tracking-tight text-[#1B1B1B] sm:text-4xl">
@@ -50,7 +50,7 @@ export default function TheJourney() {
               key={step.number}
               className="flex flex-col gap-4 rounded-2xl bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
             >
-              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#E0483E] text-xs font-bold text-white">
+              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#1366E0] text-xs font-bold text-white">
                 {step.number}
               </span>
               <div>

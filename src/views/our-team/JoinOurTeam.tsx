@@ -63,7 +63,7 @@ export default function JoinOurTeam() {
           {/* Decorative outline rings (no fill colour) */}
           <svg
             aria-hidden
-            className="pointer-events-none absolute -right-24 -top-24 -z-10 h-80 w-80 text-[#E0483E]/15 sm:h-96 sm:w-96"
+            className="pointer-events-none absolute -right-24 -top-24 -z-10 h-80 w-80 text-[#1366E0]/15 sm:h-96 sm:w-96"
             viewBox="0 0 200 200"
             fill="none"
             stroke="currentColor"
@@ -82,17 +82,17 @@ export default function JoinOurTeam() {
           <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-16">
             {/* Left: message */}
             <div>
-              <span className="inline-flex items-center gap-2 rounded-full border border-[#E0483E]/25 px-3.5 py-1.5 text-xs font-semibold text-[#E0483E]">
+              <span className="inline-flex items-center gap-2 rounded-full border border-[#1366E0]/25 px-3.5 py-1.5 text-xs font-semibold text-[#1366E0]">
                 <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#E0483E] opacity-60 motion-reduce:hidden" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-[#E0483E]" />
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#1366E0] opacity-60 motion-reduce:hidden" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-[#1366E0]" />
                 </span>
                 We&apos;re hiring
               </span>
 
               <h2 className="mt-5 text-3xl font-semibold leading-tight tracking-tight text-[#1B1B1B] sm:text-4xl lg:text-[2.75rem]">
                 Love helping people{" "}
-                <span className="text-[#E0483E]">reach their dreams?</span>
+                <span className="text-[#1366E0]">reach their dreams?</span>
               </h2>
 
               <p className="mt-4 max-w-md text-sm leading-relaxed text-[#6B6B6B] sm:text-base">
@@ -103,7 +103,7 @@ export default function JoinOurTeam() {
 
               <Link
                 href="/careers"
-                className="group mt-8 inline-flex items-center gap-2 rounded-full bg-[#E0483E] px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#E0483E]/30 transition-all hover:-translate-y-0.5 hover:bg-[#C93C33] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E0483E] focus-visible:ring-offset-2"
+                className="group mt-8 inline-flex items-center gap-2 rounded-full bg-[#1366E0] px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#1366E0]/30 transition-all hover:-translate-y-0.5 hover:bg-[#0F55BE] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1366E0] focus-visible:ring-offset-2"
               >
                 See open roles
                 <svg
@@ -128,9 +128,9 @@ export default function JoinOurTeam() {
               {perks.map((perk) => (
                 <li
                   key={perk.title}
-                  className="group flex items-start gap-4 rounded-2xl border border-[#F0EBE3] p-5 transition-all duration-300 hover:border-[#E0483E]/30 hover:shadow-md"
+                  className="group flex items-start gap-4 rounded-2xl border border-[#F0EBE3] p-5 transition-all duration-300 hover:border-[#1366E0]/30 hover:shadow-md"
                 >
-                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border-2 border-[#E0483E]/25 text-[#E0483E] transition-all duration-300 group-hover:border-[#E0483E] group-hover:bg-[#E0483E] group-hover:text-white">
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border-2 border-[#1366E0]/25 text-[#1366E0] transition-all duration-300 group-hover:border-[#1366E0] group-hover:bg-[#1366E0] group-hover:text-white">
                     <svg
                       className="h-5 w-5"
                       viewBox="0 0 24 24"

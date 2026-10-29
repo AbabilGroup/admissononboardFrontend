@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const NAVY = "#022B50";
-const CORAL = "#CE4840";
+const BRAND_BLUE = "#1366E0";
 
 export default function PartnerCta() {
   return (
@@ -15,19 +15,19 @@ export default function PartnerCta() {
           <div
             aria-hidden
             className="pointer-events-none absolute -left-24 top-1/2 hidden aspect-square w-[46%] -translate-y-1/2 rounded-full md:block lg:w-[40%]"
-            style={{ backgroundColor: CORAL }}
+            style={{ backgroundColor: BRAND_BLUE }}
           />
           {/* Corner circle (top right) */}
           <div
             aria-hidden
             className="pointer-events-none absolute -right-16 -top-24 aspect-square w-48 rounded-full sm:-right-20 sm:-top-28 sm:w-64 lg:w-72"
-            style={{ backgroundColor: CORAL }}
+            style={{ backgroundColor: BRAND_BLUE }}
           />
           {/* Mobile-only soft circle (bottom left) */}
           <div
             aria-hidden
             className="pointer-events-none absolute -bottom-20 -left-20 aspect-square w-48 rounded-full opacity-90 md:hidden"
-            style={{ backgroundColor: CORAL }}
+            style={{ backgroundColor: BRAND_BLUE }}
           />
 
           <div className="relative grid grid-cols-1 items-end md:grid-cols-[38%_1fr] lg:grid-cols-[34%_1fr]">
@@ -54,7 +54,7 @@ export default function PartnerCta() {
 
               <Link
                 href="/auth/register?tab=partner"
-                className="group mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-black px-8 py-4 text-sm font-semibold text-white shadow-lg transition-all hover:-translate-y-0.5 hover:bg-[#E0483E] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2"
+                className="group mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-black px-8 py-4 text-sm font-semibold text-white shadow-lg transition-all hover:-translate-y-0.5 hover:bg-[#1366E0] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2"
                 style={{ ["--tw-ring-offset-color" as string]: NAVY }}
               >
                 Register as a Partner

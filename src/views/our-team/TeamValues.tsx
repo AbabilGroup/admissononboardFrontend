@@ -67,10 +67,10 @@ export default function TeamValues() {
           <div className="lg:sticky lg:top-28 lg:self-start">
             <span
               aria-hidden
-              className="block h-1 w-12 rounded-full bg-[#E0483E]"
+              className="block h-1 w-12 rounded-full bg-[#1366E0]"
             />
             <h2 className="mt-5 text-3xl font-semibold tracking-tight text-[#1B1B1B] sm:text-4xl lg:text-5xl lg:leading-[1.1]">
-              What <span className="text-[#E0483E]">drives us</span>
+              What <span className="text-[#1366E0]">drives us</span>
             </h2>
             <p className="mt-5 max-w-md text-sm leading-relaxed text-[#6B6B6B] sm:text-base">
               Four simple promises shape how every one of us works with you, in
@@ -78,7 +78,7 @@ export default function TeamValues() {
             </p>
 
             <div className="mt-8 hidden items-center gap-3 lg:flex">
-              <span className="h-px w-10 bg-[#E0483E]/40" />
+              <span className="h-px w-10 bg-[#1366E0]/40" />
               <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#9A9A9A]">
                 Our promise to you
               </span>
@@ -90,23 +90,23 @@ export default function TeamValues() {
             {values.map((value, index) => (
               <li
                 key={value.title}
-                className="group relative overflow-hidden rounded-[1.5rem] border border-[#ECECEC] bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#E0483E]/30 hover:shadow-xl hover:shadow-black/5 sm:p-8"
+                className="group relative overflow-hidden rounded-[1.5rem] border border-[#ECECEC] bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#1366E0]/30 hover:shadow-xl hover:shadow-black/5 sm:p-8"
               >
                 {/* Red line that grows on hover */}
                 <span
                   aria-hidden
-                  className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-[#E0483E] transition-transform duration-500 group-hover:scale-x-100"
+                  className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-[#1366E0] transition-transform duration-500 group-hover:scale-x-100"
                 />
 
                 {/* Large faded number */}
                 <span
                   aria-hidden
-                  className="pointer-events-none absolute -right-1 -top-3 select-none text-[5.5rem] font-bold leading-none text-[#F4EFE6] transition-colors duration-300 group-hover:text-[#E0483E]/10"
+                  className="pointer-events-none absolute -right-1 -top-3 select-none text-[5.5rem] font-bold leading-none text-[#F4EFE6] transition-colors duration-300 group-hover:text-[#1366E0]/10"
                 >
                   {String(index + 1).padStart(2, "0")}
                 </span>
 
-                <span className="relative grid h-12 w-12 place-items-center rounded-2xl border-2 border-[#E0483E]/25 text-[#E0483E] transition-all duration-300 group-hover:border-[#E0483E] group-hover:bg-[#E0483E] group-hover:text-white">
+                <span className="relative grid h-12 w-12 place-items-center rounded-2xl border-2 border-[#1366E0]/25 text-[#1366E0] transition-all duration-300 group-hover:border-[#1366E0] group-hover:bg-[#1366E0] group-hover:text-white">
                   <svg
                     className="h-6 w-6"
                     viewBox="0 0 24 24"

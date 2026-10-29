@@ -48,7 +48,7 @@ export default function Branches() {
           <div className="relative">
             <div
               aria-hidden
-              className="absolute inset-0 -translate-x-3 translate-y-3 rounded-[2rem] bg-[#E0483E]/10"
+              className="absolute inset-0 -translate-x-3 translate-y-3 rounded-[2rem] bg-[#1366E0]/10"
             />
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem] border border-[#ECECEC] bg-white shadow-xl shadow-black/5">
               <Image
@@ -62,9 +62,9 @@ export default function Branches() {
 
             {/* Floating office badge */}
             <div className="absolute -bottom-5 right-5 flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-lg ring-1 ring-black/5">
-              <span className="relative grid h-10 w-10 place-items-center rounded-xl bg-[#E0483E]/10">
-                <span className="absolute h-2.5 w-2.5 animate-ping rounded-full bg-[#E0483E]/60 motion-reduce:hidden" />
-                <span className="relative h-2.5 w-2.5 rounded-full bg-[#E0483E]" />
+              <span className="relative grid h-10 w-10 place-items-center rounded-xl bg-[#1366E0]/10">
+                <span className="absolute h-2.5 w-2.5 animate-ping rounded-full bg-[#1366E0]/60 motion-reduce:hidden" />
+                <span className="relative h-2.5 w-2.5 rounded-full bg-[#1366E0]" />
               </span>
               <span>
                 <span className="block text-sm font-semibold text-[#1B1B1B]">
@@ -81,7 +81,7 @@ export default function Branches() {
           <div>
             <span
               aria-hidden
-              className="block h-1 w-12 rounded-full bg-[#E0483E]"
+              className="block h-1 w-12 rounded-full bg-[#1366E0]"
             />
             <h2 className="mt-5 text-3xl font-semibold leading-tight tracking-tight text-[#1B1B1B] sm:text-4xl">
               Global presence since 2022
@@ -104,7 +104,7 @@ export default function Branches() {
                   <svg
                     className="h-3.5 w-3.5"
                     viewBox="0 0 24 24"
-                    fill="#E0483E"
+                    fill="#1366E0"
                     aria-hidden
                   >
                     <path d="M12 2C7.86 2 4.5 5.36 4.5 9.5c0 5.25 6.19 11.44 6.46 11.7a1.5 1.5 0 0 0 2.08 0c.27-.26 6.46-6.45 6.46-11.7C19.5 5.36 16.14 2 12 2Zm0 10.5A3 3 0 1 1 12 6.5a3 3 0 0 1 0 6Z" />
@@ -116,7 +116,7 @@ export default function Branches() {
 
             <Link
               href="/careers"
-              className="group mt-8 inline-flex items-center gap-2 rounded-full bg-[#E0483E] px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#E0483E]/25 transition-all hover:-translate-y-0.5 hover:bg-[#1B1B1B] hover:shadow-black/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E0483E] focus-visible:ring-offset-2"
+              className="group mt-8 inline-flex items-center gap-2 rounded-full bg-[#1366E0] px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#1366E0]/25 transition-all hover:-translate-y-0.5 hover:bg-[#1B1B1B] hover:shadow-black/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1366E0] focus-visible:ring-offset-2"
             >
               Join our team
               <svg
@@ -144,9 +144,9 @@ export default function Branches() {
           {stats.map((stat) => (
             <div
               key={stat.label}
-              className="group flex flex-col items-center gap-3 rounded-2xl border border-[#ECECEC] bg-white px-4 py-8 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#E0483E] hover:bg-[#E0483E] hover:shadow-xl hover:shadow-[#E0483E]/25"
+              className="group flex flex-col items-center gap-3 rounded-2xl border border-[#ECECEC] bg-white px-4 py-8 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#1366E0] hover:bg-[#1366E0] hover:shadow-xl hover:shadow-[#1366E0]/25"
             >
-              <span className="grid h-14 w-14 place-items-center rounded-2xl bg-[#E0483E]/10 text-[#E0483E] transition-colors duration-300 group-hover:bg-white/20 group-hover:text-white">
+              <span className="grid h-14 w-14 place-items-center rounded-2xl bg-[#1366E0]/10 text-[#1366E0] transition-colors duration-300 group-hover:bg-white/20 group-hover:text-white">
                 <svg
                   width="26"
                   height="26"

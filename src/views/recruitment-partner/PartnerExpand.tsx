@@ -9,7 +9,7 @@ export default function PartnerExpand() {
       {/* Soft background glow */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-32 top-10 h-96 w-96 rounded-full bg-[#E0483E]/10 blur-3xl"
+        className="pointer-events-none absolute -right-32 top-10 h-96 w-96 rounded-full bg-[#1366E0]/10 blur-3xl"
       />
 
       <div className="relative mx-auto container grid max-w-6xl grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-16 lg:gap-20">
@@ -17,7 +17,7 @@ export default function PartnerExpand() {
         <div>
           <span
             aria-hidden
-            className="block h-1 w-12 rounded-full bg-[#E0483E]"
+            className="block h-1 w-12 rounded-full bg-[#1366E0]"
           />
 
           <h2 className="mt-5 text-3xl font-semibold leading-tight tracking-tight text-[#1B1B1B] sm:text-4xl lg:text-5xl">
@@ -41,7 +41,7 @@ export default function PartnerExpand() {
 
           <Link
             href="/auth/register?tab=partner"
-            className="group mt-8 inline-flex items-center gap-2 rounded-full bg-[#E0483E] px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#E0483E]/25 transition-all hover:-translate-y-0.5 hover:bg-[#1B1B1B] hover:shadow-black/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E0483E] focus-visible:ring-offset-2"
+            className="group mt-8 inline-flex items-center gap-2 rounded-full bg-[#1366E0] px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#1366E0]/25 transition-all hover:-translate-y-0.5 hover:bg-[#1B1B1B] hover:shadow-black/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1366E0] focus-visible:ring-offset-2"
           >
             Partner with us
             <svg
@@ -68,7 +68,7 @@ export default function PartnerExpand() {
           {/* Offset accent frame behind the image */}
           <div
             aria-hidden
-            className="absolute inset-0 translate-x-3 translate-y-3 rounded-[2rem] bg-[#E0483E]/15 transition-transform duration-500 group-hover:translate-x-4 group-hover:translate-y-4"
+            className="absolute inset-0 translate-x-3 translate-y-3 rounded-[2rem] bg-[#1366E0]/15 transition-transform duration-500 group-hover:translate-x-4 group-hover:translate-y-4"
           />
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem] bg-white shadow-xl shadow-black/5 ring-1 ring-black/5">
             <Image
@@ -82,12 +82,12 @@ export default function PartnerExpand() {
 
           {/* Floating badge */}
           <div className="absolute -bottom-6 left-6 flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-lg ring-1 ring-black/5">
-            <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#E0483E]/10">
+            <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#1366E0]/10">
               <svg
                 className="h-5 w-5"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="#E0483E"
+                stroke="#1366E0"
                 strokeWidth={1.8}
                 aria-hidden
               >

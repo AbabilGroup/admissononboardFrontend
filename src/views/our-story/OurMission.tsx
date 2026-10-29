@@ -67,7 +67,7 @@ export default function OurMission() {
     <section className="relative w-full overflow-hidden bg-[#FFFEFA] px-6 py-20 sm:py-24">
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-40 top-10 h-96 w-96 rounded-full bg-[#E0483E]/10 blur-3xl"
+        className="pointer-events-none absolute -right-40 top-10 h-96 w-96 rounded-full bg-[#1366E0]/10 blur-3xl"
       />
 
       <div className="relative mx-auto container max-w-6xl">
@@ -76,7 +76,7 @@ export default function OurMission() {
           <div>
             <span
               aria-hidden
-              className="block h-1 w-12 rounded-full bg-[#E0483E]"
+              className="block h-1 w-12 rounded-full bg-[#1366E0]"
             />
             <h2 className="mt-5 text-3xl font-semibold tracking-tight text-[#1B1B1B] sm:text-4xl lg:text-5xl">
               Our mission
@@ -84,7 +84,7 @@ export default function OurMission() {
 
             <figure className="relative mt-7 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5 sm:p-7">
               <svg
-                className="absolute -top-4 left-6 h-8 w-8 text-[#E0483E]"
+                className="absolute -top-4 left-6 h-8 w-8 text-[#1366E0]"
                 viewBox="0 0 24 24"
                 fill="currentColor"
                 aria-hidden
@@ -111,7 +111,7 @@ export default function OurMission() {
           <div className="group relative">
             <div
               aria-hidden
-              className="absolute inset-0 translate-x-3 translate-y-3 rounded-[2rem] bg-[#E0483E]/15 transition-transform duration-500 group-hover:translate-x-4 group-hover:translate-y-4"
+              className="absolute inset-0 translate-x-3 translate-y-3 rounded-[2rem] bg-[#1366E0]/15 transition-transform duration-500 group-hover:translate-x-4 group-hover:translate-y-4"
             />
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem] shadow-xl shadow-black/5 ring-1 ring-black/5">
               <Image
@@ -135,14 +135,14 @@ export default function OurMission() {
             {pillars.map((pillar) => (
               <div
                 key={pillar.title}
-                className="group relative overflow-hidden rounded-2xl border border-[#ECECEC] bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#E0483E]/30 hover:shadow-xl hover:shadow-[#E0483E]/10"
+                className="group relative overflow-hidden rounded-2xl border border-[#ECECEC] bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#1366E0]/30 hover:shadow-xl hover:shadow-[#1366E0]/10"
               >
                 {/* Top accent bar that fills on hover */}
                 <span
                   aria-hidden
-                  className="absolute inset-x-0 top-0 h-1 origin-left scale-x-[0.25] bg-[#E0483E] transition-transform duration-500 group-hover:scale-x-100"
+                  className="absolute inset-x-0 top-0 h-1 origin-left scale-x-[0.25] bg-[#1366E0] transition-transform duration-500 group-hover:scale-x-100"
                 />
-                <span className="grid h-12 w-12 place-items-center rounded-xl bg-[#E0483E]/10 text-[#E0483E] transition-colors duration-300 group-hover:bg-[#E0483E] group-hover:text-white">
+                <span className="grid h-12 w-12 place-items-center rounded-xl bg-[#1366E0]/10 text-[#1366E0] transition-colors duration-300 group-hover:bg-[#1366E0] group-hover:text-white">
                   <svg
                     className="h-6 w-6"
                     viewBox="0 0 24 24"

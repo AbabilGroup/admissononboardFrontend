@@ -7,7 +7,7 @@ import ReactCountryFlag from "react-country-flag";
 const FORMSUBMIT_URL = "https://formsubmit.co/ajax/aob@admissiononboard.com";
 
 const inputClass =
-  "w-full rounded-xl border border-[#E5E5E5] bg-[#FCFCFA] px-4 py-3 text-sm text-[#1B1B1B] placeholder:text-[#A8A8A8] outline-none transition-all focus:border-[#E0483E] focus:bg-white focus:ring-4 focus:ring-[#E0483E]/10";
+  "w-full rounded-xl border border-[#E5E5E5] bg-[#FCFCFA] px-4 py-3 text-sm text-[#1B1B1B] placeholder:text-[#A8A8A8] outline-none transition-all focus:border-[#1366E0] focus:bg-white focus:ring-4 focus:ring-[#1366E0]/10";
 
 const labelClass = "text-sm font-semibold text-[#1B1B1B]";
 
@@ -101,7 +101,7 @@ export default function PartnershipForm() {
       {/* Soft background glows */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -left-40 top-10 h-96 w-96 rounded-full bg-[#E0483E]/10 blur-3xl"
+        className="pointer-events-none absolute -left-40 top-10 h-96 w-96 rounded-full bg-[#1366E0]/10 blur-3xl"
       />
       <div
         aria-hidden
@@ -117,7 +117,7 @@ export default function PartnershipForm() {
 
       <div className="relative mx-auto container max-w-3xl">
         <div className="text-center">
-          <span className="inline-flex items-center gap-2 rounded-full bg-[#E0483E]/10 px-4 py-1.5 text-xs font-semibold text-[#E0483E]">
+          <span className="inline-flex items-center gap-2 rounded-full bg-[#1366E0]/10 px-4 py-1.5 text-xs font-semibold text-[#1366E0]">
             <svg
               className="h-3.5 w-3.5"
               viewBox="0 0 24 24"
@@ -136,7 +136,7 @@ export default function PartnershipForm() {
             Become a partner
           </span>
           <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[#1B1B1B] sm:text-4xl">
-            Partnership <span className="text-[#E0483E]">Request</span>
+            Partnership <span className="text-[#1366E0]">Request</span>
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-sm font-medium text-[#6B6B6B] sm:text-base">
             Partner with Admission OnBoard to expand your student reach and
@@ -145,7 +145,7 @@ export default function PartnershipForm() {
         </div>
 
         <div className="mt-10 overflow-hidden rounded-3xl border border-[#ECECEC] bg-white shadow-xl shadow-black/5">
-          <div className="h-1.5 w-full bg-gradient-to-r from-[#E0483E] via-[#F07A52] to-[#2F5DA8]" />
+          <div className="h-1.5 w-full bg-gradient-to-r from-[#1366E0] via-[#4A90F0] to-[#2F5DA8]" />
 
           {status === "success" ? (
             /* ───────── Success state ───────── */
@@ -196,8 +196,8 @@ export default function PartnershipForm() {
                   team will review it and get back to you shortly.
                 </p>
 
-                <div className="mx-auto mt-8 flex max-w-sm items-center gap-3 rounded-2xl bg-[#FFF6F5] p-4 text-left">
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white text-[#E0483E] shadow-sm">
+                <div className="mx-auto mt-8 flex max-w-sm items-center gap-3 rounded-2xl bg-[#F3F7FE] p-4 text-left">
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white text-[#1366E0] shadow-sm">
                     <svg
                       className="h-5 w-5"
                       viewBox="0 0 24 24"
@@ -218,7 +218,7 @@ export default function PartnershipForm() {
                     Need to add something? Email us at{" "}
                     <a
                       href="mailto:aob@admissiononboard.com"
-                      className="font-semibold text-[#E0483E] hover:underline"
+                      className="font-semibold text-[#1366E0] hover:underline"
                     >
                       aob@admissiononboard.com
                     </a>
@@ -250,7 +250,7 @@ export default function PartnershipForm() {
               <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                 <div>
                   <label htmlFor="fullName" className={labelClass}>
-                    Full Name <span className="text-[#E0483E]">*</span>
+                    Full Name <span className="text-[#1366E0]">*</span>
                   </label>
                   <input
                     id="fullName"
@@ -265,7 +265,7 @@ export default function PartnershipForm() {
 
                 <div>
                   <label htmlFor="jobTitle" className={labelClass}>
-                    Job Title <span className="text-[#E0483E]">*</span>
+                    Job Title <span className="text-[#1366E0]">*</span>
                   </label>
                   <input
                     id="jobTitle"
@@ -280,7 +280,7 @@ export default function PartnershipForm() {
 
                 <div className="sm:col-span-2">
                   <label htmlFor="institute" className={labelClass}>
-                    Institute <span className="text-[#E0483E]">*</span>
+                    Institute <span className="text-[#1366E0]">*</span>
                   </label>
                   <input
                     id="institute"
@@ -295,7 +295,7 @@ export default function PartnershipForm() {
 
                 <div>
                   <label htmlFor="email" className={labelClass}>
-                    Email <span className="text-[#E0483E]">*</span>
+                    Email <span className="text-[#1366E0]">*</span>
                   </label>
                   <input
                     id="email"
@@ -310,9 +310,9 @@ export default function PartnershipForm() {
 
                 <div>
                   <label htmlFor="phone" className={labelClass}>
-                    Phone <span className="text-[#E0483E]">*</span>
+                    Phone <span className="text-[#1366E0]">*</span>
                   </label>
-                  <div className="mt-2 flex overflow-hidden rounded-xl border border-[#E5E5E5] bg-[#FCFCFA] transition-all focus-within:border-[#E0483E] focus-within:bg-white focus-within:ring-4 focus-within:ring-[#E0483E]/10">
+                  <div className="mt-2 flex overflow-hidden rounded-xl border border-[#E5E5E5] bg-[#FCFCFA] transition-all focus-within:border-[#1366E0] focus-within:bg-white focus-within:ring-4 focus-within:ring-[#1366E0]/10">
                     <div className="relative flex shrink-0 items-center gap-2 border-r border-[#E5E5E5] pl-3 pr-2">
                       <span className="flex overflow-hidden rounded-[3px] ring-1 ring-black/10">
                         <ReactCountryFlag
@@ -392,7 +392,7 @@ export default function PartnershipForm() {
                 <input
                   type="checkbox"
                   name="consent"
-                  className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-[#E0483E]"
+                  className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-[#1366E0]"
                 />
                 I agree to receive other communications from Admission OnBoard.
               </label>
@@ -443,7 +443,7 @@ export default function PartnershipForm() {
               <button
                 type="submit"
                 disabled={status === "submitting"}
-                className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#E0483E] py-4 text-sm font-semibold text-white shadow-lg shadow-[#E0483E]/25 transition-all hover:bg-[#1B1B1B] hover:shadow-black/20 disabled:cursor-not-allowed disabled:opacity-70"
+                className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#1366E0] py-4 text-sm font-semibold text-white shadow-lg shadow-[#1366E0]/25 transition-all hover:bg-[#1B1B1B] hover:shadow-black/20 disabled:cursor-not-allowed disabled:opacity-70"
               >
                 {status === "submitting" ? (
                   <>

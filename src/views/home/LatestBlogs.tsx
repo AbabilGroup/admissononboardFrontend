@@ -9,7 +9,7 @@ type Category = BlogCategory;
 
 const categoryStyles: Record<Category, string> = {
   "Academic Writing": "bg-[#2F5DA8]/10 text-[#2F5DA8]",
-  Destinations: "bg-[#E0483E]/10 text-[#E0483E]",
+  Destinations: "bg-[#1366E0]/10 text-[#1366E0]",
   "Visas & Applications": "bg-[#F58B0F]/10 text-[#F58B0F]",
 };
 
@@ -44,7 +44,7 @@ export default function LatestBlogs() {
       <div className="mx-auto container">
         <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
           <div>
-            <p className="text-xs font-bold uppercase tracking-widest text-[#E0483E]">
+            <p className="text-xs font-bold uppercase tracking-widest text-[#1366E0]">
               From The Blog
             </p>
             <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#1B1B1B] sm:text-4xl">
@@ -54,7 +54,7 @@ export default function LatestBlogs() {
 
           <Link
             href="/our-blogs"
-            className="inline-flex shrink-0 items-center gap-2 rounded-full border border-[#E0483E] bg-white px-6 py-3 text-sm font-semibold text-[#E0483E] transition-colors hover:border-[#E0483E]"
+            className="inline-flex shrink-0 items-center gap-2 rounded-full border border-[#1366E0] bg-white px-6 py-3 text-sm font-semibold text-[#1366E0] transition-colors hover:border-[#1366E0]"
           >
             Visit The Blog
           </Link>
@@ -84,7 +84,7 @@ export default function LatestBlogs() {
                       width="12"
                       height="12"
                       viewBox="0 0 24 24"
-                      fill="#E0483E"
+                      fill="#1366E0"
                     >
                       <path d="M12 2 2 8l10 5 8-4v6h2V8L12 2Zm0 8L4 8l8-4 8 4-8 4Zm-6 2v4c0 1.66 2.69 3 6 3s6-1.34 6-3v-4l-6 3-6-3Z" />
                     </svg>
@@ -98,7 +98,7 @@ export default function LatestBlogs() {
                   {blog.category}
                 </span>
 
-                <h3 className="mt-3 text-base font-semibold leading-snug text-[#1B1B1B] transition-colors group-hover:text-[#E0483E]">
+                <h3 className="mt-3 text-base font-semibold leading-snug text-[#1B1B1B] transition-colors group-hover:text-[#1366E0]">
                   {blog.title}
                 </h3>
 

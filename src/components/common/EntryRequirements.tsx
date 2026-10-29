@@ -83,7 +83,7 @@ export default function EntryRequirements() {
     <section className="w-full bg-[#FFFEFA] px-6 py-20">
       <div className="mx-auto container">
         <h2 className="text-center text-3xl font-semibold tracking-tight sm:text-4xl">
-          <span className="text-[#E0483E]">Entry</span>{" "}
+          <span className="text-[#1366E0]">Entry</span>{" "}
           <span className="text-[#1B1B1B]">Requirements</span>
         </h2>
 
@@ -101,7 +101,7 @@ export default function EntryRequirements() {
                   width="28"
                   height="28"
                   viewBox="0 0 24 24"
-                  fill={isActive ? "#E0483E" : "#C9C9C9"}
+                  fill={isActive ? "#1366E0" : "#C9C9C9"}
                   className="transition-colors"
                 >
                   {program.icon}
@@ -120,7 +120,7 @@ export default function EntryRequirements() {
                   {isActive && (
                     <div
                       key={activeIndex}
-                      className="h-full rounded-full bg-[#E0483E]"
+                      className="h-full rounded-full bg-[#1366E0]"
                       style={{
                         animation: `entry-progress ${AUTO_ADVANCE_MS}ms linear forwards`,
                       }}
@@ -134,7 +134,7 @@ export default function EntryRequirements() {
                       {program.description}
                     </p>
 
-                    <div className="relative mt-2 w-full border-l-4 border-[#E0483E] pl-3">
+                    <div className="relative mt-2 w-full border-l-4 border-[#1366E0] pl-3">
                       <div className="relative aspect-square w-full max-w-[180px] overflow-hidden rounded-xl">
                         <Image
                           src={program.image}

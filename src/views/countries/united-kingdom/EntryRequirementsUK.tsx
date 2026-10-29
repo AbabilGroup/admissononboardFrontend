@@ -129,7 +129,7 @@ export default function EntryRequirementsUK() {
       <div className="mx-auto container">
         <div className="text-center">
           <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-            <span className="text-[#E0483E]">Entry</span>{" "}
+            <span className="text-[#1366E0]">Entry</span>{" "}
             <span className="text-[#1B1B1B]">Requirements</span>
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-sm font-semibold text-gray-700 sm:text-base">
@@ -153,7 +153,7 @@ export default function EntryRequirementsUK() {
                   width="28"
                   height="28"
                   viewBox="0 0 24 24"
-                  fill={isActive ? "#E0483E" : "#C9C9C9"}
+                  fill={isActive ? "#1366E0" : "#C9C9C9"}
                   fillRule="evenodd"
                   className="transition-colors"
                   aria-hidden
@@ -166,7 +166,7 @@ export default function EntryRequirementsUK() {
                     isActive ? "text-[#1B1B1B]" : "text-[#B5B5B5]"
                   }`}
                 >
-                  <span className={isActive ? "text-[#E0483E]" : ""}>
+                  <span className={isActive ? "text-[#1366E0]" : ""}>
                     {index + 1}.
                   </span>{" "}
                   {program.title}
@@ -177,7 +177,7 @@ export default function EntryRequirementsUK() {
                   {isActive && (
                     <div
                       key={activeIndex}
-                      className="h-full rounded-full bg-[#E0483E]"
+                      className="h-full rounded-full bg-[#1366E0]"
                       style={{
                         animation: `entry-progress ${AUTO_ADVANCE_MS}ms linear forwards`,
                       }}
@@ -196,7 +196,7 @@ export default function EntryRequirementsUK() {
                             key={item}
                             className="flex items-start gap-2 text-xs leading-relaxed text-[#6B6B6B] sm:text-sm"
                           >
-                            <span className="mt-[6px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#E0483E]" />
+                            <span className="mt-[6px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#1366E0]" />
                             <span>
                               {label && (
                                 <span className="font-semibold text-[#1B1B1B]">
@@ -211,7 +211,7 @@ export default function EntryRequirementsUK() {
                     </ul>
 
                     {/* Image */}
-                    <div className="relative mt-2 w-full border-l-4 border-[#E0483E] pl-3">
+                    <div className="relative mt-2 w-full border-l-4 border-[#1366E0] pl-3">
                       <div className="relative aspect-square w-full max-w-[180px] overflow-hidden rounded-xl">
                         <Image
                           src={program.image}

@@ -121,7 +121,7 @@ function MobileGroup({
               key={item}
               href={`${basePath ?? ""}/${toSlug(item)}`}
               onClick={onNavigate}
-              className="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-zinc-600 transition-colors hover:bg-[#E0483E]/8 hover:text-black"
+              className="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-zinc-600 transition-colors hover:bg-[#1366E0]/8 hover:text-black"
             >
               {flags?.[item] && <Flag code={flags[item]} name={item} />}
               {item}
@@ -275,7 +275,7 @@ export default function Header() {
                   <Link
                     href="/countries"
                     onClick={close}
-                    className="col-span-2 mt-2 flex items-center justify-center border-t border-black/5 pt-3 text-sm font-semibold text-[#E0483E] transition-colors hover:text-black"
+                    className="col-span-2 mt-2 flex items-center justify-center border-t border-black/5 pt-3 text-sm font-semibold text-[#1366E0] transition-colors hover:text-black"
                   >
                     View all destinations
                   </Link>
@@ -314,7 +314,7 @@ export default function Header() {
           <div className="hidden items-center gap-3 lg:flex">
             <Link
               href="/auth/login"
-              className="flex h-10 items-center justify-center rounded-full border border-black px-5 text-[15px] font-semibold tracking-wide text-black transition-colors duration-200 hover:border-[#E0483E] hover:bg-black/2 hover:text-[#E0483E]"
+              className="flex h-10 items-center justify-center rounded-full border border-black px-5 text-[15px] font-semibold tracking-wide text-black transition-colors duration-200 hover:border-[#1366E0] hover:bg-black/2 hover:text-[#1366E0]"
             >
               Login
             </Link>
@@ -409,7 +409,7 @@ export default function Header() {
               <Link
                 href="/auth/login"
                 onClick={closeMobile}
-                className="flex h-11 items-center justify-center rounded-full border border-black text-[15px] font-semibold tracking-wide text-black transition-colors duration-200 hover:border-[#E0483E] hover:text-[#E0483E]"
+                className="flex h-11 items-center justify-center rounded-full border border-black text-[15px] font-semibold tracking-wide text-black transition-colors duration-200 hover:border-[#1366E0] hover:text-[#1366E0]"
               >
                 Login
               </Link>

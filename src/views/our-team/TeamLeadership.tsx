@@ -78,7 +78,7 @@ function Portrait({
         />
       ) : (
         <div className="grid h-full w-full place-items-center">
-          <span className="grid h-28 w-28 place-items-center rounded-full bg-[#FFFEFA] text-3xl font-semibold text-[#E0483E] ring-4 ring-[#E0483E]/20">
+          <span className="grid h-28 w-28 place-items-center rounded-full bg-[#FFFEFA] text-3xl font-semibold text-[#1366E0] ring-4 ring-[#1366E0]/20">
             {initials(leader.name)}
           </span>
         </div>
@@ -113,7 +113,7 @@ function LinkedInLink({ leader }: { leader: Leader }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`${leader.name} on LinkedIn`}
-      className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[#E5E5E5] text-[#1B1B1B] transition-colors hover:border-[#E0483E] hover:bg-[#E0483E] hover:text-white"
+      className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[#E5E5E5] text-[#1B1B1B] transition-colors hover:border-[#1366E0] hover:bg-[#1366E0] hover:text-white"
     >
       <svg
         className="h-4 w-4"
@@ -136,11 +136,11 @@ export default function TeamLeadership() {
           <div className="max-w-xl">
             <span
               aria-hidden
-              className="block h-1 w-12 rounded-full bg-[#E0483E]"
+              className="block h-1 w-12 rounded-full bg-[#1366E0]"
             />
             <h2 className="mt-5 text-3xl font-semibold tracking-tight text-[#1B1B1B] sm:text-4xl">
               Led by people who{" "}
-              <span className="text-[#E0483E]">believe in students</span>
+              <span className="text-[#1366E0]">believe in students</span>
             </h2>
           </div>
           <p className="max-w-md text-sm leading-relaxed text-[#6B6B6B] sm:text-base">
@@ -162,7 +162,7 @@ export default function TeamLeadership() {
           <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-14">
             {/* Quote mark */}
             <svg
-              className="h-10 w-10 text-[#E0483E]"
+              className="h-10 w-10 text-[#1366E0]"
               viewBox="0 0 24 24"
               fill="currentColor"
               aria-hidden
@@ -185,7 +185,7 @@ export default function TeamLeadership() {
                 <p className="text-lg font-semibold text-[#1B1B1B]">
                   {founder.name}
                 </p>
-                <p className="mt-0.5 text-sm font-medium text-[#E0483E]">
+                <p className="mt-0.5 text-sm font-medium text-[#1366E0]">
                   {founder.role}
                 </p>
               </div>
@@ -214,7 +214,7 @@ export default function TeamLeadership() {
                     <h3 className="text-lg font-semibold text-[#1B1B1B]">
                       {leader.name}
                     </h3>
-                    <p className="mt-0.5 text-sm font-medium text-[#E0483E]">
+                    <p className="mt-0.5 text-sm font-medium text-[#1366E0]">
                       {leader.role}
                     </p>
                   </div>

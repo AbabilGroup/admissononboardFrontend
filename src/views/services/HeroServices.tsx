@@ -27,11 +27,11 @@ export default function HeroServices() {
         <div className="w-full md:w-1/2">
           <h1 className="text-4xl font-semibold leading-tight tracking-tight text-[#1B1B1B] animate-[svcFadeUp_0.8s_cubic-bezier(0.22,1,0.36,1)_both] motion-reduce:animate-none sm:text-5xl lg:text-6xl">
             Discover{" "}
-            <span className="relative inline-block text-[#E0483E]">
+            <span className="relative inline-block text-[#1366E0]">
               what we offer
               {/* <span
                 aria-hidden
-                className="absolute -bottom-1 left-0 h-[5px] w-full origin-left rounded-full bg-[#E0483E]/25 animate-[svcUnderline_0.9s_cubic-bezier(0.65,0,0.35,1)_both] motion-reduce:animate-none"
+                className="absolute -bottom-1 left-0 h-[5px] w-full origin-left rounded-full bg-[#1366E0]/25 animate-[svcUnderline_0.9s_cubic-bezier(0.65,0,0.35,1)_both] motion-reduce:animate-none"
                 style={{ animationDelay: "800ms" }}
               /> */}
             </span>
@@ -52,7 +52,7 @@ export default function HeroServices() {
           >
             <Link
               href="/contact"
-              className="group mt-9 inline-flex items-center gap-2 rounded-full border border-[#1B1B1B] bg-white px-6 py-3 text-sm font-semibold text-[#1B1B1B] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1B1B1B] hover:text-white hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E0483E] focus-visible:ring-offset-2"
+              className="group mt-9 inline-flex items-center gap-2 rounded-full border border-[#1B1B1B] bg-white px-6 py-3 text-sm font-semibold text-[#1B1B1B] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1B1B1B] hover:text-white hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1366E0] focus-visible:ring-offset-2"
             >
               Schedule A Free Consultation
               <svg
@@ -78,7 +78,7 @@ export default function HeroServices() {
         <div className="relative w-full md:w-1/2">
           <div
             aria-hidden
-            className="absolute inset-0 m-auto h-3/4 w-3/4 rounded-full bg-[#E0483E]/10 blur-3xl animate-[svcGlow_1.2s_ease-out_both] motion-reduce:animate-none"
+            className="absolute inset-0 m-auto h-3/4 w-3/4 rounded-full bg-[#1366E0]/10 blur-3xl animate-[svcGlow_1.2s_ease-out_both] motion-reduce:animate-none"
             style={{ animationDelay: "150ms" }}
           />
           <div

@@ -63,7 +63,7 @@ function PinIcon() {
       width="14"
       height="14"
       viewBox="0 0 24 24"
-      fill="#E0483E"
+      fill="#1366E0"
       className="shrink-0"
     >
       <path d="M12 2C7.86 2 4.5 5.36 4.5 9.5c0 5.25 6.19 11.44 6.46 11.7a1.5 1.5 0 0 0 2.08 0c.27-.26 6.46-6.45 6.46-11.7C19.5 5.36 16.14 2 12 2Zm0 10.5A3 3 0 1 1 12 6.5a3 3 0 0 1 0 6Z" />
@@ -77,7 +77,7 @@ function CalendarIcon() {
       width="14"
       height="14"
       viewBox="0 0 24 24"
-      fill="#E0483E"
+      fill="#1366E0"
       className="shrink-0"
     >
       <path d="M7 2v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7ZM5 9h14v11H5V9Z" />
@@ -95,7 +95,7 @@ export default function OurEvents() {
         <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
           <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
             <span className="text-[#1B1B1B]">Our</span>{" "}
-            <span className="text-[#E0483E]">Events</span>
+            <span className="text-[#1366E0]">Events</span>
           </h2>
 
           <div className="flex items-center gap-8">
@@ -108,7 +108,7 @@ export default function OurEvents() {
             >
               Upcoming
               {activeTab === "Upcoming" && (
-                <span className="absolute -bottom-0.5 left-0 h-0.5 w-full bg-[#E0483E]" />
+                <span className="absolute -bottom-0.5 left-0 h-0.5 w-full bg-[#1366E0]" />
               )}
             </button>
             <button
@@ -120,7 +120,7 @@ export default function OurEvents() {
             >
               Past Events
               {activeTab === "Past" && (
-                <span className="absolute -bottom-0.5 left-0 h-0.5 w-full bg-[#E0483E]" />
+                <span className="absolute -bottom-0.5 left-0 h-0.5 w-full bg-[#1366E0]" />
               )}
             </button>
           </div>

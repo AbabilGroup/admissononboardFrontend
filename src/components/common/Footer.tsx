@@ -59,7 +59,7 @@ function BranchItem({ name, slug, active }: (typeof explore)[number]) {
     return (
       <Link
         href={`/${slug}`}
-        className="text-[#5B5B5B] transition-colors hover:text-[#E0483E]"
+        className="text-[#5B5B5B] transition-colors hover:text-[#1366E0]"
       >
         {name}
       </Link>
@@ -116,7 +116,7 @@ export default function Footer() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-[#5B5B5B] transition-colors hover:text-[#E0483E]"
+                className="text-[#5B5B5B] transition-colors hover:text-[#1366E0]"
               >
                 {link.label}
               </Link>
@@ -133,7 +133,7 @@ export default function Footer() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-[#5B5B5B] transition-colors hover:text-[#E0483E]"
+                className="text-[#5B5B5B] transition-colors hover:text-[#1366E0]"
               >
                 {link.label}
               </Link>
@@ -154,11 +154,11 @@ export default function Footer() {
             </p> */}
             <a
               href="mailto:aob@admissiononboard.com"
-              className="hover:text-[#E0483E]"
+              className="hover:text-[#1366E0]"
             >
               aob@admissiononboard.com
             </a>
-            <a href="tel:+447465268767" className="hover:text-[#E0483E]">
+            <a href="tel:+447465268767" className="hover:text-[#1366E0]">
               +44 7465 268767
             </a>
           </div>
@@ -175,7 +175,7 @@ export default function Footer() {
           <div className="flex flex-wrap items-center gap-x-2 gap-y-2 text-sm text-[#5B5B5B]">
             {legalLinks.map((link, i) => (
               <React.Fragment key={link.href}>
-                <Link href={link.href} className="hover:text-[#E0483E]">
+                <Link href={link.href} className="hover:text-[#1366E0]">
                   {link.label}
                 </Link>
                 {i < legalLinks.length - 1 && (
@@ -193,7 +193,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.name}
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-[#1B1B1B] text-white transition-colors hover:bg-[#E0483E]"
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-[#1B1B1B] text-white transition-colors hover:bg-[#1366E0]"
               >
                 <svg
                   width="14"

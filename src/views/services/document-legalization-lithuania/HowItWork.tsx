@@ -36,7 +36,7 @@ export default function HowItWork() {
       <div className="mx-auto container max-w-6xl">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-semibold tracking-tight text-[#1B1B1B] sm:text-4xl">
-            How it <span className="text-[#E0483E]">works</span>
+            How it <span className="text-[#1366E0]">works</span>
           </h2>
           <p className="mt-4 text-sm text-[#6B6B6B] sm:text-base">
             Five simple steps from your first message to a legalized PCC.
@@ -49,7 +49,7 @@ export default function HowItWork() {
             {/* Vertical line linking the numbers */}
             <span
               aria-hidden
-              className="absolute bottom-8 left-[2.2rem] top-8 w-px bg-gradient-to-b from-[#E0483E]/50 via-[#E0483E]/25 to-[#E0483E]/50"
+              className="absolute bottom-8 left-[2.2rem] top-8 w-px bg-gradient-to-b from-[#1366E0]/50 via-[#1366E0]/25 to-[#1366E0]/50"
             />
 
             {steps.map((step, index) => {
@@ -61,7 +61,7 @@ export default function HowItWork() {
                 >
                   <span
                     className={`relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white shadow-md ${
-                      isLast ? "bg-[#E0483E]" : "bg-[#1B1B1B]"
+                      isLast ? "bg-[#1366E0]" : "bg-[#1B1B1B]"
                     }`}
                   >
                     {isLast ? (
@@ -100,7 +100,7 @@ export default function HowItWork() {
           <div className="group relative md:sticky md:top-28">
             <div
               aria-hidden
-              className="absolute inset-0 -translate-x-3 translate-y-3 rounded-[2rem] border-2 border-[#E0483E]/30 transition-transform duration-500 group-hover:-translate-x-4 group-hover:translate-y-4"
+              className="absolute inset-0 -translate-x-3 translate-y-3 rounded-[2rem] border-2 border-[#1366E0]/30 transition-transform duration-500 group-hover:-translate-x-4 group-hover:translate-y-4"
             />
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] shadow-xl shadow-black/5 ring-1 ring-black/5 md:aspect-[4/5]">
               <Image
@@ -114,7 +114,7 @@ export default function HowItWork() {
 
               {/* Caption on the photo */}
               <div className="absolute inset-x-5 bottom-5 flex items-center gap-3 rounded-2xl bg-white/90 px-4 py-3 shadow-lg backdrop-blur-md">
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#E0483E] text-white">
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#1366E0] text-white">
                   <svg
                     className="h-5 w-5"
                     viewBox="0 0 24 24"

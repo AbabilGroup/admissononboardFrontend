@@ -31,14 +31,14 @@ export default function HeroContact() {
                 Contact With Us —
               </span>
               <span
-                className="relative inline-block animate-[contactFadeUp_0.8s_cubic-bezier(0.22,1,0.36,1)_both] text-[#E0483E] motion-reduce:animate-none"
+                className="relative inline-block animate-[contactFadeUp_0.8s_cubic-bezier(0.22,1,0.36,1)_both] text-[#1366E0] motion-reduce:animate-none"
                 style={{ animationDelay: "120ms" }}
               >
                 We&apos;re Here to Help
                 {/* Underline that draws itself in */}
                 {/* <span
                   aria-hidden
-                  className="absolute -bottom-1 left-0 h-[5px] w-full origin-left rounded-full bg-[#E0483E]/25 animate-[contactUnderline_0.9s_cubic-bezier(0.65,0,0.35,1)_both] motion-reduce:animate-none"
+                  className="absolute -bottom-1 left-0 h-[5px] w-full origin-left rounded-full bg-[#1366E0]/25 animate-[contactUnderline_0.9s_cubic-bezier(0.65,0,0.35,1)_both] motion-reduce:animate-none"
                   style={{ animationDelay: "750ms" }}
                 /> */}
               </span>
@@ -59,7 +59,7 @@ export default function HeroContact() {
             {/* Soft glow behind the advisor */}
             <div
               aria-hidden
-              className="absolute inset-0 m-auto h-3/4 w-3/4 rounded-full bg-[#E0483E]/10 blur-3xl animate-[contactGlow_1.2s_ease-out_both] motion-reduce:animate-none"
+              className="absolute inset-0 m-auto h-3/4 w-3/4 rounded-full bg-[#1366E0]/10 blur-3xl animate-[contactGlow_1.2s_ease-out_both] motion-reduce:animate-none"
               style={{ animationDelay: "150ms" }}
             />
             <Image

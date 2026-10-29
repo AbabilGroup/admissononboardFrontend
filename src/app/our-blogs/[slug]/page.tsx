@@ -8,7 +8,7 @@ import ContactCta from "@/components/common/ContactCta";
 
 const categoryStyles: Record<string, string> = {
   "Academic Writing": "bg-[#2F5DA8]/10 text-[#2F5DA8]",
-  Destinations: "bg-[#E0483E]/10 text-[#E0483E]",
+  Destinations: "bg-[#1366E0]/10 text-[#1366E0]",
   "Visas & Applications": "bg-[#F58B0F]/10 text-[#F58B0F]",
 };
 
@@ -65,7 +65,7 @@ export default async function BlogDetailPage({ params }: Props) {
         <div className="mx-auto max-w-3xl">
           <Link
             href="/our-blogs"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-[#6B6B6B] transition-colors hover:text-[#E0483E]"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-[#6B6B6B] transition-colors hover:text-[#1366E0]"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
               <path
@@ -137,7 +137,7 @@ export default async function BlogDetailPage({ params }: Props) {
                       className="object-contain transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
-                  <h3 className="mt-3 text-sm font-semibold leading-snug text-[#1B1B1B] transition-colors group-hover:text-[#E0483E]">
+                  <h3 className="mt-3 text-sm font-semibold leading-snug text-[#1B1B1B] transition-colors group-hover:text-[#1366E0]">
                     {related.title}
                   </h3>
                 </Link>

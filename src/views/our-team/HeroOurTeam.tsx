@@ -54,7 +54,7 @@ export default function HeroOurTeam() {
           <div className="max-w-xl">
             {/* Eyebrow badge */}
             <span className="ot-in inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3.5 py-1.5 text-xs font-semibold text-white backdrop-blur-md">
-              <span className="ot-pulse h-2 w-2 rounded-full bg-[#E0483E]" />
+              <span className="ot-pulse h-2 w-2 rounded-full bg-[#1366E0]" />
               Meet the team
             </span>
 
@@ -64,7 +64,7 @@ export default function HeroOurTeam() {
             >
               The people behind
               <br />
-              <span className="text-[#E0483E]">your success story.</span>
+              <span className="text-[#1366E0]">your success story.</span>
             </h1>
 
             <p
@@ -84,7 +84,7 @@ export default function HeroOurTeam() {
             >
               <a
                 href="#team"
-                className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#E0483E] px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#E0483E]/35 transition-all hover:-translate-y-0.5 hover:bg-[#C93C33] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#0E1116]"
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#1366E0] px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#1366E0]/35 transition-all hover:-translate-y-0.5 hover:bg-[#0F55BE] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#0E1116]"
               >
                 Meet the team
                 <svg
@@ -164,7 +164,7 @@ export default function HeroOurTeam() {
             {stats.map((stat) => (
               <div
                 key={stat.label}
-                className="border-l-2 border-[#E0483E] pl-3"
+                className="border-l-2 border-[#1366E0] pl-3"
               >
                 <dt className="sr-only">{stat.label}</dt>
                 <dd className="text-2xl font-semibold leading-none">
@@ -185,7 +185,7 @@ export default function HeroOurTeam() {
             className="rounded-2xl border border-[#ECECEC] bg-white px-4 py-4 text-center shadow-sm"
           >
             <dt className="sr-only">{stat.label}</dt>
-            <dd className="text-2xl font-semibold text-[#E0483E]">
+            <dd className="text-2xl font-semibold text-[#1366E0]">
               {stat.value}
             </dd>
             <dd className="mt-1 text-xs text-[#6B6B6B]">{stat.label}</dd>

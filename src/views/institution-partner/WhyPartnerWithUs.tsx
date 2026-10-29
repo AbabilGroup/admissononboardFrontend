@@ -17,7 +17,7 @@ const rows: Row[] = [
       "We support students at every stage, from their very first question to the day they enrol. Our dedicated team manages follow-ups and paperwork, keeping the whole process smooth and stress-free.",
     image: "/admission-support.png",
     imageFirst: true,
-    accent: "#E0483E",
+    accent: "#1366E0",
     icon: (
       <path
         strokeLinecap="round"
@@ -64,7 +64,7 @@ export default function WhyPartnerWithUs() {
       {/* Soft background glows */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -left-40 top-40 h-96 w-96 rounded-full bg-[#E0483E]/8 blur-3xl"
+        className="pointer-events-none absolute -left-40 top-40 h-96 w-96 rounded-full bg-[#1366E0]/8 blur-3xl"
       />
       <div
         aria-hidden
@@ -76,7 +76,7 @@ export default function WhyPartnerWithUs() {
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-semibold tracking-tight text-[#1B1B1B] sm:text-4xl lg:text-5xl">
             Why Partner with{" "}
-            <span className="text-[#E0483E] block">Admission OnBoard?</span>
+            <span className="text-[#1366E0] block">Admission OnBoard?</span>
           </h2>
           <p className="mt-4 text-sm font-medium text-[#6B6B6B] sm:text-base">
             Streamline recruitment. Boost visibility. Attract qualified

@@ -9,7 +9,7 @@ export default function HeroEventsSeminars() {
     <section className="relative w-full overflow-hidden bg-[#FFFEFA]">
       <div
         className="pointer-events-none absolute -right-32 top-1/2 h-[420px] w-[420px] -translate-y-1/2 rounded-full opacity-30 blur-3xl"
-        style={{ background: "#F4A5A5" }}
+        style={{ background: "#A5C8F4" }}
       />
 
       <div className="relative mx-auto container flex flex-col items-center gap-12 px-6 py-20 md:flex-row md:gap-10 md:py-24">
@@ -30,7 +30,7 @@ export default function HeroEventsSeminars() {
         {/* Right: copy */}
         <div className="w-full md:w-1/2">
           <h1 className="text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
-            <span className="text-[#E0483E]">Workshops</span>{" "}
+            <span className="text-[#1366E0]">Workshops</span>{" "}
             <span className="text-[#1B1B1B]">& Info Sessions</span>
           </h1>
 

@@ -63,7 +63,7 @@ export default function PhotoGallery() {
     <section className="w-full bg-[#FFFEFA] px-6 py-20">
       <div className="mx-auto max-w-6xl">
         <h2 className="text-center text-2xl font-semibold tracking-tight text-[#1B1B1B] sm:text-3xl">
-          Admission OnBoard <span className="text-[#E0483E]">Gallery</span>
+          Admission OnBoard <span className="text-[#1366E0]">Gallery</span>
         </h2>
 
         <div className="mt-10 grid auto-rows-[110px] grid-cols-2 gap-3 sm:auto-rows-[140px] sm:grid-cols-4 sm:gap-4">

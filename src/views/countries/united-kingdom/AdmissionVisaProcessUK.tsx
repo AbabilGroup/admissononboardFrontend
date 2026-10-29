@@ -73,7 +73,7 @@ export default function AdmissionVisaProcessUK() {
       <div className="mx-auto container">
         <div className="text-center">
           <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-            <span className="text-[#E0483E]">Admission</span>{" "}
+            <span className="text-[#1366E0]">Admission</span>{" "}
             <span className="text-[#1B1B1B]">&amp; Visa Process</span>
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-sm font-semibold text-gray-700 sm:text-base">
@@ -119,7 +119,7 @@ export default function AdmissionVisaProcessUK() {
                               className="flex items-start gap-2 text-xs leading-relaxed text-[#6B6B6B] sm:text-sm"
                             >
                               <svg
-                                className="mt-[3px] h-3.5 w-3.5 shrink-0 text-[#E0483E] sm:mt-1"
+                                className="mt-[3px] h-3.5 w-3.5 shrink-0 text-[#1366E0] sm:mt-1"
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"

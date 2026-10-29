@@ -36,7 +36,7 @@ export default function WhyChose() {
         <div className="mx-auto max-w-xl text-center">
           <h2 className="text-3xl font-semibold leading-tight tracking-tight text-[#1B1B1B] sm:text-5xl">
             Why partner with{" "}
-            <span className="text-[#E0483E]">Admission OnBoard</span>?
+            <span className="text-[#1366E0]">Admission OnBoard</span>?
           </h2>
           {/* <p className="mt-4 text-sm text-[#6B6B6B] sm:text-base">
             Everything you need to study abroad, handled by one dedicated team
@@ -79,7 +79,7 @@ export default function WhyChose() {
               <div key={reason.number} className="spinning-border-wrap">
                 <div className="spinning-border" />
                 <div className="relative flex items-start gap-4 rounded-[1.4rem] bg-white p-6">
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#E0483E] text-xs font-semibold text-white">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#1366E0] text-xs font-semibold text-white">
                     {reason.number}
                   </span>
                   <div>
@@ -97,13 +97,13 @@ export default function WhyChose() {
             <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href="/courses"
-                className="inline-flex items-center justify-center rounded-l-2xl rounded-br-2xl bg-[#E0483E] px-7 py-3.5 text-sm font-semibold text-white shadow-md transition-transform hover:scale-105"
+                className="inline-flex items-center justify-center rounded-l-2xl rounded-br-2xl bg-[#1366E0] px-7 py-3.5 text-sm font-semibold text-white shadow-md transition-transform hover:scale-105"
               >
                 Explore Programmes
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center rounded-l-2xl rounded-br-2xl border border-[#E0483E] bg-white px-7 py-3.5 text-sm font-semibold text-[#E0483E] transition-colors hover:border-[#E0483E]"
+                className="inline-flex items-center justify-center rounded-l-2xl rounded-br-2xl border border-[#1366E0] bg-white px-7 py-3.5 text-sm font-semibold text-[#1366E0] transition-colors hover:border-[#1366E0]"
               >
                 Speak To An Advisor
               </Link>
@@ -126,7 +126,7 @@ export default function WhyChose() {
           background: conic-gradient(
             from 0deg,
             transparent 0deg,
-            #E0483E 40deg,
+            #1366E0 40deg,
             #F58B0F 80deg,
             transparent 130deg,
             transparent 360deg

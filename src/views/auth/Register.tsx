@@ -65,7 +65,7 @@ export default function Register() {
   const [businessEmail, setBusinessEmail] = useState("");
   const [otp, setOtp] = useState("");
 
-  const accent = isStudent ? "#E0483E" : "#F58B0F";
+  const accent = isStudent ? "#1366E0" : "#F58B0F";
   const destinationEmail = isStudent ? email : businessEmail;
 
   const handleTabChange = (next: RegisterTab) => {
@@ -215,7 +215,7 @@ export default function Register() {
             </span>
           </div>
 
-          <div className="card-fade rounded-3xl bg-white shadow-[0_20px_60px_-15px_rgba(224,72,62,0.18)] border border-[#1B1B1B]/5 overflow-hidden">
+          <div className="card-fade rounded-3xl bg-white shadow-[0_20px_60px_-15px_rgba(19,102,224,0.18)] border border-[#1B1B1B]/5 overflow-hidden">
             {step === "form" && (
               <>
                 <div className="relative flex">
@@ -248,7 +248,7 @@ export default function Register() {
                   <p
                     className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[0.15em] ${
                       isStudent
-                        ? "bg-[#E0483E]/15 text-[#E0483E]"
+                        ? "bg-[#1366E0]/15 text-[#1366E0]"
                         : "bg-[#F58B0F]/15 text-[#F58B0F]"
                     }`}
                   >
@@ -293,7 +293,7 @@ export default function Register() {
                     Already have an account?{" "}
                     <a
                       href="/auth/login"
-                      className={`font-bold ${isStudent ? "text-[#E0483E]" : "text-[#F58B0F]"} hover:underline`}
+                      className={`font-bold ${isStudent ? "text-[#1366E0]" : "text-[#F58B0F]"} hover:underline`}
                     >
                       Login here
                     </a>
@@ -347,7 +347,7 @@ interface IconInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 
 function IconInput({
   icon,
-  accentColor = "#E0483E",
+  accentColor = "#1366E0",
   ...props
 }: IconInputProps) {
   return (
@@ -499,7 +499,7 @@ function StudentForm({
   email,
   setEmail,
 }: StudentFormProps) {
-  const accent = "#E0483E";
+  const accent = "#1366E0";
   return (
     <form onSubmit={onSubmit} className="mt-6 space-y-4">
       <div className="grid grid-cols-2 gap-3">
@@ -609,7 +609,7 @@ function StudentForm({
       <button
         type="submit"
         disabled={!agreed}
-        className="group flex w-full items-center justify-center gap-2 rounded-xl bg-[#E0483E] py-3.5 text-sm font-bold tracking-wide text-white shadow-lg shadow-[#E0483E]/25 transition-all duration-200 hover:bg-[#C13A31] hover:shadow-xl hover:shadow-[#E0483E]/30 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-[#E0483E]"
+        className="group flex w-full items-center justify-center gap-2 rounded-xl bg-[#1366E0] py-3.5 text-sm font-bold tracking-wide text-white shadow-lg shadow-[#1366E0]/25 transition-all duration-200 hover:bg-[#0F55BE] hover:shadow-xl hover:shadow-[#1366E0]/30 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-[#1366E0]"
       >
         Send verification code
         <HiArrowRight className="transition-transform duration-200 group-hover:translate-x-0.5" />
@@ -742,7 +742,7 @@ function OtpStep({
   onSubmit,
   onBack,
 }: OtpStepProps) {
-  const accentBg = isStudent ? "bg-[#E0483E]/10" : "bg-[#F58B0F]/10";
+  const accentBg = isStudent ? "bg-[#1366E0]/10" : "bg-[#F58B0F]/10";
 
   return (
     <div className="otp-pop">
@@ -820,8 +820,8 @@ interface TabButtonProps {
 }
 
 function TabButton({ active, onClick, icon, label, accent }: TabButtonProps) {
-  const accentColor = accent === "red" ? "#E0483E" : "#F58B0F";
-  const accentBg = accent === "red" ? "bg-[#E0483E]/10" : "bg-[#F58B0F]/10";
+  const accentColor = accent === "red" ? "#1366E0" : "#F58B0F";
+  const accentBg = accent === "red" ? "bg-[#1366E0]/10" : "bg-[#F58B0F]/10";
   return (
     <button
       type="button"

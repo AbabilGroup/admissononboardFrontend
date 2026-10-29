@@ -19,7 +19,7 @@ const purposeOptions = [
 ];
 
 const inputClass =
-  "w-full rounded-xl border border-[#E5E5E5] bg-white px-4 py-3 text-sm text-[#1B1B1B] placeholder:text-[#9A9A9A] outline-none transition-all focus:border-[#E0483E] focus:ring-4 focus:ring-[#E0483E]/10";
+  "w-full rounded-xl border border-[#E5E5E5] bg-white px-4 py-3 text-sm text-[#1B1B1B] placeholder:text-[#9A9A9A] outline-none transition-all focus:border-[#1366E0] focus:ring-4 focus:ring-[#1366E0]/10";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -88,7 +88,7 @@ export default function DoubleCta() {
           <div className="text-white">
             <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
               Planning two trips to India?{" "}
-              <span className="text-[#E0483E]">We&apos;ll handle the visa.</span>
+              <span className="text-[#1366E0]">We&apos;ll handle the visa.</span>
             </h2>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-white/80 sm:text-base">
               Message us on WhatsApp for a quick answer, or send your travel
@@ -99,7 +99,7 @@ export default function DoubleCta() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-7 inline-flex items-center gap-2.5 rounded-full bg-[#E0483E] px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#E0483E]/35 transition-all hover:-translate-y-0.5 hover:bg-[#C93C33] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#0E1116]"
+              className="mt-7 inline-flex items-center gap-2.5 rounded-full bg-[#1366E0] px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#1366E0]/35 transition-all hover:-translate-y-0.5 hover:bg-[#0F55BE] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#0E1116]"
             >
               <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
                 <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.82 14.1c-.25.69-1.44 1.32-1.98 1.37-.51.05-.99.24-3.34-.7-2.82-1.11-4.6-3.99-4.74-4.18-.14-.19-1.13-1.5-1.13-2.87 0-1.36.71-2.03.97-2.31.25-.28.55-.35.74-.35l.53.01c.17.01.4-.06.62.48.25.6.84 2.06.92 2.21.07.15.12.32.02.51-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.07 1.31 2.36 1.46.29.15.46.12.63-.07.17-.19.73-.85.92-1.14.19-.29.39-.24.65-.14.27.1 1.7.8 1.99.95.29.15.48.22.55.34.07.12.07.69-.18 1.37Z" />
@@ -117,7 +117,7 @@ export default function DoubleCta() {
 
           {/* Right: enquiry form */}
           <div className="overflow-hidden rounded-3xl bg-white shadow-2xl">
-            <div className="h-1.5 w-full bg-[#E0483E]" />
+            <div className="h-1.5 w-full bg-[#1366E0]" />
 
             {status === "success" ? (
               <div role="status" aria-live="polite" className="flex flex-col items-center px-6 py-12 text-center">
@@ -185,7 +185,7 @@ export default function DoubleCta() {
                 <button
                   type="submit"
                   disabled={status === "submitting"}
-                  className="mt-1 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#1B1B1B] py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#E0483E] disabled:cursor-not-allowed disabled:opacity-70"
+                  className="mt-1 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#1B1B1B] py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#1366E0] disabled:cursor-not-allowed disabled:opacity-70"
                 >
                   {status === "submitting" ? (
                     <>

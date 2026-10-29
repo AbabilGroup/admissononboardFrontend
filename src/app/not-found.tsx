@@ -88,8 +88,8 @@ export default function NotFound() {
         className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full sm:h-72 sm:w-72"
         style={{
           background:
-            "radial-gradient(circle at 35% 35%, #F58B0F 0%, #D6281F 55%, #7A1E3A 100%)",
-          boxShadow: "0 0 80px rgba(224,72,62,0.35)",
+            "radial-gradient(circle at 35% 35%, #4A90F0 0%, #1366E0 55%, #0B2A66 100%)",
+          boxShadow: "0 0 80px rgba(19,102,224,0.35)",
         }}
       />
       <div
@@ -101,7 +101,7 @@ export default function NotFound() {
         <svg width="90" height="90" viewBox="0 0 24 24" fill="none">
           <path
             d="M12 2c2.8 2.2 4 5.4 4 9 0 2-.5 3.7-1.2 5.1L12 19l-2.8-2.9C8.5 14.7 8 13 8 11c0-3.6 1.2-6.8 4-9Z"
-            fill="#E0483E"
+            fill="#1366E0"
           />
           <circle cx="12" cy="9.5" r="1.8" fill="#FFFEFA" />
           <path d="M8 15.5 5 20l4-1.5.6-2.4Z" fill="#F58B0F" />

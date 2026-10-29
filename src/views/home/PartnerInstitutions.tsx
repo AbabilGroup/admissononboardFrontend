@@ -52,7 +52,7 @@ export default function PartnerInstitutions() {
     <section className="w-full overflow-hidden bg-[#FFFEFA] py-20">
       <div className="mx-auto container px-6 text-center">
         <h2 className="text-3xl font-semibold tracking-tight text-[#1B1B1B] sm:text-4xl">
-          Our Partner <span className="text-[#E0483E]">Institutions</span>
+          Our Partner <span className="text-[#1366E0]">Institutions</span>
         </h2>
         <p className="mt-3 text-sm font-semibold text-zinc-700 sm:text-base">
           Unlock your future with world-class universities

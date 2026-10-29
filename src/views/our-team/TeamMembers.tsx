@@ -174,11 +174,11 @@ export default function TeamMembers() {
         <div className="mx-auto max-w-2xl text-center">
           <span
             aria-hidden
-            className="mx-auto block h-1 w-12 rounded-full bg-[#E0483E]"
+            className="mx-auto block h-1 w-12 rounded-full bg-[#1366E0]"
           />
           <h2 className="mt-5 text-3xl font-semibold tracking-tight text-[#1B1B1B] sm:text-4xl">
             Friendly faces,{" "}
-            <span className="text-[#E0483E]">expert guidance</span>
+            <span className="text-[#1366E0]">expert guidance</span>
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-[#6B6B6B] sm:text-base">
             Get to know the people who&apos;ll guide you, from our offices in
@@ -205,8 +205,8 @@ export default function TeamMembers() {
                     tab.code ? "pl-2" : "pl-4"
                   } ${
                     active
-                      ? "border-[#E0483E] bg-[#E0483E] text-white shadow-md shadow-[#E0483E]/25"
-                      : "border-[#E5E5E5] bg-white text-[#1B1B1B] hover:border-[#E0483E]/50"
+                      ? "border-[#1366E0] bg-[#1366E0] text-white shadow-md shadow-[#1366E0]/25"
+                      : "border-[#E5E5E5] bg-white text-[#1B1B1B] hover:border-[#1366E0]/50"
                   }`}
                 >
                   {tab.code && (
@@ -256,7 +256,7 @@ export default function TeamMembers() {
                       />
                     ) : (
                       <div className="grid h-full w-full place-items-center">
-                        <span className="grid h-24 w-24 place-items-center rounded-full bg-[#FFFEFA] text-2xl font-semibold text-[#E0483E] ring-4 ring-[#E0483E]/20">
+                        <span className="grid h-24 w-24 place-items-center rounded-full bg-[#FFFEFA] text-2xl font-semibold text-[#1366E0] ring-4 ring-[#1366E0]/20">
                           {initials(member.name)}
                         </span>
                       </div>
@@ -277,7 +277,7 @@ export default function TeamMembers() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={`${member.name} on LinkedIn`}
-                        className="absolute right-3 top-3 grid h-8 w-8 place-items-center rounded-full bg-white/90 text-[#1B1B1B] shadow-md backdrop-blur-md transition-colors hover:bg-[#E0483E] hover:text-white"
+                        className="absolute right-3 top-3 grid h-8 w-8 place-items-center rounded-full bg-white/90 text-[#1B1B1B] shadow-md backdrop-blur-md transition-colors hover:bg-[#1366E0] hover:text-white"
                       >
                         <svg
                           className="h-3.5 w-3.5"
@@ -296,7 +296,7 @@ export default function TeamMembers() {
                     <h3 className="text-base font-semibold text-[#1B1B1B]">
                       {member.name}
                     </h3>
-                    <p className="mt-0.5 text-sm font-medium text-[#E0483E]">
+                    <p className="mt-0.5 text-sm font-medium text-[#1366E0]">
                       {member.role}
                     </p>
 
@@ -325,7 +325,7 @@ export default function TeamMembers() {
                       {/* Languages */}
                       <p className="flex items-start gap-1.5 text-xs text-[#6B6B6B]">
                         <svg
-                          className="mt-px h-3.5 w-3.5 shrink-0 text-[#E0483E]"
+                          className="mt-px h-3.5 w-3.5 shrink-0 text-[#1366E0]"
                           viewBox="0 0 24 24"
                           fill="none"
                           stroke="currentColor"
@@ -354,9 +354,9 @@ export default function TeamMembers() {
         ) : (
           <div
             key={filter}
-            className="tm-in mx-auto mt-10 max-w-md rounded-[1.5rem] border border-dashed border-[#E0483E]/30 bg-white px-6 py-12 text-center"
+            className="tm-in mx-auto mt-10 max-w-md rounded-[1.5rem] border border-dashed border-[#1366E0]/30 bg-white px-6 py-12 text-center"
           >
-            <span className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-[#E0483E]/10 text-[#E0483E]">
+            <span className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-[#1366E0]/10 text-[#1366E0]">
               <svg
                 className="h-6 w-6"
                 viewBox="0 0 24 24"

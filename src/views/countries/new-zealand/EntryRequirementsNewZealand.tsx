@@ -177,7 +177,7 @@ export default function EntryRequirementsNewZealand() {
       <div className="mx-auto container max-w-6xl">
         <div className="text-center">
           <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-            <span className="text-[#E0483E]">Entry</span>{" "}
+            <span className="text-[#1366E0]">Entry</span>{" "}
             <span className="text-[#1B1B1B]">Requirements</span>
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-sm font-semibold text-gray-700 sm:text-base">
@@ -212,13 +212,13 @@ export default function EntryRequirementsNewZealand() {
                       aria-pressed={isActive}
                       className={`relative flex w-full items-center gap-3 overflow-hidden rounded-xl border px-3 py-2.5 text-left transition-all ${
                         isActive
-                          ? "border-[#E0483E]/30 bg-white shadow-md"
+                          ? "border-[#1366E0]/30 bg-white shadow-md"
                           : "border-transparent hover:bg-white/70 max-lg:border-[#ECECEC] max-lg:bg-white"
                       }`}
                     >
                       <span
                         className={`grid h-7 w-7 shrink-0 place-items-center rounded-full text-[11px] font-bold transition-colors ${
-                          isActive ? "bg-[#E0483E] text-white" : "bg-[#F4EFE6] text-[#9A9A9A]"
+                          isActive ? "bg-[#1366E0] text-white" : "bg-[#F4EFE6] text-[#9A9A9A]"
                         }`}
                       >
                         {index + 1}
@@ -236,7 +236,7 @@ export default function EntryRequirementsNewZealand() {
                         <span className="absolute inset-x-0 bottom-0 h-0.5 bg-[#ECECEC]">
                           <span
                             key={`${activeIndex}-${paused}`}
-                            className="block h-full bg-[#E0483E]"
+                            className="block h-full bg-[#1366E0]"
                             style={{
                               animation: `entry-progress ${AUTO_ADVANCE_MS}ms linear forwards`,
                               animationPlayState: paused ? "paused" : "running",
@@ -256,7 +256,7 @@ export default function EntryRequirementsNewZealand() {
             <div key={activeIndex} className="entry-fade grid grid-cols-1 gap-8 sm:grid-cols-[minmax(0,1fr)_200px]">
               <div>
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="rounded-full border border-[#E0483E]/25 px-3 py-1 text-xs font-semibold text-[#E0483E]">
+                  <span className="rounded-full border border-[#1366E0]/25 px-3 py-1 text-xs font-semibold text-[#1366E0]">
                     {active.group}
                   </span>
                   {active.level && (
@@ -276,7 +276,7 @@ export default function EntryRequirementsNewZealand() {
                 </div>
 
                 <h3 className="mt-4 text-xl font-semibold text-[#1B1B1B] sm:text-2xl">
-                  <span className="text-[#E0483E]">{activeIndex + 1}.</span> {active.title}
+                  <span className="text-[#1366E0]">{activeIndex + 1}.</span> {active.title}
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-[#6B6B6B] sm:text-base">
                   {active.summary}
@@ -292,7 +292,7 @@ export default function EntryRequirementsNewZealand() {
                     const { label, value } = splitItem(item);
                     return (
                       <li key={item} className="flex items-start gap-2 text-sm leading-relaxed text-[#6B6B6B]">
-                        <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#E0483E]" />
+                        <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#1366E0]" />
                         <span>
                           {label && <span className="font-semibold text-[#1B1B1B]">{label}: </span>}
                           {value}
@@ -306,7 +306,7 @@ export default function EntryRequirementsNewZealand() {
               </div>
 
               {/* Image */}
-              <div className="border-l-4 border-[#E0483E] pl-3 sm:self-start">
+              <div className="border-l-4 border-[#1366E0] pl-3 sm:self-start">
                 <div className="relative aspect-square w-full max-w-[200px] overflow-hidden rounded-xl">
                   <Image src={active.image} alt={active.title} fill sizes="200px" className="object-cover" />
                 </div>
@@ -328,7 +328,7 @@ export default function EntryRequirementsNewZealand() {
                     type="button"
                     onClick={() => go(btn.step)}
                     aria-label={btn.label}
-                    className="grid h-9 w-9 place-items-center rounded-full border border-[#E5E5E5] text-[#1B1B1B] transition-colors hover:border-[#E0483E] hover:bg-[#E0483E] hover:text-white"
+                    className="grid h-9 w-9 place-items-center rounded-full border border-[#E5E5E5] text-[#1B1B1B] transition-colors hover:border-[#1366E0] hover:bg-[#1366E0] hover:text-white"
                   >
                     <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} aria-hidden>
                       <path strokeLinecap="round" strokeLinejoin="round" d={btn.d} />

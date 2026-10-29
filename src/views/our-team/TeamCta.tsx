@@ -124,7 +124,7 @@ export default function TeamCta() {
           {/* Decorative outline rings (no fill colour) */}
           <svg
             aria-hidden
-            className="tc-spin pointer-events-none absolute -left-28 -top-28 -z-10 h-72 w-72 text-[#E0483E]/15 sm:h-96 sm:w-96"
+            className="tc-spin pointer-events-none absolute -left-28 -top-28 -z-10 h-72 w-72 text-[#1366E0]/15 sm:h-96 sm:w-96"
             viewBox="0 0 200 200"
             fill="none"
             stroke="currentColor"
@@ -141,7 +141,7 @@ export default function TeamCta() {
           </svg>
           <svg
             aria-hidden
-            className="tc-spin-rev pointer-events-none absolute -bottom-32 -right-32 -z-10 h-80 w-80 text-[#E0483E]/15 sm:h-[26rem] sm:w-[26rem]"
+            className="tc-spin-rev pointer-events-none absolute -bottom-32 -right-32 -z-10 h-80 w-80 text-[#1366E0]/15 sm:h-[26rem] sm:w-[26rem]"
             viewBox="0 0 200 200"
             fill="none"
             stroke="currentColor"
@@ -164,7 +164,7 @@ export default function TeamCta() {
                 {counsellorInitials.map((initials) => (
                   <span
                     key={initials}
-                    className="grid h-10 w-10 place-items-center rounded-full border-2 border-white bg-[#FFFEFA] text-xs font-bold text-[#E0483E] shadow-sm ring-1 ring-[#E0483E]/20"
+                    className="grid h-10 w-10 place-items-center rounded-full border-2 border-white bg-[#FFFEFA] text-xs font-bold text-[#1366E0] shadow-sm ring-1 ring-[#1366E0]/20"
                   >
                     {initials}
                   </span>
@@ -181,7 +181,7 @@ export default function TeamCta() {
 
             <h2 className="mt-7 text-3xl font-semibold leading-tight tracking-tight text-[#1B1B1B] sm:text-4xl lg:text-5xl lg:leading-[1.1]">
               Your journey starts with{" "}
-              <span className="text-[#E0483E]">a friendly conversation.</span>
+              <span className="text-[#1366E0]">a friendly conversation.</span>
             </h2>
             <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-[#6B6B6B] sm:text-base">
               Talk to one of our counsellors today. It&apos;s free, it&apos;s
@@ -194,7 +194,7 @@ export default function TeamCta() {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2.5 rounded-full bg-[#E0483E] px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#E0483E]/30 transition-all hover:-translate-y-0.5 hover:bg-[#C93C33] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E0483E] focus-visible:ring-offset-2"
+                className="inline-flex items-center justify-center gap-2.5 rounded-full bg-[#1366E0] px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#1366E0]/30 transition-all hover:-translate-y-0.5 hover:bg-[#0F55BE] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1366E0] focus-visible:ring-offset-2"
               >
                 <WhatsAppIcon />
                 Chat on WhatsApp
@@ -228,7 +228,7 @@ export default function TeamCta() {
                   key={point}
                   className="inline-flex items-center gap-1.5 text-sm text-[#5A5A5A]"
                 >
-                  <span className="grid h-4 w-4 place-items-center rounded-full bg-[#E0483E] text-white">
+                  <span className="grid h-4 w-4 place-items-center rounded-full bg-[#1366E0] text-white">
                     <CheckIcon />
                   </span>
                   {point}
@@ -242,7 +242,7 @@ export default function TeamCta() {
             {contactOptions.map((option) => {
               const content = (
                 <>
-                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl border-2 border-[#E0483E]/25 text-[#E0483E] transition-all duration-300 group-hover:border-[#E0483E] group-hover:bg-[#E0483E] group-hover:text-white">
+                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl border-2 border-[#1366E0]/25 text-[#1366E0] transition-all duration-300 group-hover:border-[#1366E0] group-hover:bg-[#1366E0] group-hover:text-white">
                     {option.icon}
                   </span>
                   <span className="min-w-0">
@@ -256,7 +256,7 @@ export default function TeamCta() {
                 </>
               );
               const className =
-                "group flex h-full items-center gap-3.5 rounded-2xl border border-[#ECECEC] bg-[#FFFEFA] p-4 transition-all duration-300 hover:-translate-y-1 hover:border-[#E0483E]/30 hover:shadow-lg hover:shadow-black/5 sm:flex-col sm:text-center";
+                "group flex h-full items-center gap-3.5 rounded-2xl border border-[#ECECEC] bg-[#FFFEFA] p-4 transition-all duration-300 hover:-translate-y-1 hover:border-[#1366E0]/30 hover:shadow-lg hover:shadow-black/5 sm:flex-col sm:text-center";
               return (
                 <li key={option.title}>
                   {option.href.startsWith("/") ? (

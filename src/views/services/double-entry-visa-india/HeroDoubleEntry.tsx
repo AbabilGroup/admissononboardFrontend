@@ -100,7 +100,7 @@ export default function HeroDoubleEntry() {
             >
               Double-entry Indian visa,
               <br />
-              <span className="text-[#E0483E]">made simple.</span>
+              <span className="text-[#1366E0]">made simple.</span>
             </h1>
 
             <p
@@ -121,7 +121,7 @@ export default function HeroDoubleEntry() {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center gap-2.5 rounded-full bg-[#E0483E] px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#E0483E]/35 transition-all hover:-translate-y-0.5 hover:bg-[#C93C33] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#0E1116]"
+                className="group inline-flex items-center justify-center gap-2.5 rounded-full bg-[#1366E0] px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#1366E0]/35 transition-all hover:-translate-y-0.5 hover:bg-[#0F55BE] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#0E1116]"
               >
                 <svg
                   className="h-5 w-5"
@@ -165,7 +165,7 @@ export default function HeroDoubleEntry() {
                   key={point}
                   className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1.5 text-xs font-medium text-white/90 ring-1 ring-white/15 backdrop-blur-md"
                 >
-                  <span className="grid h-4 w-4 place-items-center rounded-full bg-[#E0483E] text-white">
+                  <span className="grid h-4 w-4 place-items-center rounded-full bg-[#1366E0] text-white">
                     <CheckIcon />
                   </span>
                   {point}
@@ -197,7 +197,7 @@ export default function HeroDoubleEntry() {
               </span>
               India visa
             </span>
-            <span className="rounded-full bg-[#E0483E] px-2.5 py-0.5 text-[11px] font-bold tracking-wide">
+            <span className="rounded-full bg-[#1366E0] px-2.5 py-0.5 text-[11px] font-bold tracking-wide">
               DOUBLE ENTRY
             </span>
           </div>
@@ -213,7 +213,7 @@ export default function HeroDoubleEntry() {
                 y1="0"
                 x2="1"
                 y2="100%"
-                stroke="#E0483E"
+                stroke="#1366E0"
                 strokeOpacity=".9"
                 strokeWidth="2"
                 strokeDasharray="4 4"
@@ -225,7 +225,7 @@ export default function HeroDoubleEntry() {
                 key={entry.label}
                 className="relative flex items-center gap-3"
               >
-                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[#E0483E] text-white ring-4 ring-white/10">
+                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[#1366E0] text-white ring-4 ring-white/10">
                   <CheckIcon />
                 </span>
                 <span>

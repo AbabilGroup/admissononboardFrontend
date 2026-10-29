@@ -236,7 +236,7 @@ export default function WhatWeOffer() {
                 >
                   <span
                     className={`offer-word inline-block ${
-                      word === "Offer" ? "text-[#E0483E]" : "text-[#1B1B1B]"
+                      word === "Offer" ? "text-[#1366E0]" : "text-[#1B1B1B]"
                     }`}
                   >
                     {word}
@@ -274,21 +274,21 @@ export default function WhatWeOffer() {
               strokeWidth="3.5"
               strokeLinecap="round"
               fill="none"
-              style={{ filter: "drop-shadow(0 0 8px rgba(224,72,62,0.4))" }}
+              style={{ filter: "drop-shadow(0 0 8px rgba(19,102,224,0.4))" }}
             />
             <defs>
               <linearGradient id="offerGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#E0483E" />
+                <stop offset="0%" stopColor="#1366E0" />
                 <stop offset="50%" stopColor="#F58B0F" />
-                <stop offset="100%" stopColor="#E0483E" />
+                <stop offset="100%" stopColor="#1366E0" />
               </linearGradient>
             </defs>
             <circle
               ref={dotRef}
               r="9"
-              fill="#E0483E"
+              fill="#1366E0"
               opacity="0"
-              style={{ filter: "drop-shadow(0 0 12px rgba(224,72,62,0.8))" }}
+              style={{ filter: "drop-shadow(0 0 12px rgba(19,102,224,0.8))" }}
             />
           </svg>
 
@@ -296,7 +296,7 @@ export default function WhatWeOffer() {
             {offers.map((offer, index) => {
               const isTextLeft = index % 2 === 0;
               const number = String(index + 1).padStart(2, "0");
-              const accent = index % 2 === 0 ? "#E0483E" : "#F58B0F";
+              const accent = index % 2 === 0 ? "#1366E0" : "#F58B0F";
 
               const TextCard = (
                 <div

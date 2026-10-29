@@ -14,7 +14,7 @@ export default function Accreditations() {
     <section className="w-full bg-[#FFFEFA] px-6 py-10">
       <div className="mx-auto container">
         <div className="flex flex-col items-center justify-between gap-8 rounded-2xl border border-[#ECECEC] bg-white px-8 py-8 shadow-sm sm:flex-row sm:gap-6">
-          <h2 className="text-xl max-w-md font-semibold leading-snug text-[#E0483E] sm:text-4xl">
+          <h2 className="text-xl max-w-md font-semibold leading-snug text-[#1366E0] sm:text-4xl">
             Our Accreditations &amp; Memberships
           </h2>
 

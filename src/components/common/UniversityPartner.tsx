@@ -47,7 +47,7 @@ const universities: University[] = [
     name: "University of Hertfordshire",
     country: "United Kingdom",
     initials: "UH",
-    color: "#D6281F",
+    color: "#1366E0",
     logo: "/univercity-logo/uh.jpg",
   },
   {
@@ -82,7 +82,7 @@ const universities: University[] = [
     name: "Aston University, London",
     country: "United Kingdom",
     initials: "AL",
-    color: "#E0483E",
+    color: "#1366E0",
     note: "Except Sylhet",
     logo: "/univercity-logo/aul.png",
   },
@@ -109,7 +109,7 @@ const universities: University[] = [
     name: "University of Bedfordshire",
     country: "United Kingdom",
     initials: "UB",
-    color: "#D6281F",
+    color: "#1366E0",
     note: "Except Sylhet",
     logo: "/univercity-logo/uob.png",
   },
@@ -135,7 +135,7 @@ const universities: University[] = [
     name: "University of South Wales",
     country: "United Kingdom",
     initials: "SW",
-    color: "#E0483E",
+    color: "#1366E0",
     logo: "/univercity-logo/uosw.png",
   },
   {
@@ -177,7 +177,7 @@ const universities: University[] = [
     name: "Aberystwyth University",
     country: "United Kingdom",
     initials: "AY",
-    color: "#E0483E",
+    color: "#1366E0",
     logo: "/univercity-logo/au.jpg",
   },
   {
@@ -217,7 +217,7 @@ const universities: University[] = [
     name: "Training Three Sixty",
     country: "Malta",
     initials: "T3",
-    color: "#E0483E",
+    color: "#1366E0",
     logo: "/univercity-logo/tts.png",
   },
   {
@@ -319,12 +319,12 @@ export default function UniversityPartner({
       <div className="mx-auto container max-w-6xl">
         {/* Heading */}
         <div className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#E0483E]">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#1366E0]">
             Trusted partners
           </p>
           <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-[#1B1B1B] sm:text-4xl">
             Our university partners{" "}
-            <span className="text-[#E0483E]">
+            <span className="text-[#1366E0]">
               {hideTabs ? `in ${active}` : "around the world"}
             </span>
           </h2>
@@ -354,8 +354,8 @@ export default function UniversityPartner({
                   onClick={() => setActive(country.name)}
                   className={`inline-flex items-center gap-2 rounded-full border py-1.5 pl-1.5 pr-3.5 text-sm font-semibold transition-all ${
                     isActive
-                      ? "border-[#E0483E] bg-[#E0483E] text-white shadow-lg shadow-[#E0483E]/25"
-                      : "border-[#E5E5E5] bg-white text-[#1B1B1B] hover:-translate-y-0.5 hover:border-[#E0483E]/50 hover:shadow-md"
+                      ? "border-[#1366E0] bg-[#1366E0] text-white shadow-lg shadow-[#1366E0]/25"
+                      : "border-[#E5E5E5] bg-white text-[#1B1B1B] hover:-translate-y-0.5 hover:border-[#1366E0]/50 hover:shadow-md"
                   }`}
                 >
                   <span
@@ -422,14 +422,14 @@ export default function UniversityPartner({
                             className="absolute inset-0 opacity-60"
                             style={{
                               backgroundImage:
-                                "radial-gradient(circle at 1px 1px, rgba(224,72,62,0.18) 1px, transparent 0)",
+                                "radial-gradient(circle at 1px 1px, rgba(19,102,224,0.18) 1px, transparent 0)",
                               backgroundSize: "18px 18px",
                             }}
                           />
                         )}
 
                         <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1 text-[11px] font-semibold text-[#1B1B1B] shadow-sm backdrop-blur-md">
-                          <span className="h-1.5 w-1.5 rounded-full bg-[#E0483E]" />
+                          <span className="h-1.5 w-1.5 rounded-full bg-[#1366E0]" />
                           Official partner
                         </span>
 
@@ -460,12 +460,12 @@ export default function UniversityPartner({
                         </p>
 
                         {uni.note && (
-                          <p className="mt-3 rounded-full bg-[#FDECEA] px-3 py-1 text-[11px] font-semibold text-[#E0483E]">
+                          <p className="mt-3 rounded-full bg-[#E3EDFC] px-3 py-1 text-[11px] font-semibold text-[#1366E0]">
                             {uni.note}
                           </p>
                         )}
 
-                        <span className="mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-semibold text-[#1B1B1B] transition-colors group-hover:text-[#E0483E]">
+                        <span className="mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-semibold text-[#1B1B1B] transition-colors group-hover:text-[#1366E0]">
                           View courses
                           <svg
                             className="h-4 w-4 transition-transform group-hover:translate-x-1"
@@ -491,7 +491,7 @@ export default function UniversityPartner({
               <div className="mt-10 flex justify-center">
                 <Link
                   href="/universities"
-                  className="group inline-flex items-center gap-2 rounded-full bg-[#E0483E] px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#E0483E]/30 transition-all hover:-translate-y-0.5 hover:bg-[#C93C33]"
+                  className="group inline-flex items-center gap-2 rounded-full bg-[#1366E0] px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#1366E0]/30 transition-all hover:-translate-y-0.5 hover:bg-[#0F55BE]"
                 >
                   {list.length > MAX_CARDS
                     ? `Explore all ${list.length} ${active} institutions`
@@ -515,7 +515,7 @@ export default function UniversityPartner({
             </>
           ) : (
             /* No partners listed yet for this country */
-            <div className="up-in mx-auto flex max-w-xl flex-col items-center rounded-[1.75rem] border border-dashed border-[#E0483E]/30 bg-white px-6 py-14 text-center">
+            <div className="up-in mx-auto flex max-w-xl flex-col items-center rounded-[1.75rem] border border-dashed border-[#1366E0]/30 bg-white px-6 py-14 text-center">
               <span className="flex h-14 w-14 overflow-hidden rounded-full shadow-md ring-4 ring-[#FFFEFA]">
                 <Flag code={activeCountry.code} />
               </span>
@@ -532,7 +532,7 @@ export default function UniversityPartner({
                   href={`${WHATSAPP_URL}${encodeURIComponent(active)}.`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#E0483E] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-[#E0483E]/30 transition-all hover:-translate-y-0.5 hover:bg-[#C93C33]"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#1366E0] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-[#1366E0]/30 transition-all hover:-translate-y-0.5 hover:bg-[#0F55BE]"
                 >
                   Ask a counsellor
                 </a>
