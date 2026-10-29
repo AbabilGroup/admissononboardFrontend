@@ -33,6 +33,14 @@ const targets: Target[] = [
       <path d="M16 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-8 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm0 2c-2.7 0-8 1.3-8 4v3h10v-3c0-1.1.4-2.1 1.2-2.9A11 11 0 0 0 8 13Zm8 0c-.3 0-.7 0-1.1.1 1.2.9 2.1 2.1 2.1 3.9v3h7v-3c0-2.7-5.3-4-8-4Z" />
     ),
   },
+  {
+    value: "10+",
+    label: "Years Experience",
+    color: "#8B3DD1",
+    icon: (
+      <path d="M12 1a7 7 0 0 0-4 12.74V23l4-2.4 4 2.4v-9.26A7 7 0 0 0 12 1Zm0 2a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm-2 12.73a7 7 0 0 0 4 0v3.74l-2-1.2-2 1.2v-3.74Z" />
+    ),
+  },
 ];
 
 export default function VisionTargets() {
@@ -50,7 +58,7 @@ export default function VisionTargets() {
           </h2>
         </div>
 
-        <div className="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-5 sm:grid-cols-3 sm:gap-6">
+        <div className="mx-auto mt-12 grid max-w-6xl grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
           {targets.map((t) => (
             <div
               key={t.label}

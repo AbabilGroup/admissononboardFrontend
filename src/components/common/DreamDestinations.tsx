@@ -131,72 +131,63 @@ export default function DreamDestinations() {
           </Link>
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
           {destinations.map((destination) => (
-            <div
+            <Link
               key={destination.slug}
-              className="group flex flex-col overflow-hidden rounded-2xl border border-[#ECECEC] bg-white shadow-sm transition-shadow hover:shadow-md"
+              href={`/countries/${destination.slug}`}
+              title={destination.description}
+              className="group relative block aspect-[4/3] overflow-hidden rounded-2xl shadow-sm transition-shadow hover:shadow-lg"
             >
-              <Link
-                href={`/countries/${destination.slug}`}
-                className="relative block aspect-[16/10] w-full overflow-hidden"
-              >
-                <Image
-                  src={destination.image}
-                  alt={`Study in ${destination.name}`}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-                <span className="absolute bottom-3 left-4 flex items-center gap-2.5 text-sm font-semibold text-white sm:text-base">
-                  <span className="flex overflow-hidden rounded-[4px] shadow-md ring-2 ring-white/80">
-                    <ReactCountryFlag
-                      countryCode={destination.flagCode}
-                      svg
-                      title={destination.name}
-                      aria-label={`Flag of ${destination.name}`}
-                      style={{
-                        width: "1.75em",
-                        height: "1.3em",
-                        display: "block",
-                        objectFit: "cover",
-                      }}
-                    />
-                  </span>
-                  {destination.name}
+              <Image
+                src={destination.image}
+                alt={`Study in ${destination.name}`}
+                fill
+                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 17vw"
+                className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0F1B3D]/80 via-[#0F1B3D]/10 to-transparent" />
+              <span className="absolute bottom-3 left-3 flex items-center gap-2 text-sm font-semibold text-white sm:text-base">
+                <span className="flex overflow-hidden rounded-[3px] shadow-md ring-1 ring-white/80">
+                  <ReactCountryFlag
+                    countryCode={destination.flagCode}
+                    svg
+                    title={destination.name}
+                    aria-label={`Flag of ${destination.name}`}
+                    style={{
+                      width: "1.5em",
+                      height: "1.1em",
+                      display: "block",
+                      objectFit: "cover",
+                    }}
+                  />
                 </span>
-              </Link>
-
-              <div className="flex flex-1 flex-col justify-between p-5">
-                <p className="text-sm leading-relaxed text-[#6B6B6B]">
-                  {destination.description}
-                </p>
-
-                <Link
-                  href={`/courses?destination=${destination.slug}`}
-                  className="mt-4 inline-flex w-fit items-center gap-1 text-sm font-semibold text-[#1366E0] transition-colors hover:text-[#1B1B1B]"
-                >
-                  View Courses
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    className="shrink-0"
-                  >
-                    <path
-                      d="M5 12h14M13 6l6 6-6 6"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </Link>
-              </div>
-            </div>
+                {destination.name}
+              </span>
+            </Link>
           ))}
+
+          <div className="col-span-full flex items-center justify-center gap-4 rounded-2xl bg-[#EEF5FE] px-6 py-6">
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              fill="none"
+              className="shrink-0 text-[#1366E0]"
+              aria-hidden
+            >
+              <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.6" />
+              <path
+                d="M3 12h18M12 3c2.5 2.5 3.8 5.5 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.5-3.8-9S9.5 5.5 12 3Z"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <p className="text-base font-medium text-[#1366E0] sm:text-lg">
+              And expanding European and other destinations.
+            </p>
+          </div>
         </div>
       </div>
     </section>

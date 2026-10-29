@@ -40,7 +40,7 @@ export default function LatestBlogs() {
   };
 
   return (
-    <section className="w-full bg-[#FFFEFA] px-6 py-20">
+    <section className="w-full bg-[#FFFEFA] px-6">
       <div className="mx-auto container">
         <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
           <div>

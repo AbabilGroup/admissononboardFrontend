@@ -35,9 +35,10 @@ export default function HeroHome() {
           />
         </div>
 
-        {/* Text sits on the empty sky area on the left of the image */}
-        <div className="relative z-10 order-1 px-6 pt-14 pb-8 sm:px-10 lg:w-[46%] lg:py-14 lg:pl-[5%] lg:pr-0">
-          <div>
+        {/* Text sits on the empty sky area on the left of the image; same px-4 + container as the header so the left edges line up */}
+        <div className="relative z-10 order-1 w-full px-4 pt-14 pb-8 lg:py-14">
+          <div className="mx-auto container">
+          <div className="lg:max-w-[46%]">
             <h1 className="text-[2rem] font-bold leading-[1.15] tracking-tight text-[#0F1B3D] sm:text-5xl lg:text-[clamp(2rem,3vw,4rem)]">
               {headline.map((line, i) => (
                 <span
@@ -87,42 +88,6 @@ export default function HeroHome() {
               and personalised support to make global education more accessible.
             </p>
 
-            {/* Experience badge */}
-            <div
-              className="mt-6 inline-flex items-center gap-3 rounded-2xl border border-white/70 bg-white/70 px-4 py-3 shadow-md shadow-[#1366E0]/10 backdrop-blur-sm animate-[heroFadeUp_0.8s_ease-out_both] motion-reduce:animate-none lg:mt-[1.6vw]"
-              style={{ animationDelay: "600ms" }}>
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#1366E0] text-white">
-                <svg
-                  width="22"
-                  height="22"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  aria-hidden>
-                  <circle
-                    cx="12"
-                    cy="9"
-                    r="6"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  />
-                  <path
-                    d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
-              <span className="leading-tight">
-                <span className="block text-2xl font-bold text-[#0F1B3D]">
-                  5+ Years
-                </span>
-                <span className="block text-sm font-medium text-[#3B4660]">
-                  Experience
-                </span>
-              </span>
-            </div>
-
             <div
               className="mt-7 flex flex-col gap-3 animate-[heroFadeUp_0.8s_ease-out_both] motion-reduce:animate-none sm:flex-row sm:flex-wrap lg:mt-[1.8vw]"
               style={{ animationDelay: "750ms" }}>
@@ -147,10 +112,11 @@ export default function HeroHome() {
               </Link>
               <Link
                 href="/recruitment-partner"
-                className="inline-flex items-center justify-center rounded-full border-2 border-[#1366E0] bg-white/80 px-6 py-3 text-sm font-semibold text-[#1366E0] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1366E0] hover:text-white hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1366E0] focus-visible:ring-offset-2">
+                className="inline-flex items-center justify-center rounded-full bg-[#1366E0] px-6 py-3 text-sm font-semibold text-white shadow-md shadow-[#1366E0]/25 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#0F55BE] hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1366E0] focus-visible:ring-offset-2">
                 Join as a Recruitment Partner
               </Link>
             </div>
+          </div>
           </div>
         </div>
       </div>
