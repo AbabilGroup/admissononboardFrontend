@@ -85,11 +85,11 @@ export default function ContactFooter() {
                   width={948}
                   height={445}
                   sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                  className="block h-full w-full transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                  className="block h-auto w-full transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 />
 
-                {/* Button at the bottom */}
-                <div className="absolute bottom-4 left-4 sm:bottom-2 sm:left-2">
+                {/* Button sits below the image – overlaid, it covers the image's bullet list */}
+                <div className="relative px-4 pt-3">
                   <Link
                     href={card.href}
                     className={`group/btn inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold transition-all hover:-translate-y-0.5 ${btn.className}`}
