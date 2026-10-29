@@ -22,7 +22,7 @@ export default function Home() {
   return (
     <div>
       <HeroHome />
-      <WhyChose />
+      {/* <WhyChose /> */}
       {/* <Accreditations /> */}
       <SuccessStoriesGallery />
       <HowWeHelp />
