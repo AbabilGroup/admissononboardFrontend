@@ -12,6 +12,7 @@ import LatestBlogs from "@/views/home/LatestBlogs";
 import WhyChose from "@/views/home/WhyChose";
 // import ContactCta from "@/components/common/ContactCta";
 import HowWeHelp from "@/views/home/HowWeHelp";
+import VisionTargets from "@/views/home/VisionTargets";
 import TheJourney from "@/views/home/TheJourney";
 import SuccessStoriesGallery from "@/components/common/SuccessStoriesGallery";
 import UniversityPartner from "@/components/common/UniversityPartner";
@@ -25,13 +26,15 @@ export default function Home() {
       {/* <WhyChose /> */}
       {/* <Accreditations /> */}
       <SuccessStoriesGallery />
+      <VisionTargets />
       <HowWeHelp />
-      <DreamDestinations />
+      <UniversityPartner country="United Kingdom" />
       <TheJourney />
       {/* <PartnerInstitutions /> */}
       {/* <VisaSuccessStories /> */}
       {/* <CtaBanner /> */}
-      <UniversityPartner country="United Kingdom" />
+
+      <DreamDestinations />
       {/* <StudentVideoStories />
       <OurPartners /> */}
       <LatestBlogs />

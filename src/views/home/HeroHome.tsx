@@ -21,7 +21,8 @@ export default function HeroHome() {
         }
       `}</style>
 
-      <div className="relative flex flex-col lg:block lg:aspect-3/1 lg:min-h-[560px] lg:w-full">
+      {/* Height follows the image's 3:1 ratio, but grows if the text needs more room */}
+      <div className="relative flex flex-col lg:min-h-[max(560px,33.33vw)] lg:w-full lg:flex-row lg:items-center">
         {/* Background image (below text on mobile, full-bleed behind text on desktop) */}
         <div className="relative order-2 h-72 sm:h-96 lg:absolute lg:inset-0 lg:h-full">
           <Image
@@ -35,22 +36,20 @@ export default function HeroHome() {
         </div>
 
         {/* Text sits on the empty sky area on the left of the image */}
-        <div className="relative z-10 order-1 px-6 pt-14 pb-8 sm:px-10 lg:flex lg:h-full lg:w-[46%] lg:items-center lg:py-0 lg:pb-[2%] lg:pl-[5%] lg:pr-0">
+        <div className="relative z-10 order-1 px-6 pt-14 pb-8 sm:px-10 lg:w-[46%] lg:py-14 lg:pl-[5%] lg:pr-0">
           <div>
             <h1 className="text-[2rem] font-bold leading-[1.15] tracking-tight text-[#0F1B3D] sm:text-5xl lg:text-[clamp(2rem,3vw,4rem)]">
               {headline.map((line, i) => (
                 <span
                   key={line}
                   className="block animate-[heroFadeUp_0.8s_cubic-bezier(0.22,1,0.36,1)_both] motion-reduce:animate-none"
-                  style={{ animationDelay: `${i * 120}ms` }}
-                >
+                  style={{ animationDelay: `${i * 120}ms` }}>
                   {line}
                 </span>
               ))}
               <span
                 className="block animate-[heroFadeUp_0.8s_cubic-bezier(0.22,1,0.36,1)_both] motion-reduce:animate-none"
-                style={{ animationDelay: "240ms" }}
-              >
+                style={{ animationDelay: "240ms" }}>
                 <span className="relative inline-block text-[#3DB94A]">
                   reality
                   {/* Hand-drawn underline that draws itself in */}
@@ -58,8 +57,7 @@ export default function HeroHome() {
                     aria-hidden
                     viewBox="0 0 200 20"
                     preserveAspectRatio="none"
-                    className="absolute -bottom-2 left-0 h-3 w-[95%]"
-                  >
+                    className="absolute -bottom-2 left-0 h-3 w-[95%]">
                     <path
                       d="M4 12 C 50 4, 120 4, 196 9 M30 16 C 80 10, 130 11, 170 14"
                       fill="none"
@@ -76,55 +74,37 @@ export default function HeroHome() {
               </span>
               <span
                 className="mt-1 block animate-[heroFadeUp_0.8s_cubic-bezier(0.22,1,0.36,1)_both] text-[#1366E0] motion-reduce:animate-none"
-                style={{ animationDelay: "360ms" }}
-              >
+                style={{ animationDelay: "360ms" }}>
                 Admission OnBoard
               </span>
             </h1>
 
             <p
               className="mt-5 max-w-xl text-base text-[#3B4660] animate-[heroFadeUp_0.8s_ease-out_both] motion-reduce:animate-none sm:text-lg lg:mt-[1.5vw] lg:text-[clamp(1rem,1.2vw,1.4rem)]"
-              style={{ animationDelay: "450ms" }}
-            >
-              Guided by specialists, connected to leading universities, and
-              supported at every step of the journey.
+              style={{ animationDelay: "450ms" }}>
+              We connect students, universities, and education partners
+              worldwide through smart technology, trusted recruitment networks,
+              and personalised support to make global education more accessible.
             </p>
-
-            <div
-              className="animate-[heroFadeUp_0.8s_ease-out_both] motion-reduce:animate-none"
-              style={{ animationDelay: "600ms" }}
-            >
-              <Link
-                href="/contact"
-                className="group mt-8 lg:mt-[2vw] inline-flex items-center gap-2 rounded-full bg-[#1366E0] px-6 py-3 text-sm font-semibold text-white shadow-md shadow-[#1366E0]/25 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#0F55BE] hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1366E0] focus-visible:ring-offset-2"
-              >
-                Schedule A Free Consultation
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  className="shrink-0 transition-transform duration-300 group-hover:translate-x-1"
-                >
-                  <path
-                    d="M5 12h14M13 6l6 6-6 6"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </Link>
-            </div>
 
             {/* Experience badge */}
             <div
-              className="mt-6 inline-flex items-center gap-3 rounded-2xl border border-white/70 bg-white/70 px-4 py-3 shadow-md shadow-[#1366E0]/10 backdrop-blur-sm animate-[heroFadeUp_0.8s_ease-out_both] motion-reduce:animate-none lg:mt-[1.8vw]"
-              style={{ animationDelay: "750ms" }}
-            >
+              className="mt-6 inline-flex items-center gap-3 rounded-2xl border border-white/70 bg-white/70 px-4 py-3 shadow-md shadow-[#1366E0]/10 backdrop-blur-sm animate-[heroFadeUp_0.8s_ease-out_both] motion-reduce:animate-none lg:mt-[1.6vw]"
+              style={{ animationDelay: "600ms" }}>
               <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#1366E0] text-white">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden>
-                  <circle cx="12" cy="9" r="6" stroke="currentColor" strokeWidth="2" />
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden>
+                  <circle
+                    cx="12"
+                    cy="9"
+                    r="6"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
                   <path
                     d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5"
                     stroke="currentColor"
@@ -134,9 +114,42 @@ export default function HeroHome() {
                 </svg>
               </span>
               <span className="leading-tight">
-                <span className="block text-2xl font-bold text-[#0F1B3D]">10+ Years</span>
-                <span className="block text-sm font-medium text-[#3B4660]">Experience</span>
+                <span className="block text-2xl font-bold text-[#0F1B3D]">
+                  5+ Years
+                </span>
+                <span className="block text-sm font-medium text-[#3B4660]">
+                  Experience
+                </span>
               </span>
+            </div>
+
+            <div
+              className="mt-7 flex flex-col gap-3 animate-[heroFadeUp_0.8s_ease-out_both] motion-reduce:animate-none sm:flex-row sm:flex-wrap lg:mt-[1.8vw]"
+              style={{ animationDelay: "750ms" }}>
+              <Link
+                href="/auth/register"
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#1366E0] px-6 py-3 text-sm font-semibold text-white shadow-md shadow-[#1366E0]/25 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#0F55BE] hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1366E0] focus-visible:ring-offset-2">
+                Register as a Student
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  className="shrink-0 transition-transform duration-300 group-hover:translate-x-1">
+                  <path
+                    d="M5 12h14M13 6l6 6-6 6"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </Link>
+              <Link
+                href="/recruitment-partner"
+                className="inline-flex items-center justify-center rounded-full border-2 border-[#1366E0] bg-white/80 px-6 py-3 text-sm font-semibold text-[#1366E0] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1366E0] hover:text-white hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1366E0] focus-visible:ring-offset-2">
+                Join as a Recruitment Partner
+              </Link>
             </div>
           </div>
         </div>
