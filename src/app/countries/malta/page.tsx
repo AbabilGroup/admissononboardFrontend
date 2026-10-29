@@ -5,6 +5,7 @@ import EntryRequirementsMalta from "@/views/countries/malta/EntryRequirementsMal
 import HeroMalta from "@/views/countries/malta/HeroMalta";
 // import VisaSuccessCarousel from "@/views/success-stories/VisaSuccessCarousel";
 import WhyMalta from "@/views/countries/malta/WhyMalta";
+import UniversityPartner from "@/components/common/UniversityPartner";
 
 export const metadata = pageMetadata({
   title: "Study in Malta | Admissions, Visa & Scholarships",
@@ -20,6 +21,7 @@ export default function page() {
       <WhyMalta />
       <EntryRequirementsMalta />
       <AdmissionVisaProcessMalta />
+      <UniversityPartner country="Malta" />
       <ContactCta />
     </div>
   );

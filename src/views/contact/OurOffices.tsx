@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useMemo, useState, type ReactNode } from "react";
 
-type Country = "uk" | "bangladesh" | "nepal";
+type Country = "uk" | "bangladesh" | "india" | "nepal";
 
 type Office = {
   id: string;
@@ -88,6 +88,23 @@ const offices: Office[] = [
     accent: "#59B226",
   },
   {
+    id: "india-office",
+    country: "india",
+    countryLabel: "India",
+    flag: "🇮🇳",
+    name: "India Office",
+    city: "Delhi",
+    timeZone: "Asia/Kolkata",
+    addressLines: [
+      "Holding No # 1301, Gali No # 13, Govindpuri, Kaikaji,",
+      "New Delhi, Delhi, Pin - 110019,",
+      "India",
+    ],
+    phone: "+918384021020",
+    email: "india@admissiononboard.com",
+    accent: "#59B226",
+  },
+  {
     id: "np-kathmandu",
     country: "nepal",
     countryLabel: "Nepal",
@@ -110,6 +127,7 @@ const filters: { key: "all" | Country; label: string; icon: string }[] = [
   { key: "all", label: "All", icon: "🌐" },
   { key: "uk", label: "UK", icon: "🇬🇧" },
   { key: "bangladesh", label: "Bangladesh", icon: "🇧🇩" },
+  { key: "india", label: "India", icon: "🇮🇳" },
   { key: "nepal", label: "Nepal", icon: "🇳🇵" },
 ];
 
@@ -479,6 +497,42 @@ function Flag({
       >
         <rect width="50" height="30" rx="2" fill="#006A4E" />
         <circle cx="22.5" cy="15" r="10" fill="#F42A41" />
+      </svg>
+    );
+  }
+
+  if (country === "india") {
+    return (
+      <svg
+        viewBox="0 0 90 60"
+        preserveAspectRatio="xMidYMid meet"
+        className={className}
+        {...a11y}
+      >
+        <clipPath id={`in-${uid}`}>
+          <rect width="90" height="60" rx="3" />
+        </clipPath>
+        <g clipPath={`url(#in-${uid})`}>
+          <rect width="90" height="20" fill="#FF9933" />
+          <rect y="20" width="90" height="20" fill="#FFFFFF" />
+          <rect y="40" width="90" height="20" fill="#138808" />
+          {/* Ashoka Chakra: ring + 24 spokes */}
+          <g transform="translate(45 30)" stroke="#000080" fill="none">
+            <circle r="8.5" strokeWidth="1.2" />
+            <circle r="1.4" fill="#000080" stroke="none" />
+            {Array.from({ length: 24 }, (_, i) => (
+              <line
+                key={i}
+                x1="0"
+                y1="0"
+                x2="0"
+                y2="-8.5"
+                strokeWidth="0.7"
+                transform={`rotate(${i * 15})`}
+              />
+            ))}
+          </g>
+        </g>
       </svg>
     );
   }

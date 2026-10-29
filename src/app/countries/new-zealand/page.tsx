@@ -5,6 +5,7 @@ import EntryRequirementsNewZealand from "@/views/countries/new-zealand/EntryRequ
 import HeroNewZealand from "@/views/countries/new-zealand/HeroNewZealand";
 // import VisaSuccessCarousel from "@/views/success-stories/VisaSuccessCarousel";
 import WhyNewZealand from "@/views/countries/new-zealand/WhyNewZealand";
+import UniversityPartner from "@/components/common/UniversityPartner";
 
 export const metadata = pageMetadata({
   title: "Study in New Zealand | Admissions, Visa & Scholarships",
@@ -20,6 +21,7 @@ export default function page() {
       <WhyNewZealand />
       <EntryRequirementsNewZealand />
       <AdmissionVisaProcessNewZealand />
+      <UniversityPartner country="New Zealand" />
       <ContactCta />
     </div>
   );

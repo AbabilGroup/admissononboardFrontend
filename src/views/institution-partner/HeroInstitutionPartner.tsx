@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-// Place your background image at: /public/institution-partner-hero.png
+// Place your background image at: /public/partner-hand.png
 
 export default function HeroInstitutionPartner() {
   return (
@@ -18,7 +18,7 @@ export default function HeroInstitutionPartner() {
       `}</style>
       <div className="relative min-h-[500px] w-full overflow-hidden rounded-[2rem] sm:min-h-0 sm:aspect-[16/9] lg:aspect-[21/9] lg:rounded-[2.5rem]">
         <Image
-          src="/institution-partner-hero.png"
+          src="/partner-hand.png"
           alt="University campus representing institution partnerships"
           fill
           sizes="100vw"

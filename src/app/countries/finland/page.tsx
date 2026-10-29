@@ -5,6 +5,7 @@ import EntryRequirementsFinland from "@/views/countries/finland/EntryRequirement
 import HeroFinland from "@/views/countries/finland/HeroFinland";
 // import VisaSuccessCarousel from "@/views/success-stories/VisaSuccessCarousel";
 import WhyFinland from "@/views/countries/finland/WhyFinland";
+import UniversityPartner from "@/components/common/UniversityPartner";
 
 export const metadata = pageMetadata({
   title: "Study in Finland | Admissions, Visa & Scholarships",
@@ -20,6 +21,7 @@ export default function page() {
       <WhyFinland />
       <EntryRequirementsFinland />
       <AdmissionVisaProcessFinland />
+      <UniversityPartner country="Finland" />
       <ContactCta />
     </div>
   );

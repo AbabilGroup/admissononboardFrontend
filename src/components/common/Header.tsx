@@ -8,6 +8,7 @@ import ReactCountryFlag from "react-country-flag";
 const countries = [
   { name: "United Kingdom", code: "GB" },
   { name: "Australia", code: "AU" },
+  { name: "Canada", code: "CA" },
   { name: "New Zealand", code: "NZ" },
   { name: "Finland", code: "FI" },
   { name: "Greece", code: "GR" },
@@ -25,13 +26,8 @@ const countryCodes: Record<string, string> = Object.fromEntries(
   countries.map((c) => [c.name, c.code]),
 );
 
-const servicesList = [
-  "Admission Support",
-  "Document Legalization - Lithuania",
-  "Double-Entry Visa - India",
-];
-
 const navLinks = [
+  { href: "/services", label: "Services" },
   { href: "/universities", label: "Universities" },
   { href: "/courses", label: "Courses" },
 ];
@@ -47,7 +43,7 @@ const about = [
 
 const partner = ["Recruitment Partner", "Institution Partner"];
 
-// "Document Legalization - Lithuania" -> "document-legalization-lithuania"
+// "Our Story" -> "our-story"
 function toSlug(label: string) {
   return label
     .toLowerCase()
@@ -93,7 +89,6 @@ function ChevronIcon({ open }: { open: boolean }) {
   );
 }
 
-// Collapsible group used inside the mobile menu (About / Countries / Partners)
 function MobileGroup({
   label,
   items,
@@ -288,30 +283,6 @@ export default function Header() {
               )}
             </DesktopDropdown>
 
-            <DesktopDropdown label="Services" href="/services" width="w-80">
-              {(close) => (
-                <>
-                  {servicesList.map((item) => (
-                    <Link
-                      key={item}
-                      href={`/services/${toSlug(item)}`}
-                      onClick={close}
-                      className={dropdownLinkClass}
-                    >
-                      {item}
-                    </Link>
-                  ))}
-                  <Link
-                    href="/services"
-                    onClick={close}
-                    className="mt-2 flex items-center justify-center border-t border-black/5 pt-3 text-sm font-semibold text-[#E0483E] transition-colors hover:text-black"
-                  >
-                    View all services
-                  </Link>
-                </>
-              )}
-            </DesktopDropdown>
-
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -411,13 +382,6 @@ export default function Header() {
                 items={countries.map((c) => c.name)}
                 basePath="/countries"
                 flags={countryCodes}
-                onNavigate={closeMobile}
-              />
-
-              <MobileGroup
-                label="Services"
-                items={servicesList}
-                basePath="/services"
                 onNavigate={closeMobile}
               />
 

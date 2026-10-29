@@ -1,75 +1,74 @@
 import Image from "next/image";
 import Link from "next/link";
 
-// Place your background image at: /public/partner.png
+// Banner image at: /public/rescruitment-partner.png
+// The whole image is shown at its own shape – nothing is cropped.
+// ⚠️ If your image is not 1067×441, update IMAGE_WIDTH / IMAGE_HEIGHT so it isn't stretched.
+const IMAGE_WIDTH = 1067;
+const IMAGE_HEIGHT = 441;
+
+function Arrow() {
+  return (
+    <svg
+      className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2.5}
+      aria-hidden
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M5 12h14m0 0-6-6m6 6-6 6"
+      />
+    </svg>
+  );
+}
 
 export default function HeroRecruitmentPartner() {
   return (
     <section className="container mx-auto px-4 py-10">
       <style>{`
-        @keyframes rpFadeUp {
-          from { opacity: 0; transform: translateY(24px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes rpZoom {
-          from { transform: scale(1.08); }
-          to   { transform: scale(1); }
-        }
+        @keyframes rpFadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+        @keyframes rpZoom { from { opacity: 0; transform: scale(1.03); } to { opacity: 1; transform: scale(1); } }
+        .rp-zoom { animation: rpZoom 1s cubic-bezier(.22,1,.36,1) both; }
+        .rp-in { animation: rpFadeUp .7s cubic-bezier(.22,1,.36,1) both; }
+        @media (prefers-reduced-motion: reduce) { .rp-zoom, .rp-in { animation: none !important; } }
       `}</style>
-      <div className="relative min-h-[500px] w-full overflow-hidden rounded-[2rem] sm:min-h-0 sm:aspect-[16/9] lg:aspect-[21/9] lg:rounded-[2.5rem]">
+
+      {/* Full banner image */}
+      <div className="rp-zoom overflow-hidden rounded-[1.5rem] shadow-xl shadow-black/5 ring-1 ring-black/5 sm:rounded-[2rem] lg:rounded-[2.5rem]">
         <Image
-          src="/partner.png"
-          alt="Recruitment partners working with Admission OnBoard"
-          fill
-          sizes="100vw"
-          className="object-cover object-center animate-[rpZoom_1.6s_cubic-bezier(0.22,1,0.36,1)_both] motion-reduce:animate-none"
+          src="/partnerhero.png"
+          alt="Why partner with Admission OnBoard: university partners, years of experience, students placed, clear costs, complete A–Z support and fast visa filing"
+          width={IMAGE_WIDTH}
+          height={IMAGE_HEIGHT}
+          sizes="(max-width: 1536px) 100vw, 1536px"
           priority
+          className="block h-auto w-full"
         />
+      </div>
 
-        {/* Mobile: dark fade from the bottom (text sits at the bottom) */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1B1B1B]/90 via-[#1B1B1B]/50 to-transparent sm:hidden" />
-        {/* Tablet & desktop: dark fade from the left (text sits on the left) */}
-        <div className="absolute inset-0 hidden bg-gradient-to-r from-[#1B1B1B]/85 via-[#1B1B1B]/40 to-transparent sm:block" />
-
-        <div className="relative z-10 flex h-full min-h-[500px] items-end px-6 pb-8 pt-24 sm:min-h-0 sm:items-center sm:px-10 sm:py-10 md:px-16">
-          <div className="max-w-md lg:max-w-lg">
-            <h1 className="text-3xl font-semibold leading-tight tracking-tight text-white animate-[rpFadeUp_0.8s_cubic-bezier(0.22,1,0.36,1)_both] motion-reduce:animate-none sm:text-4xl lg:text-5xl">
-              Recruit Smarter, Earn Together
-            </h1>
-            <p
-              className="mt-4 text-sm font-medium leading-relaxed text-white/90 animate-[rpFadeUp_0.8s_ease-out_both] motion-reduce:animate-none sm:text-base lg:text-lg"
-              style={{ animationDelay: "200ms" }}
-            >
-              Team up with Admission OnBoard to guide students toward the right
-              study destination, while growing your own business through
-              competitive referral commissions.
-            </p>
-
-            <Link
-              href="/auth/register?tab=partner"
-              style={{ animationDelay: "350ms" }}
-              className="group mt-6 animate-[rpFadeUp_0.8s_ease-out_both] motion-reduce:animate-none inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#E0483E] px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#E0483E]/30 transition-all hover:scale-105 hover:bg-[#C93C33] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1B1B1B] sm:mt-7 sm:w-auto sm:py-3"
-            >
-              Join As A Partner
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                className="shrink-0 transition-transform group-hover:translate-x-1"
-                aria-hidden
-              >
-                <path
-                  d="M5 12h14M13 6l6 6-6 6"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </Link>
-          </div>
-        </div>
+      {/* Buttons – bottom left */}
+      <div
+        className="rp-in mt-6 flex flex-col gap-3 sm:flex-row"
+        style={{ animationDelay: "250ms" }}
+      >
+        <Link
+          href="/courses"
+          className="group inline-flex items-center justify-center gap-2 rounded-xl bg-[#1E6FE8] px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#1E6FE8]/30 transition-all hover:-translate-y-0.5 hover:bg-[#1659C4] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1E6FE8] focus-visible:ring-offset-2"
+        >
+          Explore Programmes
+          <Arrow />
+        </Link>
+        <Link
+          href="/contact"
+          className="group inline-flex items-center justify-center gap-2 rounded-xl border-[1.5px] border-[#13213C] bg-white px-7 py-3.5 text-sm font-semibold text-[#13213C] transition-all hover:-translate-y-0.5 hover:bg-[#13213C] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#13213C] focus-visible:ring-offset-2"
+        >
+          Speak To An Advisor
+          <Arrow />
+        </Link>
       </div>
     </section>
   );

@@ -177,30 +177,30 @@ const universities: University[] = [
     color: "#2F5DA8",
     logo: "/univercity-logo/uoh.png",
   },
-  {
-    slug: "atlantis-college",
-    name: "Atlantis College",
-    country: "Cyprus",
-    initials: "AT",
-    color: "#1B1B1B",
-    logo: "/univercity-logo/aui.png",
-  },
-  {
-    slug: "american-university-of-cyprus",
-    name: "American University of Cyprus",
-    country: "Cyprus",
-    initials: "AC",
-    color: "#2F9E5C",
-    logo: "/univercity-logo/auc.png",
-  },
-  {
-    slug: "john-von-neumann-university",
-    name: "John von Neumann University",
-    country: "Hungary",
-    initials: "JV",
-    color: "#F58B0F",
-    logo: "/univercity-logo/jvnu.png",
-  },
+  // {
+  //   slug: "atlantis-college",
+  //   name: "Atlantis College",
+  //   country: "Cyprus",
+  //   initials: "AT",
+  //   color: "#1B1B1B",
+  //   logo: "/univercity-logo/aui.png",
+  // },
+  // {
+  //   slug: "american-university-of-cyprus",
+  //   name: "American University of Cyprus",
+  //   country: "Cyprus",
+  //   initials: "AC",
+  //   color: "#2F9E5C",
+  //   logo: "/univercity-logo/auc.png",
+  // },
+  // {
+  //   slug: "john-von-neumann-university",
+  //   name: "John von Neumann University",
+  //   country: "Hungary",
+  //   initials: "JV",
+  //   color: "#F58B0F",
+  //   logo: "/univercity-logo/jvnu.png",
+  // },
   {
     slug: "training-three-sixty",
     name: "Training Three Sixty",
@@ -208,6 +208,22 @@ const universities: University[] = [
     initials: "T3",
     color: "#E0483E",
     logo: "/univercity-logo/tts.png",
+  },
+  {
+    slug: "thinktalent",
+    name: "ThinkTalent",
+    country: "Malta",
+    initials: "TT",
+    color: "#2F5DA8",
+    logo: "/univercity-logo/thinktalent.webp",
+  },
+  {
+    slug: "learnkey-institute",
+    name: "LearnKey Institute",
+    country: "Malta",
+    initials: "LK",
+    color: "#F58B0F",
+    logo: "/univercity-logo/learnkeyinstutie.png",
   },
 ];
 
@@ -264,8 +280,7 @@ export default function UniversityExplorer() {
         </h2>
         <p className="mt-3 max-w-2xl text-sm text-[#6B6B6B] sm:text-base">
           Browse universities and pathway colleges across our study
-          destinations. Open one to see its courses, entry requirements, and how
-          to apply.
+          destinations. Click a university to see its courses.
         </p>
 
         {/* Search + destination filter */}
@@ -310,7 +325,8 @@ export default function UniversityExplorer() {
           {filtered.map((uni) => (
             <Link
               key={uni.slug}
-              href={`/universities`}
+              href={`/courses?university=${uni.slug}`}
+              aria-label={`View courses at ${uni.name}`}
               className="group flex flex-col items-center rounded-2xl border border-[#ECECEC] bg-white p-6 text-center shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
             >
               <div className="relative flex h-20 w-36 items-center justify-center overflow-hidden rounded-2xl border border-[#ECECEC] bg-white shadow-sm ring-1 ring-black/[0.02] transition-transform group-hover:scale-105">
@@ -330,6 +346,24 @@ export default function UniversityExplorer() {
                   {uni.note}
                 </p>
               )}
+
+              <span className="mt-auto inline-flex items-center gap-1.5 pt-4 text-xs font-semibold text-[#1B1B1B] transition-colors group-hover:text-[#E0483E] sm:text-sm">
+                View courses
+                <svg
+                  className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                  aria-hidden
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M5 12h14m0 0-6-6m6 6-6 6"
+                  />
+                </svg>
+              </span>
             </Link>
           ))}
 

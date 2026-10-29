@@ -4,7 +4,7 @@ import { useState, type FormEvent } from "react";
 import ReactCountryFlag from "react-country-flag";
 
 // FormSubmit AJAX endpoint: submissions are emailed to this address
-const FORMSUBMIT_URL = "https://formsubmit.co/ajax/info@admissiononboard.com";
+const FORMSUBMIT_URL = "https://formsubmit.co/ajax/aob@admissiononboard.com";
 
 const inputClass =
   "w-full rounded-xl border border-[#E5E5E5] bg-[#FCFCFA] px-4 py-3 text-sm text-[#1B1B1B] placeholder:text-[#A8A8A8] outline-none transition-all focus:border-[#E0483E] focus:bg-white focus:ring-4 focus:ring-[#E0483E]/10";
@@ -217,10 +217,10 @@ export default function PartnershipForm() {
                   <p className="text-xs text-[#6B6B6B] sm:text-sm">
                     Need to add something? Email us at{" "}
                     <a
-                      href="mailto:info@admissiononboard.com"
+                      href="mailto:aob@admissiononboard.com"
                       className="font-semibold text-[#E0483E] hover:underline"
                     >
-                      info@admissiononboard.com
+                      aob@admissiononboard.com
                     </a>
                   </p>
                 </div>
@@ -419,7 +419,7 @@ export default function PartnershipForm() {
                         This form needs to be activated.
                       </strong>{" "}
                       An activation email has been sent to
-                      info@admissiononboard.com (check the spam folder too).
+                      aob@admissiononboard.com (check the spam folder too).
                       Click the &ldquo;Activate Form&rdquo; link in it, then
                       submit again.
                     </span>
@@ -429,10 +429,10 @@ export default function PartnershipForm() {
                       {errorMessage ? ` (${errorMessage})` : ""}. Try again, or
                       email{" "}
                       <a
-                        href="mailto:info@admissiononboard.com"
+                        href="mailto:aob@admissiononboard.com"
                         className="font-semibold underline"
                       >
-                        info@admissiononboard.com
+                        aob@admissiononboard.com
                       </a>
                       .
                     </span>

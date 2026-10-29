@@ -63,7 +63,7 @@ export default function HeroContact() {
               style={{ animationDelay: "150ms" }}
             />
             <Image
-              src="/hero-contact.png"
+              src="/admission-contact.png"
               alt="Support advisor ready to help with study abroad questions"
               fill
               priority

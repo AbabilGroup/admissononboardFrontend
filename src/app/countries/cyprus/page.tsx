@@ -5,6 +5,7 @@ import EntryRequirementsCyprus from "@/views/countries/cyprus/EntryRequirementsC
 import HeroCyprus from "@/views/countries/cyprus/HeroCyprus";
 // import VisaSuccessCarousel from "@/views/success-stories/VisaSuccessCarousel";
 import WhyCyprus from "@/views/countries/cyprus/WhyCyprus";
+import UniversityPartner from "@/components/common/UniversityPartner";
 
 export const metadata = pageMetadata({
   title: "Study in Cyprus | Admissions, Visa & Scholarships",
@@ -20,6 +21,7 @@ export default function page() {
       <WhyCyprus />
       <EntryRequirementsCyprus />
       <AdmissionVisaProcessCyprus />
+      <UniversityPartner country="Cyprus" />
       <ContactCta />
     </div>
   );

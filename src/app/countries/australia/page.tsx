@@ -5,6 +5,7 @@ import EntryRequirementsAustralia from "@/views/countries/australia/EntryRequire
 import HeroAustralia from "@/views/countries/australia/HeroAustralia";
 // import VisaSuccessCarousel from "@/views/success-stories/VisaSuccessCarousel";
 import WhyAustralia from "@/views/countries/australia/WhyAustralia";
+import UniversityPartner from "@/components/common/UniversityPartner";
 
 export const metadata = pageMetadata({
   title: "Study in Australia | Admissions, Visa & Scholarships",
@@ -20,6 +21,7 @@ export default function page() {
       <WhyAustralia />
       <EntryRequirementsAustralia />
       <AdmissionVisaProcess />
+      <UniversityPartner country="Australia" />
       <ContactCta />
     </div>
   );

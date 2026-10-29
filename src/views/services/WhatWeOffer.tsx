@@ -19,13 +19,13 @@ const offers: Offer[] = [
     title: "One-on-One Counselling",
     description:
       "From shortlisting the right country and university to finishing your admission paperwork, our counsellors stay by your side until you land the program that actually fits you.",
-    image: "/counselling.png",
+    image: "/consulting.png",
   },
   {
     title: "Test Prep That Delivers",
     description:
       "IELTS, PTE, or SAT, we've got you covered. If your spoken or written English needs work, our nearly three-decade track record in test prep gets you exam-ready.",
-    image: "/test-prep.png",
+    image: "/testpre.png",
   },
   {
     title: "Scholarship Matching",
@@ -43,13 +43,13 @@ const offers: Offer[] = [
     title: "Travel & Stay Planning",
     description:
       "We help sort your flight bookings and line up accommodation, so you know exactly how you're getting there and where you're staying well before departure day.",
-    image: "/travel.png",
+    image: "/travelAll.png",
   },
   {
     title: "We Stay In Touch After You Land",
     description:
       "Our relationship doesn't end at the airport. We check in long after you've settled abroad, because we're building lasting connections, not just processing applications.",
-    image: "/post-admission.png",
+    image: "/airport.png",
   },
 ];
 

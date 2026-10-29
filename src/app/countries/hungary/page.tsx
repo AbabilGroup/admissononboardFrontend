@@ -4,6 +4,7 @@ import ContactCta from "@/components/common/ContactCta";
 import HeroHungary from "@/views/countries/hungary/HeroHungary";
 import WhyHungary from "@/views/countries/hungary/WhyHungary";
 import EntryRequirementsHungary from "@/views/countries/hungary/EntryRequirementsHungary";
+import UniversityPartner from "@/components/common/UniversityPartner";
 
 export const metadata = pageMetadata({
   title: "Study in Hungary | Admissions, Visa & Scholarships",
@@ -19,7 +20,7 @@ export default function page() {
       <WhyHungary />
       <EntryRequirementsHungary />
       <AdmissionVisaProcessHungary />
-      {/* <VisaSuccessCarousel /> */}
+      <UniversityPartner country="Hungary" />
       <ContactCta />
     </div>
   );

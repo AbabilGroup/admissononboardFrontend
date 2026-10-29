@@ -5,6 +5,7 @@ import EntryRequirementsUK from "@/views/countries/united-kingdom/EntryRequireme
 import HeroUK from "@/views/countries/united-kingdom/HeroUK";
 // import VisaSuccessCarousel from "@/views/success-stories/VisaSuccessCarousel";
 import WhyUK from "@/views/countries/united-kingdom/WhyUK";
+import UniversityPartner from "@/components/common/UniversityPartner";
 
 export const metadata = pageMetadata({
   title: "Study in the UK | Admissions, Visa & Scholarships",
@@ -20,6 +21,7 @@ export default function page() {
       <WhyUK />
       <EntryRequirementsUK />
       <AdmissionVisaProcessUK />
+      <UniversityPartner country="United Kingdom" />
       <ContactCta />
     </div>
   );
