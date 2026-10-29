@@ -21,23 +21,23 @@ export default function HeroHome() {
         }
       `}</style>
 
-      <div className="relative flex flex-col lg:block lg:aspect-[2/1] lg:max-h-[760px] lg:w-full">
+      <div className="relative flex flex-col lg:block lg:aspect-3/1 lg:w-full">
         {/* Background image (below text on mobile, full-bleed behind text on desktop) */}
         <div className="relative order-2 h-72 sm:h-96 lg:absolute lg:inset-0 lg:h-full">
           <Image
-            src="/hero.png"
-            alt="Admission OnBoard counsellor guiding students about studying abroad"
+            src="/Hero.png"
+            alt="Student ready to study abroad with Admission OnBoard"
             fill
             priority
             sizes="100vw"
-            className="object-cover object-[75%_center] animate-[heroImageIn_1.2s_ease-out_both] motion-reduce:animate-none lg:object-center"
+            className="object-cover object-[70%_center] animate-[heroImageIn_1.2s_ease-out_both] motion-reduce:animate-none lg:object-center"
           />
         </div>
 
-        {/* Text */}
-        <div className="relative z-10 order-1 px-6 pt-14 pb-8 sm:px-10 lg:flex lg:h-full lg:w-[40%] lg:items-center lg:py-0 lg:pl-[5%] lg:pr-0">
+        {/* Text sits on the empty sky area on the left of the image */}
+        <div className="relative z-10 order-1 px-6 pt-14 pb-8 sm:px-10 lg:flex lg:h-full lg:w-[46%] lg:items-center lg:py-0 lg:pb-[2%] lg:pl-[5%] lg:pr-0">
           <div>
-            <h1 className="text-[2rem] font-bold leading-[1.15] tracking-tight text-[#0F1B3D] sm:text-5xl lg:text-[2.6rem] xl:text-[3.25rem] 2xl:text-6xl">
+            <h1 className="text-[2rem] font-bold leading-[1.15] tracking-tight text-[#0F1B3D] sm:text-5xl lg:text-[clamp(2rem,3vw,4rem)]">
               {headline.map((line, i) => (
                 <span
                   key={line}
@@ -83,7 +83,7 @@ export default function HeroHome() {
             </h1>
 
             <p
-              className="mt-5 max-w-md text-base text-[#3B4660] animate-[heroFadeUp_0.8s_ease-out_both] motion-reduce:animate-none sm:text-lg"
+              className="mt-5 max-w-xl text-base text-[#3B4660] animate-[heroFadeUp_0.8s_ease-out_both] motion-reduce:animate-none sm:text-lg lg:mt-[1.5vw] lg:text-[clamp(1rem,1.2vw,1.4rem)]"
               style={{ animationDelay: "450ms" }}
             >
               Guided by specialists, connected to leading universities, and
@@ -96,7 +96,7 @@ export default function HeroHome() {
             >
               <Link
                 href="/contact"
-                className="group mt-8 inline-flex items-center gap-2 rounded-full bg-[#1366E0] px-6 py-3 text-sm font-semibold text-white shadow-md shadow-[#1366E0]/25 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#0F55BE] hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1366E0] focus-visible:ring-offset-2"
+                className="group mt-8 lg:mt-[2vw] inline-flex items-center gap-2 rounded-full bg-[#1366E0] px-6 py-3 text-sm font-semibold text-white shadow-md shadow-[#1366E0]/25 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#0F55BE] hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1366E0] focus-visible:ring-offset-2"
               >
                 Schedule A Free Consultation
                 <svg
