@@ -1,5 +1,5 @@
 import { pageMetadata } from "@/lib/seo";
-import HeroRecruitmentPartner from "@/views/recruitment-partner/HeroRecruitmentPartner";
+// import HeroRecruitmentPartner from "@/views/recruitment-partner/HeroRecruitmentPartner";
 import PartnerCta from "@/views/recruitment-partner/PartnerCta";
 import PartnerExpand from "@/views/recruitment-partner/PartnerExpand";
 import RiseWithEveryStep from "@/views/recruitment-partner/RiseWithEveryStep";
@@ -14,7 +14,7 @@ export const metadata = pageMetadata({
 export default function page() {
   return (
     <div>
-      <HeroRecruitmentPartner />
+      {/* <HeroRecruitmentPartner /> */}
       <PartnerExpand />
       <WhatYouWillGain />
       <RiseWithEveryStep />

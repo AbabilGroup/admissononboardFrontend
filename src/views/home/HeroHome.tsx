@@ -51,7 +51,7 @@ export default function HeroHome() {
               <span
                 className="block animate-[heroFadeUp_0.8s_cubic-bezier(0.22,1,0.36,1)_both] motion-reduce:animate-none"
                 style={{ animationDelay: "240ms" }}>
-                <span className="relative inline-block text-[#3DB94A]">
+                <span className="relative inline-block text-[#F58B0F]">
                   reality
                   {/* Hand-drawn underline that draws itself in */}
                   <svg
@@ -62,7 +62,7 @@ export default function HeroHome() {
                     <path
                       d="M4 12 C 50 4, 120 4, 196 9 M30 16 C 80 10, 130 11, 170 14"
                       fill="none"
-                      stroke="#3DB94A"
+                      stroke="#F58B0F"
                       strokeWidth="4"
                       strokeLinecap="round"
                       strokeDasharray="220"
@@ -112,8 +112,22 @@ export default function HeroHome() {
               </Link>
               <Link
                 href="/recruitment-partner"
-                className="inline-flex items-center justify-center rounded-full bg-[#1366E0] px-6 py-3 text-sm font-semibold text-white shadow-md shadow-[#1366E0]/25 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#0F55BE] hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1366E0] focus-visible:ring-offset-2">
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#1366E0] px-6 py-3 text-sm font-semibold text-white shadow-md shadow-[#1366E0]/25 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#0F55BE] hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1366E0] focus-visible:ring-offset-2">
                 Join as a Recruitment Partner
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  className="shrink-0 transition-transform duration-300 group-hover:translate-x-1">
+                  <path
+                    d="M5 12h14M13 6l6 6-6 6"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
               </Link>
             </div>
           </div>

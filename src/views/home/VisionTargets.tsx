@@ -6,6 +6,8 @@ type Target = {
   label: string;
   color: string;
   icon: React.ReactNode;
+  /** Experience is an achievement, not a target – so no "Vision Target" badge. */
+  hideBadge?: boolean;
 };
 
 const targets: Target[] = [
@@ -37,6 +39,7 @@ const targets: Target[] = [
     value: "10+",
     label: "Years Experience",
     color: "#8B3DD1",
+    hideBadge: true,
     icon: (
       <path d="M12 1a7 7 0 0 0-4 12.74V23l4-2.4 4 2.4v-9.26A7 7 0 0 0 12 1Zm0 2a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm-2 12.73a7 7 0 0 0 4 0v3.74l-2-1.2-2 1.2v-3.74Z" />
     ),
@@ -73,12 +76,14 @@ export default function VisionTargets() {
                     {t.icon}
                   </svg>
                 </span>
-                <span
-                  className="rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-wide"
-                  style={{ color: t.color, backgroundColor: `${t.color}14` }}
-                >
-                  Vision Target
-                </span>
+                {!t.hideBadge && (
+                  <span
+                    className="rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-wide"
+                    style={{ color: t.color, backgroundColor: `${t.color}14` }}
+                  >
+                    Vision Target
+                  </span>
+                )}
               </div>
               <p className="mt-6 text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: t.color }}>
                 <CountUp value={t.value} />
