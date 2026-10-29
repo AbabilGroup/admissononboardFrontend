@@ -30,5 +30,11 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules",
+    "src/views/admin",
+    "src/views/partner",
+    "src/views/student",
+    "src/views/lead"
+  ]
 }
