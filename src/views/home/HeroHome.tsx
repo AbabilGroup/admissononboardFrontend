@@ -38,7 +38,8 @@ export default function HeroHome() {
         {/* Text sits on the empty sky area on the left of the image; same px-4 + container as the header so the left edges line up */}
         <div className="relative z-10 order-1 w-full px-4 pt-14 pb-8 lg:py-14">
           <div className="mx-auto container">
-          <div className="lg:max-w-[46%]">
+          {/* On narrower desktops the 3:1 image is cropped and its circle shifts left, so cap the width by the viewport too */}
+          <div className="lg:max-w-[min(46%,calc(50vw-170px))]">
             <h1 className="text-[2rem] font-bold leading-[1.15] tracking-tight text-[#0F1B3D] sm:text-5xl lg:text-[clamp(2rem,3vw,4rem)]">
               {headline.map((line, i) => (
                 <span

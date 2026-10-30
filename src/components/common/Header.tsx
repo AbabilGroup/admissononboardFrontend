@@ -223,21 +223,22 @@ export default function Header() {
   return (
     <div className="sticky top-0 z-50 w-full px-4 pt-4">
       <header className="mx-auto container rounded-[28px] border border-black/5 bg-linear-to-b from-white/80 via-white/70 to-[#FFFEFA] shadow-lg shadow-black/5 backdrop-blur-xl lg:rounded-full">
-        <div className="flex h-16 w-full items-center justify-between px-6">
+        <div className="flex h-16 w-full items-center justify-between gap-4 px-6">
           <Link
             href="/"
-            className="text-lg font-bold tracking-tight text-black"
+            className="shrink-0 text-lg font-bold tracking-tight text-black"
           >
             <Image
               src={"/logo.png"}
               alt="Admission OnBoard"
               width={180}
               height={22}
+              className="h-auto w-[150px] xl:w-[180px]"
             />
           </Link>
 
-          {/* Desktop nav */}
-          <nav className="hidden items-center gap-8 text-base font-light text-zinc-900 lg:flex">
+          {/* Desktop nav (tighter on lg so it fits on one line, full size from xl) */}
+          <nav className="hidden items-center gap-4 whitespace-nowrap text-sm font-light text-zinc-900 lg:flex xl:gap-8 xl:text-base">
             <DesktopDropdown label="About" width="w-50">
               {(close) =>
                 about.map((item) => (
@@ -311,16 +312,16 @@ export default function Header() {
           </nav>
 
           {/* Desktop auth buttons */}
-          <div className="hidden items-center gap-3 lg:flex">
+          <div className="hidden shrink-0 items-center gap-2 lg:flex xl:gap-3">
             <Link
               href="/auth/login"
-              className="flex h-10 items-center justify-center rounded-full border border-black px-5 text-[15px] font-semibold tracking-wide text-black transition-colors duration-200 hover:border-[#1366E0] hover:bg-black/2 hover:text-[#1366E0]"
+              className="flex h-10 items-center justify-center whitespace-nowrap rounded-full border border-black px-4 text-sm xl:px-5 xl:text-[15px] font-semibold tracking-wide text-black transition-colors duration-200 hover:border-[#1366E0] hover:bg-black/2 hover:text-[#1366E0]"
             >
               Login
             </Link>
             <Link
               href="/auth/register"
-              className="flex h-10 items-center justify-center rounded-full bg-black px-5 text-[15px] font-semibold tracking-wide text-white shadow-sm shadow-[#F68F29]/30 transition-colors duration-200 hover:bg-gray-950"
+              className="flex h-10 items-center justify-center whitespace-nowrap rounded-full bg-black px-4 text-sm xl:px-5 xl:text-[15px] font-semibold tracking-wide text-white shadow-sm shadow-[#F68F29]/30 transition-colors duration-200 hover:bg-gray-950"
             >
               Register as a Student
             </Link>
