@@ -59,30 +59,7 @@ export default function HeroHome() {
         {/* Desktop: everything is sized in vw (via --s) and inset 5.4vw, so the text keeps the design's proportions to the full-bleed image at every width */}
         <div className="relative z-10 order-1 w-full px-4 pt-32 pb-8 lg:px-[5.4vw] lg:pt-[4.5vw] lg:pb-[1vw]">
           <div className="mx-auto w-full sm:max-w-[40rem] md:max-w-3xl lg:max-w-none lg:[--s:1vw]">
-            <span
-              className={`inline-flex items-center gap-3 rounded-full bg-[#E8F0FD] px-5 py-2.5 text-base font-semibold text-[#0A3FB8] lg:h-[calc(var(--s)*3.2)] lg:gap-[calc(var(--s)*1.1)] lg:px-[calc(var(--s)*1.6)] lg:py-0 lg:text-[max(0.875rem,calc(var(--s)*1.37))] ${fadeUp}`}>
-              <svg
-                aria-hidden
-                viewBox="0 0 24 24"
-                fill="none"
-                className="h-6 w-7 shrink-0 lg:h-[calc(var(--s)*1.9)] lg:w-[calc(var(--s)*2.3)]">
-                <path
-                  d="M12 4 2 9l10 5 10-5-10-5Z"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M6 11.2v4.3c0 1.4 2.7 3 6 3s6-1.6 6-3v-4.3M22 9v5"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                />
-              </svg>
-              Study Abroad
-            </span>
-
-            <h1 className="mt-6 text-[2.25rem] font-bold leading-[1.1] tracking-[-0.02em] text-[#0B1533] sm:text-5xl lg:mt-[calc(var(--s)*2.6)] lg:text-[calc(var(--s)*3.9)] lg:leading-[1.16]">
+            <h1 className="text-[2.25rem] font-bold leading-[1.1] tracking-[-0.02em] text-[#0B1533] sm:text-5xl lg:text-[calc(var(--s)*3.9)] lg:leading-[1.16]">
               <span
                 className={`lg:block lg:whitespace-nowrap ${fadeUp}`}
                 style={{ animationDelay: "120ms" }}>
