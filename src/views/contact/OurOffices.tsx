@@ -19,23 +19,23 @@ type Office = {
 };
 
 const offices: Office[] = [
-  {
-    id: "uk-london",
-    country: "uk",
-    countryLabel: "United Kingdom",
-    flag: "🇬🇧",
-    name: "UK Office",
-    city: "London",
-    timeZone: "Europe/London",
-    addressLines: [
-      "Kirkdale House, 7 Kirkdale Road",
-      "London, England, E11 1HP",
-      "United Kingdom",
-    ],
-    phone: "+44 7465 268767",
-    email: "info@admissiononboard.com",
-    accent: "#2F5DA8",
-  },
+  //   {
+  //     id: "uk-london",
+  //     country: "uk",
+  //     countryLabel: "United Kingdom",
+  //     flag: "🇬🇧",
+  //     name: "UK Office",
+  //     city: "London",
+  //     timeZone: "Europe/London",
+  //     addressLines: [
+  //       "Kirkdale House, 7 Kirkdale Road",
+  //       "London, England, E11 1HP",
+  //       "United Kingdom",
+  //     ],
+  //     phone: "+44 7465 268767",
+  //     email: "info@admissiononboard.com",
+  //     accent: "#2F5DA8",
+  //   },
   //   {
   //     id: "bd-dhaka",
   //     country: "bangladesh",
@@ -87,40 +87,40 @@ const offices: Office[] = [
   //     email: "sylhet@admissiononboard.com",
   //     accent: "#59B226",
   //   },
-  {
-    id: "india-office",
-    country: "india",
-    countryLabel: "India",
-    flag: "🇮🇳",
-    name: "India Office",
-    city: "Delhi",
-    timeZone: "Asia/Kolkata",
-    addressLines: [
-      "Holding No # 1301, Gali No # 13, Govindpuri, Kaikaji,",
-      "New Delhi, Delhi, Pin - 110019,",
-      "India",
-    ],
-    phone: "+918384021020",
-    email: "india@admissiononboard.com",
-    accent: "#59B226",
-  },
-  {
-    id: "np-kathmandu",
-    country: "nepal",
-    countryLabel: "Nepal",
-    flag: "🇳🇵",
-    name: "Nepal Office",
-    city: "Kathmandu",
-    timeZone: "Asia/Kathmandu",
-    addressLines: [
-      "100 Katyani Marg",
-      "Bagmati Province 44600",
-      "Kathmandu, Nepal",
-    ],
-    phone: "+977 982-8416761",
-    email: "kathmandu@admissiononboard.com",
-    accent: "#B8862B",
-  },
+  //   {
+  //     id: "india-office",
+  //     country: "india",
+  //     countryLabel: "India",
+  //     flag: "🇮🇳",
+  //     name: "India Office",
+  //     city: "Delhi",
+  //     timeZone: "Asia/Kolkata",
+  //     addressLines: [
+  //       "Holding No # 1301, Gali No # 13, Govindpuri, Kaikaji,",
+  //       "New Delhi, Delhi, Pin - 110019,",
+  //       "India",
+  //     ],
+  //     phone: "+918384021020",
+  //     email: "india@admissiononboard.com",
+  //     accent: "#59B226",
+  //   },
+  //   {
+  //     id: "np-kathmandu",
+  //     country: "nepal",
+  //     countryLabel: "Nepal",
+  //     flag: "🇳🇵",
+  //     name: "Nepal Office",
+  //     city: "Kathmandu",
+  //     timeZone: "Asia/Kathmandu",
+  //     addressLines: [
+  //       "100 Katyani Marg",
+  //       "Bagmati Province 44600",
+  //       "Kathmandu, Nepal",
+  //     ],
+  //     phone: "+977 982-8416761",
+  //     email: "kathmandu@admissiononboard.com",
+  //     accent: "#B8862B",
+  //   },
 ];
 
 const filters: { key: "all" | Country; label: string; icon: string }[] = [
@@ -130,6 +130,12 @@ const filters: { key: "all" | Country; label: string; icon: string }[] = [
   { key: "india", label: "India", icon: "🇮🇳" },
   { key: "nepal", label: "Nepal", icon: "🇳🇵" },
 ];
+
+// Only offer filters for countries that still have an office listed
+const visibleFilters = filters.filter(
+  (f) => f.key === "all" || offices.some((o) => o.country === f.key),
+);
+const countryCount = visibleFilters.length - 1;
 
 /** Re-renders every 30s so each card can show the office's local time. */
 function useNow() {
@@ -191,18 +197,20 @@ export default function OurOffices() {
           Our Offices
         </h2>
         <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-[#6B6B6B] sm:text-base">
-          {offices.length} offices across{" "}
-          {new Set(offices.map((o) => o.country)).size} countries. Visit, call
-          or email the Admission OnBoard team nearest to you.
+          {offices.length} {offices.length === 1 ? "office" : "offices"} across{" "}
+          {countryCount} {countryCount === 1 ? "country" : "countries"}. Visit,
+          call or email the Admission OnBoard team nearest to you.
         </p>
 
-        {/* Filter pills */}
+        {/* Filter pills (hidden when only one country is left) */}
         <div
           role="group"
           aria-label="Filter offices by country"
-          className="mt-8 inline-flex flex-wrap items-center justify-center gap-2 rounded-full border border-[#ECECEC] bg-white p-1.5 shadow-sm"
+          className={`mt-8 inline-flex flex-wrap items-center justify-center gap-2 rounded-full border border-[#ECECEC] bg-white p-1.5 shadow-sm ${
+            countryCount > 1 ? "" : "hidden"
+          }`}
         >
-          {filters.map((f) => {
+          {visibleFilters.map((f) => {
             const isActive = active === f.key;
             return (
               <button
@@ -237,8 +245,12 @@ export default function OurOffices() {
         </div>
       </div>
 
-      {/* Office cards */}
-      <div className="mx-auto mt-12 grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2">
+      {/* Office cards (a lone card is centred instead of sitting in the left column) */}
+      <div
+        className={`mx-auto mt-12 grid grid-cols-1 gap-6 ${
+          filtered.length === 1 ? "max-w-lg" : "max-w-5xl md:grid-cols-2"
+        }`}
+      >
         {filtered.map((office) => {
           const time = localTime(now, office.timeZone);
           return (
