@@ -75,22 +75,26 @@ export default function HowWeHelp() {
         </div>
 
         <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {cards.map((card) => (
-            <div key={card.title} className="spinning-border-wrap">
-              <div className="spinning-border" />
-              <div className="relative flex h-full flex-col gap-4 rounded-[1.4rem] bg-white p-6">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#1366E0]/10">
+          {cards.map((card, i) => (
+            <div
+              key={card.title}
+              className="hwh-card group"
+              // Offset each card's light so they don't all orbit in sync
+              style={{ "--delay": `${i * -0.7}s` } as React.CSSProperties}
+            >
+              <div className="hwh-inner relative flex h-full flex-col gap-4 overflow-hidden rounded-[calc(1.5rem-2px)] bg-white p-6">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#1366E0]/10 text-[#1366E0] transition-all duration-500 group-hover:-rotate-6 group-hover:scale-110 group-hover:bg-linear-to-br group-hover:from-[#1366E0] group-hover:to-[#F58B0F] group-hover:text-white group-hover:shadow-lg group-hover:shadow-[#1366E0]/30">
                   <svg
                     width="24"
                     height="24"
                     viewBox="0 0 24 24"
-                    fill="#1366E0"
+                    fill="currentColor"
                   >
                     {card.icon}
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-base font-semibold text-[#1B1B1B] sm:text-lg">
+                  <h3 className="text-base font-semibold text-[#1B1B1B] transition-colors duration-300 group-hover:text-[#1366E0] sm:text-lg">
                     {card.title}
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-[#6B6B6B]">
@@ -104,28 +108,83 @@ export default function HowWeHelp() {
       </div>
 
       <style>{`
-        .spinning-border-wrap {
+        /* Animatable angle so the gradient border light travels around the card edge */
+        @property --hwh-angle {
+          syntax: "<angle>";
+          initial-value: 0deg;
+          inherits: false;
+        }
+
+        .hwh-card {
           position: relative;
-          border-radius: 1.5rem;
-          padding: 1.5px;
-          overflow: hidden;
           isolation: isolate;
+          border-radius: 1.5rem;
+          padding: 2px;
+          /* Travelling light on top of a faint static border */
+          background:
+            conic-gradient(from var(--hwh-angle), transparent 0 55%, #1366E0 72%, #F58B0F 86%, transparent 97%),
+            linear-gradient(rgba(19, 102, 224, 0.12), rgba(19, 102, 224, 0.12));
+          animation: hwh-orbit 4s linear infinite;
+          animation-delay: var(--delay, 0s);
+          transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease;
         }
-        .spinning-border {
+        /* Soft glow that follows the light */
+        .hwh-card::after {
+          content: "";
           position: absolute;
-          inset: -60%;
-          background: conic-gradient(
-            from 0deg,
-            transparent 0deg,
-            #1366E0 40deg,
-            #F58B0F 80deg,
-            transparent 130deg,
-            transparent 360deg
-          );
-          animation: spin-border 5s linear infinite;
+          inset: 0;
+          z-index: -1;
+          border-radius: inherit;
+          background: conic-gradient(from var(--hwh-angle), transparent 0 55%, #1366E0 72%, #F58B0F 86%, transparent 97%);
+          filter: blur(16px);
+          opacity: 0.35;
+          animation: inherit;
+          transition: opacity 0.5s ease;
         }
-        @keyframes spin-border {
-          to { transform: rotate(360deg); }
+        .hwh-card:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 24px 48px -16px rgba(19, 102, 224, 0.35);
+        }
+        .hwh-card:hover::after { opacity: 0.8; }
+
+        /* Shine that sweeps across the card on hover */
+        .hwh-inner::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(110deg, transparent 30%, rgba(19, 102, 224, 0.08) 45%, rgba(245, 139, 15, 0.1) 55%, transparent 70%);
+          transform: translateX(-120%);
+          transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+          pointer-events: none;
+        }
+        .hwh-card:hover .hwh-inner::before { transform: translateX(120%); }
+
+        @keyframes hwh-orbit {
+          to { --hwh-angle: 360deg; }
+        }
+
+        /* Cards rise in as they scroll into view (where scroll-driven animations are supported) */
+        @supports (animation-timeline: view()) {
+          .hwh-card {
+            animation: hwh-orbit 4s linear infinite, hwh-rise linear both;
+            animation-delay: var(--delay, 0s), 0s;
+            animation-timeline: auto, view();
+            animation-range: normal, entry 0% entry 60%;
+          }
+          .hwh-card::after {
+            animation: hwh-orbit 4s linear infinite;
+            animation-delay: var(--delay, 0s);
+          }
+        }
+        /* Uses translate/scale (not transform) so it doesn't block the hover lift */
+        @keyframes hwh-rise {
+          from { opacity: 0; translate: 0 40px; scale: 0.96; }
+          to   { opacity: 1; translate: 0 0; scale: 1; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .hwh-card, .hwh-card::after { animation: none; }
+          .hwh-card:hover { transform: none; }
         }
       `}</style>
     </section>
