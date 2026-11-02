@@ -3,7 +3,6 @@
 import { useEffect, useState, type ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import ReactCountryFlag from "react-country-flag";
 
 const countries = [
@@ -220,7 +219,6 @@ function DesktopDropdown({
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const closeMobile = () => setMobileOpen(false);
-  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -230,27 +228,20 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // On the home page the header floats transparently over the hero until the user scrolls
-  const isHome = pathname === "/";
-  const transparent = isHome && !scrolled && !mobileOpen;
+  // The header floats transparently at the top of every page and turns into a pill once the user scrolls
+  const transparent = !scrolled && !mobileOpen;
 
   return (
-    <div className="sticky top-0 z-50 w-full px-4 pt-4">
+    <div className="sticky top-0 z-50 w-full px-4 pt-4 xl:px-[calc(5.4vw-1.75rem)]">
+      {/* Desktop: logo sits at a 5.4vw inset to line up with the home hero text; from xl the pill itself is inset too so it doesn't stretch edge to edge */}
       <header
-        className={`mx-auto rounded-[28px] border transition-all duration-300 lg:rounded-full ${
-          // Home: full width so the logo lines up with the hero text (5.4vw inset); elsewhere: page container
-          isHome ? "w-full sm:max-w-[40rem] md:max-w-3xl lg:max-w-none" : "container"
-        } ${
+        className={`mx-auto w-full rounded-[28px] border transition-all duration-300 sm:max-w-[40rem] md:max-w-3xl lg:max-w-none lg:rounded-full ${
           transparent
             ? "border-transparent bg-transparent"
             : "border-black/5 bg-linear-to-b from-white/80 via-white/70 to-[#FFFEFA] shadow-lg shadow-black/5 backdrop-blur-xl"
         }`}
       >
-        <div
-          className={`flex h-16 w-full items-center justify-between gap-4 px-6 lg:h-20 ${
-            isHome ? "lg:pr-[calc(3.6vw-17px)] lg:pl-[calc(5.4vw-17px)]" : ""
-          }`}
-        >
+        <div className="flex h-16 w-full items-center justify-between gap-4 px-6 lg:h-20 lg:pr-[calc(3.6vw-17px)] lg:pl-[calc(5.4vw-17px)] xl:px-7">
           <Link
             href="/"
             className="shrink-0 text-lg font-bold tracking-tight text-black"
@@ -265,7 +256,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop nav (tighter on lg so it fits on one line, full size from xl) */}
-          <nav className="hidden items-center gap-5 whitespace-nowrap text-sm font-normal text-[#1F2937] lg:flex xl:gap-6 xl:text-base 2xl:gap-10 2xl:text-[17px]">
+          <nav className="hidden items-center gap-5 whitespace-nowrap text-sm font-normal text-[#1F2937] lg:flex xl:text-base 2xl:gap-10 2xl:text-[17px]">
             <DesktopDropdown label="About" width="w-50">
               {(close) =>
                 about.map((item) => (
