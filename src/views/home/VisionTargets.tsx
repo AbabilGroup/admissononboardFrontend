@@ -51,10 +51,7 @@ export default function VisionTargets() {
     <section className="w-full bg-[#FFFEFA] px-6 py-16 sm:py-20">
       <div className="mx-auto container">
         <div className="text-center">
-          <p className="text-xs font-bold uppercase tracking-widest text-[#1366E0]">
-            Our Vision
-          </p>
-          <h2 className="mt-2 text-3xl font-semibold leading-tight tracking-tight text-[#1B1B1B] sm:text-4xl">
+          <h2 className="text-3xl font-semibold leading-tight tracking-tight text-[#1B1B1B] sm:text-4xl">
             Your Global Education Journey,
             <br />
             Made Simple.
