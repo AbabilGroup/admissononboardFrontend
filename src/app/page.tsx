@@ -12,6 +12,8 @@ import LatestBlogs from "@/views/home/LatestBlogs";
 import WhyChose from "@/views/home/WhyChose";
 // import ContactCta from "@/components/common/ContactCta";
 import HowWeHelp from "@/views/home/HowWeHelp";
+import FindStudyProgram from "@/views/home/FindStudyProgram";
+import HelpPartnerInstitutions from "@/views/home/HelpPartnerInstitutions";
 import VisionTargets from "@/views/home/VisionTargets";
 import TheJourney from "@/views/home/TheJourney";
 import SuccessStoriesGallery from "@/components/common/SuccessStoriesGallery";
@@ -27,6 +29,7 @@ export default function Home() {
       {/* <Accreditations /> */}
       <SuccessStoriesGallery />
       <VisionTargets />
+      <FindStudyProgram />
       <HowWeHelp />
       <UniversityPartner country="United Kingdom" />
       <TheJourney />
@@ -37,6 +40,7 @@ export default function Home() {
       <DreamDestinations />
       {/* <StudentVideoStories />
       <OurPartners /> */}
+      <HelpPartnerInstitutions />
       <LatestBlogs />
       {/* <BranchLocations /> */}
       <FaqSection />
