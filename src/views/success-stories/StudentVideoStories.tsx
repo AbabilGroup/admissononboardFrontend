@@ -6,11 +6,6 @@ import Image from "next/image";
 
 const videos = [
   {
-    id: "dQw4w9WgXcQ",
-    name: "Nusrat Jahan",
-    thumbnail: "/success7.png",
-  },
-  {
     id: "aqz-KE-bpKQ",
     name: "Rafid Hasan",
     thumbnail: "/success1.png",
@@ -24,11 +19,6 @@ const videos = [
     id: "M7lc1UVf-VE",
     name: "Imran Kabir",
     thumbnail: "/success5.png",
-  },
-  {
-    id: "hFZFjoX2cGg",
-    name: "Tanzila Mim",
-    thumbnail: "/nusrat.png",
   },
   {
     id: "5qap5aO4i9A",
@@ -49,7 +39,9 @@ export default function StudentVideoStories() {
   const scrollToPage = (page: number) => {
     const track = trackRef.current;
     if (!track) return;
-    const clamped = Math.max(0, Math.min(page, pageCount - 1));
+    // Pages come from the real track width, so the arrows still work on small screens where fewer cards fit
+    const maxPage = Math.ceil(track.scrollWidth / track.clientWidth) - 1;
+    const clamped = Math.max(0, Math.min(page, maxPage));
     track.scrollTo({
       left: clamped * track.clientWidth,
       behavior: "smooth",
@@ -93,7 +85,7 @@ export default function StudentVideoStories() {
             type="button"
             onClick={() => scrollToPage(activePage - 1)}
             aria-label="Previous videos"
-            className="absolute left-0 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full border border-[#1B1B1B] bg-white text-[#1B1B1B] shadow-sm transition-colors hover:bg-[#1B1B1B] hover:text-white"
+            className="absolute left-0 top-1/2 z-10 -translate-x-1/2 lg:hidden -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full border border-[#1B1B1B] bg-white text-[#1B1B1B] shadow-sm transition-colors hover:bg-[#1B1B1B] hover:text-white"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
               <path
@@ -145,7 +137,7 @@ export default function StudentVideoStories() {
             type="button"
             onClick={() => scrollToPage(activePage + 1)}
             aria-label="Next videos"
-            className="absolute right-0 top-1/2 z-10 translate-x-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full border border-[#1B1B1B] bg-white text-[#1B1B1B] shadow-sm transition-colors hover:bg-[#1B1B1B] hover:text-white"
+            className="absolute right-0 top-1/2 z-10 translate-x-1/2 lg:hidden -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full border border-[#1B1B1B] bg-white text-[#1B1B1B] shadow-sm transition-colors hover:bg-[#1B1B1B] hover:text-white"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
               <path
