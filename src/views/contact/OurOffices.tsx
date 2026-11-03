@@ -104,23 +104,23 @@ const offices: Office[] = [
     email: "india@admissiononboard.com",
     accent: "#59B226",
   },
-  {
-    id: "np-kathmandu",
-    country: "nepal",
-    countryLabel: "Nepal",
-    flag: "🇳🇵",
-    name: "Nepal Office",
-    city: "Kathmandu",
-    timeZone: "Asia/Kathmandu",
-    addressLines: [
-      "100 Katyani Marg",
-      "Bagmati Province 44600",
-      "Kathmandu, Nepal",
-    ],
-    phone: "+977 982-8416761",
-    email: "kathmandu@admissiononboard.com",
-    accent: "#B8862B",
-  },
+  //   {
+  //     id: "np-kathmandu",
+  //     country: "nepal",
+  //     countryLabel: "Nepal",
+  //     flag: "🇳🇵",
+  //     name: "Nepal Office",
+  //     city: "Kathmandu",
+  //     timeZone: "Asia/Kathmandu",
+  //     addressLines: [
+  //       "100 Katyani Marg",
+  //       "Bagmati Province 44600",
+  //       "Kathmandu, Nepal",
+  //     ],
+  //     phone: "+977 982-8416761",
+  //     email: "kathmandu@admissiononboard.com",
+  //     accent: "#B8862B",
+  //   },
 ];
 
 const filters: { key: "all" | Country; label: string; icon: string }[] = [
