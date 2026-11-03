@@ -158,9 +158,9 @@ export default function Footer() {
             >
               aob@admissiononboard.com
             </a>
-            <a href="tel:+447465268767" className="hover:text-[#1366E0]">
+            {/* <a href="tel:+447465268767" className="hover:text-[#1366E0]">
               +44 7465 268767
-            </a>
+            </a> */}
           </div>
         </div>
       </div>
