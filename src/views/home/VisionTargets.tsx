@@ -28,7 +28,7 @@ const targets: Target[] = [
     ),
   },
   {
-    value: "10000+",
+    value: "1000+",
     label: "Global Partners",
     color: "#F58B0F",
     icon: (
@@ -36,7 +36,7 @@ const targets: Target[] = [
     ),
   },
   {
-    value: "10+",
+    value: "15+",
     label: "Years Experience",
     color: "#8B3DD1",
     hideBadge: true,
