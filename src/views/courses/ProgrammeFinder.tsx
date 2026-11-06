@@ -25,7 +25,8 @@ type Programme = {
   country: string;
   title: string;
   level: Level;
-  duration: string;
+  /** Omit when the institution hasn't published a programme length */
+  duration?: string;
   /** Award type shown on the card, e.g. "Level 5 Diploma" */
   award?: string;
 };
@@ -204,6 +205,11 @@ const universityInfo: Record<string, UniInfo> = {
     logo: "/univercity-logo/learnkeyinstutie.png",
     initials: "LK",
     color: "#F58B0F",
+  },
+  "Malta Leadership Institute": {
+    logo: "/univercity-logo/mli.svg",
+    initials: "ML",
+    color: "#232F63",
   },
 };
 
@@ -693,6 +699,64 @@ const programmes: Programme[] = [
     award: "Masters (Level 7)",
     level: "Postgraduate",
     duration: "18 months",
+  },
+  // Malta Leadership Institute — international intakes 2026-2027.
+  // The source schedule lists no programme lengths, so duration is omitted.
+  {
+    university: "Malta Leadership Institute",
+    country: "Malta",
+    title: "Master of Education in Inclusive Education",
+    award: "Masters",
+    level: "Postgraduate",
+  },
+  {
+    university: "Malta Leadership Institute",
+    country: "Malta",
+    title: "Master of Business Administration (MBA)",
+    award: "Masters",
+    level: "Postgraduate",
+  },
+  {
+    university: "Malta Leadership Institute",
+    country: "Malta",
+    title: "Bachelor of Arts (Hons) in Business Leadership",
+    award: "Bachelor (Hons)",
+    level: "Undergraduate",
+  },
+  {
+    university: "Malta Leadership Institute",
+    country: "Malta",
+    title: "Diploma in Business Leadership",
+    award: "Diploma",
+    level: "Diploma",
+  },
+  {
+    university: "Malta Leadership Institute",
+    country: "Malta",
+    title: "Postgraduate Diploma in Business Leadership",
+    award: "Postgraduate Diploma",
+    level: "Postgraduate",
+  },
+  {
+    university: "Malta Leadership Institute",
+    country: "Malta",
+    title: "Master of Science in Applied Nutrition",
+    award: "Masters",
+    level: "Postgraduate",
+  },
+  {
+    university: "Malta Leadership Institute",
+    country: "Malta",
+    title: "Certificate for the Caring of the Elderly Person",
+    award: "Certificate",
+    level: "Professional",
+  },
+  {
+    university: "Malta Leadership Institute",
+    country: "Malta",
+    title: "Master of Science in Nursing",
+    award: "Masters",
+    level: "Postgraduate",
   },
 ];
 
@@ -1298,20 +1362,22 @@ function ProgrammeFinderInner() {
                     >
                       {programme.level}
                     </span>
-                    <span className="inline-flex items-center gap-1 rounded-full bg-[#F5F5F0] px-2.5 py-1 text-[11px] font-semibold text-[#6B6B6B]">
-                      <svg
-                        className="h-3 w-3"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2.5}
-                        aria-hidden
-                      >
-                        <circle cx="12" cy="12" r="8.5" />
-                        <path strokeLinecap="round" d="M12 7.5V12l3 2" />
-                      </svg>
-                      {programme.duration}
-                    </span>
+                    {programme.duration && (
+                      <span className="inline-flex items-center gap-1 rounded-full bg-[#F5F5F0] px-2.5 py-1 text-[11px] font-semibold text-[#6B6B6B]">
+                        <svg
+                          className="h-3 w-3"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth={2.5}
+                          aria-hidden
+                        >
+                          <circle cx="12" cy="12" r="8.5" />
+                          <path strokeLinecap="round" d="M12 7.5V12l3 2" />
+                        </svg>
+                        {programme.duration}
+                      </span>
+                    )}
                   </div>
                   {programme.award && (
                     <p className="mt-2 text-xs text-[#9A9A9A]">

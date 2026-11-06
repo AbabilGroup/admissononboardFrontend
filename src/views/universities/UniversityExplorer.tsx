@@ -225,6 +225,14 @@ const universities: University[] = [
     color: "#F58B0F",
     logo: "/univercity-logo/learnkeyinstutie.png",
   },
+  {
+    slug: "malta-leadership-institute",
+    name: "Malta Leadership Institute",
+    country: "Malta",
+    initials: "ML",
+    color: "#232F63",
+    logo: "/univercity-logo/mli.svg",
+  },
 ];
 
 function UniversityLogo({ uni }: { uni: University }) {
