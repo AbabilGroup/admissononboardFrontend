@@ -4,7 +4,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
 import { blogs, getBlogBySlug } from "@/lib/blogs";
-import ContactCta from "@/components/common/ContactCta";
+// import ContactCta from "@/components/common/ContactCta";
 
 const categoryStyles: Record<string, string> = {
   "Academic Writing": "bg-[#2F5DA8]/10 text-[#2F5DA8]",
@@ -147,7 +147,7 @@ export default async function BlogDetailPage({ params }: Props) {
         </section>
       )}
 
-      <ContactCta />
+      {/* <ContactCta /> */}
     </div>
   );
 }
