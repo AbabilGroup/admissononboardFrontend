@@ -5,7 +5,7 @@ import ProgrammeFinder from "@/views/courses/ProgrammeFinder";
 export const metadata = pageMetadata({
   title: "Find Courses & Programmes Abroad",
   description:
-    "Search bachelors, masters, diploma and foundation programmes at universities worldwide and apply with Admission On Board.",
+    "Search Bachelors, Masters, Diploma and foundation programmes at universities worldwide and apply with Admission On Board.",
   path: "/courses",
 });
 
