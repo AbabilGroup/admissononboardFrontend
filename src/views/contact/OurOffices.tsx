@@ -1,6 +1,22 @@
 "use client";
 
-import { useEffect, useId, useMemo, useState, type ReactNode } from "react";
+import {
+  useEffect,
+  useId,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+  type ReactNode,
+} from "react";
+import ReactCountryFlag from "react-country-flag";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
+import { MotionPathPlugin } from "gsap/MotionPathPlugin";
+
+gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin, MotionPathPlugin);
 
 type Country = "uk" | "bangladesh" | "india" | "nepal";
 
@@ -16,6 +32,8 @@ type Office = {
   phone: string;
   email: string;
   accent: string;
+  /** Main office / headquarters */
+  hq?: boolean;
 };
 
 const offices: Office[] = [
@@ -58,8 +76,9 @@ const offices: Office[] = [
     country: "bangladesh",
     countryLabel: "Bangladesh",
     flag: "🇧🇩",
-    name: "Dhaka Office",
+    name: "Head Office · Uttara",
     city: "Dhaka",
+    hq: true,
     timeZone: "Asia/Dhaka",
     addressLines: [
       "Plot-34, H M Plaza, 4th Floor",
@@ -97,7 +116,7 @@ const offices: Office[] = [
     city: "Delhi",
     timeZone: "Asia/Kolkata",
     addressLines: [
-      "Holding No # 1301, Gali No # 13, Govindpuri, Kaikaji,",
+      "Holding No # 1301, Gali No # 13, Govindpuri, Kalkaji,",
       "New Delhi, Delhi, Pin - 110019,",
       "India",
     ],
@@ -168,9 +187,291 @@ function mapsUrl(office: Office) {
   return `https://www.google.com/maps/search/?api=1&query=${q}`;
 }
 
+/* ---------- Recruitment network (hub-and-spoke from the Dhaka head office) ----------
+ * Positions live in a 100 × 75 space (the map keeps a 4:3 shape), loosely following real
+ * directions from Dhaka: South Asia close by, Southeast Asia east, Africa far west.
+ */
+type Node = {
+  name: string;
+  code: string;
+  x: number;
+  y: number;
+  region: "asia" | "africa";
+  future?: boolean;
+};
+const HUB = { x: 60, y: 38 };
+const NETWORK: Node[] = [
+  { name: "India", code: "IN", x: 40, y: 30, region: "asia" },
+  { name: "Nepal", code: "NP", x: 56, y: 11, region: "asia" },
+  { name: "Pakistan", code: "PK", x: 33, y: 10, region: "asia" },
+  { name: "Sri Lanka", code: "LK", x: 46, y: 61, region: "asia" },
+  { name: "Philippines", code: "PH", x: 87, y: 50, region: "asia" },
+  { name: "Morocco", code: "MA", x: 11, y: 14, region: "africa" },
+  { name: "Algeria", code: "DZ", x: 13, y: 34, region: "africa" },
+  { name: "Ghana", code: "GH", x: 12, y: 54, region: "africa" },
+  { name: "South Africa", code: "ZA", x: 27, y: 68, region: "africa" },
+];
+const EXPANDING = [
+  { label: "Southeast Asia", x: 86, y: 20 },
+  { label: "More of Africa", x: 64, y: 68 },
+];
+/** Gentle curve from the hub to a node */
+const spoke = (n: { x: number; y: number }) => {
+  const mx = (HUB.x + n.x) / 2;
+  const my = (HUB.y + n.y) / 2 - Math.abs(n.x - HUB.x) * 0.18;
+  return `M${HUB.x} ${HUB.y} Q${mx} ${my} ${n.x} ${n.y}`;
+};
+
+function NetFlag({
+  code,
+  name,
+  size = 1,
+}: {
+  code: string;
+  name: string;
+  size?: number;
+}) {
+  return (
+    <span className="flex shrink-0 overflow-hidden rounded-[3px] ring-1 ring-black/10">
+      <ReactCountryFlag
+        countryCode={code}
+        svg
+        aria-label={`Flag of ${name}`}
+        style={{
+          width: `${1.35 * size}em`,
+          height: `${1 * size}em`,
+          display: "block",
+          objectFit: "cover",
+        }}
+      />
+    </span>
+  );
+}
+
+function NetworkMap() {
+  return (
+    <div
+      data-net
+      className="net-panel relative mx-auto mt-16 max-w-6xl sm:mt-20 overflow-hidden rounded-[2.25rem] bg-[radial-gradient(ellipse_at_70%_40%,#24386E_0%,#14213D_55%,#0B1430_100%)] text-white shadow-[0_40px_90px_-45px_rgba(20,33,61,0.75)]"
+    >
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-[0.18] [background-image:radial-gradient(#fff_1px,transparent_1px)] [background-size:22px_22px] [mask-image:radial-gradient(ellipse_at_65%_45%,black,transparent_75%)]"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -left-24 -top-24 size-80 rounded-full bg-[#F7931E]/20 blur-[100px]"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -bottom-24 right-10 size-80 rounded-full bg-[#2F6BFF]/25 blur-[110px]"
+      />
+
+      <div className="net-grid relative">
+        {/* Copy */}
+        <div className="net-copy">
+          <p
+            data-net-text
+            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-[#FFB25E]"
+          >
+            <span className="h-3 w-3.5 bg-[#F7931E] [clip-path:polygon(0_0,65%_0,100%_50%,65%_100%,0_100%)]" />
+            Our recruitment network
+          </p>
+          <h3
+            data-net-text
+            className="font-display mt-4 text-[clamp(1.9rem,3vw,2.75rem)] font-semibold leading-[1.05] tracking-[-0.03em]"
+          >
+            Headquartered in <span className="text-[#F7931E]">Bangladesh</span>,
+            connected worldwide.
+          </h3>
+          <p
+            data-net-text
+            className="mt-4 text-sm leading-relaxed text-white/70 sm:text-base"
+          >
+            From our head office in Dhaka, our recruitment network covers India,
+            Nepal, Pakistan, Sri Lanka, Ghana, Morocco, the Philippines, Algeria
+            and South Africa, with expanding connections across Africa and
+            Southeast Asia.
+          </p>
+
+          <div data-net-text className="mt-7 grid grid-cols-3 gap-3">
+            {[
+              { value: "1", label: "Head office" },
+              { value: String(NETWORK.length), label: "Network countries" },
+              { value: "2", label: "Regions growing" },
+            ].map((st) => (
+              <div
+                key={st.label}
+                className="rounded-2xl border border-white/10 bg-white/[0.06] px-3 py-3 backdrop-blur"
+              >
+                <p className="font-display text-2xl font-semibold tabular-nums">
+                  {st.value}
+                </p>
+                <p className="mt-0.5 text-[11px] font-medium leading-tight text-white/60">
+                  {st.label}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Compact chip list (phones, where the map is hidden) */}
+          <div className="net-chips mt-6 flex-wrap gap-2">
+            {NETWORK.map((n) => (
+              <span
+                key={n.code}
+                className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-2.5 py-1 text-xs font-semibold ring-1 ring-white/15"
+              >
+                <NetFlag code={n.code} name={n.name} />
+                {n.name}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Map */}
+        <div
+          className="net-map relative"
+          aria-label="Network map: Dhaka head office linked to nine countries"
+          role="img"
+        >
+          <svg
+            viewBox="0 0 100 75"
+            className="absolute inset-0 size-full overflow-visible"
+            aria-hidden
+          >
+            {/* orbit rings around the hub */}
+            {[14, 24, 36].map((r, i) => (
+              <circle
+                key={r}
+                data-orbit
+                cx={HUB.x}
+                cy={HUB.y}
+                r={r}
+                fill="none"
+                stroke="#fff"
+                strokeOpacity={0.12 - i * 0.025}
+                strokeWidth="0.25"
+                strokeDasharray={i === 1 ? "0.8 1.4" : undefined}
+              />
+            ))}
+            {NETWORK.map((n, i) => (
+              <g key={n.code}>
+                <path
+                  d={spoke(n)}
+                  fill="none"
+                  stroke="#fff"
+                  strokeOpacity="0.08"
+                  strokeWidth="1.2"
+                  strokeLinecap="round"
+                />
+                <path
+                  id={`net-spoke-${i}`}
+                  data-spoke
+                  d={spoke(n)}
+                  fill="none"
+                  stroke={n.region === "asia" ? "#F7931E" : "#7FA2FF"}
+                  strokeWidth="0.45"
+                  strokeLinecap="round"
+                />
+                <circle data-pulse-dot r="0.8" fill="#fff" />
+              </g>
+            ))}
+            {EXPANDING.map((e) => (
+              <path
+                key={e.label}
+                d={spoke(e)}
+                fill="none"
+                stroke="#fff"
+                strokeOpacity="0.3"
+                strokeWidth="0.35"
+                strokeDasharray="0.9 1.2"
+              />
+            ))}
+          </svg>
+
+          {/* Hub */}
+          <div
+            className="absolute z-20 -translate-x-1/2 -translate-y-1/2"
+            style={{ left: `${HUB.x}%`, top: `${(HUB.y / 75) * 100}%` }}
+          >
+            <span
+              data-hub-ring
+              aria-hidden
+              className="absolute left-1/2 top-1/2 size-24 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#F7931E]/30"
+            />
+            <span
+              data-hub-ring
+              aria-hidden
+              className="absolute left-1/2 top-1/2 size-24 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#F7931E]/25"
+            />
+            <div
+              data-hub
+              className="relative flex items-center gap-2.5 rounded-2xl bg-white py-2 pl-2 pr-4 text-[#350C0E] shadow-[0_18px_40px_-12px_rgba(247,147,30,0.7)]"
+            >
+              <span className="grid size-9 place-items-center rounded-xl bg-[#F7931E]">
+                <NetFlag code="BD" name="Bangladesh" />
+              </span>
+              <span className="leading-tight">
+                <span className="block text-[10px] font-bold uppercase tracking-[0.16em] text-[#E07B0A]">
+                  Head office
+                </span>
+                <span className="font-display block text-base font-semibold">
+                  Dhaka, Bangladesh
+                </span>
+              </span>
+            </div>
+          </div>
+
+          {/* Network countries */}
+          {NETWORK.map((n) => (
+            <div
+              key={n.code}
+              className="absolute z-10 -translate-x-1/2 -translate-y-1/2"
+              style={{ left: `${n.x}%`, top: `${(n.y / 75) * 100}%` }}
+            >
+              <span
+                data-node
+                className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-white/[0.12] py-1 pl-1 pr-2.5 text-xs font-semibold text-white ring-1 ring-white/20 backdrop-blur-md transition-colors duration-300 hover:bg-white hover:text-[#350C0E]"
+              >
+                <NetFlag code={n.code} name={n.name} />
+                {n.name}
+              </span>
+            </div>
+          ))}
+          {EXPANDING.map((e) => (
+            <div
+              key={e.label}
+              className="absolute z-10 -translate-x-1/2 -translate-y-1/2"
+              style={{ left: `${e.x}%`, top: `${(e.y / 75) * 100}%` }}
+            >
+              <span
+                data-node
+                className="inline-flex items-center gap-1 whitespace-nowrap rounded-full border border-dashed border-white/40 px-2.5 py-1 text-[11px] font-semibold text-white/75"
+              >
+                <span className="text-[#F7931E]">+</span> {e.label}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/** Weekday in the office's time zone, e.g. "Thu" */
+function localDay(now: Date | null, timeZone: string) {
+  if (!now) return null;
+  return new Intl.DateTimeFormat("en-GB", {
+    timeZone,
+    weekday: "short",
+  }).format(now);
+}
+
 export default function OurOffices() {
   const [active, setActive] = useState<"all" | Country>("all");
   const now = useNow();
+  const root = useRef<HTMLElement>(null);
+  const filteredOnce = useRef(false);
 
   const counts = useMemo(() => {
     const c: Record<string, number> = { all: offices.length };
@@ -181,7 +482,6 @@ export default function OurOffices() {
   const filtered = useMemo(() => {
     const base =
       active === "all" ? offices : offices.filter((o) => o.country === active);
-
     // Defensive dedupe: no two rendered cards can share an id.
     const seen = new Set<string>();
     return base.filter((o) => {
@@ -191,20 +491,292 @@ export default function OurOffices() {
     });
   }, [active]);
 
+  /* ---------- Section + map motion (once) ---------- */
+  useLayoutEffect(() => {
+    const el = root.current;
+    if (!el) return;
+    const q = gsap.utils.selector(el);
+    const mm = gsap.matchMedia();
+
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+      gsap
+        .timeline({
+          defaults: { ease: "expo.out" },
+          scrollTrigger: { trigger: el, start: "top 78%", once: true },
+        })
+        .fromTo(
+          q("[data-eyebrow]"),
+          { autoAlpha: 0, y: 14 },
+          { autoAlpha: 1, y: 0, duration: 0.8 },
+          0,
+        )
+        .fromTo(
+          q("[data-word]"),
+          { autoAlpha: 0, yPercent: 110, rotate: 4 },
+          {
+            autoAlpha: 1,
+            yPercent: 0,
+            rotate: 0,
+            duration: 1.1,
+            stagger: 0.07,
+          },
+          0.1,
+        )
+        .fromTo(
+          q("[data-sub], [data-filters]"),
+          { autoAlpha: 0, y: 16 },
+          { autoAlpha: 1, y: 0, duration: 0.9, stagger: 0.1 },
+          0.4,
+        );
+
+      // Network panel: rises in, spokes draw out from Dhaka, countries pop in, signals flow along the links
+      const net = q("[data-net]")[0];
+      gsap
+        .timeline({
+          defaults: { ease: "expo.out" },
+          scrollTrigger: { trigger: net, start: "top 80%", once: true },
+        })
+        .fromTo(
+          net,
+          { autoAlpha: 0, y: 60, scale: 0.97 },
+          { autoAlpha: 1, y: 0, scale: 1, duration: 1.2 },
+          0,
+        )
+        .fromTo(
+          q("[data-net-text]"),
+          { autoAlpha: 0, y: 24 },
+          { autoAlpha: 1, y: 0, duration: 0.9, stagger: 0.1 },
+          0.25,
+        )
+        .fromTo(
+          q("[data-hub]"),
+          { autoAlpha: 0, scale: 0.4 },
+          { autoAlpha: 1, scale: 1, duration: 0.9, ease: "back.out(2)" },
+          0.4,
+        )
+        .fromTo(
+          q("[data-orbit]"),
+          { scale: 0.3, opacity: 0, svgOrigin: `${HUB.x} ${HUB.y}` },
+          { scale: 1, opacity: 1, duration: 1.4, stagger: 0.12 },
+          0.45,
+        )
+        .fromTo(
+          q("[data-spoke]"),
+          { drawSVG: "0%" },
+          { drawSVG: "100%", duration: 1, stagger: 0.08, ease: "power2.inOut" },
+          0.7,
+        )
+        .fromTo(
+          q("[data-node]"),
+          { autoAlpha: 0, scale: 0.5 },
+          {
+            autoAlpha: 1,
+            scale: 1,
+            duration: 0.7,
+            stagger: 0.08,
+            ease: "back.out(2.2)",
+          },
+          1.1,
+        );
+
+      // Signals travel from the head office to every country, on a loop
+      q("[data-pulse-dot]").forEach((dot, i) =>
+        gsap.fromTo(
+          dot,
+          { opacity: 0 },
+          {
+            opacity: 1,
+            motionPath: {
+              path: `#net-spoke-${i}`,
+              align: `#net-spoke-${i}`,
+              alignOrigin: [0.5, 0.5],
+            },
+            duration: 2.4,
+            delay: 1.8 + i * 0.25,
+            repeat: -1,
+            repeatDelay: 1.2,
+            ease: "power1.inOut",
+          },
+        ),
+      );
+      // Head office pulses; middle orbit slowly turns
+      gsap.fromTo(
+        q("[data-hub-ring]"),
+        { scale: 0.6, opacity: 0.8 },
+        {
+          scale: 1.9,
+          opacity: 0,
+          duration: 2.4,
+          repeat: -1,
+          stagger: 1.2,
+          ease: "power1.out",
+        },
+      );
+      gsap.to(q("[data-orbit]")[1], {
+        rotation: 360,
+        svgOrigin: `${HUB.x} ${HUB.y}`,
+        duration: 60,
+        ease: "none",
+        repeat: -1,
+      });
+    });
+
+    return () => mm.revert();
+  }, []);
+
+  /* ---------- Office cards: rise in on scroll / when the filter changes, spotlight + tilt on hover ---------- */
+  useLayoutEffect(() => {
+    const el = root.current;
+    if (!el) return;
+    const q = gsap.utils.selector(el);
+    const mm = gsap.matchMedia();
+    const first = !filteredOnce.current;
+
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+      const st = first
+        ? {
+            scrollTrigger: {
+              trigger: q("[data-cards]")[0],
+              start: "top 82%",
+              once: true,
+            },
+          }
+        : {};
+      gsap
+        .timeline({ defaults: { ease: "expo.out" }, ...st })
+        .fromTo(
+          q("[data-office]"),
+          { autoAlpha: 0, y: 60, scale: 0.96 },
+          { autoAlpha: 1, y: 0, scale: 1, duration: 1.1, stagger: 0.14 },
+          0,
+        )
+        .fromTo(
+          q("[data-city]"),
+          { autoAlpha: 0, yPercent: 70 },
+          { autoAlpha: 1, yPercent: 0, duration: 0.9, stagger: 0.14 },
+          0.2,
+        )
+        .fromTo(
+          q("[data-row]"),
+          { autoAlpha: 0, x: -18 },
+          { autoAlpha: 1, x: 0, duration: 0.7, stagger: 0.06 },
+          0.4,
+        )
+        .fromTo(
+          q("[data-actions]"),
+          { autoAlpha: 0, y: 14 },
+          { autoAlpha: 1, y: 0, duration: 0.7, stagger: 0.14 },
+          0.7,
+        );
+    });
+
+    mm.add(
+      "(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)",
+      () => {
+        const offs = (q("[data-office]") as HTMLElement[]).map((card) => {
+          const rx = gsap.quickTo(card, "rotationX", {
+            duration: 0.7,
+            ease: "power3.out",
+          });
+          const ry = gsap.quickTo(card, "rotationY", {
+            duration: 0.7,
+            ease: "power3.out",
+          });
+          gsap.set(card, { transformPerspective: 1200 });
+          const move = (e: PointerEvent) => {
+            const r = card.getBoundingClientRect();
+            const px = (e.clientX - r.left) / r.width;
+            const py = (e.clientY - r.top) / r.height;
+            ry((px - 0.5) * 6);
+            rx((0.5 - py) * 4);
+            // Spotlight follows the pointer (read by the card's CSS)
+            card.style.setProperty("--mx", `${px * 100}%`);
+            card.style.setProperty("--my", `${py * 100}%`);
+          };
+          const leave = () => {
+            rx(0);
+            ry(0);
+          };
+          card.addEventListener("pointermove", move);
+          card.addEventListener("pointerleave", leave);
+          return () => {
+            card.removeEventListener("pointermove", move);
+            card.removeEventListener("pointerleave", leave);
+          };
+        });
+        return () => offs.forEach((off) => off());
+      },
+    );
+
+    return () => mm.revert();
+  }, [active]);
+
   return (
-    <section className="w-full bg-[#FFFEFA] px-6 py-16 sm:py-24">
+    <section
+      ref={root}
+      className="offices relative w-full overflow-hidden bg-[#FFFEFA] px-6 py-20 sm:py-24"
+    >
+      <style>{`
+        @media (prefers-reduced-motion: no-preference) {
+          .offices [data-eyebrow], .offices [data-word], .offices [data-sub], .offices [data-filters], .offices [data-net], .offices [data-node], .offices [data-hub] { visibility: hidden; }
+        }
+        @media (prefers-reduced-motion: no-preference) {
+          .offices [data-office], .offices [data-row], .offices [data-actions] { visibility: hidden; }
+        }
+        /* Layout kept here so it never depends on Tailwind generating new class names */
+        .offices .office-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.75rem; margin: 2.5rem auto 0; perspective: 1400px; }
+        .offices .office-grid.is-two { max-width: 64rem; }
+        .offices .office-grid.is-one { max-width: 32rem; }
+        @media (min-width: 768px) { .offices .office-grid.is-two { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        .offices .office-card { --mx: 50%; --my: 0%; }
+        .offices .office-card::before {
+          content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .4s ease;
+          background: radial-gradient(420px circle at var(--mx) var(--my), color-mix(in srgb, var(--accent) 14%, transparent), transparent 60%);
+        }
+        .offices .office-card:hover::before { opacity: 1; }
+        .offices .office-city { font-size: clamp(2.4rem, 4.2vw, 3.4rem); }
+        .offices .net-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; padding: 2rem 1.5rem; }
+        .offices .net-map { display: none; aspect-ratio: 4 / 3; }
+        .offices .net-chips { display: flex; }
+        @media (min-width: 1024px) {
+          .offices .net-grid { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.25fr); align-items: center; gap: 2.5rem; padding: 3rem 3rem 3rem 3.25rem; }
+          .offices .net-map { display: block; }
+          .offices .net-chips { display: none; }
+        }
+        .offices .office-card.is-hq { box-shadow: 0 0 0 2px #F7931E, 0 30px 60px -36px rgba(247,147,30,0.6); }
+      `}</style>
+
       <div className="mx-auto max-w-3xl text-center">
-        <h2 className="text-3xl font-bold tracking-tight text-[#1B1B1B] sm:text-4xl">
-          Our Offices
+        <span
+          data-eyebrow
+          className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.14em] text-[#2F6BFF]"
+        >
+          <span className="h-3.5 w-4 bg-[#2F6BFF] [clip-path:polygon(0_0,65%_0,100%_50%,65%_100%,0_100%)]" />
+          Visit us
+        </span>
+        <h2 className="font-display mt-3 text-[2.4rem] font-semibold leading-[1.02] tracking-[-0.035em] text-[#350C0E] sm:text-5xl lg:text-[3.6rem]">
+          <span className="mr-[0.24em] inline-block overflow-hidden pb-[0.08em] align-top">
+            <span data-word className="inline-block">
+              Our
+            </span>
+          </span>
+          <span className="inline-block overflow-hidden pb-[0.08em] align-top">
+            <span data-word className="inline-block text-[#F7931E]">
+              offices
+            </span>
+          </span>
         </h2>
-        <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-[#6B6B6B] sm:text-base">
-          {offices.length} {offices.length === 1 ? "office" : "offices"} across{" "}
-          {countryCount} {countryCount === 1 ? "country" : "countries"}. Visit,
-          call or email the Admission OnBoard team nearest to you.
+        <p
+          data-sub
+          className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-[#4A5268] sm:text-base"
+        >
+          Our head office is in Dhaka, Bangladesh, with a regional office in
+          Delhi. Visit, call or email the Admission OnBoard team nearest to you.
         </p>
 
         {/* Filter pills (hidden when only one country is left) */}
         <div
+          data-filters
           role="group"
           aria-label="Filter offices by country"
           className={`mt-8 inline-flex flex-wrap items-center justify-center gap-2 rounded-full border border-[#ECECEC] bg-white p-1.5 shadow-sm ${
@@ -218,25 +790,37 @@ export default function OurOffices() {
                 key={f.key}
                 type="button"
                 aria-pressed={isActive}
-                onClick={() => setActive(f.key)}
-                className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1366E0] focus-visible:ring-offset-2 ${
+                onClick={() => {
+                  filteredOnce.current = true;
+                  setActive(f.key);
+                }}
+                className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2F6BFF] focus-visible:ring-offset-2 ${
                   isActive
-                    ? "bg-[#1366E0] text-white shadow-md"
-                    : "text-[#6B6B6B] hover:bg-[#EEF4FE] hover:text-[#1B1B1B]"
+                    ? "bg-[#14213D] text-white shadow-md"
+                    : "text-[#6B6B6B] hover:bg-[#EEF4FE] hover:text-[#350C0E]"
                 }`}
               >
                 {f.key === "all" ? (
-                  <span aria-hidden>{f.icon}</span>
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="size-4"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={1.8}
+                    aria-hidden
+                  >
+                    <circle cx="12" cy="12" r="9" />
+                    <path
+                      d="M3 12h18M12 3c2.5 2.5 3.8 5.5 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.5-3.8-9S9.5 5.5 12 3Z"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                 ) : (
                   <Flag country={f.key} className="h-3.5 w-5" />
                 )}
                 {f.label}
                 <span
-                  className={`rounded-full px-1.5 text-xs tabular-nums ${
-                    isActive
-                      ? "bg-white/25 text-white"
-                      : "bg-[#F3F3F3] text-[#8A8A8A]"
-                  }`}
+                  className={`rounded-full px-1.5 text-xs tabular-nums ${isActive ? "bg-white/25 text-white" : "bg-[#F3F3F3] text-[#8A8A8A]"}`}
                 >
                   {counts[f.key] ?? 0}
                 </span>
@@ -246,81 +830,89 @@ export default function OurOffices() {
         </div>
       </div>
 
-      {/* Office cards (a lone card is centred instead of sitting in the left column) */}
+      {/* Office cards (a lone card is centred) */}
       <div
-        className={`mx-auto mt-12 grid grid-cols-1 gap-6 ${
-          filtered.length === 1 ? "max-w-lg" : "max-w-5xl md:grid-cols-2"
-        }`}
+        data-cards
+        key={active}
+        className={`office-grid ${filtered.length === 1 ? "is-one" : "is-two"}`}
       >
         {filtered.map((office) => {
           const time = localTime(now, office.timeZone);
+          const day = localDay(now, office.timeZone);
+          const tel = `tel:${office.phone.replace(/[\s-]+/g, "")}`;
           return (
             <article
               key={office.id}
-              className="relative flex flex-col overflow-hidden rounded-3xl border border-[#ECECEC] bg-white shadow-sm transition-shadow hover:shadow-xl"
+              data-office
+              className={`office-card group relative flex flex-col${office.hq ? " is-hq" : ""} overflow-hidden rounded-[2rem] border border-black/[0.06] bg-white p-6 shadow-[0_24px_60px_-40px_rgba(20,33,61,0.5)] transition-shadow duration-500 hover:shadow-[0_36px_70px_-38px_rgba(20,33,61,0.55)] sm:p-8`}
+              style={{ "--accent": office.accent } as CSSProperties}
             >
-              {/* Header band */}
-              <header
-                className="relative px-6 pb-5 pt-6"
-                style={{
-                  background: `linear-gradient(135deg, ${office.accent}14 0%, ${office.accent}05 100%)`,
-                }}
+              {office.hq && (
+                <span className="absolute left-1/2 top-0 z-10 -translate-x-1/2 rounded-b-xl bg-[#F7931E] px-3.5 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-md">
+                  ★ Head office
+                </span>
+              )}
+              {/* Soft accent glow + faint flag */}
+              <span
+                aria-hidden
+                className="pointer-events-none absolute -right-16 -top-16 size-56 rounded-full opacity-25 blur-3xl"
+                style={{ background: office.accent }}
+              />
+              <span
+                aria-hidden
+                className="pointer-events-none absolute -right-6 w-32 rotate-6 opacity-[0.07]"
+                style={{ top: "4.75rem" }}
               >
-                <div
-                  className="absolute inset-x-0 top-0 h-1"
-                  style={{ backgroundColor: office.accent }}
-                />
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    {/* Country badge: flag + name */}
-                    <span className="inline-flex items-center gap-2 rounded-full bg-white py-1 pl-1.5 pr-3 shadow-sm ring-1 ring-[#ECECEC]">
-                      <Flag country={office.country} className="h-4 w-6" />
-                      <span className="text-xs font-semibold text-[#1B1B1B]">
-                        {office.countryLabel}
-                      </span>
-                    </span>
-                    <h3 className="mt-3 text-2xl font-bold tracking-tight text-[#1B1B1B]">
-                      {office.city}
-                    </h3>
-                    <p className="text-sm text-[#6B6B6B]">{office.name}</p>
-                  </div>
+                <Flag country={office.country} className="h-auto w-full" />
+              </span>
 
-                  {/* Large flag */}
-                  <span
-                    className="flex h-16 w-20 shrink-0 items-center justify-center rounded-2xl bg-white p-2.5 shadow-sm ring-1"
-                    style={{
-                      ["--tw-ring-color" as string]: `${office.accent}33`,
-                    }}
-                  >
-                    <Flag
-                      country={office.country}
-                      className="h-full w-full"
-                      title={`Flag of ${office.countryLabel}`}
+              {/* Top row */}
+              <div className="relative flex flex-wrap items-center justify-between gap-3">
+                <span className="inline-flex items-center gap-2 rounded-full bg-[#F5F7FB] py-1.5 pl-1.5 pr-3.5 ring-1 ring-black/[0.04]">
+                  <Flag country={office.country} className="h-4 w-6" />
+                  <span className="text-xs font-semibold text-[#350C0E]">
+                    {office.countryLabel}
+                  </span>
+                </span>
+                <span className="inline-flex items-center gap-2 rounded-full bg-[#14213D] px-3.5 py-1.5 text-xs font-semibold text-white">
+                  <span className="relative flex size-2">
+                    <span
+                      className="absolute inline-flex size-full animate-ping rounded-full opacity-70"
+                      style={{ background: office.accent }}
+                    />
+                    <span
+                      className="relative inline-flex size-2 rounded-full"
+                      style={{ background: office.accent }}
                     />
                   </span>
-                </div>
+                  <span className="tabular-nums">{time ?? "--:--"}</span>
+                  {day && <span className="text-white/50">· {day}</span>}
+                </span>
+              </div>
 
-                {time && (
-                  <p className="mt-4 inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-1 text-xs font-medium text-[#3A3A3A] ring-1 ring-[#ECECEC]">
-                    <svg
-                      className="h-3.5 w-3.5"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke={office.accent}
-                      strokeWidth={2}
-                      aria-hidden
-                    >
-                      <circle cx="12" cy="12" r="9" />
-                      <path strokeLinecap="round" d="M12 7v5l3 2" />
-                    </svg>
-                    Local time {time}
-                  </p>
-                )}
-              </header>
+              {/* City */}
+              <div className="relative mt-7 overflow-hidden">
+                <h3
+                  data-city
+                  className="office-city font-display font-semibold leading-none tracking-[-0.035em] text-[#350C0E]"
+                >
+                  {office.city}
+                  <span style={{ color: office.accent }}>.</span>
+                </h3>
+              </div>
+              <p className="relative mt-2 text-sm font-medium text-[#4A5268]">
+                {office.name}
+              </p>
 
-              {/* Details */}
-              <div className="flex flex-1 flex-col gap-4 px-6 py-6 text-sm">
-                <div className="flex items-start gap-3">
+              {/* Contact rows */}
+              <div className="relative mt-7 flex flex-col gap-1.5 border-t border-black/[0.06] pt-5 text-sm">
+                <a
+                  data-row
+                  href={mapsUrl(office)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group/row flex items-start gap-3 rounded-2xl p-2.5 transition-colors duration-300 hover:bg-[#F5F7FB]"
+                >
                   <IconTile accent={office.accent}>
                     <path
                       strokeLinecap="round"
@@ -329,18 +921,18 @@ export default function OurOffices() {
                     />
                     <circle cx="12" cy="9.5" r="2.3" />
                   </IconTile>
-                  <address className="not-italic leading-relaxed text-[#4A4A4A]">
+                  <address className="flex-1 not-italic leading-relaxed text-[#4A4A4A]">
                     {office.addressLines.map((line) => (
                       <span key={line} className="block">
                         {line}
                       </span>
                     ))}
                   </address>
-                </div>
-
+                </a>
                 <a
-                  href={`tel:${office.phone.replace(/[\s-]+/g, "")}`}
-                  className="group flex items-center gap-3 rounded-xl font-medium text-[#1B1B1B] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1366E0]"
+                  data-row
+                  href={tel}
+                  className="group/row flex items-center gap-3 rounded-2xl p-2.5 font-medium text-[#350C0E] transition-colors duration-300 hover:bg-[#F5F7FB]"
                 >
                   <IconTile accent={office.accent}>
                     <path
@@ -349,14 +941,26 @@ export default function OurOffices() {
                       d="M3.5 5.5c0-1 .8-1.8 1.8-1.8H8l1.5 4-2 1.5a12 12 0 0 0 5.5 5.5l1.5-2 4 1.5v2.7c0 1-.8 1.8-1.8 1.8C10.5 18.7 5.3 13.5 3.5 7.3V5.5Z"
                     />
                   </IconTile>
-                  <span className="transition-colors group-hover:text-[#1366E0]">
-                    {office.phone}
-                  </span>
+                  <span className="flex-1">{office.phone}</span>
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="size-4 -translate-x-1 text-[#350C0E]/40 opacity-0 transition-all duration-300 group-hover/row:translate-x-0 group-hover/row:opacity-100"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2.2}
+                    aria-hidden
+                  >
+                    <path
+                      d="M5 12h14M13 6l6 6-6 6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                 </a>
-
                 <a
+                  data-row
                   href={`mailto:${office.email}`}
-                  className="group flex items-center gap-3 rounded-xl font-medium text-[#2F5DA8] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1366E0]"
+                  className="group/row flex items-center gap-3 rounded-2xl p-2.5 font-medium text-[#350C0E] transition-colors duration-300 hover:bg-[#F5F7FB]"
                 >
                   <IconTile accent={office.accent}>
                     <rect x="3" y="5" width="18" height="14" rx="2" />
@@ -366,19 +970,34 @@ export default function OurOffices() {
                       d="m4 7 8 6 8-6"
                     />
                   </IconTile>
-                  <span className="break-all transition-colors group-hover:text-[#1366E0]">
-                    {office.email}
-                  </span>
+                  <span className="flex-1 break-all">{office.email}</span>
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="size-4 -translate-x-1 text-[#350C0E]/40 opacity-0 transition-all duration-300 group-hover/row:translate-x-0 group-hover/row:opacity-100"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2.2}
+                    aria-hidden
+                  >
+                    <path
+                      d="M5 12h14M13 6l6 6-6 6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                 </a>
               </div>
 
-              {/* Footer actions */}
-              <footer className="grid grid-cols-2 border-t border-[#F0F0F0]">
+              {/* Actions */}
+              <div
+                data-actions
+                className="relative mt-6 grid grid-cols-2 gap-3"
+              >
                 <a
                   href={mapsUrl(office)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 py-3.5 text-sm font-semibold text-[#3A3A3A] transition-colors hover:bg-[#FAFAFA] focus:outline-none focus-visible:bg-[#FAFAFA]"
+                  className="flex items-center justify-center gap-2 rounded-2xl border border-black/10 py-3.5 text-sm font-semibold text-[#350C0E] transition-[border-color,background-color] duration-300 hover:border-black/20 hover:bg-[#F5F7FB]"
                 >
                   <svg
                     className="h-4 w-4"
@@ -394,15 +1013,18 @@ export default function OurOffices() {
                       d="m9 4-6 2.5v13L9 17l6 2.5 6-2.5V4l-6 2.5L9 4Zm0 0v13m6-10.5v13"
                     />
                   </svg>
-                  Get directions
+                  Directions
                 </a>
                 <a
-                  href={`tel:${office.phone.replace(/[\s-]+/g, "")}`}
-                  className="flex items-center justify-center gap-2 border-l border-[#F0F0F0] py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90 focus:outline-none focus-visible:opacity-90"
-                  style={{ backgroundColor: office.accent }}
+                  href={tel}
+                  className="group/call flex items-center justify-center gap-2 rounded-2xl py-3.5 text-sm font-semibold text-white shadow-lg transition-[filter,translate] duration-300 hover:-translate-y-0.5 hover:brightness-110"
+                  style={{
+                    backgroundColor: office.accent,
+                    boxShadow: `0 14px 28px -14px ${office.accent}`,
+                  }}
                 >
                   <svg
-                    className="h-4 w-4"
+                    className="h-4 w-4 transition-transform duration-300 group-hover/call:rotate-12"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -417,11 +1039,14 @@ export default function OurOffices() {
                   </svg>
                   Call {office.city}
                 </a>
-              </footer>
+              </div>
             </article>
           );
         })}
       </div>
+
+      {/* Then the whole recruitment network around the head office */}
+      <NetworkMap />
     </section>
   );
 }

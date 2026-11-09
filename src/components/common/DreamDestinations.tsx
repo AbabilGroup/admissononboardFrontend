@@ -115,18 +115,15 @@ export default function DreamDestinations() {
       <div className="mx-auto container">
         <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
           <div>
-            <p className="text-xs font-bold uppercase tracking-widest text-[#1366E0]">
-              Destinations
-            </p>
-            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#1B1B1B] sm:text-4xl">
+            <p className="text-xs font-bold uppercase tracking-widest text-[#1366E0]">Destinations</p>
+            <h2 className="font-display mt-2 text-3xl font-semibold tracking-tight text-[#1B1B1B] sm:text-4xl">
               Explore Top Study Destinations
             </h2>
           </div>
 
           <Link
             href="/courses"
-            className="inline-flex shrink-0 items-center gap-2 rounded-full border border-[#1366E0] bg-white px-6 py-3 text-sm font-semibold text-[#1366E0] transition-colors hover:border-[#1366E0]/90"
-          >
+            className="inline-flex shrink-0 items-center gap-2 rounded-full border border-[#1366E0] bg-white px-6 py-3 text-sm font-semibold text-[#1366E0] transition-colors hover:bg-[#1366E0] hover:text-white">
             Browse All Programmes
           </Link>
         </div>
@@ -137,8 +134,7 @@ export default function DreamDestinations() {
               key={destination.slug}
               href={`/countries/${destination.slug}`}
               title={destination.description}
-              className="group relative block aspect-[4/3] overflow-hidden rounded-2xl shadow-sm transition-shadow hover:shadow-lg"
-            >
+              className="group relative block aspect-[4/3] overflow-hidden rounded-2xl shadow-sm transition-shadow hover:shadow-lg">
               <Image
                 src={destination.image}
                 alt={`Study in ${destination.name}`}
@@ -154,12 +150,7 @@ export default function DreamDestinations() {
                     svg
                     title={destination.name}
                     aria-label={`Flag of ${destination.name}`}
-                    style={{
-                      width: "1.5em",
-                      height: "1.1em",
-                      display: "block",
-                      objectFit: "cover",
-                    }}
+                    style={{ width: "1.5em", height: "1.1em", display: "block", objectFit: "cover" }}
                   />
                 </span>
                 {destination.name}
@@ -168,14 +159,7 @@ export default function DreamDestinations() {
           ))}
 
           <div className="col-span-full flex items-center justify-center gap-4 rounded-2xl bg-[#EEF5FE] px-6 py-6">
-            <svg
-              width="40"
-              height="40"
-              viewBox="0 0 24 24"
-              fill="none"
-              className="shrink-0 text-[#1366E0]"
-              aria-hidden
-            >
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" className="shrink-0 text-[#1366E0]" aria-hidden>
               <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.6" />
               <path
                 d="M3 12h18M12 3c2.5 2.5 3.8 5.5 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.5-3.8-9S9.5 5.5 12 3Z"
@@ -184,9 +168,7 @@ export default function DreamDestinations() {
                 strokeLinejoin="round"
               />
             </svg>
-            <p className="text-base font-medium text-[#1366E0] sm:text-lg">
-              And expanding European and other destinations.
-            </p>
+            <p className="text-base font-medium text-[#1366E0] sm:text-lg">And expanding European and other destinations.</p>
           </div>
         </div>
       </div>

@@ -1,153 +1,255 @@
 "use client";
 
-import React, { useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { blogs as allBlogs, type BlogCategory } from "@/lib/blogs";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
+import { blogs as allBlogs, type Blog, type BlogCategory } from "@/lib/blogs";
 
-type Category = BlogCategory;
+gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
 
-const categoryStyles: Record<Category, string> = {
-  "Academic Writing": "bg-[#2F5DA8]/10 text-[#2F5DA8]",
-  Destinations: "bg-[#1366E0]/10 text-[#1366E0]",
-  "Visas & Applications": "bg-[#F58B0F]/10 text-[#F58B0F]",
+const categoryStyles: Record<BlogCategory, string> = {
+  "Academic Writing": "bg-[#6366F1]/10 text-[#4F46E5]",
+  Destinations: "bg-[#2F6BFF]/10 text-[#2F6BFF]",
+  "Visas & Applications": "bg-[#F7931E]/12 text-[#E07B0A]",
 };
 
-const blogs = allBlogs.slice(0, 4);
+const [featured, ...rest] = allBlogs.slice(0, 4);
 
-function CalendarIcon() {
+/** Rough reading time from the article body (~200 words per minute) */
+const readTime = (blog: Blog) => {
+  const words = blog.content.join(" ").split(/\s+/).length;
+  return `${Math.max(1, Math.round(words / 200))} min read`;
+};
+
+function Meta({ blog, light = false }: { blog: Blog; light?: boolean }) {
   return (
-    <svg
-      width="14"
-      height="14"
-      viewBox="0 0 24 24"
-      fill="#9A9A9A"
-      className="shrink-0"
-    >
-      <path d="M7 2v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7ZM5 9h14v11H5V9Z" />
-    </svg>
+    <div className={`flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-medium ${light ? "text-white/70" : "text-[#8A8F9C]"}`}>
+      <span className="inline-flex items-center gap-1.5">
+        <svg viewBox="0 0 24 24" className="size-3.5" fill="currentColor" aria-hidden>
+          <path d="M7 2v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7ZM5 9h14v11H5V9Z" />
+        </svg>
+        {blog.date}
+      </span>
+      <span className="size-1 rounded-full bg-current opacity-50" />
+      <span className="inline-flex items-center gap-1.5">
+        <svg viewBox="0 0 24 24" className="size-3.5" fill="currentColor" aria-hidden>
+          <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm1 5v5.4l3.6 2.1-1 1.7L11 13.5V7h2Z" />
+        </svg>
+        {readTime(blog)}
+      </span>
+    </div>
   );
 }
 
-export default function LatestBlogs() {
-  const trackRef = useRef<HTMLDivElement>(null);
+const ArrowIcon = ({ className = "size-4" }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+    <path d="M5 12h14M13 6l6 6-6 6" />
+  </svg>
+);
 
-  const scrollByCard = (direction: 1 | -1) => {
-    const track = trackRef.current;
-    if (!track) return;
-    const cardWidth = track.firstElementChild?.clientWidth ?? 320;
-    track.scrollBy({ left: direction * (cardWidth + 24), behavior: "smooth" });
-  };
+/** Title whose underline grows in on hover */
+const hoverTitle =
+  "bg-[linear-gradient(currentColor,currentColor)] bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 group-hover:bg-[length:100%_2px]";
+
+export default function LatestBlogs() {
+  const root = useRef<HTMLElement>(null);
+
+  useLayoutEffect(() => {
+    const el = root.current;
+    if (!el) return;
+    const q = gsap.utils.selector(el);
+    const mm = gsap.matchMedia();
+
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+      // Heading
+      gsap
+        .timeline({ defaults: { ease: "expo.out" }, scrollTrigger: { trigger: el, start: "top 78%", once: true } })
+        .fromTo(q("[data-eyebrow]"), { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.8 }, 0)
+        .fromTo(q("[data-word]"), { autoAlpha: 0, yPercent: 110, rotate: 4 }, { autoAlpha: 1, yPercent: 0, rotate: 0, duration: 1.1, stagger: 0.06 }, 0.1)
+        .fromTo(q("[data-underline]"), { drawSVG: "0%" }, { drawSVG: "100%", duration: 1, ease: "power2.inOut" }, 0.6)
+        .fromTo(q("[data-cta]"), { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.8 }, 0.4);
+
+      // Featured story: image wipes open while zooming out, then the text follows
+      const feature = q("[data-feature]")[0];
+      gsap
+        .timeline({ defaults: { ease: "expo.out" }, scrollTrigger: { trigger: feature, start: "top 80%", once: true } })
+        .fromTo(
+          q("[data-feature-media]"),
+          { clipPath: "inset(0% 100% 0% 0% round 28px)" },
+          { clipPath: "inset(0% 0% 0% 0% round 28px)", duration: 1.4, ease: "power4.inOut" },
+          0,
+        )
+        .fromTo(q("[data-feature-img]"), { scale: 1.25 }, { scale: 1, duration: 1.8 }, 0)
+        .fromTo(q("[data-feature-text] > *"), { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.9, stagger: 0.08 }, 0.7);
+
+      // Story list: rows slide in one after another
+      gsap.fromTo(
+        q("[data-story]"),
+        { autoAlpha: 0, x: 60 },
+        {
+          autoAlpha: 1,
+          x: 0,
+          duration: 1,
+          stagger: 0.12,
+          ease: "expo.out",
+          scrollTrigger: { trigger: q("[data-stories]")[0], start: "top 80%", once: true },
+        },
+      );
+      gsap.fromTo(
+        q("[data-story-media]"),
+        { clipPath: "inset(0% 0% 100% 0% round 18px)" },
+        {
+          clipPath: "inset(0% 0% 0% 0% round 18px)",
+          duration: 1.1,
+          stagger: 0.12,
+          ease: "power4.inOut",
+          delay: 0.15,
+          scrollTrigger: { trigger: q("[data-stories]")[0], start: "top 80%", once: true },
+        },
+      );
+
+    });
+
+    return () => mm.revert();
+  }, []);
 
   return (
-    <section className="w-full bg-[#FFFEFA] px-6">
-      <div className="mx-auto container">
-        <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+    <section ref={root} className="blogs relative w-full overflow-hidden bg-[#FFFEFA] px-6 py-20 sm:py-24">
+      <style>{`
+        @media (prefers-reduced-motion: no-preference) {
+          .blogs [data-eyebrow], .blogs [data-word], .blogs [data-cta], .blogs [data-feature-text] > *, .blogs [data-story] { visibility: hidden; }
+        }
+      `}</style>
+
+      <div aria-hidden className="pointer-events-none absolute -right-40 top-10 size-[30rem] rounded-full bg-[#2F6BFF]/[0.06] blur-3xl" />
+
+      <div className="container relative mx-auto">
+        {/* Heading */}
+        <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
           <div>
-            <p className="text-xs font-bold uppercase tracking-widest text-[#1366E0]">
-              From The Blog
-            </p>
-            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#1B1B1B] sm:text-4xl">
-              Study Abroad Guides &amp; Advice
+            <span data-eyebrow className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.14em] text-[#2F6BFF]">
+              <span className="h-3.5 w-4 bg-[#2F6BFF] [clip-path:polygon(0_0,65%_0,100%_50%,65%_100%,0_100%)]" />
+              From the blog
+            </span>
+            <h2 className="font-display mt-3 text-[2.2rem] font-semibold leading-[1.02] tracking-[-0.035em] text-[#350C0E] sm:text-5xl lg:text-[3.4rem]">
+              {["Study", "abroad"].map((w) => (
+                <span key={w} className="mr-[0.24em] inline-block overflow-hidden pb-[0.08em] align-top">
+                  <span data-word className="inline-block">
+                    {w}
+                  </span>
+                </span>
+              ))}
+              <span className="relative inline-block">
+                <span className="inline-block overflow-hidden pb-[0.12em] align-top">
+                  <span data-word className="inline-block text-[#F7931E]">
+                    guides &amp; advice
+                  </span>
+                </span>
+                <svg aria-hidden viewBox="0 0 300 20" preserveAspectRatio="none" className="absolute -bottom-[0.14em] left-0 h-[0.26em] w-full overflow-visible">
+                  <path data-underline d="M3 12 C 60 4, 120 16, 180 9 S 260 5, 297 10" fill="none" stroke="#F7931E" strokeWidth="3.5" strokeLinecap="round" />
+                </svg>
+              </span>
             </h2>
           </div>
 
           <Link
+            data-cta
             href="/our-blogs"
-            className="inline-flex shrink-0 items-center gap-2 rounded-full border border-[#1366E0] bg-white px-6 py-3 text-sm font-semibold text-[#1366E0] transition-colors hover:border-[#1366E0]"
-          >
-            Visit The Blog
+            className="group inline-flex shrink-0 items-center gap-2 rounded-full bg-[#14213D] px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#14213D]/20 transition-[translate,background-color] duration-300 hover:-translate-y-0.5 hover:bg-[#2F6BFF]">
+            Visit the blog
+            <ArrowIcon className="size-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
 
-        <div className="relative mt-10">
-          <div
-            ref={trackRef}
-            className="flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-          >
-            {blogs.map((blog) => (
+        <div className="mt-12 grid gap-10 lg:grid-cols-12 lg:gap-12">
+          {/* Featured story */}
+          <Link data-feature href={`/our-blogs/${featured.slug}`} className="group block lg:col-span-7">
+            <div data-feature-media className="relative aspect-[16/9] overflow-hidden rounded-[28px] bg-[#EEF3FF] shadow-[0_30px_60px_-35px_rgba(20,33,61,0.5)]">
+              <div data-feature-img className="absolute inset-0">
+                <Image
+                  src={featured.image}
+                  alt={featured.title}
+                  fill
+                  priority={false}
+                  sizes="(min-width: 1024px) 55vw, 100vw"
+                  className="object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.04]"
+                />
+              </div>
+              <span className="absolute right-4 top-4 rounded-full bg-[#F7931E] px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white shadow-md">
+                Latest
+              </span>
+            </div>
+
+            <div data-feature-text className="mt-6">
+              <span className={`inline-flex rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wide ${categoryStyles[featured.category]}`}>
+                {featured.category}
+              </span>
+              <h3 className="font-display mt-3 text-2xl font-semibold leading-[1.15] tracking-[-0.02em] text-[#350C0E] sm:text-3xl">
+                <span className={hoverTitle}>{featured.title}</span>
+              </h3>
+              <p className="mt-3 max-w-2xl text-base leading-relaxed text-[#4A5268]">{featured.excerpt}</p>
+              <div className="mt-5 flex flex-wrap items-center justify-between gap-4">
+                <Meta blog={featured} />
+                <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#350C0E]">
+                  Read article
+                  <span className="grid size-9 place-items-center rounded-full bg-[#14213D] text-white transition-all duration-300 group-hover:-rotate-45 group-hover:bg-[#F7931E]">
+                    <ArrowIcon />
+                  </span>
+                </span>
+              </div>
+            </div>
+          </Link>
+
+          {/* More stories */}
+          <div data-stories className="flex flex-col divide-y divide-[#14213D]/10 lg:col-span-5">
+            {rest.map((blog, i) => (
               <Link
                 key={blog.slug}
+                data-story
                 href={`/our-blogs/${blog.slug}`}
-                className="group flex w-[280px] shrink-0 snap-start flex-col sm:w-[300px]"
-              >
-                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
+                className="group grid grid-cols-[minmax(0,9rem)_minmax(0,1fr)] items-center gap-4 py-5 first:pt-0 last:pb-0 sm:grid-cols-[minmax(0,12rem)_minmax(0,1fr)] sm:gap-5">
+                <div data-story-media className="relative aspect-[16/9] overflow-hidden rounded-[18px] bg-[#EEF3FF] shadow-[0_16px_30px_-22px_rgba(20,33,61,0.5)]">
                   <Image
                     src={blog.image}
                     alt={blog.title}
                     fill
-                    sizes="300px"
-                    className="object-contain transition-transform duration-500 group-hover:scale-105"
+                    sizes="(min-width: 640px) 200px, 150px"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                   />
-                  <span className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-white/90 px-2.5 py-1 text-[11px] font-semibold text-[#1B1B1B] backdrop-blur-sm">
-                    <svg
-                      width="12"
-                      height="12"
-                      viewBox="0 0 24 24"
-                      fill="#1366E0"
-                    >
-                      <path d="M12 2 2 8l10 5 8-4v6h2V8L12 2Zm0 8L4 8l8-4 8 4-8 4Zm-6 2v4c0 1.66 2.69 3 6 3s6-1.34 6-3v-4l-6 3-6-3Z" />
-                    </svg>
-                    Admission OnBoard
-                  </span>
                 </div>
-
-                <span
-                  className={`mt-4 inline-flex w-fit items-center rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wide ${categoryStyles[blog.category]}`}
-                >
-                  {blog.category}
-                </span>
-
-                <h3 className="mt-3 text-base font-semibold leading-snug text-[#1B1B1B] transition-colors group-hover:text-[#1366E0]">
-                  {blog.title}
-                </h3>
-
-                <p className="mt-2 line-clamp-2 text-sm text-[#6B6B6B]">
-                  {blog.excerpt}
-                </p>
-
-                <div className="mt-4 flex items-center gap-2 text-xs font-medium text-[#9A9A9A]">
-                  <CalendarIcon />
-                  {blog.date}
+                <div className="min-w-0">
+                  <div className="flex items-center gap-2">
+                    <span className="font-display text-sm font-semibold text-[#350C0E]/30">{String(i + 2).padStart(2, "0")}</span>
+                    <span className={`inline-flex rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide ${categoryStyles[blog.category]}`}>
+                      {blog.category}
+                    </span>
+                  </div>
+                  <h3 className="font-display mt-2 line-clamp-2 text-base font-semibold leading-snug text-[#350C0E] sm:text-lg">
+                    <span className={hoverTitle}>{blog.title}</span>
+                  </h3>
+                  <div className="mt-2">
+                    <Meta blog={blog} />
+                  </div>
                 </div>
               </Link>
             ))}
-          </div>
 
-          {/* Carousel arrows */}
-          <div className="mt-6 flex justify-end gap-2">
-            <button
-              type="button"
-              onClick={() => scrollByCard(-1)}
-              aria-label="Previous article"
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-[#ECECEC] bg-white text-[#1B1B1B] transition-colors hover:border-[#1B1B1B]"
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M15 18l-6-6 6-6"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
-            <button
-              type="button"
-              onClick={() => scrollByCard(1)}
-              aria-label="Next article"
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-[#ECECEC] bg-white text-[#1B1B1B] transition-colors hover:border-[#1B1B1B]"
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M9 6l6 6-6 6"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
+            {/* Newsletter-style nudge to the full blog */}
+            <Link
+              data-story
+              href="/our-blogs"
+              className="group mt-5 flex items-center justify-between gap-4 rounded-[22px] border-0 bg-[linear-gradient(120deg,#EEF3FF,#FFF3E6)] px-5 py-4">
+              <span>
+                <span className="block font-display text-base font-semibold text-[#350C0E]">More guides on the blog</span>
+                <span className="block text-sm text-[#4A5268]">Visas, scholarships, destinations and more.</span>
+              </span>
+              <span className="grid size-10 shrink-0 place-items-center rounded-full bg-white text-[#350C0E] shadow-sm transition-all duration-300 group-hover:-rotate-45 group-hover:bg-[#2F6BFF] group-hover:text-white">
+                <ArrowIcon />
+              </span>
+            </Link>
           </div>
         </div>
       </div>

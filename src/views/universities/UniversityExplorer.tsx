@@ -230,7 +230,7 @@ const universities: University[] = [
     name: "Malta Leadership Institute",
     country: "Malta",
     initials: "ML",
-    color: "#232F63",
+    color: "#E4572E",
     logo: "/univercity-logo/mli.svg",
   },
   {

@@ -25,10 +25,21 @@ type Programme = {
   country: string;
   title: string;
   level: Level;
-  /** Omit when the institution hasn't published a programme length */
-  duration?: string;
+  duration: string;
   /** Award type shown on the card, e.g. "Level 5 Diploma" */
   award?: string;
+  /** Tuition for the programme, e.g. "€9,000" */
+  tuition?: string;
+  /** Upcoming start dates */
+  intakes?: string[];
+  /** Tuition before a scholarship, shown struck through */
+  fullTuition?: string;
+  /** Scholarship percentage */
+  scholarship?: number;
+  /** Tuition plus the fixed costs payable with it */
+  totalPayable?: string;
+  /** Amount due before the visa under the flexible payment plan */
+  beforeVisa?: string;
 };
 
 /** Flag codes for the destination filter */
@@ -209,12 +220,13 @@ const universityInfo: Record<string, UniInfo> = {
   "Malta Leadership Institute": {
     logo: "/univercity-logo/mli.svg",
     initials: "ML",
-    color: "#232F63",
+    color: "#E4572E",
   },
   "Ascencia Malta": {
     logo: "/univercity-logo/Ascencia-Malta-Logo.svg",
     initials: "AM",
     color: "#CD0731",
+    note: "€1,000 admin, registration, visa & accommodation costs payable with tuition",
   },
 };
 
@@ -705,286 +717,442 @@ const programmes: Programme[] = [
     level: "Postgraduate",
     duration: "18 months",
   },
-  // Malta Leadership Institute — international intakes 2026-2027.
-  // The source schedule lists no programme lengths, so duration is omitted.
+  // ── Malta Leadership Institute (Malta) · intakes for international students, academic year 2026–2027 ──
   {
     university: "Malta Leadership Institute",
     country: "Malta",
     title: "Master of Education in Inclusive Education",
-    award: "Masters",
+    award: "Master's degree · Education",
     level: "Postgraduate",
+    duration: "Full-time · Mon–Fri",
+    tuition: "€8,000",
+    intakes: ["21 Jan 2027", "20 Apr 2027", "6 Jul 2027", "17 Sep 2027"],
   },
   {
     university: "Malta Leadership Institute",
     country: "Malta",
     title: "Master of Business Administration (MBA)",
-    award: "Masters",
+    award: "Master's degree · Management",
     level: "Postgraduate",
+    duration: "Full-time · Mon–Fri",
+    tuition: "€9,000",
+    intakes: ["21 Jan 2027", "20 Apr 2027", "6 Jul 2027", "17 Sep 2027"],
   },
   {
     university: "Malta Leadership Institute",
     country: "Malta",
     title: "Bachelor of Arts (Hons) in Business Leadership",
-    award: "Bachelor (Hons)",
+    award: "Bachelor's degree · Management",
     level: "Undergraduate",
+    duration: "Full-time · Mon–Fri",
+    tuition: "€9,000",
+    intakes: ["21 Jan 2027", "20 Apr 2027", "6 Jul 2027", "17 Sep 2027"],
   },
   {
     university: "Malta Leadership Institute",
     country: "Malta",
     title: "Diploma in Business Leadership",
-    award: "Diploma",
+    award: "Diploma · Management",
     level: "Diploma",
+    duration: "Full-time · Mon–Fri",
+    tuition: "€5,500",
+    intakes: ["21 Jan 2027", "20 Apr 2027", "6 Jul 2027", "17 Sep 2027"],
   },
   {
     university: "Malta Leadership Institute",
     country: "Malta",
     title: "Postgraduate Diploma in Business Leadership",
-    award: "Postgraduate Diploma",
+    award: "Postgraduate Diploma · Management",
     level: "Postgraduate",
+    duration: "Full-time · Mon–Fri",
+    tuition: "€6,000",
+    intakes: ["21 Jan 2027", "20 Apr 2027", "6 Jul 2027", "17 Sep 2027"],
   },
   {
     university: "Malta Leadership Institute",
     country: "Malta",
     title: "Master of Science in Applied Nutrition",
-    award: "Masters",
+    award: "Master's degree · Health & Holistic Wellbeing",
     level: "Postgraduate",
+    duration: "Full-time · Mon–Fri",
+    tuition: "€16,000",
+    intakes: ["21 Jan 2027", "17 Sep 2027"],
   },
   {
     university: "Malta Leadership Institute",
     country: "Malta",
     title: "Certificate for the Caring of the Elderly Person",
-    award: "Certificate",
+    award: "Certificate · Health & Holistic Wellbeing",
     level: "Professional",
+    duration: "Full-time · Mon–Fri",
+    tuition: "€5,000",
+    intakes: ["21 Jan 2027", "20 Apr 2027", "6 Jul 2027", "17 Sep 2027"],
   },
   {
     university: "Malta Leadership Institute",
     country: "Malta",
     title: "Master of Science in Nursing",
-    award: "Masters",
+    award: "Master's degree · Health & Holistic Wellbeing",
     level: "Postgraduate",
+    duration: "Full-time · Mon–Fri",
+    tuition: "€10,000",
+    intakes: ["21 Jan 2027", "20 Apr 2027", "17 Sep 2027"],
   },
-  // Ascencia Malta — 2027 fee schedule
+  // ── Ascencia Malta (Malta) · fee table, 2026 fees ──
   {
     university: "Ascencia Malta",
     country: "Malta",
     title: "Bachelor in Business Administration",
-    award: "Bachelor (Level 6)",
+    award: "MQF / EQF Level 6 · 180 ECTS",
     level: "Undergraduate",
     duration: "3 years",
+    tuition: "€6,000 per year",
+    totalPayable: "€7,000 for first year",
+    beforeVisa: "€4,000",
   },
   {
     university: "Ascencia Malta",
     country: "Malta",
     title: "Bachelor of Science in Computer Science",
-    award: "Bachelor (Level 6)",
+    award: "MQF / EQF Level 6 · 180 ECTS",
     level: "Undergraduate",
     duration: "3 years",
+    tuition: "€7,000 per year",
+    totalPayable: "€8,000 for first year",
+    beforeVisa: "€4,500",
   },
   {
     university: "Ascencia Malta",
     country: "Malta",
     title: "Undergraduate Diploma in Business Administration",
-    award: "Level 5 Diploma",
+    award: "MQF / EQF Level 5 · 60 ECTS",
     level: "Diploma",
-    duration: "12 months",
+    duration: "1 year",
+    tuition: "€5,000",
+    totalPayable: "€6,000",
   },
   {
     university: "Ascencia Malta",
     country: "Malta",
     title: "Undergraduate Diploma in Computer Science",
-    award: "Level 5 Diploma",
+    award: "MQF / EQF Level 5 · 60 ECTS",
     level: "Diploma",
-    duration: "12 months",
+    duration: "1 year",
+    tuition: "€7,000",
+    totalPayable: "€8,000",
   },
   {
     university: "Ascencia Malta",
     country: "Malta",
-    title: "Undergraduate Diploma in Computer Networks Engineering",
-    award: "Level 5 Diploma",
+    title: "Undergraduate Certificate in Business English (Latam & MENA Region)",
+    award: "MQF / EQF Level 5 · 30 ECTS",
     level: "Diploma",
-    duration: "12 months",
-  },
-  {
-    university: "Ascencia Malta",
-    country: "Malta",
-    title: "Undergraduate Certificate in Business English",
-    award: "Level 5 Certificate",
-    level: "Undergraduate",
-    duration: "12 months",
+    duration: "1 year",
+    tuition: "€6,000",
+    totalPayable: "€7,000",
   },
   {
     university: "Ascencia Malta",
     country: "Malta",
     title: "General English",
+    award: "English language programme",
     level: "Foundation",
-    duration: "12 months",
+    duration: "1 year",
+    tuition: "€5,000",
+    totalPayable: "€6,000",
   },
   {
     university: "Ascencia Malta",
     country: "Malta",
     title: "Business English",
+    award: "English language programme",
     level: "Foundation",
-    duration: "12 months",
+    duration: "1 year",
+    tuition: "€6,000",
+    totalPayable: "€7,000",
   },
   {
     university: "Ascencia Malta",
     country: "Malta",
-    title: "Master of Science in Computer Science",
-    award: "Masters (Level 7)",
-    level: "Postgraduate",
-    duration: "18 months",
+    title: "Undergraduate Certificate in Business English",
+    award: "MQF / EQF Level 5 · 30 ECTS",
+    level: "Diploma",
+    duration: "1 year",
+    tuition: "€2,500",
+    fullTuition: "€5,000",
+    scholarship: 50,
+    totalPayable: "€3,500",
+  },
+  {
+    university: "Ascencia Malta",
+    country: "Malta",
+    title: "Undergraduate Diploma in Computer Networks Engineering",
+    award: "MQF / EQF Level 5 · 60 ECTS",
+    level: "Diploma",
+    duration: "1 year",
+    tuition: "€3,500",
+    fullTuition: "€7,000",
+    scholarship: 50,
+    totalPayable: "€4,500",
   },
   {
     university: "Ascencia Malta",
     country: "Malta",
     title: "Master of Science in Computer Science (Data Science and Artificial Intelligence)",
-    award: "Masters (Level 7)",
+    award: "MQF / EQF Level 7 · 90 ECTS",
     level: "Postgraduate",
     duration: "18 months",
-  },
-  {
-    university: "Ascencia Malta",
-    country: "Malta",
-    title: "Master of Science in Computer Science (Blockchain and Fintech)",
-    award: "Masters (Level 7)",
-    level: "Postgraduate",
-    duration: "18 months",
-  },
-  {
-    university: "Ascencia Malta",
-    country: "Malta",
-    title: "Master of Science in Computer Science (Information Security and Cryptography)",
-    award: "Masters (Level 7)",
-    level: "Postgraduate",
-    duration: "18 months",
+    tuition: "€7,000",
+    fullTuition: "€14,000",
+    scholarship: 50,
+    totalPayable: "€8,000",
+    beforeVisa: "€4,500",
   },
   {
     university: "Ascencia Malta",
     country: "Malta",
     title: "Master of Science in Business Economics",
-    award: "Masters (Level 7)",
+    award: "MQF / EQF Level 7 · 90 ECTS",
     level: "Postgraduate",
     duration: "18 months",
+    tuition: "€7,000",
+    fullTuition: "€14,000",
+    scholarship: 50,
+    totalPayable: "€8,000",
+    beforeVisa: "€4,500",
+  },
+  {
+    university: "Ascencia Malta",
+    country: "Malta",
+    title: "Post Graduate Diploma in Business Economics",
+    award: "MQF / EQF Level 7 · 60 ECTS",
+    level: "Postgraduate",
+    duration: "1 year",
+    tuition: "€4,000",
+    fullTuition: "€8,000",
+    scholarship: 50,
+    totalPayable: "€5,000",
+  },
+  {
+    university: "Ascencia Malta",
+    country: "Malta",
+    title: "Post Graduate Diploma in Computer Science",
+    award: "MQF / EQF Level 7 · 60 ECTS",
+    level: "Postgraduate",
+    duration: "1 year",
+    tuition: "€6,000",
+    fullTuition: "€12,000",
+    scholarship: 50,
+    totalPayable: "€7,000",
+    beforeVisa: "€4,000",
+  },
+  {
+    university: "Ascencia Malta",
+    country: "Malta",
+    title: "Post Graduate Diploma in Computer Science (Blockchain and Fintech)",
+    award: "MQF / EQF Level 7 · 60 ECTS",
+    level: "Postgraduate",
+    duration: "1 year",
+    tuition: "€6,000",
+    fullTuition: "€12,000",
+    scholarship: 50,
+    totalPayable: "€7,000",
+    beforeVisa: "€4,000",
+  },
+  {
+    university: "Ascencia Malta",
+    country: "Malta",
+    title: "Post Graduate Diploma in Computer Science (Data Science and Artificial Intelligence)",
+    award: "MQF / EQF Level 7 · 60 ECTS",
+    level: "Postgraduate",
+    duration: "1 year",
+    tuition: "€6,000",
+    fullTuition: "€12,000",
+    scholarship: 50,
+    totalPayable: "€7,000",
+    beforeVisa: "€4,000",
+  },
+  {
+    university: "Ascencia Malta",
+    country: "Malta",
+    title: "Post Graduate Diploma in Computer Science (Information Security and Cryptography)",
+    award: "MQF / EQF Level 7 · 60 ECTS",
+    level: "Postgraduate",
+    duration: "1 year",
+    tuition: "€6,000",
+    fullTuition: "€12,000",
+    scholarship: 50,
+    totalPayable: "€7,000",
+    beforeVisa: "€4,000",
   },
   {
     university: "Ascencia Malta",
     country: "Malta",
     title: "Master of Arts in Human Resource Management",
-    award: "Masters (Level 7)",
+    award: "MQF / EQF Level 7 · 90 ECTS",
     level: "Postgraduate",
     duration: "18 months",
+    tuition: "€7,700",
+    fullTuition: "€11,000",
+    scholarship: 30,
+    totalPayable: "€8,700",
+    beforeVisa: "€4,850",
   },
   {
     university: "Ascencia Malta",
     country: "Malta",
     title: "Master of Arts in International Management and Global Business",
-    award: "Masters (Level 7)",
+    award: "MQF / EQF Level 7 · 90 ECTS",
     level: "Postgraduate",
     duration: "18 months",
+    tuition: "€7,700",
+    fullTuition: "€11,000",
+    scholarship: 30,
+    totalPayable: "€8,700",
+    beforeVisa: "€4,850",
   },
   {
     university: "Ascencia Malta",
     country: "Malta",
     title: "Master of Arts in Leadership and Business Development",
-    award: "Masters (Level 7)",
+    award: "MQF / EQF Level 7 · 90 ECTS",
     level: "Postgraduate",
     duration: "18 months",
+    tuition: "€7,700",
+    fullTuition: "€11,000",
+    scholarship: 30,
+    totalPayable: "€8,700",
+    beforeVisa: "€4,850",
   },
   {
     university: "Ascencia Malta",
     country: "Malta",
     title: "Master of Arts in Entrepreneurship",
-    award: "Masters (Level 7)",
+    award: "MQF / EQF Level 7 · 90 ECTS",
     level: "Postgraduate",
     duration: "18 months",
+    tuition: "€7,700",
+    fullTuition: "€11,000",
+    scholarship: 30,
+    totalPayable: "€8,700",
+    beforeVisa: "€4,850",
   },
   {
     university: "Ascencia Malta",
     country: "Malta",
     title: "Master of Business Administration (MBA) in Leadership Excellence",
-    award: "Masters (Level 7)",
+    award: "MQF / EQF Level 7 · 90 ECTS",
     level: "Postgraduate",
     duration: "18 months",
+    tuition: "€7,700",
+    fullTuition: "€11,000",
+    scholarship: 30,
+    totalPayable: "€8,700",
+    beforeVisa: "€4,850",
   },
   {
     university: "Ascencia Malta",
     country: "Malta",
-    title: "Postgraduate Diploma in Business Economics",
-    award: "Postgraduate Diploma",
+    title: "Master of Science in Computer Science",
+    award: "MQF / EQF Level 7 · 90 ECTS",
     level: "Postgraduate",
-    duration: "12 months",
+    duration: "18 months",
+    tuition: "€9,800",
+    fullTuition: "€14,000",
+    scholarship: 30,
+    totalPayable: "€10,800",
+    beforeVisa: "€5,900",
   },
   {
     university: "Ascencia Malta",
     country: "Malta",
-    title: "Postgraduate Diploma in Computer Science",
-    award: "Postgraduate Diploma",
+    title: "Master of Science in Computer Science (Blockchain and Fintech)",
+    award: "MQF / EQF Level 7 · 90 ECTS",
     level: "Postgraduate",
-    duration: "12 months",
+    duration: "18 months",
+    tuition: "€9,800",
+    fullTuition: "€14,000",
+    scholarship: 30,
+    totalPayable: "€10,800",
+    beforeVisa: "€5,900",
   },
   {
     university: "Ascencia Malta",
     country: "Malta",
-    title: "Postgraduate Diploma in Computer Science (Blockchain and Fintech)",
-    award: "Postgraduate Diploma",
+    title: "Master of Science in Computer Science (Information Security and Cryptography)",
+    award: "MQF / EQF Level 7 · 90 ECTS",
     level: "Postgraduate",
-    duration: "12 months",
+    duration: "18 months",
+    tuition: "€9,800",
+    fullTuition: "€14,000",
+    scholarship: 30,
+    totalPayable: "€10,800",
+    beforeVisa: "€5,900",
   },
   {
     university: "Ascencia Malta",
     country: "Malta",
-    title: "Postgraduate Diploma in Computer Science (Data Science and Artificial Intelligence)",
-    award: "Postgraduate Diploma",
+    title: "Post Graduate Diploma in Human Resource Management",
+    award: "MQF / EQF Level 7 · 60 ECTS",
     level: "Postgraduate",
-    duration: "12 months",
+    duration: "1 year",
+    tuition: "€5,600",
+    fullTuition: "€8,000",
+    scholarship: 30,
+    totalPayable: "€6,600",
+    beforeVisa: "€3,800",
   },
   {
     university: "Ascencia Malta",
     country: "Malta",
-    title: "Postgraduate Diploma in Computer Science (Information Security and Cryptography)",
-    award: "Postgraduate Diploma",
+    title: "Post Graduate Diploma in International Management and Global Business",
+    award: "MQF / EQF Level 7 · 60 ECTS",
     level: "Postgraduate",
-    duration: "12 months",
+    duration: "1 year",
+    tuition: "€5,600",
+    fullTuition: "€8,000",
+    scholarship: 30,
+    totalPayable: "€6,600",
+    beforeVisa: "€3,800",
   },
   {
     university: "Ascencia Malta",
     country: "Malta",
-    title: "Postgraduate Diploma in Human Resource Management",
-    award: "Postgraduate Diploma",
+    title: "Post Graduate Diploma in Leadership and Business Development",
+    award: "MQF / EQF Level 7 · 60 ECTS",
     level: "Postgraduate",
-    duration: "12 months",
+    duration: "1 year",
+    tuition: "€5,600",
+    fullTuition: "€8,000",
+    scholarship: 30,
+    totalPayable: "€6,600",
+    beforeVisa: "€3,800",
   },
   {
     university: "Ascencia Malta",
     country: "Malta",
-    title: "Postgraduate Diploma in International Management and Global Business",
-    award: "Postgraduate Diploma",
+    title: "Post Graduate Diploma in Entrepreneurship",
+    award: "MQF / EQF Level 7 · 60 ECTS",
     level: "Postgraduate",
-    duration: "12 months",
+    duration: "1 year",
+    tuition: "€5,600",
+    fullTuition: "€8,000",
+    scholarship: 30,
+    totalPayable: "€6,600",
+    beforeVisa: "€3,800",
   },
   {
     university: "Ascencia Malta",
     country: "Malta",
-    title: "Postgraduate Diploma in Leadership and Business Development",
-    award: "Postgraduate Diploma",
+    title: "Post Graduate Diploma of Business Administration in Leadership Excellence",
+    award: "MQF / EQF Level 7 · 60 ECTS",
     level: "Postgraduate",
-    duration: "12 months",
-  },
-  {
-    university: "Ascencia Malta",
-    country: "Malta",
-    title: "Postgraduate Diploma in Entrepreneurship",
-    award: "Postgraduate Diploma",
-    level: "Postgraduate",
-    duration: "12 months",
-  },
-  {
-    university: "Ascencia Malta",
-    country: "Malta",
-    title: "Postgraduate Diploma of Business Administration in Leadership Excellence",
-    award: "Postgraduate Diploma",
-    level: "Postgraduate",
-    duration: "12 months",
+    duration: "1 year",
+    tuition: "€5,600",
+    fullTuition: "€8,000",
+    scholarship: 30,
+    totalPayable: "€6,600",
+    beforeVisa: "€3,800",
   },
 ];
 
@@ -1590,27 +1758,62 @@ function ProgrammeFinderInner() {
                     >
                       {programme.level}
                     </span>
-                    {programme.duration && (
-                      <span className="inline-flex items-center gap-1 rounded-full bg-[#F5F5F0] px-2.5 py-1 text-[11px] font-semibold text-[#6B6B6B]">
-                        <svg
-                          className="h-3 w-3"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth={2.5}
-                          aria-hidden
-                        >
-                          <circle cx="12" cy="12" r="8.5" />
-                          <path strokeLinecap="round" d="M12 7.5V12l3 2" />
-                        </svg>
-                        {programme.duration}
-                      </span>
-                    )}
+                    <span className="inline-flex items-center gap-1 rounded-full bg-[#F5F5F0] px-2.5 py-1 text-[11px] font-semibold text-[#6B6B6B]">
+                      <svg
+                        className="h-3 w-3"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={2.5}
+                        aria-hidden
+                      >
+                        <circle cx="12" cy="12" r="8.5" />
+                        <path strokeLinecap="round" d="M12 7.5V12l3 2" />
+                      </svg>
+                      {programme.duration}
+                    </span>
                   </div>
                   {programme.award && (
                     <p className="mt-2 text-xs text-[#9A9A9A]">
                       {programme.award}
                     </p>
+                  )}
+                  {(programme.tuition || programme.intakes) && (
+                    <div className="mt-3 flex flex-col gap-1.5 rounded-xl bg-[#F7F8FB] px-3 py-2.5 text-xs">
+                      {programme.tuition && (
+                        <p className="flex items-center justify-between gap-2">
+                          <span className="text-[#6B6B6B]">Tuition</span>
+                          <span className="text-right">
+                            {programme.fullTuition && <s className="mr-1.5 text-[#9A9A9A]">{programme.fullTuition}</s>}
+                            <span className="font-semibold text-[#1B1B1B]">{programme.tuition}</span>
+                          </span>
+                        </p>
+                      )}
+                      {programme.scholarship && (
+                        <p className="flex items-center justify-between gap-2">
+                          <span className="text-[#6B6B6B]">Scholarship</span>
+                          <span className="font-semibold text-[#2E8F29]">{programme.scholarship}% applied</span>
+                        </p>
+                      )}
+                      {programme.totalPayable && (
+                        <p className="flex items-center justify-between gap-2">
+                          <span className="text-[#6B6B6B]">Total with €1,000 costs</span>
+                          <span className="font-semibold text-[#1B1B1B]">{programme.totalPayable}</span>
+                        </p>
+                      )}
+                      {programme.beforeVisa && (
+                        <p className="flex items-center justify-between gap-2">
+                          <span className="text-[#6B6B6B]">Flexible plan, before visa</span>
+                          <span className="font-semibold text-[#1B1B1B]">{programme.beforeVisa}</span>
+                        </p>
+                      )}
+                      {programme.intakes && (
+                        <p className="flex items-start justify-between gap-2">
+                          <span className="shrink-0 text-[#6B6B6B]">Intakes</span>
+                          <span className="text-right font-medium text-[#1B1B1B]">{programme.intakes.join(" · ")}</span>
+                        </p>
+                      )}
+                    </div>
                   )}
 
                   <div className="min-h-5 flex-1" aria-hidden />

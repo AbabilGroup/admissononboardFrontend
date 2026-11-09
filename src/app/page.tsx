@@ -27,12 +27,12 @@ export default function Home() {
       <HeroHome />
       {/* <WhyChose /> */}
       {/* <Accreditations /> */}
-      <SuccessStoriesGallery />
       <VisionTargets />
+      <SuccessStoriesGallery />
       {/* <FindStudyProgram /> */}
       <HowWeHelp />
-      <UniversityPartner country="United Kingdom" />
       <TheJourney />
+      <UniversityPartner country="United Kingdom" />
       {/* <PartnerInstitutions /> */}
       {/* <VisaSuccessStories /> */}
       {/* <CtaBanner /> */}
@@ -45,8 +45,8 @@ export default function Home() {
       {/* <BranchLocations /> */}
       <FaqSection />
       {/* <ContactCta /> */}
-      <ContactFooter />
       <OurOffices />
+      <ContactFooter />
     </div>
   );
 }

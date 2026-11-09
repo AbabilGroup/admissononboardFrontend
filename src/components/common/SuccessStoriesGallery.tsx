@@ -1,147 +1,151 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import Image from "next/image";
+import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
+import { ImageStreamHero } from "@/components/ui/image-stream-hero";
 
-const columns: {
-  images: string[];
-  direction: "up" | "down";
-  duration: number;
-  mobileDuration: number;
-}[] = [
-  {
-    images: ["/visa1.png", "/visa2.png", "/visa3.png"],
-    direction: "up",
-    duration: 22,
-    mobileDuration: 34,
-  },
-  {
-    images: ["/visa4.png", "/visa5.png", "/visa6.png"],
-    direction: "down",
-    duration: 26,
-    mobileDuration: 40,
-  },
-  {
-    images: ["/visa7.png", "/visa8.png", "/visa9.png"],
-    direction: "up",
-    duration: 30,
-    mobileDuration: 34,
-  },
-  {
-    images: ["/visa10.png", "/visa11.png", "/visa12.png"],
-    direction: "down",
-    duration: 24,
-    mobileDuration: 40,
-  },
-  {
-    images: ["/visa13.png", "/visa14.png", "/visa15.png"],
-    direction: "up",
-    duration: 28,
-    mobileDuration: 34,
-  },
-  {
-    images: ["/visa16.png", "/visa17.png", "/visa18.png"],
-    direction: "down",
-    duration: 20,
-    mobileDuration: 40,
-  },
-];
+gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
 
-// Only the first two columns are shown on mobile — wider, calmer, easier to look at.
-const MOBILE_VISIBLE_COLUMNS = 2;
+// Visa approval photos ride the 3D corridor (both rails share this order)
+const APPROVALS = Array.from({ length: 18 }, (_, i) => ({
+  src: `/visa${i + 1}.png`,
+  alt: "Student holding an approved study visa",
+}));
 
 export default function SuccessStoriesGallery() {
-  const columnRefs = useRef<Array<HTMLDivElement | null>>([]);
+  const root = useRef<HTMLElement>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    const el = root.current;
+    if (!el) return;
+    const q = gsap.utils.selector(el);
     const mm = gsap.matchMedia();
 
-    mm.add(
-      {
-        isMobile: "(max-width: 639px)",
-        isDesktop: "(min-width: 640px)",
-      },
-      (context) => {
-        const { isMobile } = context.conditions as { isMobile: boolean };
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+      // Corridor opens from a small rounded window to full size as the section scrolls in
+      gsap.fromTo(
+        q("[data-corridor]"),
+        { clipPath: "inset(16% 20% 16% 20% round 48px)", scale: 0.94 },
+        {
+          clipPath: "inset(0% 0% 0% 0% round 32px)",
+          scale: 1,
+          ease: "power2.out",
+          scrollTrigger: { trigger: el, start: "top 90%", end: "top 20%", scrub: 1.2 },
+        },
+      );
 
-        columnRefs.current.forEach((el, i) => {
-          if (!el) return;
-          // Skip animating columns that are hidden on mobile — saves work.
-          if (isMobile && i >= MOBILE_VISIBLE_COLUMNS) return;
+      // Heading card reveals once, then drifts gently with scroll
+      const reveal = gsap.timeline({
+        defaults: { ease: "expo.out", duration: 1.1 },
+        scrollTrigger: { trigger: el, start: "top 55%", once: true },
+      });
+      reveal
+        .fromTo(
+          q("[data-panel]"),
+          { autoAlpha: 0, y: -36, scale: 0.92, filter: "blur(10px)" },
+          { autoAlpha: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 1.3 },
+          0,
+        )
+        .fromTo(q("[data-chip]"), { autoAlpha: 0, y: -12, scale: 0.9 }, { autoAlpha: 1, y: 0, scale: 1, ease: "back.out(2)" }, 0.2)
+        .fromTo(
+          q("[data-word]"),
+          { autoAlpha: 0, yPercent: 110, rotate: 5, filter: "blur(6px)" },
+          { autoAlpha: 1, yPercent: 0, rotate: 0, filter: "blur(0px)", stagger: 0.12, duration: 1.2 },
+          0.3,
+        )
+        .fromTo(q("[data-underline]"), { drawSVG: "0%" }, { drawSVG: "100%", duration: 1, ease: "power2.inOut" }, 0.8)
+        .fromTo(q("[data-copy]"), { autoAlpha: 0, y: 16, filter: "blur(6px)" }, { autoAlpha: 1, y: 0, filter: "blur(0px)" }, 0.65);
 
-          const { direction, duration, mobileDuration } = columns[i];
-          const activeDuration = isMobile ? mobileDuration : duration;
-
-          gsap.fromTo(
-            el,
-            { yPercent: direction === "up" ? 0 : -50 },
-            {
-              yPercent: direction === "up" ? -50 : 0,
-              duration: activeDuration,
-              ease: "none",
-              repeat: -1,
-            },
-          );
-        });
-      },
-    );
+      gsap.fromTo(
+        q("[data-panel-wrap]"),
+        { y: 16 },
+        { y: -16, ease: "none", scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: 1.5 } },
+      );
+    });
 
     return () => mm.revert();
   }, []);
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#FFFEFA] py-14 sm:py-20">
-      {/* Scrolling photo columns */}
-      <div className="relative mx-auto flex h-[420px] container gap-3 px-4 sm:h-[600px] sm:gap-4">
-        {columns.map((column, colIndex) => (
-          <div
-            key={colIndex}
-            className={`relative h-full flex-1 overflow-hidden ${
-              colIndex >= MOBILE_VISIBLE_COLUMNS ? "hidden sm:block" : ""
-            }`}
-          >
+    <section ref={root} className="approvals relative w-full overflow-hidden bg-[#FFFEFA] py-14 sm:py-20">
+      <style>{`
+        @media (prefers-reduced-motion: no-preference) {
+          .approvals [data-reveal] { visibility: hidden; }
+        }
+      `}</style>
+
+      <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6">
+        <div data-corridor className="relative overflow-hidden rounded-[2rem] will-change-[clip-path,transform]">
+          <ImageStreamHero
+            images={APPROVALS}
+            cards={12}
+            speed={28}
+            axis={64}
+            path={{ cardRadius: 1.2 }}
+            className="h-[480px] w-full bg-[radial-gradient(ellipse_at_center,#FFFFFF_0%,#EEF2FF_55%,#E3EAFF_100%)] sm:h-[620px] lg:h-[700px]">
+            {/* Soft vignette so the cards melt into the frame edges */}
             <div
-              ref={(el) => {
-                columnRefs.current[colIndex] = el;
-              }}
-              className="flex flex-col gap-3 sm:gap-4"
-            >
-              {[...column.images, ...column.images].map((src, i) => (
+              aria-hidden
+              className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(255,254,250,0.85)_100%)]"
+            />
+
+            {/* Heading card, top centre (corridor streams out beneath it) */}
+            <div className="absolute inset-x-0 top-6 z-10 flex justify-center px-4 sm:top-10 lg:top-12">
+              <div data-panel-wrap>
                 <div
-                  key={`${src}-${i}`}
-                  className="relative aspect-[4/5] w-full shrink-0 overflow-hidden rounded-xl sm:aspect-[3/4] sm:rounded-2xl"
-                >
-                  <Image
-                    src={src}
-                    alt="Student success moment"
-                    fill
-                    sizes="(max-width: 639px) 50vw, 200px"
-                    className="object-cover"
-                  />
+                  data-panel
+                  data-reveal
+                  className="max-w-md rounded-3xl border border-white/80 bg-white/75 px-6 py-6 text-center shadow-[0_30px_80px_-30px_rgba(20,33,61,0.45)] backdrop-blur-xl sm:max-w-xl sm:px-10 sm:py-8">
+                  <span
+                    data-chip
+                    data-reveal
+                    className="inline-flex items-center gap-2 rounded-full bg-[#3BAA35]/10 px-3.5 py-1.5 text-xs font-semibold text-[#2E8A29] sm:text-sm">
+                    <svg viewBox="0 0 20 20" className="size-4" fill="currentColor" aria-hidden>
+                      <path d="M10 1.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17Zm4 6.3-4.8 5a.8.8 0 0 1-1.1 0L6 10.6l1.1-1.1 1.5 1.5 4.3-4.4L14 7.8Z" />
+                    </svg>
+                    Real students, real visas
+                  </span>
+
+                  <h2 className="font-display mt-4 text-[2.1rem] font-semibold leading-[1.05] tracking-[-0.03em] text-[#350C0E] sm:text-5xl">
+                    <span className="mr-[0.25em] inline-block overflow-hidden pb-[0.1em] align-top">
+                      <span data-word data-reveal className="inline-block origin-bottom-left">
+                        Recent
+                      </span>
+                    </span>
+                    <span className="inline-block overflow-hidden pb-[0.2em] align-top">
+                      <span data-word data-reveal className="relative inline-block origin-bottom-left text-[#F7931E]">
+                        Approvals
+                        <svg
+                          aria-hidden
+                          viewBox="0 0 220 24"
+                          preserveAspectRatio="none"
+                          className="absolute -bottom-[0.18em] left-0 h-[0.22em] w-full overflow-visible">
+                          <path
+                            data-underline
+                            d="M4 16 C 70 6, 150 6, 216 12"
+                            fill="none"
+                            stroke="#14213D"
+                            strokeWidth="5"
+                            strokeLinecap="round"
+                          />
+                        </svg>
+                      </span>
+                    </span>
+                  </h2>
+
+                  <p
+                    data-copy
+                    data-reveal
+                    className="mx-auto mt-4 max-w-sm text-sm leading-relaxed text-[#4A5268] sm:mt-5 sm:max-w-md sm:text-base">
+                    A showcase of real visa approvals secured for our students embarking on their global education
+                    journey.
+                  </p>
                 </div>
-              ))}
+              </div>
             </div>
-          </div>
-        ))}
-
-        {/* Fade overlays so columns dissolve into the background at the edges */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-14 bg-gradient-to-r from-[#FFFEFA] to-transparent sm:w-40" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-14 bg-gradient-to-l from-[#FFFEFA] to-transparent sm:w-40" />
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-[#FFFEFA] to-transparent sm:h-16" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-[#FFFEFA] to-transparent sm:h-16" />
-      </div>
-
-      {/* Text overlay, anchored to the top instead of centered */}
-      <div className="pointer-events-none absolute inset-x-0 top-6 flex justify-center px-4 sm:top-14 sm:px-6">
-        <div className="pointer-events-auto max-w-xl rounded-2xl bg-[#FFFEFA]/90 px-5 py-6 text-center shadow-xl backdrop-blur-sm sm:rounded-3xl sm:px-8 sm:py-10">
-          <h2 className="text-2xl font-semibold tracking-tight text-[#1B1B1B] sm:text-4xl">
-            Recent Approvals
-          </h2>
-          <p className="mt-3 text-xs leading-relaxed text-[#6B6B6B] sm:mt-4 sm:text-base">
-            A showcase of real visa approvals secured for our students embarking
-            on their global education journey.
-          </p>
+          </ImageStreamHero>
         </div>
       </div>
     </section>
