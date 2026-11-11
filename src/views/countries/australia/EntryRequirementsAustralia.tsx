@@ -6,7 +6,7 @@ const programs: Program[] = [
     group: "Pathway",
     duration: "About 1 year",
     summary:
-      "A pathway course of about 1 year that prepares students for entry into a bachelor's degree.",
+      "A Pathway course of about 1 year that prepares students for entry into a bachelor's degree.",
     requirements: [
       "Academic: Class 12 / HSC or equivalent",
       "English: IELTS about 5.0–5.5",
@@ -30,7 +30,7 @@ const programs: Program[] = [
     group: "Undergraduate",
     duration: "Usually 3 years",
     summary:
-      "The standard undergraduate degree, usually 3 years, and longer for fields such as engineering and medicine.",
+      "The Standard undergraduate degree, usually 3 years, and longer for fields such as engineering and medicine.",
     requirements: [
       "Academic: Year 12 or equivalent, with the score set by the university",
       "Please note: Applicants from 12-year systems may need a Foundation or Diploma first",
@@ -43,7 +43,7 @@ const programs: Program[] = [
     group: "Undergraduate",
     duration: "+1 year or 4-year integrated",
     summary:
-      "An extra research-focused year after a bachelor's degree, or a 4-year integrated course, and a common route into research degrees.",
+      "An Extra research-focused year after a bachelor's degree, or a 4-year integrated course, and a common route into research degrees.",
     requirements: [
       "Academic: A strong bachelor's result",
       "English: IELTS about 6.5",
