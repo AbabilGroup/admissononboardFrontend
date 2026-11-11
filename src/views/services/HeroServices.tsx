@@ -37,15 +37,20 @@ function Words({ text, className = "" }: { text: string; className?: string }) {
   );
 }
 
+/* How many times the service list repeats inside each half of the band.
+   Each half must be wider than the widest screen, or a gap shows at the end of the loop. */
+const SETS = 3;
+
 function Band({ reverse = false }: { reverse?: boolean }) {
-  const items = reverse ? [...SERVICES].reverse() : SERVICES;
+  const list = reverse ? [...SERVICES].reverse() : SERVICES;
+  const items = Array.from({ length: SETS }, (_, set) => list.map((s) => ({ ...s, key: `${set}-${s.title}` }))).flat();
   return (
     <div data-hs-row className="hs-row" data-dir={reverse ? -1 : 1}>
       {/* Two identical halves so the loop is seamless */}
       {[0, 1].map((copy) => (
         <div key={copy} className="hs-half">
           {items.map((s) => (
-            <span key={s.title} className="hs-pill" style={{ "--c": s.color } as CSSProperties}>
+            <span key={s.key} className="hs-pill" style={{ "--c": s.color } as CSSProperties}>
               <i>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
                   {s.icon}
@@ -89,7 +94,7 @@ export default function HeroServices() {
       /* The service band loops forever; rows run in opposite directions */
       const loops = q("[data-hs-row]").map((row) => {
         const dir = Number((row as HTMLElement).dataset.dir);
-        return gsap.fromTo(row, { xPercent: dir > 0 ? 0 : -50 }, { xPercent: dir > 0 ? -50 : 0, duration: 38, ease: "none", repeat: -1 });
+        return gsap.fromTo(row, { xPercent: dir > 0 ? 0 : -50 }, { xPercent: dir > 0 ? -50 : 0, duration: 38 * SETS, ease: "none", repeat: -1 });
       });
 
       /* Scrolling makes the band rush, then it settles back */

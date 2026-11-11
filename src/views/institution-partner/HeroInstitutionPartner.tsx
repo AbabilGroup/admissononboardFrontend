@@ -12,14 +12,15 @@ import { accentSerif } from "@/lib/fonts";
 gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin, MotionPathPlugin);
 
 /* The photo is shown in a 6:5 frame cropped to its right side (the handshake under the world map);
-   reach lines start at the handshake and land on points across the map. Coordinates are in a 120×100 box. */
-const ORIGIN = { x: 59, y: 79 };
+   reach lines start at the handshake and land on points across the map. Coordinates are in a 120×100 box.
+   Every target sits on one of the city dots printed on the photo's map (all left of the right-hand man's head). */
+const ORIGIN = { x: 56, y: 81 };
 const TARGETS = [
-  { x: 16, y: 26 },
-  { x: 38, y: 13 },
-  { x: 70, y: 11 },
-  { x: 98, y: 22 },
-  { x: 110, y: 50 },
+  { x: 16.5, y: 25.5 }, // North America
+  { x: 33, y: 14.5 }, // North Atlantic
+  { x: 46, y: 25 }, // Europe
+  { x: 64, y: 29.5 }, // South Asia
+  { x: 71, y: 26.5 }, // East Asia
 ];
 /* Flight-style arcs: rise straight up out of the handshake, then bend over onto each point */
 const arc = (t: { x: number; y: number }) =>
@@ -242,14 +243,14 @@ export default function HeroInstitutionPartner() {
         .ih .ih-frame { position: relative; aspect-ratio: 6 / 5; border-radius: 28px; overflow: hidden; isolation: isolate; background: #F3E3D3;
           box-shadow: 0 40px 80px -40px rgba(53,12,14,0.6), 0 0 0 1px rgba(53,12,14,0.06); }
         .ih .ih-drift,
-        .ih .ih-zoom { position: absolute; inset: 0; transform-origin: 49% 80%; }
+        .ih .ih-zoom { position: absolute; inset: 0; transform-origin: 46.7% 81%; }
         /* Keep only the right side of the wide photo */
         .ih .ih-crop { position: absolute; right: 0; top: 0; height: 100%; aspect-ratio: 1918 / 820; }
         .ih .ih-crop img { object-fit: cover; }
         .ih .ih-shade { position: absolute; inset: 0; pointer-events: none;
           background: linear-gradient(180deg, rgba(53,12,14,0) 55%, rgba(53,12,14,0.55) 100%), linear-gradient(90deg, rgba(255,240,225,0.35), transparent 30%); }
         .ih .ih-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
-        .ih .ih-ring { position: absolute; left: 49.2%; top: 79%; width: 5rem; height: 5rem; margin: -2.5rem 0 0 -2.5rem; border-radius: 999px;
+        .ih .ih-ring { position: absolute; left: 46.7%; top: 81%; width: 5rem; height: 5rem; margin: -2.5rem 0 0 -2.5rem; border-radius: 999px;
           border: 2px solid rgba(255,255,255,0.85); box-shadow: 0 0 24px rgba(247,147,30,0.6); pointer-events: none; animation: ih-ping 3s cubic-bezier(.22,1,.36,1) infinite; }
         .ih .ih-ring:nth-of-type(2) { animation-delay: 1s; }
         .ih .ih-ring:nth-of-type(3) { animation-delay: 2s; }
