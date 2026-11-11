@@ -20,11 +20,7 @@ import { accentSerif } from "@/lib/fonts";
 
 gsap.registerPlugin(ScrollTrigger);
 
-type Level =
-  | "Foundation"
-  | "Diploma"
-  | "Undergraduate"
-  | "Postgraduate";
+type Level = "Foundation" | "Diploma" | "Undergraduate" | "Postgraduate";
 
 type Programme = {
   university: string;
@@ -847,7 +843,8 @@ const programmes: Programme[] = [
   {
     university: "Ascencia Malta",
     country: "Malta",
-    title: "Undergraduate Certificate in Business English (Latam & MENA Region)",
+    title:
+      "Undergraduate Certificate in Business English (Latam & MENA Region)",
     award: "MQF / EQF Level 5 · 30 ECTS",
     level: "Diploma",
     duration: "1 year",
@@ -901,7 +898,8 @@ const programmes: Programme[] = [
   {
     university: "Ascencia Malta",
     country: "Malta",
-    title: "Master of Science in Computer Science (Data Science and Artificial Intelligence)",
+    title:
+      "Master of Science in Computer Science (Data Science and Artificial Intelligence)",
     award: "MQF / EQF Level 7 · 90 ECTS",
     level: "Postgraduate",
     duration: "18 months",
@@ -965,7 +963,8 @@ const programmes: Programme[] = [
   {
     university: "Ascencia Malta",
     country: "Malta",
-    title: "Post Graduate Diploma in Computer Science (Data Science and Artificial Intelligence)",
+    title:
+      "Post Graduate Diploma in Computer Science (Data Science and Artificial Intelligence)",
     award: "MQF / EQF Level 7 · 60 ECTS",
     level: "Postgraduate",
     duration: "1 year",
@@ -978,7 +977,8 @@ const programmes: Programme[] = [
   {
     university: "Ascencia Malta",
     country: "Malta",
-    title: "Post Graduate Diploma in Computer Science (Information Security and Cryptography)",
+    title:
+      "Post Graduate Diploma in Computer Science (Information Security and Cryptography)",
     award: "MQF / EQF Level 7 · 60 ECTS",
     level: "Postgraduate",
     duration: "1 year",
@@ -1082,7 +1082,8 @@ const programmes: Programme[] = [
   {
     university: "Ascencia Malta",
     country: "Malta",
-    title: "Master of Science in Computer Science (Information Security and Cryptography)",
+    title:
+      "Master of Science in Computer Science (Information Security and Cryptography)",
     award: "MQF / EQF Level 7 · 90 ECTS",
     level: "Postgraduate",
     duration: "18 months",
@@ -1108,7 +1109,8 @@ const programmes: Programme[] = [
   {
     university: "Ascencia Malta",
     country: "Malta",
-    title: "Post Graduate Diploma in International Management and Global Business",
+    title:
+      "Post Graduate Diploma in International Management and Global Business",
     award: "MQF / EQF Level 7 · 60 ECTS",
     level: "Postgraduate",
     duration: "1 year",
@@ -1147,7 +1149,8 @@ const programmes: Programme[] = [
   {
     university: "Ascencia Malta",
     country: "Malta",
-    title: "Post Graduate Diploma of Business Administration in Leadership Excellence",
+    title:
+      "Post Graduate Diploma of Business Administration in Leadership Excellence",
     award: "MQF / EQF Level 7 · 60 ECTS",
     level: "Postgraduate",
     duration: "1 year",
@@ -1188,27 +1191,98 @@ function namesFromParam(param: string | null) {
 
 /* ───────────────────────── Small pieces ───────────────────────── */
 
+/* Each programme card gets its own colour scene, cycling through the brand palette */
+const SCENES = [
+  {
+    a: "#8FE3DA",
+    b: "#D2F5F0",
+    c: "#BFE3FF",
+    base: "#EAFAF7",
+    accent: "#0F9D8A",
+  },
+  {
+    a: "#A9C1FF",
+    b: "#DCE6FF",
+    c: "#BDEBFF",
+    base: "#F0F4FF",
+    accent: "#2F6BFF",
+  },
+  {
+    a: "#A8E09B",
+    b: "#DDF3D6",
+    c: "#FFEDAA",
+    base: "#F0FAEC",
+    accent: "#3BAA35",
+  },
+  {
+    a: "#FFB3C6",
+    b: "#FFE0E8",
+    c: "#E1D3FF",
+    base: "#FFF2F6",
+    accent: "#E5486F",
+  },
+  {
+    a: "#FFD777",
+    b: "#FFF0C8",
+    c: "#FFC9A0",
+    base: "#FFF9EA",
+    accent: "#E08A00",
+  },
+  {
+    a: "#CDB8FF",
+    b: "#ECE4FF",
+    c: "#BCE0FF",
+    base: "#F6F2FF",
+    accent: "#7A4FBF",
+  },
+];
+
 function Flag({ country }: { country: string }) {
   const code = countryCodes[country];
   if (!code) return null;
   return (
     <span className="pg-flag">
-      <ReactCountryFlag countryCode={code} svg aria-hidden style={{ width: "100%", height: "100%", display: "block", objectFit: "cover" }} />
+      <ReactCountryFlag
+        countryCode={code}
+        svg
+        aria-hidden
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "block",
+          objectFit: "cover",
+        }}
+      />
     </span>
   );
 }
 
 /** University logo with an initials fallback if the file is missing */
-function UniLogo({ name, className = "" }: { name: string; className?: string }) {
+function UniLogo({
+  name,
+  className = "",
+}: {
+  name: string;
+  className?: string;
+}) {
   const info = universityInfo[name];
   const [failed, setFailed] = useState(false);
 
   return (
     <span className={`pg-logo ${className}`}>
       {info && !failed ? (
-        <Image src={info.logo} alt={`${name} logo`} width={160} height={80} onError={() => setFailed(true)} />
+        <Image
+          src={info.logo}
+          alt={`${name} logo`}
+          width={160}
+          height={80}
+          onError={() => setFailed(true)}
+        />
       ) : (
-        <span className="pg-logo-fallback" style={{ backgroundColor: info?.color ?? "#350C0E" }}>
+        <span
+          className="pg-logo-fallback"
+          style={{ backgroundColor: info?.color ?? "#350C0E" }}
+        >
           {info?.initials ?? name.slice(0, 2).toUpperCase()}
         </span>
       )}
@@ -1241,7 +1315,8 @@ function MultiSelect({
   useEffect(() => {
     if (!open) return;
     const onPointer = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+      if (ref.current && !ref.current.contains(e.target as Node))
+        setOpen(false);
     };
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpen(false);
@@ -1254,7 +1329,12 @@ function MultiSelect({
     };
   }, [open]);
 
-  const toggle = (value: string) => onChange(selected.includes(value) ? selected.filter((v) => v !== value) : [...selected, value]);
+  const toggle = (value: string) =>
+    onChange(
+      selected.includes(value)
+        ? selected.filter((v) => v !== value)
+        : [...selected, value],
+    );
 
   const summary =
     selected.length === 0
@@ -1277,26 +1357,52 @@ function MultiSelect({
         className="pg-control pg-ms-btn"
       >
         <span className="pg-ms-value">
-          {selected.length === 1 && options.find((o) => o.value === selected[0])?.icon}
+          {selected.length === 1 &&
+            options.find((o) => o.value === selected[0])?.icon}
           <span className="truncate">{summary}</span>
         </span>
         <span className="pg-ms-end">
-          {selected.length > 1 && <span className="pg-ms-count">{selected.length}</span>}
-          <svg className="pg-caret" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} aria-hidden>
-            <path strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6" />
+          {selected.length > 1 && (
+            <span className="pg-ms-count">{selected.length}</span>
+          )}
+          <svg
+            className="pg-caret"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2.5}
+            aria-hidden
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="m6 9 6 6 6-6"
+            />
           </svg>
         </span>
       </button>
 
       {open && (
         <div className="pg-pop">
-          <ul role="listbox" aria-multiselectable aria-labelledby={`${id}-label`} className="pg-pop-list" data-lenis-prevent>
+          <ul
+            role="listbox"
+            aria-multiselectable
+            aria-labelledby={`${id}-label`}
+            className="pg-pop-list"
+            data-lenis-prevent
+          >
             {options.map((option) => {
               const checked = selected.includes(option.value);
               return (
                 <li key={option.value} role="option" aria-selected={checked}>
                   <label className={`pg-opt${checked ? " is-on" : ""}`}>
-                    <input type="checkbox" checked={checked} onChange={() => toggle(option.value)} />
+                    <input
+                      type="checkbox"
+                      checked={checked}
+                      onChange={() => toggle(option.value)}
+                    />
                     {option.icon}
                     <span>{option.label}</span>
                   </label>
@@ -1305,10 +1411,19 @@ function MultiSelect({
             })}
           </ul>
           <div className="pg-pop-foot">
-            <button type="button" onClick={() => onChange([])} disabled={selected.length === 0} className="pg-link">
+            <button
+              type="button"
+              onClick={() => onChange([])}
+              disabled={selected.length === 0}
+              className="pg-link"
+            >
               Clear
             </button>
-            <button type="button" onClick={() => setOpen(false)} className="pg-pill-btn">
+            <button
+              type="button"
+              onClick={() => setOpen(false)}
+              className="pg-pill-btn"
+            >
               Done
             </button>
           </div>
@@ -1341,7 +1456,9 @@ function ProgrammeFinderInner() {
   const [destinations, setDestinations] = useState<string[]>([]); // empty = all
   const [levels, setLevels] = useState<Level[]>([]); // empty = all
   // Pre-select the university passed from the /universities page
-  const [selectedUnis, setSelectedUnis] = useState<string[]>(() => namesFromParam(searchParams.get("university")));
+  const [selectedUnis, setSelectedUnis] = useState<string[]>(() =>
+    namesFromParam(searchParams.get("university")),
+  );
   const [uniSearch, setUniSearch] = useState("");
   const [showUniFilter, setShowUniFilter] = useState(false);
 
@@ -1349,8 +1466,12 @@ function ProgrammeFinderInner() {
   const baseFiltered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return programmes.filter((p) => {
-      const matchesQuery = q === "" || p.title.toLowerCase().includes(q) || p.university.toLowerCase().includes(q);
-      const matchesDestination = destinations.length === 0 || destinations.includes(p.country);
+      const matchesQuery =
+        q === "" ||
+        p.title.toLowerCase().includes(q) ||
+        p.university.toLowerCase().includes(q);
+      const matchesDestination =
+        destinations.length === 0 || destinations.includes(p.country);
       const matchesLevel = levels.length === 0 || levels.includes(p.level);
       return matchesQuery && matchesDestination && matchesLevel;
     });
@@ -1360,7 +1481,10 @@ function ProgrammeFinderInner() {
   const universities = useMemo(() => {
     const map = new Map<string, { country: string; count: number }>();
     for (const p of programmes) {
-      if ((destinations.length === 0 || destinations.includes(p.country)) && !map.has(p.university)) {
+      if (
+        (destinations.length === 0 || destinations.includes(p.country)) &&
+        !map.has(p.university)
+      ) {
         map.set(p.university, { country: p.country, count: 0 });
       }
     }
@@ -1373,14 +1497,19 @@ function ProgrammeFinderInner() {
 
   // Selected universities first, then A–Z
   const visibleUnis = universities
-    .filter((u) => u.name.toLowerCase().includes(uniSearch.trim().toLowerCase()))
+    .filter((u) =>
+      u.name.toLowerCase().includes(uniSearch.trim().toLowerCase()),
+    )
     .sort((a, b) => {
       const sa = selectedUnis.includes(a.name) ? 0 : 1;
       const sb = selectedUnis.includes(b.name) ? 0 : 1;
       return sa - sb || a.name.localeCompare(b.name);
     });
 
-  const filtered = selectedUnis.length === 0 ? baseFiltered : baseFiltered.filter((p) => selectedUnis.includes(p.university));
+  const filtered =
+    selectedUnis.length === 0
+      ? baseFiltered
+      : baseFiltered.filter((p) => selectedUnis.includes(p.university));
 
   /** Saves the chosen universities in the URL so the page can be shared or refreshed */
   const updateUnis = (names: string[]) => {
@@ -1392,15 +1521,32 @@ function ProgrammeFinderInner() {
     router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
   };
 
-  const toggleUni = (name: string) => updateUnis(selectedUnis.includes(name) ? selectedUnis.filter((n) => n !== name) : [...selectedUnis, name]);
+  const toggleUni = (name: string) =>
+    updateUnis(
+      selectedUnis.includes(name)
+        ? selectedUnis.filter((n) => n !== name)
+        : [...selectedUnis, name],
+    );
 
   const changeDestinations = (values: string[]) => {
     setDestinations(values);
     // keep only the selected universities that exist in the chosen destinations
-    updateUnis(selectedUnis.filter((name) => values.length === 0 || programmes.some((p) => p.university === name && values.includes(p.country))));
+    updateUnis(
+      selectedUnis.filter(
+        (name) =>
+          values.length === 0 ||
+          programmes.some(
+            (p) => p.university === name && values.includes(p.country),
+          ),
+      ),
+    );
   };
 
-  const hasFilters = query !== "" || destinations.length > 0 || levels.length > 0 || selectedUnis.length > 0;
+  const hasFilters =
+    query !== "" ||
+    destinations.length > 0 ||
+    levels.length > 0 ||
+    selectedUnis.length > 0;
 
   const clearAll = () => {
     setQuery("");
@@ -1412,10 +1558,18 @@ function ProgrammeFinderInner() {
 
   // Single university selected → show its banner
   const focusUni = selectedUnis.length === 1 ? selectedUnis[0] : null;
-  const focusCountry = focusUni ? (programmes.find((p) => p.university === focusUni)?.country ?? "") : "";
-  const focusTotal = focusUni ? programmes.filter((p) => p.university === focusUni).length : 0;
+  const focusCountry = focusUni
+    ? (programmes.find((p) => p.university === focusUni)?.country ?? "")
+    : "";
+  const focusTotal = focusUni
+    ? programmes.filter((p) => p.university === focusUni).length
+    : 0;
 
-  const destinationOptions: Option[] = allDestinations.map((d) => ({ value: d, label: d, icon: <Flag country={d} /> }));
+  const destinationOptions: Option[] = allDestinations.map((d) => ({
+    value: d,
+    label: d,
+    icon: <Flag country={d} />,
+  }));
 
   const levelOptions: Option[] = allLevels.map((l) => ({
     value: l,
@@ -1432,16 +1586,59 @@ function ProgrammeFinderInner() {
     mm.add("(prefers-reduced-motion: no-preference)", () => {
       gsap
         .timeline({ defaults: { ease: "expo.out" }, delay: 0.1 })
-        .fromTo(q("[data-pg-eyebrow]"), { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.9 }, 0)
-        .fromTo(q("[data-pg-word]"), { autoAlpha: 0, yPercent: 115, rotate: 5 }, { autoAlpha: 1, yPercent: 0, rotate: 0, duration: 1.3, stagger: 0.12 }, 0.1)
-        .fromTo(q("[data-pg-copy]"), { autoAlpha: 0, y: 22 }, { autoAlpha: 1, y: 0, duration: 1 }, 0.45)
-        .fromTo(q("[data-pg-filters]"), { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 1.1 }, 0.6)
-        .fromTo(q("[data-pg-side]"), { autoAlpha: 0, x: 30 }, { autoAlpha: 1, x: 0, duration: 1.1 }, 0.75);
+        .fromTo(
+          q("[data-pg-eyebrow]"),
+          { autoAlpha: 0, y: 16 },
+          { autoAlpha: 1, y: 0, duration: 0.9 },
+          0,
+        )
+        .fromTo(
+          q("[data-pg-word]"),
+          { autoAlpha: 0, yPercent: 115, rotate: 5 },
+          {
+            autoAlpha: 1,
+            yPercent: 0,
+            rotate: 0,
+            duration: 1.3,
+            stagger: 0.12,
+          },
+          0.1,
+        )
+        .fromTo(
+          q("[data-pg-copy]"),
+          { autoAlpha: 0, y: 22 },
+          { autoAlpha: 1, y: 0, duration: 1 },
+          0.45,
+        )
+        .fromTo(
+          q("[data-pg-filters]"),
+          { autoAlpha: 0, y: 30 },
+          { autoAlpha: 1, y: 0, duration: 1.1 },
+          0.6,
+        )
+        .fromTo(
+          q("[data-pg-side]"),
+          { autoAlpha: 0, x: 30 },
+          { autoAlpha: 1, x: 0, duration: 1.1 },
+          0.75,
+        );
 
       cardReveal.current = ScrollTrigger.batch(q("[data-pg-card]"), {
         start: "top 92%",
         once: true,
-        onEnter: (els) => gsap.fromTo(els, { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.9, stagger: 0.06, ease: "expo.out", overwrite: true }),
+        onEnter: (els) =>
+          gsap.fromTo(
+            els,
+            { autoAlpha: 0, y: 40 },
+            {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.9,
+              stagger: 0.06,
+              ease: "expo.out",
+              overwrite: true,
+            },
+          ),
       });
     });
     return () => mm.revert();
@@ -1455,7 +1652,9 @@ function ProgrammeFinderInner() {
     }
     const el = root.current;
     if (!el) return;
-    const cards = Array.from(el.querySelectorAll<HTMLElement>("[data-pg-card]"));
+    const cards = Array.from(
+      el.querySelectorAll<HTMLElement>("[data-pg-card]"),
+    );
     /* From now on the filter animation reveals the cards, so the scroll reveal stands down */
     cardReveal.current.forEach((t) => t.kill());
     cardReveal.current = [];
@@ -1466,7 +1665,14 @@ function ProgrammeFinderInner() {
     gsap.fromTo(
       cards,
       { autoAlpha: 0, y: 18 },
-      { autoAlpha: 1, y: 0, duration: 0.55, ease: "power3.out", stagger: { each: 0.035, amount: 0.4 }, overwrite: true },
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.55,
+        ease: "power3.out",
+        stagger: { each: 0.035, amount: 0.4 },
+        overwrite: true,
+      },
     );
   }, [query, destinations, levels, selectedUnis]);
 
@@ -1559,38 +1765,57 @@ function ProgrammeFinderInner() {
 
         /* Programme cards */
         .pg .pg-grid { margin-top: 1.1rem; display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
-        .pg .pg-card { position: relative; display: flex; flex-direction: column; overflow: hidden; border-radius: 22px; background: #fff;
-          border: 1px solid rgba(53,12,14,0.08); transition: border-color .35s ease, transform .5s cubic-bezier(.22,1,.36,1), box-shadow .5s ease; }
-        .pg .pg-card:hover { border-color: rgba(247,147,30,0.45); transform: translateY(-4px); box-shadow: 0 14px 28px -24px rgba(53,12,14,0.45); }
-        .pg .pg-card-top { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; padding: 0.9rem 0.9rem 0.9rem 0.9rem;
-          background: var(--tint); }
-        .pg .pg-card-top::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--lvl); transform: scaleX(0); transform-origin: 0 50%;
+        /* The whole card is a soft colour scene: three blended shades, a dot texture and a drifting glow */
+        .pg .pg-card { position: relative; isolation: isolate; display: flex; flex-direction: column; overflow: hidden; border-radius: 22px;
+          background:
+            radial-gradient(80% 55% at 0% 0%, var(--a), transparent 65%),
+            radial-gradient(70% 50% at 100% 100%, var(--c), transparent 65%),
+            radial-gradient(60% 45% at 100% 0%, var(--b), transparent 62%),
+            var(--base);
+          border: 1px solid rgba(255,255,255,0.9); box-shadow: 0 0 0 1px color-mix(in srgb, var(--acc) 22%, transparent), 0 16px 32px -26px color-mix(in srgb, var(--acc) 55%, rgba(53,12,14,0.4));
+          transition: transform .5s cubic-bezier(.22,1,.36,1), box-shadow .5s ease; }
+        .pg .pg-card::before { content: ""; position: absolute; inset: 0; z-index: -1; opacity: 0.5; pointer-events: none;
+          background-image: radial-gradient(rgba(255,255,255,0.95) 1.1px, transparent 1.5px); background-size: 14px 14px;
+          -webkit-mask-image: linear-gradient(170deg, #000 0%, transparent 45%); mask-image: linear-gradient(170deg, #000 0%, transparent 45%); }
+        .pg .pg-card::after { content: ""; position: absolute; inset: -30% -60%; z-index: -1; pointer-events: none;
+          background: linear-gradient(105deg, transparent 42%, rgba(255,255,255,0.5) 50%, transparent 58%); transform: translateX(-70%);
+          transition: transform 1.1s cubic-bezier(.22,1,.36,1); }
+        .pg .pg-card:hover { transform: translateY(-5px); box-shadow: 0 0 0 1px color-mix(in srgb, var(--acc) 35%, transparent), 0 24px 44px -28px color-mix(in srgb, var(--acc) 60%, rgba(53,12,14,0.5)); }
+        .pg .pg-card:hover::after { transform: translateX(70%); }
+        .pg .pg-glow { position: absolute; z-index: -1; right: -20%; top: -18%; width: 65%; aspect-ratio: 1; border-radius: 50%; background: var(--acc); opacity: 0.18;
+          filter: blur(40px); pointer-events: none; animation: pg-drift 10s ease-in-out infinite alternate; }
+        @keyframes pg-drift { 0% { transform: translate(0, 0) scale(0.9); } 100% { transform: translate(-30%, 25%) scale(1.15); } }
+        @media (prefers-reduced-motion: reduce) { .pg .pg-glow { animation: none; } }
+        .pg .pg-card-top { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; padding: 0.9rem; }
+        .pg .pg-card-top::after { content: ""; position: absolute; left: 1.1rem; right: 1.1rem; bottom: 0; height: 2px; border-radius: 2px; background: var(--acc); transform: scaleX(0); transform-origin: 0 50%;
           transition: transform .6s cubic-bezier(.22,1,.36,1); }
         .pg .pg-card:hover .pg-card-top::after { transform: scaleX(1); }
-        .pg .pg-card-top .pg-logo { width: 7rem; height: 3.5rem; transition: transform .5s cubic-bezier(.22,1,.36,1); }
+        .pg .pg-card-top .pg-logo { width: 7rem; height: 3.5rem; border: 0; box-shadow: 0 0 0 4px rgba(255,255,255,0.5), 0 12px 24px -14px color-mix(in srgb, var(--acc) 60%, rgba(53,12,14,0.5)); transition: transform .5s cubic-bezier(.22,1,.36,1); }
         .pg .pg-card:hover .pg-card-top .pg-logo { transform: scale(1.04); }
-        .pg .pg-card-flag { display: flex; width: 2rem; height: 2rem; flex: none; overflow: hidden; border-radius: 999px; box-shadow: 0 0 0 2px #fff; }
+        .pg .pg-card-flag { display: flex; width: 2rem; height: 2rem; flex: none; overflow: hidden; border-radius: 999px; box-shadow: 0 0 0 3px rgba(255,255,255,0.85), 0 6px 14px -6px rgba(53,12,14,0.5); }
         .pg .pg-card-body { display: flex; flex: 1; flex-direction: column; padding: 1rem 1.1rem 1.1rem; }
-        .pg .pg-uni { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(53,12,14,0.5); }
+        .pg .pg-uni { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: color-mix(in srgb, var(--acc) 55%, #350C0E); }
         .pg .pg-card h3 { margin-top: 0.3rem; font-size: 1.02rem; line-height: 1.3; letter-spacing: -0.015em; font-weight: 600; }
         .pg .pg-tags { margin-top: 0.7rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; }
         .pg .pg-tag { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.25rem 0.65rem; border-radius: 999px; font-size: 0.72rem; font-weight: 600; }
-        .pg .pg-tag-time { background: #F6F2EC; color: rgba(53,12,14,0.7); }
-        .pg .pg-award { margin-top: 0.5rem; font-size: 0.76rem; color: rgba(53,12,14,0.5); }
-        .pg .pg-facts { margin-top: 0.8rem; display: grid; gap: 0.4rem; padding: 0.7rem 0.8rem; border-radius: 14px; background: #FFF8F0; font-size: 0.78rem; }
+        .pg .pg-tag-time { background: rgba(255,255,255,0.7); color: rgba(53,12,14,0.75); }
+        .pg .pg-card .pg-tag:not(.pg-tag-time) { background: rgba(255,255,255,0.8); }
+        .pg .pg-award { margin-top: 0.5rem; font-size: 0.76rem; color: rgba(53,12,14,0.6); }
+        .pg .pg-facts { margin-top: 0.8rem; display: grid; gap: 0.4rem; padding: 0.7rem 0.8rem; border-radius: 14px; background: rgba(255,255,255,0.72); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+          box-shadow: inset 0 0 0 1px rgba(255,255,255,0.9); font-size: 0.78rem; }
         .pg .pg-facts p { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.6rem; }
         .pg .pg-facts p > span:first-child { flex: none; color: rgba(53,12,14,0.6); }
         .pg .pg-facts p > span:last-child { text-align: right; font-weight: 600; }
         .pg .pg-facts s { margin-right: 0.35rem; font-weight: 400; color: rgba(53,12,14,0.4); }
         .pg .pg-facts .pg-save { color: #2E8F29; }
         .pg .pg-card-foot { margin-top: auto; padding-top: 1rem; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
-        .pg .pg-free { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.76rem; color: rgba(53,12,14,0.55); }
+        .pg .pg-free { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.76rem; color: rgba(53,12,14,0.65); }
         .pg .pg-free i { width: 0.45rem; height: 0.45rem; border-radius: 999px; background: #3BAA35; }
         .pg .pg-enquire { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.35rem 0.35rem 0.35rem 0.95rem; border-radius: 999px; background: #350C0E; color: #fff;
           font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: background .3s ease; }
         .pg .pg-enquire span { display: grid; place-items: center; width: 1.6rem; height: 1.6rem; border-radius: 999px; background: rgba(255,255,255,0.16);
           transition: transform .4s cubic-bezier(.22,1,.36,1); }
-        .pg .pg-enquire:hover { background: #F7931E; }
+        .pg .pg-enquire:hover, .pg .pg-card:hover .pg-enquire { background: var(--acc); }
         .pg .pg-enquire:hover span { transform: rotate(-45deg); }
 
         .pg .pg-logo { display: flex; flex: none; align-items: center; justify-content: center; overflow: hidden; border-radius: 12px; background: #fff; border: 1px solid rgba(53,12,14,0.06); }
@@ -1665,7 +1890,12 @@ function ProgrammeFinderInner() {
         <div className="pg-head">
           <span data-pg-eyebrow className="pg-eyebrow">
             <span aria-hidden>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
                 <path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3Zm-6.5 9.7V16c0 2 2.9 4 6.5 4s6.5-2 6.5-4v-3.3L12 16.3l-6.5-3.6Z" />
               </svg>
             </span>
@@ -1678,13 +1908,17 @@ function ProgrammeFinderInner() {
               </span>
             </span>
             <span className="pg-mask">
-              <span data-pg-word className={`${accentSerif.className} pg-accent inline-block origin-bottom-left`}>
+              <span
+                data-pg-word
+                className={`${accentSerif.className} pg-accent inline-block origin-bottom-left`}
+              >
                 For You.
               </span>
             </span>
           </h2>
           <p data-pg-copy className="pg-copy">
-            Search real programmes offered by our official pathway partners across the UK, Cyprus, Hungary and Malta.
+            Search real programmes offered by our official pathway partners
+            across the UK, Cyprus, Hungary and Malta.
           </p>
         </div>
 
@@ -1694,7 +1928,16 @@ function ProgrammeFinderInner() {
             <label htmlFor="pf-search" className="pg-label">
               Search programmes
             </label>
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" aria-hidden>
+            <svg
+              width="17"
+              height="17"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2.2}
+              strokeLinecap="round"
+              aria-hidden
+            >
               <circle cx="11" cy="11" r="7" />
               <path d="m20 20-3.5-3.5" />
             </svg>
@@ -1741,14 +1984,22 @@ function ProgrammeFinderInner() {
                       {focusCountry}
                     </span>
                     <span>{focusTotal} programmes</span>
-                    {universityInfo[focusUni]?.note && <span className="pg-note">{universityInfo[focusUni]?.note}</span>}
+                    {universityInfo[focusUni]?.note && (
+                      <span className="pg-note">
+                        {universityInfo[focusUni]?.note}
+                      </span>
+                    )}
                   </p>
                 </div>
                 <div className="pg-focus-actions">
                   <Link href="/universities" className="pg-ghost">
                     All universities
                   </Link>
-                  <button type="button" onClick={() => updateUnis([])} className="pg-pill-btn">
+                  <button
+                    type="button"
+                    onClick={() => updateUnis([])}
+                    className="pg-pill-btn"
+                  >
                     Show all courses
                   </button>
                 </div>
@@ -1757,7 +2008,8 @@ function ProgrammeFinderInner() {
 
             <div className="pg-toolbar">
               <p className="pg-count" aria-live="polite">
-                Showing <b>{filtered.length}</b> of {programmes.length} programmes
+                Showing <b>{filtered.length}</b> of {programmes.length}{" "}
+                programmes
               </p>
               {hasFilters && (
                 <button type="button" onClick={clearAll} className="pg-link">
@@ -1767,11 +2019,19 @@ function ProgrammeFinderInner() {
             </div>
 
             {/* Active filter chips */}
-            {(selectedUnis.length > 1 || destinations.length > 0 || levels.length > 0) && (
+            {(selectedUnis.length > 1 ||
+              destinations.length > 0 ||
+              levels.length > 0) && (
               <div className="pg-chips">
                 {selectedUnis.length > 1 &&
                   selectedUnis.map((name) => (
-                    <button key={name} type="button" onClick={() => toggleUni(name)} aria-label={`Remove ${name} filter`} className="pg-chip">
+                    <button
+                      key={name}
+                      type="button"
+                      onClick={() => toggleUni(name)}
+                      aria-label={`Remove ${name} filter`}
+                      className="pg-chip"
+                    >
                       <UniLogo name={name} />
                       {name}
                       <CloseIcon />
@@ -1781,7 +2041,9 @@ function ProgrammeFinderInner() {
                   <button
                     key={d}
                     type="button"
-                    onClick={() => changeDestinations(destinations.filter((x) => x !== d))}
+                    onClick={() =>
+                      changeDestinations(destinations.filter((x) => x !== d))
+                    }
                     aria-label={`Remove ${d} filter`}
                     className="pg-chip"
                   >
@@ -1798,7 +2060,10 @@ function ProgrammeFinderInner() {
                     aria-label={`Remove ${l} filter`}
                     className="pg-chip pg-chip-level"
                   >
-                    <span className="pg-dot" style={{ backgroundColor: levelDots[l] }} />
+                    <span
+                      className="pg-dot"
+                      style={{ backgroundColor: levelDots[l] }}
+                    />
                     {l}
                     <CloseIcon />
                   </button>
@@ -1807,102 +2072,157 @@ function ProgrammeFinderInner() {
             )}
 
             <div className="pg-grid">
-              {filtered.map((programme) => (
-                <article
-                  key={`${programme.university}-${programme.title}`}
-                  data-pg-card
-                  className="pg-card"
-                  style={{ "--lvl": levelDots[programme.level], "--tint": `${levelDots[programme.level]}12` } as CSSProperties}
-                >
-                  <div className="pg-card-top">
-                    <UniLogo name={programme.university} />
-                    <span title={programme.country} aria-label={programme.country} className="pg-card-flag">
-                      <ReactCountryFlag
-                        countryCode={countryCodes[programme.country] ?? ""}
-                        svg
-                        aria-hidden
-                        style={{ width: "100%", height: "100%", display: "block", objectFit: "cover" }}
-                      />
-                    </span>
-                  </div>
-
-                  <div className="pg-card-body">
-                    <p className="pg-uni">{programme.university}</p>
-                    <h3>{programme.title}</h3>
-
-                    <div className="pg-tags">
-                      <span className={`pg-tag ${levelStyles[programme.level]}`}>{programme.level}</span>
-                      <span className="pg-tag pg-tag-time">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} aria-hidden>
-                          <circle cx="12" cy="12" r="8.5" />
-                          <path strokeLinecap="round" d="M12 7.5V12l3 2" />
-                        </svg>
-                        {programme.duration}
+              {filtered.map((programme, index) => {
+                const scene = SCENES[index % SCENES.length];
+                return (
+                  <article
+                    key={`${programme.university}-${programme.title}`}
+                    data-pg-card
+                    className="pg-card"
+                    style={
+                      {
+                        "--lvl": levelDots[programme.level],
+                        "--a": scene.a,
+                        "--b": scene.b,
+                        "--c": scene.c,
+                        "--base": scene.base,
+                        "--acc": scene.accent,
+                      } as CSSProperties
+                    }
+                  >
+                    <span className="pg-glow" aria-hidden />
+                    <div className="pg-card-top">
+                      <UniLogo name={programme.university} />
+                      <span
+                        title={programme.country}
+                        aria-label={programme.country}
+                        className="pg-card-flag"
+                      >
+                        <ReactCountryFlag
+                          countryCode={countryCodes[programme.country] ?? ""}
+                          svg
+                          aria-hidden
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            display: "block",
+                            objectFit: "cover",
+                          }}
+                        />
                       </span>
                     </div>
-                    {programme.award && <p className="pg-award">{programme.award}</p>}
 
-                    {(programme.tuition || programme.intakes) && (
-                      <div className="pg-facts">
-                        {programme.tuition && (
-                          <p>
-                            <span>Tuition</span>
-                            <span>
-                              {programme.fullTuition && <s>{programme.fullTuition}</s>}
-                              {programme.tuition}
-                            </span>
-                          </p>
-                        )}
-                        {programme.scholarship && (
-                          <p>
-                            <span>Scholarship</span>
-                            <span className="pg-save">{programme.scholarship}% applied</span>
-                          </p>
-                        )}
-                        {programme.totalPayable && (
-                          <p>
-                            <span>Total with €1,000 costs</span>
-                            <span>{programme.totalPayable}</span>
-                          </p>
-                        )}
-                        {programme.beforeVisa && (
-                          <p>
-                            <span>Flexible plan, before visa</span>
-                            <span>{programme.beforeVisa}</span>
-                          </p>
-                        )}
-                        {programme.intakes && (
-                          <p>
-                            <span>Intakes</span>
-                            <span>{programme.intakes.join(" · ")}</span>
-                          </p>
-                        )}
-                      </div>
-                    )}
+                    <div className="pg-card-body">
+                      <p className="pg-uni">{programme.university}</p>
+                      <h3>{programme.title}</h3>
 
-                    <div className="pg-card-foot">
-                      <span className="pg-free">
-                        <i aria-hidden />
-                        Free counselling
-                      </span>
-                      <button type="button" className="pg-enquire">
-                        Enquire
-                        <span aria-hidden>
-                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m0 0-6-6m6 6-6 6" />
-                          </svg>
+                      <div className="pg-tags">
+                        <span
+                          className={`pg-tag ${levelStyles[programme.level]}`}
+                        >
+                          {programme.level}
                         </span>
-                      </button>
+                        <span className="pg-tag pg-tag-time">
+                          <svg
+                            width="12"
+                            height="12"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth={2.5}
+                            aria-hidden
+                          >
+                            <circle cx="12" cy="12" r="8.5" />
+                            <path strokeLinecap="round" d="M12 7.5V12l3 2" />
+                          </svg>
+                          {programme.duration}
+                        </span>
+                      </div>
+                      {programme.award && (
+                        <p className="pg-award">{programme.award}</p>
+                      )}
+
+                      {(programme.tuition || programme.intakes) && (
+                        <div className="pg-facts">
+                          {programme.tuition && (
+                            <p>
+                              <span>Tuition</span>
+                              <span>
+                                {programme.fullTuition && (
+                                  <s>{programme.fullTuition}</s>
+                                )}
+                                {programme.tuition}
+                              </span>
+                            </p>
+                          )}
+                          {programme.scholarship && (
+                            <p>
+                              <span>Scholarship</span>
+                              <span className="pg-save">
+                                {programme.scholarship}% applied
+                              </span>
+                            </p>
+                          )}
+                          {programme.totalPayable && (
+                            <p>
+                              <span>Total with €1,000 costs</span>
+                              <span>{programme.totalPayable}</span>
+                            </p>
+                          )}
+                          {programme.beforeVisa && (
+                            <p>
+                              <span>Flexible plan, before visa</span>
+                              <span>{programme.beforeVisa}</span>
+                            </p>
+                          )}
+                          {programme.intakes && (
+                            <p>
+                              <span>Intakes</span>
+                              <span>{programme.intakes.join(" · ")}</span>
+                            </p>
+                          )}
+                        </div>
+                      )}
+
+                      <div className="pg-card-foot">
+                        <span className="pg-free">
+                          <i aria-hidden />
+                          Free counselling
+                        </span>
+                        <button type="button" className="pg-enquire">
+                          Enquire
+                          <span aria-hidden>
+                            <svg
+                              width="13"
+                              height="13"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth={2.5}
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M5 12h14m0 0-6-6m6 6-6 6"
+                              />
+                            </svg>
+                          </span>
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                </article>
-              ))}
+                  </article>
+                );
+              })}
 
               {filtered.length === 0 && (
                 <div className="pg-empty">
                   <strong>No programmes match your search.</strong>
                   <p>Try a different university, destination or level.</p>
-                  <button type="button" onClick={clearAll} className="pg-pill-btn">
+                  <button
+                    type="button"
+                    onClick={clearAll}
+                    className="pg-pill-btn"
+                  >
                     Clear all filters
                   </button>
                 </div>
@@ -1912,14 +2232,25 @@ function ProgrammeFinderInner() {
 
           {/* Right sidebar: university filter */}
           <aside data-pg-side className="pg-side">
-            <button type="button" onClick={() => setShowUniFilter((v) => !v)} aria-expanded={showUniFilter} className="pg-side-head">
+            <button
+              type="button"
+              onClick={() => setShowUniFilter((v) => !v)}
+              aria-expanded={showUniFilter}
+              className="pg-side-head"
+            >
               <span>
                 <strong>Filter by university</strong>
-                <small>{selectedUnis.length > 0 ? `${selectedUnis.length} selected` : `${universities.length} universities`}</small>
+                <small>
+                  {selectedUnis.length > 0
+                    ? `${selectedUnis.length} selected`
+                    : `${universities.length} universities`}
+                </small>
               </span>
               <svg
                 className="pg-caret"
-                style={{ transform: showUniFilter ? "rotate(180deg)" : undefined }}
+                style={{
+                  transform: showUniFilter ? "rotate(180deg)" : undefined,
+                }}
                 width="16"
                 height="16"
                 viewBox="0 0 24 24"
@@ -1928,7 +2259,11 @@ function ProgrammeFinderInner() {
                 strokeWidth={2.5}
                 aria-hidden
               >
-                <path strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="m6 9 6 6 6-6"
+                />
               </svg>
             </button>
 
@@ -1948,8 +2283,14 @@ function ProgrammeFinderInner() {
                   const empty = uni.count === 0 && !checked;
                   return (
                     <li key={uni.name}>
-                      <label className={`pg-uni-row${checked ? " is-on" : ""}${empty ? " is-empty" : ""}`}>
-                        <input type="checkbox" checked={checked} onChange={() => toggleUni(uni.name)} />
+                      <label
+                        className={`pg-uni-row${checked ? " is-on" : ""}${empty ? " is-empty" : ""}`}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={checked}
+                          onChange={() => toggleUni(uni.name)}
+                        />
                         <UniLogo name={uni.name} className="pg-uni-logo" />
                         <span className="min-w-0 flex-1">
                           <span className="pg-uni-name">{uni.name}</span>
@@ -1961,11 +2302,19 @@ function ProgrammeFinderInner() {
                   );
                 })}
 
-                {visibleUnis.length === 0 && <li className="px-2 py-4 text-center text-sm text-[#350C0E]/60">No universities found.</li>}
+                {visibleUnis.length === 0 && (
+                  <li className="px-2 py-4 text-center text-sm text-[#350C0E]/60">
+                    No universities found.
+                  </li>
+                )}
               </ul>
 
               {selectedUnis.length > 0 && (
-                <button type="button" onClick={() => updateUnis([])} className="pg-outline">
+                <button
+                  type="button"
+                  onClick={() => updateUnis([])}
+                  className="pg-outline"
+                >
                   Clear universities
                 </button>
               )}
@@ -1979,7 +2328,15 @@ function ProgrammeFinderInner() {
 
 function CloseIcon() {
   return (
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3} aria-hidden>
+    <svg
+      width="13"
+      height="13"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={3}
+      aria-hidden
+    >
       <path strokeLinecap="round" d="M6 6l12 12M18 6 6 18" />
     </svg>
   );
