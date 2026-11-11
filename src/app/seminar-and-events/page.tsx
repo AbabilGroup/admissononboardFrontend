@@ -1,5 +1,5 @@
 import { pageMetadata } from "@/lib/seo";
-// import ContactCta from "@/components/common/ContactCta";
+import ContactCta from "@/components/common/ContactCta";
 import HeroEventsSeminars from "@/views/seminar-and-events/HeroEventsSeminars";
 import OurEvents from "@/views/seminar-and-events/OurEvents";
 import PhotoGallery from "@/views/seminar-and-events/PhotoGallery";
@@ -16,7 +16,7 @@ export default function page() {
       <HeroEventsSeminars />
       <OurEvents />
       <PhotoGallery />
-      {/* <ContactCta/> */}
+      <ContactCta/>
     </div>
   );
 }

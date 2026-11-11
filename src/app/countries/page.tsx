@@ -13,7 +13,7 @@ export default function page() {
   return (
     <div>
       <CountryHero />
-      <DreamDestinations />
+      {/* <DreamDestinations /> */}
       {/* <ContactCta /> */}
     </div>
   );

@@ -41,7 +41,7 @@ const faqs: Faq[] = [
   {
     question: "Is an English proficiency test like IELTS mandatory?",
     answer:
-      "It Depends on the university and your prior education. Many institutions accept alternatives like PTE or Duolingo, and some waive it entirely for applicants with an English-medium academic background.",
+      "It depends on the university and your prior education. Many institutions accept alternatives like PTE or Duolingo, and some waive it entirely for applicants with an English-medium academic background.",
     color: "#F0642E",
     icon: (
       <path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Zm8 1.5V8h4.5L14 3.5ZM8 12v2h8v-2H8Zm0 4v2h6v-2H8Z" />
@@ -57,7 +57,7 @@ const faqs: Faq[] = [
     ),
   },
   {
-    question: "What Paperwork is required for my application?",
+    question: "What paperwork is required for my application?",
     answer:
       "Typically academic transcripts, a valid passport, financial statements, a statement of purpose, and letters of recommendation. We give you a checklist tailored to your specific university before you start.",
     color: "#22A55B",
@@ -93,19 +93,8 @@ const faqs: Faq[] = [
 ];
 
 const ArrowIcon = ({ className = "h-4 w-4" }: { className?: string }) => (
-  <svg
-    className={className}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={2.5}
-    aria-hidden
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M5 12h14m0 0-6-6m6 6-6 6"
-    />
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} aria-hidden>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m0 0-6-6m6 6-6 6" />
   </svg>
 );
 
@@ -123,94 +112,21 @@ export default function FaqSection() {
 
     mm.add("(prefers-reduced-motion: no-preference)", () => {
       gsap
-        .timeline({
-          defaults: { ease: "expo.out" },
-          scrollTrigger: { trigger: el, start: "top 78%", once: true },
-        })
-        .fromTo(
-          q("[data-eyebrow]"),
-          { autoAlpha: 0, y: 14 },
-          { autoAlpha: 1, y: 0, duration: 0.8 },
-          0,
-        )
-        .fromTo(
-          q("[data-word]"),
-          { autoAlpha: 0, yPercent: 110, rotate: 4 },
-          {
-            autoAlpha: 1,
-            yPercent: 0,
-            rotate: 0,
-            duration: 1.1,
-            stagger: 0.06,
-          },
-          0.1,
-        )
-        .fromTo(
-          q("[data-underline]"),
-          { drawSVG: "0%" },
-          { drawSVG: "100%", duration: 1, ease: "power2.inOut" },
-          0.6,
-        )
-        .fromTo(
-          q("[data-sub]"),
-          { autoAlpha: 0, y: 16, filter: "blur(6px)" },
-          { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.9 },
-          0.4,
-        );
+        .timeline({ defaults: { ease: "expo.out" }, scrollTrigger: { trigger: el, start: "top 78%", once: true } })
+        .fromTo(q("[data-eyebrow]"), { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.8 }, 0)
+        .fromTo(q("[data-word]"), { autoAlpha: 0, yPercent: 110, rotate: 4 }, { autoAlpha: 1, yPercent: 0, rotate: 0, duration: 1.1, stagger: 0.06 }, 0.1)
+        .fromTo(q("[data-underline]"), { drawSVG: "0%" }, { drawSVG: "100%", duration: 1, ease: "power2.inOut" }, 0.6)
+        .fromTo(q("[data-sub]"), { autoAlpha: 0, y: 16, filter: "blur(6px)" }, { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.9 }, 0.4);
 
       // Photo unrolls, then its card and chips pop in
       gsap
-        .timeline({
-          defaults: { ease: "expo.out" },
-          scrollTrigger: {
-            trigger: q("[data-photo]")[0],
-            start: "top 80%",
-            once: true,
-          },
-        })
-        .fromTo(
-          q("[data-photo]"),
-          { clipPath: "inset(0% 0% 100% 0% round 32px)" },
-          {
-            clipPath: "inset(0% 0% 0% 0% round 32px)",
-            duration: 1.4,
-            ease: "power4.inOut",
-          },
-          0,
-        )
-        .fromTo(
-          q("[data-photo-img]"),
-          { scale: 1.2 },
-          { scale: 1, duration: 1.8 },
-          0,
-        )
-        .fromTo(
-          q("[data-photo-card]"),
-          { autoAlpha: 0, y: 40 },
-          { autoAlpha: 1, y: 0, duration: 1 },
-          0.8,
-        )
-        .fromTo(
-          q("[data-chip]"),
-          { autoAlpha: 0, scale: 0.5 },
-          {
-            autoAlpha: 1,
-            scale: 1,
-            duration: 0.8,
-            stagger: 0.12,
-            ease: "back.out(2)",
-          },
-          1,
-        );
+        .timeline({ defaults: { ease: "expo.out" }, scrollTrigger: { trigger: q("[data-photo]")[0], start: "top 80%", once: true } })
+        .fromTo(q("[data-photo]"), { clipPath: "inset(0% 0% 100% 0% round 32px)" }, { clipPath: "inset(0% 0% 0% 0% round 32px)", duration: 1.4, ease: "power4.inOut" }, 0)
+        .fromTo(q("[data-photo-img]"), { scale: 1.2 }, { scale: 1, duration: 1.8 }, 0)
+        .fromTo(q("[data-photo-card]"), { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 1 }, 0.8)
+        .fromTo(q("[data-chip]"), { autoAlpha: 0, scale: 0.5 }, { autoAlpha: 1, scale: 1, duration: 0.8, stagger: 0.12, ease: "back.out(2)" }, 1);
 
-      gsap.to(q("[data-chip]"), {
-        y: -8,
-        duration: 2.4,
-        ease: "sine.inOut",
-        yoyo: true,
-        repeat: -1,
-        stagger: 0.5,
-      });
+      gsap.to(q("[data-chip]"), { y: -8, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: -1, stagger: 0.5 });
 
       // Questions slide in one after another
       gsap.fromTo(
@@ -222,11 +138,7 @@ export default function FaqSection() {
           duration: 0.9,
           stagger: 0.07,
           ease: "expo.out",
-          scrollTrigger: {
-            trigger: q("[data-faq-list]")[0],
-            start: "top 82%",
-            once: true,
-          },
+          scrollTrigger: { trigger: q("[data-faq-list]")[0], start: "top 82%", once: true },
         },
       );
     });
@@ -239,9 +151,7 @@ export default function FaqSection() {
     const el = root.current;
     if (!el) return;
     const panels = el.querySelectorAll<HTMLElement>("[data-panel]");
-    const reduce = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     panels.forEach((panel, i) => {
       const open = i === openIndex;
@@ -249,24 +159,12 @@ export default function FaqSection() {
         gsap.set(panel, { height: open ? "auto" : 0 });
         return;
       }
-      gsap.to(panel, {
-        height: open ? "auto" : 0,
-        duration: 0.55,
-        ease: "power3.inOut",
-        overwrite: true,
-      });
+      gsap.to(panel, { height: open ? "auto" : 0, duration: 0.55, ease: "power3.inOut", overwrite: true });
       if (open) {
         gsap.fromTo(
           panel.querySelector("[data-answer]"),
           { autoAlpha: 0, y: 12, filter: "blur(4px)" },
-          {
-            autoAlpha: 1,
-            y: 0,
-            filter: "blur(0px)",
-            duration: 0.6,
-            delay: 0.15,
-            ease: "power2.out",
-          },
+          { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.6, delay: 0.15, ease: "power2.out" },
         );
       }
     });
@@ -279,10 +177,7 @@ export default function FaqSection() {
   };
 
   return (
-    <section
-      ref={root}
-      className="faq relative w-full overflow-hidden bg-[#FFFEFA]"
-    >
+    <section ref={root} className="faq relative w-full overflow-hidden bg-[#FFFEFA]">
       <style>{`
         /* Core layout lives here so it never depends on Tailwind picking up new class names */
         .faq .faq-grid { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 2.5rem; margin-top: 3rem; }
@@ -308,19 +203,13 @@ export default function FaqSection() {
       <div className="container relative mx-auto px-4 py-20 sm:px-6 lg:py-24">
         {/* Heading */}
         <div className="mx-auto max-w-3xl text-center">
-          <span
-            data-eyebrow
-            className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.14em] text-[#2F6BFF]"
-          >
+          <span data-eyebrow className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.14em] text-[#2F6BFF]">
             <span className="h-3.5 w-4 bg-[#2F6BFF] [clip-path:polygon(0_0,65%_0,100%_50%,65%_100%,0_100%)]" />
             FAQ
           </span>
           <h2 className="font-display mt-3 text-[2.2rem] font-semibold leading-[1.04] tracking-[-0.035em] text-[#350C0E] sm:text-5xl lg:text-[3.4rem]">
             {["Answers", "to", "your", "common"].map((w) => (
-              <span
-                key={w}
-                className="mr-[0.24em] inline-block overflow-hidden pb-[0.08em] align-top"
-              >
+              <span key={w} className="mr-[0.24em] inline-block overflow-hidden pb-[0.08em] align-top">
                 <span data-word className="inline-block">
                   {w}
                 </span>
@@ -332,29 +221,13 @@ export default function FaqSection() {
                   questions
                 </span>
               </span>
-              <svg
-                aria-hidden
-                viewBox="0 0 220 20"
-                preserveAspectRatio="none"
-                className="absolute -bottom-[0.12em] left-0 h-[0.26em] w-full overflow-visible"
-              >
-                <path
-                  data-underline
-                  d="M3 12 C 50 4, 100 16, 150 8 S 200 6, 217 10"
-                  fill="none"
-                  stroke="#F7931E"
-                  strokeWidth="3.5"
-                  strokeLinecap="round"
-                />
+              <svg aria-hidden viewBox="0 0 220 20" preserveAspectRatio="none" className="absolute -bottom-[0.12em] left-0 h-[0.26em] w-full overflow-visible">
+                <path data-underline d="M3 12 C 50 4, 100 16, 150 8 S 200 6, 217 10" fill="none" stroke="#F7931E" strokeWidth="3.5" strokeLinecap="round" />
               </svg>
             </span>
           </h2>
-          <p
-            data-sub
-            className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-[#4A5268] sm:text-base"
-          >
-            Have doubts? We&apos;ve got answers. Browse what students ask us
-            most before studying overseas.
+          <p data-sub className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-[#4A5268] sm:text-base">
+            Have doubts? We&apos;ve got answers. Browse what students ask us most before studying overseas.
           </p>
         </div>
 
@@ -363,35 +236,22 @@ export default function FaqSection() {
           <div className="faq-photo-col">
             <div
               data-photo
-              className="faq-photo bg-[#EAF2FF] shadow-[0_40px_80px_-45px_rgba(20,33,61,0.55)] ring-1 ring-black/5"
-            >
+              className="faq-photo bg-[#EAF2FF] shadow-[0_40px_80px_-45px_rgba(20,33,61,0.55)] ring-1 ring-black/5">
               <div data-photo-img className="absolute inset-0">
-                <Image
-                  src={FAQ_IMAGE}
-                  alt="Smiling student holding books, ready to study abroad"
-                  fill
-                  sizes="(max-width: 1024px) 90vw, 40vw"
-                  className="object-cover"
-                />
+                <Image src={FAQ_IMAGE} alt="Smiling student holding books, ready to study abroad" fill sizes="(max-width: 1024px) 90vw, 40vw" className="object-cover" />
               </div>
 
               {/* "Still have questions?" card */}
               <div
                 data-photo-card
-                className="absolute inset-x-4 bottom-4 flex flex-col gap-3 rounded-3xl border border-white/80 bg-white/80 p-4 shadow-[0_20px_40px_-20px_rgba(20,33,61,0.45)] backdrop-blur-xl sm:inset-x-5 sm:bottom-5 sm:flex-row sm:items-center sm:justify-between sm:p-5"
-              >
+                className="absolute inset-x-4 bottom-4 flex flex-col gap-3 rounded-3xl border border-white/80 bg-white/80 p-4 shadow-[0_20px_40px_-20px_rgba(20,33,61,0.45)] backdrop-blur-xl sm:inset-x-5 sm:bottom-5 sm:flex-row sm:items-center sm:justify-between sm:p-5">
                 <div>
-                  <p className="font-display text-lg font-semibold text-[#350C0E]">
-                    Still have questions?
-                  </p>
-                  <p className="text-sm text-[#4A5268]">
-                    Talk to a counsellor for free.
-                  </p>
+                  <p className="font-display text-lg font-semibold text-[#350C0E]">Still have questions?</p>
+                  <p className="text-sm text-[#4A5268]">Talk to a counsellor for free.</p>
                 </div>
                 <Link
                   href="/contact"
-                  className="group inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-[#2F6BFF] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-[#2F6BFF]/30 transition-[translate,background-color] duration-300 hover:-translate-y-0.5 hover:bg-[#1E4FD6]"
-                >
+                  className="group inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-[#2F6BFF] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-[#2F6BFF]/30 transition-[translate,background-color] duration-300 hover:-translate-y-0.5 hover:bg-[#1E4FD6]">
                   Speak to an advisor
                   <ArrowIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
@@ -402,21 +262,15 @@ export default function FaqSection() {
             <span
               data-chip
               aria-hidden
-              className="absolute -left-3 top-[18%] hidden items-center gap-2 rounded-2xl bg-white px-3.5 py-2.5 text-sm font-semibold text-[#350C0E] shadow-[0_16px_32px_-16px_rgba(20,33,61,0.5)] sm:flex lg:-left-6"
-            >
-              <span className="grid size-7 place-items-center rounded-full bg-[#3BAA35]/15 text-[#2E8A29]">
-                ✓
-              </span>
+              className="absolute -left-3 top-[18%] hidden items-center gap-2 rounded-2xl bg-white px-3.5 py-2.5 text-sm font-semibold text-[#350C0E] shadow-[0_16px_32px_-16px_rgba(20,33,61,0.5)] sm:flex lg:-left-6">
+              <span className="grid size-7 place-items-center rounded-full bg-[#3BAA35]/15 text-[#2E8A29]">✓</span>
               Free consultation
             </span>
             <span
               data-chip
               aria-hidden
-              className="absolute -right-3 top-[42%] hidden items-center gap-2 rounded-2xl bg-white px-3.5 py-2.5 text-sm font-semibold text-[#350C0E] shadow-[0_16px_32px_-16px_rgba(20,33,61,0.5)] sm:flex lg:-right-6"
-            >
-              <span className="grid size-7 place-items-center rounded-full bg-[#F7931E]/15 text-[#E07B0A]">
-                ?
-              </span>
+              className="absolute -right-3 top-[42%] hidden items-center gap-2 rounded-2xl bg-white px-3.5 py-2.5 text-sm font-semibold text-[#350C0E] shadow-[0_16px_32px_-16px_rgba(20,33,61,0.5)] sm:flex lg:-right-6">
+              <span className="grid size-7 place-items-center rounded-full bg-[#F7931E]/15 text-[#E07B0A]">?</span>
               {faqs.length} top questions
             </span>
           </div>
@@ -431,18 +285,9 @@ export default function FaqSection() {
                   key={faq.question}
                   data-faq
                   className={`relative overflow-hidden rounded-[22px] border bg-white transition-[box-shadow,border-color] duration-500 ${
-                    open
-                      ? "border-transparent shadow-[0_24px_50px_-28px_rgba(20,33,61,0.45)]"
-                      : "border-[#ECECEC] hover:shadow-[0_14px_30px_-22px_rgba(20,33,61,0.4)]"
+                    open ? "border-transparent shadow-[0_24px_50px_-28px_rgba(20,33,61,0.45)]" : "border-[#ECECEC] hover:shadow-[0_14px_30px_-22px_rgba(20,33,61,0.4)]"
                   }`}
-                  style={
-                    open
-                      ? {
-                          boxShadow: `0 0 0 1.5px ${faq.color}55, 0 24px 50px -28px rgba(20,33,61,0.45)`,
-                        }
-                      : undefined
-                  }
-                >
+                  style={open ? { boxShadow: `0 0 0 1.5px ${faq.color}55, 0 24px 50px -28px rgba(20,33,61,0.45)` } : undefined}>
                   {/* Colour glow on the open card */}
                   <span
                     aria-hidden
@@ -456,54 +301,25 @@ export default function FaqSection() {
                     aria-expanded={open}
                     aria-controls={`${id}-panel`}
                     onClick={() => toggle(index)}
-                    className="relative flex w-full items-center gap-4 px-4 py-4 text-left sm:px-5 sm:py-5"
-                  >
+                    className="relative flex w-full items-center gap-4 px-4 py-4 text-left sm:px-5 sm:py-5">
                     <span
                       className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl transition-all duration-500"
-                      style={
-                        open
-                          ? { backgroundColor: faq.color, color: "#fff" }
-                          : {
-                              backgroundColor: `${faq.color}1A`,
-                              color: faq.color,
-                            }
-                      }
-                    >
-                      <svg
-                        className="h-5 w-5"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        fillRule="evenodd"
-                        aria-hidden
-                      >
+                      style={open ? { backgroundColor: faq.color, color: "#fff" } : { backgroundColor: `${faq.color}1A`, color: faq.color }}>
+                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" fillRule="evenodd" aria-hidden>
                         {faq.icon}
                       </svg>
                     </span>
                     <span className="min-w-0 flex-1">
-                      <span className="block text-[11px] font-bold tracking-[0.14em] text-[#350C0E]/35">
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                      <span className="font-display block text-[0.98rem] font-semibold leading-snug text-[#350C0E] sm:text-lg">
-                        {faq.question}
-                      </span>
+                      <span className="block text-[11px] font-bold tracking-[0.14em] text-[#350C0E]/35">{String(index + 1).padStart(2, "0")}</span>
+                      <span className="font-display block text-[0.98rem] font-semibold leading-snug text-[#350C0E] sm:text-lg">{faq.question}</span>
                     </span>
                     <span
                       data-open={open || undefined}
                       className={`faq-toggle grid h-9 w-9 shrink-0 place-items-center rounded-full border transition-all duration-500 ${
-                        open
-                          ? "border-transparent text-white"
-                          : "border-[#E2E8F0] text-[#350C0E]"
+                        open ? "border-transparent text-white" : "border-[#E2E8F0] text-[#350C0E]"
                       }`}
-                      style={open ? { backgroundColor: faq.color } : undefined}
-                    >
-                      <svg
-                        className="h-4 w-4"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2.5}
-                        aria-hidden
-                      >
+                      style={open ? { backgroundColor: faq.color } : undefined}>
+                      <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} aria-hidden>
                         <path strokeLinecap="round" d="M12 5v14M5 12h14" />
                       </svg>
                     </span>
@@ -517,12 +333,8 @@ export default function FaqSection() {
                     aria-labelledby={`${id}-button`}
                     className="relative overflow-hidden"
                     // Initial height only (first item starts open); GSAP owns it after that
-                    style={{ height: index === 0 ? "auto" : 0 }}
-                  >
-                    <p
-                      data-answer
-                      className="faq-answer text-sm leading-relaxed text-[#4A5268] sm:text-[0.95rem]"
-                    >
+                    style={{ height: index === 0 ? "auto" : 0 }}>
+                    <p data-answer className="faq-answer text-sm leading-relaxed text-[#4A5268] sm:text-[0.95rem]">
                       {faq.answer}
                     </p>
                   </div>
