@@ -17,7 +17,8 @@ type University = {
   country: string;
   initials: string;
   color: string;
-  logo: string;
+  /** Missing logo falls back to the initials badge */
+  logo?: string;
   note?: string;
   image?: string;
 };
@@ -33,6 +34,7 @@ const countries = [
   { name: "Hungary", code: "HU" },
   { name: "Romania", code: "RO" },
   { name: "Malta", code: "MT" },
+  { name: "Malaysia", code: "MY" },
   { name: "Cyprus", code: "CY" },
   { name: "Italy", code: "IT" },
   { name: "Norway", code: "NO" },
@@ -257,6 +259,216 @@ const universities: University[] = [
     color: "#CD0731",
     logo: "/univercity-logo/Ascencia-Malta-Logo.svg",
   },
+  {
+    slug: "university-malaya-wales",
+    name: "University Malaya Wales",
+    country: "Malaysia",
+    initials: "UW",
+    color: "#2F5DA8",
+    logo: "/univercity-logo/malaya-whales.png",
+  },
+  {
+    slug: "university-of-wollongong-malaysia",
+    name: "University of Wollongong Malaysia",
+    country: "Malaysia",
+    initials: "UW",
+    color: "#1366E0",
+  },
+  {
+    slug: "unimaiwp",
+    name: "UNIMAIWP",
+    country: "Malaysia",
+    initials: "UI",
+    color: "#1B1B1B",
+  },
+  {
+    slug: "brickfields-asia-college-bac",
+    name: "Brickfields Asia College (BAC)",
+    country: "Malaysia",
+    initials: "BA",
+    color: "#2F9E5C",
+    note: "BAC Education Group",
+  },
+  {
+    slug: "veritas-university-college",
+    name: "Veritas University College",
+    country: "Malaysia",
+    initials: "VU",
+    color: "#F58B0F",
+    note: "BAC Education Group",
+  },
+  {
+    slug: "university-malaysia-of-science-technology-unimy",
+    name: "University Malaysia of Science & Technology (UNIMY)",
+    country: "Malaysia",
+    initials: "UM",
+    color: "#E4572E",
+    note: "BAC Education Group",
+  },
+  {
+    slug: "iact-college",
+    name: "IACT College",
+    country: "Malaysia",
+    initials: "IC",
+    color: "#7A4FBF",
+    note: "BAC Education Group",
+  },
+  {
+    slug: "reliance-college",
+    name: "Reliance College",
+    country: "Malaysia",
+    initials: "RC",
+    color: "#2F5DA8",
+    note: "BAC Education Group",
+  },
+  {
+    slug: "taylors-university",
+    name: "Taylor's University",
+    country: "Malaysia",
+    initials: "TU",
+    color: "#1366E0",
+  },
+  {
+    slug: "asia-pacific-university-apu",
+    name: "Asia Pacific University (APU)",
+    country: "Malaysia",
+    initials: "AP",
+    color: "#1B1B1B",
+  },
+  {
+    slug: "inti-international-university",
+    name: "INTI International University",
+    country: "Malaysia",
+    initials: "II",
+    color: "#2F9E5C",
+  },
+  {
+    slug: "university-of-cyberjaya",
+    name: "University of Cyberjaya",
+    country: "Malaysia",
+    initials: "UC",
+    color: "#F58B0F",
+  },
+  {
+    slug: "unikl",
+    name: "UniKL",
+    country: "Malaysia",
+    initials: "UK",
+    color: "#E4572E",
+  },
+  {
+    slug: "segi-university",
+    name: "SEGi University",
+    country: "Malaysia",
+    initials: "SG",
+    color: "#7A4FBF",
+  },
+  {
+    slug: "ucsi-university",
+    name: "UCSI University",
+    country: "Malaysia",
+    initials: "UC",
+    color: "#2F5DA8",
+  },
+  {
+    slug: "management-and-science-university-msu",
+    name: "Management and Science University (MSU)",
+    country: "Malaysia",
+    initials: "MS",
+    color: "#1366E0",
+  },
+  {
+    slug: "lincoln-university-college",
+    name: "Lincoln University College",
+    country: "Malaysia",
+    initials: "LU",
+    color: "#1B1B1B",
+  },
+  {
+    slug: "xiamen-university-malaysia",
+    name: "Xiamen University Malaysia",
+    country: "Malaysia",
+    initials: "XU",
+    color: "#2F9E5C",
+  },
+  {
+    slug: "universiti-tun-abdul-razak-unirazak",
+    name: "Universiti Tun Abdul Razak (UNIRAZAK)",
+    country: "Malaysia",
+    initials: "UR",
+    color: "#F58B0F",
+  },
+  {
+    slug: "utm-kolej-space",
+    name: "UTM Kolej SPACE",
+    country: "Malaysia",
+    initials: "UT",
+    color: "#E4572E",
+  },
+  {
+    slug: "universiti-teknologi-malaysia-utm",
+    name: "Universiti Teknologi Malaysia (UTM)",
+    country: "Malaysia",
+    initials: "UT",
+    color: "#7A4FBF",
+    note: "Public University",
+  },
+  {
+    slug: "international-islamic-university-malaysia-iium",
+    name: "International Islamic University Malaysia (IIUM)",
+    country: "Malaysia",
+    initials: "II",
+    color: "#2F5DA8",
+    note: "Public University",
+  },
+  {
+    slug: "universiti-teknikal-malaysia-melaka-utem",
+    name: "Universiti Teknikal Malaysia Melaka (UTeM)",
+    country: "Malaysia",
+    initials: "UM",
+    color: "#1366E0",
+    note: "Public University",
+  },
+  {
+    slug: "universiti-malaya-um",
+    name: "Universiti Malaya (UM)",
+    country: "Malaysia",
+    initials: "UM",
+    color: "#1B1B1B",
+    note: "Public University",
+  },
+  {
+    slug: "universiti-putra-malaysia-upm",
+    name: "Universiti Putra Malaysia (UPM)",
+    country: "Malaysia",
+    initials: "UP",
+    color: "#2F9E5C",
+    note: "Public University",
+  },
+  {
+    slug: "universiti-malaysia-pahang-ump",
+    name: "Universiti Malaysia Pahang (UMP)",
+    country: "Malaysia",
+    initials: "UM",
+    color: "#F58B0F",
+    note: "Public University",
+  },
+  {
+    slug: "universiti-sultan-zainal-abidin-unisza",
+    name: "Universiti Sultan Zainal Abidin (UniSZA)",
+    country: "Malaysia",
+    initials: "US",
+    color: "#E4572E",
+    note: "Public University",
+  },
+  {
+    slug: "universiti-malaysia-terengganu-umt",
+    name: "Universiti Malaysia Terengganu (UMT)",
+    country: "Malaysia",
+    initials: "UM",
+    color: "#7A4FBF",
+    note: "Public University",
+  },
 ];
 
 /** How many cards to show before the "Explore more" button */
@@ -285,7 +497,7 @@ function Flag({ code }: { code: string }) {
 function Logo({ uni }: { uni: University }) {
   const [failed, setFailed] = useState(false);
 
-  if (failed) {
+  if (failed || !uni.logo) {
     return (
       <span
         className="grid h-full w-full place-items-center text-lg font-bold text-white"
@@ -318,7 +530,7 @@ type UniversityPartnerProps = {
 };
 
 /** Every partner logo once, for the sliding strip */
-const marqueeLogos = universities.filter((u, i, all) => all.findIndex((x) => x.logo === u.logo) === i);
+const marqueeLogos = universities.filter((u, i, all) => u.logo && all.findIndex((x) => x.logo === u.logo) === i);
 
 const ArrowIcon = ({ className = "h-4 w-4" }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} aria-hidden>
